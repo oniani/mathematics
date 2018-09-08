@@ -1,2 +1,4 @@
 # undergrad-math
-Undergraduate mathematics Courses
+
+Undergraduate mathematics courses
+

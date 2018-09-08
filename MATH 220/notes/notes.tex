@@ -1,0 +1,105 @@
+\documentclass[12pt, a4paper]{article}             % use "amsart" instead of "article" for AMSLaTeX format
+\usepackage[a4paper,margin=1in]{geometry}          % Adjust margins
+\usepackage{amsmath,amssymb,listings,color}        % Math packages: amsmath, amssymb, listings, color
+
+\title{\bf{Notes for MATH 220}}
+\author{Author: David Oniani
+\\
+\ \ \ Instructor: Tommy Occhipinti}
+\date{August 29, 2018}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+backgroundcolor=\color{backcolour},
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=left,
+numberstyle=\normalsize\color{gray},
+keywordstyle=\color{blue},
+commentstyle=\color{dkgreen},
+stringstyle=\color{mauve},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=4
+}
+
+
+\begin{document}
+\maketitle
+
+
+\begin{enumerate}
+\item
+\text{Definition: A statement is a sentence that is either true or false.}
+
+\begin{quote}
+\begin{itemize}
+\item
+3 is prime $=>$ true
+\item
+5 is even $=>$ false
+\end{itemize}
+\
+For something to be a statement, it should be completely precise and unambiguous.
+For instance, "million is a big number" is not a statement as "big" is not really defined.
+$\pi \approx 3.1415$ does not have a true value by itself.
+We usually represent the sentences by the letters $P$ and $Q$ (capitalized).
+Why $P$ and $Q$? These letters are called propositions (sort of tradition).
+Proposition means things that we proved to be true.
+$P : 11 > 4$, we can write $P$ is true.
+\
+Goal is to combine easy statements to get complex ones and then deal with them.
+\end{quote}
+
+\item
+If $P$ is a statement, the negation of $P$ is false.
+\begin{quote}
+Example: $P$ : 91 is prime.
+$~P$ : It is not the case that 91 is prime.
+\end{quote}
+
+A truth table
+\\
+$P  ~P$ \\
+$T   F$
+\
+
+\item
+$P \wedge Q$ is called the converse of $P \vee Q$ (the implication that is flipped backwards).
+Converse is logically different from the original implication(-s).
+
+\item
+$P or ~P$ is called a tautology because it does not.
+
+\item
+Statement $(~Q) => (~P)$ is called the contrapositive of $P => Q$.
+PAY ATTENTION THE THE FACT THAT $P$ AND $Q$ ARE FLIPPED.
+You can replace implication with its contrapositive. On the other hand,
+if you replace the implication with the converse, then you have not
+basically done anything at this point.
+
+\item
+What is the negation of each of the following?
+
+\begin{itemize}
+\item
+$~(~P) => P$
+\item
+The negtaion of $~(P \ and \ Q)$ is 3 true values and one false value \
+$~(P \ and \ Q) => (~P) \ or \ (~Q)$
+\end{itemize}
+
+\end{enumerate}
+
+
+\end{document}

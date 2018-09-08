@@ -1,0 +1,165 @@
+\documentclass[12pt, a4paper]{article}                  % use "amsart" instead of "article" for AMSLaTeX format
+\usepackage[a4paper,margin=1in]{geometry}               % Adjust margins
+\usepackage{amsmath,amssymb,textcomp,listings,graphicx,adjustbox}    % Math packages: amsmath, amssymb, listings, color
+\usepackage[makeroom]{cancel}
+
+\title{\bf{Homework \textnumero 2}}
+\author{Author: David Oniani
+\\
+\ \ \ Instructor: Tommy Occhipinti}
+\date{September 3, 2018}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+backgroundcolor=\color{backcolour},
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=left,
+numberstyle=\normalsize\color{gray},
+keywordstyle=\color{blue},
+commentstyle=\color{dkgreen},
+stringstyle=\color{mauve},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=4
+}
+
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+\item[6.]
+Write the negation of the following statements as naturally as possible. Do not simply
+write “it is not the case that...” For some statements you are given the context, but
+you should not negate that part.
+\begin{enumerate}
+\item[(a)]
+About an integer $n \geq 2$:\\
+$n$ is prime or $n+1$ is prime.\\
+\textbf{Negation}: $n$ and $n+1$ are composite.
+
+\item[(b)]
+About matrices $A$ and $B$:\\
+The determinant of $A$ is negative and the determinant of $B$ is positive.\\
+\textbf{Negation}: The determinant of $A$ is not negative and the determinant of $B$ is not positive.
+
+\item[(c)]
+About matrices $f(x)$ and $g(x)$:\\
+If $f(x)$ and $g(x)$ are differentiable, then so is $f(x) + g(x)$.\\
+\textbf{Negation}: $f(x)$ and $g(x)$ are differentiable, but there exists $f(x) + g(x)$ that is not.
+
+\item[(d)]
+About an integer $n$ in $\mathbb{Z}^+$:\\
+$n+1!$ is a perfect square if and only if $n=4$ or $n=5$.\\
+\textbf{Negation}: There exists $n \notin \{4,5\}$ where $n+1!$ is a perfect square.
+
+\item[(e)]
+The populations of Decorah, IA and Minneapolis, MN are the same.\\
+\textbf{Negation}:The populations of Decorah, IA and Minneapolis, MN are different.
+\end{enumerate}
+
+\item[2.]
+Suppose $P$ and $Q$ are propositions for which "$P$ and $Q$" is false and "$P$ or $Q$" is true.
+What can be said about the truth values of $P$ and $Q$.\\\\
+The fact that "$P$ and $Q$" is false implies that at least one of the propositions is false.
+On the other hand, since "$P$ or $Q$" is true, at least one of the propositions is true.
+Thus, conclude that if $P$ is true, then $Q$ is false and if $P$ is false, then $Q$ is true.
+\item[4.]
+If $P \iff Q$ is true, what is the truth value of $P \iff (\text{not}-Q)$?\\\\
+Since $P \iff Q$ is true, we can conclude that either both of the propositions are true
+or both of the propositions are false. Either way, $P \iff (\text{not}-Q)$ will be false
+as the propositions $P$ and $\text{not}-Q$ should have the same values which will be impossible.
+\\
+\item[6 (b).]
+Construct a truth table to show that $P \Rightarrow (Q \wedge R)$ is logically equivalent to $(P \Rightarrow Q) \wedge (P \rightarrow R)$.
+\textit{Lets's take a look at the truth-table below.}
+
+\begin{table}[h!]
+	\centering
+	\begin{adjustbox}{max width=\textwidth}
+	\resizebox{0.95\linewidth}{!}
+	{
+		\begin{tabular}{*{8}{|c}|}
+		\hline
+		$P$ & $Q$ & $R$ & $Q \wedge R$ & $P \Rightarrow (Q \wedge R)$ & $P \Rightarrow Q$ & $P \Rightarrow R$ & $(P \Rightarrow Q) \wedge (P \Rightarrow R)$\\ \hline
+		F & F & F & F & T & T & T & T\\ \hline
+		F & F & T & F & T & T & T & T\\ \hline
+		F & T & F & F & T & T & T & T\\ \hline
+		F & T & T & T & T & T & T & T\\ \hline
+        T & F & F & F & F & F & F & F\\ \hline
+        T & F & T & F & F & F & T & F\\ \hline
+        T & T & F & F & F & T & F & F\\ \hline
+        T & T & T & T & T & T & T & T\\
+        \hline
+	\end{tabular}
+    }
+	\end{adjustbox}
+\end{table}
+According to the truth-table, column $P \Rightarrow (Q \wedge R)$ matches column $(P \Rightarrow Q) \wedge (P \Rightarrow R)$ with the values (T, T, T, T, F, F, F, T).
+Thus, these two statements are indeed equivalent.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+
+\item[7 (a).]
+Construct a truth-table for the proposition $(P \vee Q) \Rightarrow (P \ \ \wedge \sim Q)$.
+\begin{table}[h!]
+	\centering
+	\begin{adjustbox}{max width=\textwidth}
+	\resizebox{0.8\linewidth}{!}
+	{
+		\begin{tabular}{*{5}{|c}|}
+		\hline
+		$P$ & $Q$ & $P \vee Q$ & $(P \ \ \wedge \sim Q)$ & $(P \vee Q) \Rightarrow (P \ \ \wedge \sim Q)$\\ \hline
+		F & F & F & F & T\\ \hline
+		F & T & T & F & F\\ \hline
+		T & F & T & T & T\\ \hline
+        T & T & T & F & T\\
+        \hline
+	\end{tabular}
+    }
+	\end{adjustbox}
+\end{table}
+\\This will be the truth-table for the proposition $(P \vee Q) \Rightarrow (P \ \ \wedge \sim Q)$.
+
+\item[7 (b).]
+Find the simpler proposition that is logically equivalent to the proposition in (a).
+\begin{table}[h!]
+	\centering
+	\begin{adjustbox}{max width=\textwidth}
+	\resizebox{0.8\linewidth}{!}
+	{
+		\begin{tabular}{*{6}{|c}|}
+		\hline
+		$P$ & $Q$ & $P \vee Q$ & $(P \ \ \wedge \sim Q)$ & $(P \vee Q) \Rightarrow (P \ \ \wedge \sim Q)$ & $(Q \Rightarrow P)$\\ \hline
+		F & F & F & F & T & T\\ \hline
+		F & T & T & F & F & F\\ \hline
+		T & F & T & T & T & T\\ \hline
+        T & T & T & F & T & T\\
+        \hline
+	\end{tabular}
+    }
+	\end{adjustbox}
+\end{table}
+\\ Such proposition is $P \Rightarrow Q$. To verify the equivalence, let's look at the truth-table above where we see that
+$(Q \Rightarrow P) \iff (P \vee Q) \Rightarrow (P \ \ \wedge \sim Q)$ as columns for these exactly match each other with the
+values (T, F, T, T).
+\end{enumerate}
+
+\newpage
+\begin{center}
+\LARGE{\textbf{A Page for Feedback}}
+\end{center}
+
+\end{document}
