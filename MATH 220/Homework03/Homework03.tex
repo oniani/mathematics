@@ -296,7 +296,7 @@ Write the negation of the statement “n is doubly even” without using the wor
 “not.”\\
 
 $n$ contains only one power of 2. In other words, $n = 2k$ where $k$ is odd.
-
+\\
 \item[(d)]
 For what positive integers $n$ is $n!$ doubly even? Prove your answer.\\
 
@@ -312,6 +312,72 @@ is doubly even.
 \textit{Q.E.D.}
 \end{flushright}
 \end{enumerate}
+
+\item[11.]
+A subset $S$ of $\mathbb{Z}$ is called \textit{shifty} if for every $x \in S, \ x - 1 \in S, \ \textnormal{or} \ x + 1 \in S$.
+\begin{enumerate}
+\item[(a)]
+Give an example of a shifty set with 5 elements.\\
+
+$S = \{1,2,3,4,5\}$
+\\
+\item[(b)]
+Give an example of a shifty set that contains $10$ and $-10$ but does not contain $0$.\\
+
+$S = \{-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8,9,10\}$
+\\
+\item[(c)]
+Is $\{n \in \mathbb{Z}^+ \ \vert \ n \ \textnormal{is not a multiple of 5 or 11} \}$ shifty? Why or why not?\\
+
+For the set not to be shifty, we should have an element $n$ for which either $n-1$
+must be either divisible by $5$ or $11$ and $n + 1$ should either be divisible by $5$
+or $11$. Then, all we have to do is solve the systems of the following Diophantine equations:
+
+$$
+\begin{cases}
+n - 1 = 5k, \ where \ k \in \mathbb{Z}^+\\
+n + 1 = 11l, \ where \ l \in \mathbb{Z}^+
+\end{cases}
+$$
+\begin{center}
+and
+\end{center}
+$$
+\begin{cases}
+n - 1 = 11k, \ where \ k \in \mathbb{Z}^+\\
+n + 1 = 5l, \ where \ l \in \mathbb{Z}^+
+\end{cases}
+$$
+\end{enumerate}
+Let's only consider the first system. From the first equation, we get:
+$$n = 5k + 1$$
+Then, if we substitute $n$ in the second equation, we get the following Diophantine equation:
+$$11l - 5k = 2$$
+It's easy to see that $l = 2$ and $k = 4$. Then we have $n = 5 \times 4 + 1 = 21$.
+And we finally, $21$ is an element of the set for which $21 - 1 = 20$ which is divisible
+by $5$ and $21 + 1 = 22$ is divisible by $11$.
+Thus,  $\{n \in \mathbb{Z}^+ \ \vert \ n \ \textnormal{is not a multiple of 5 or 11} \}$ is not shifty.
+\\
+\item[(d)]
+$\{n \in \mathbb{Z}^+ \ \vert \ n \ \textnormal{is a multiple of 5 or $n + 1$ is a multiple of 5} \}$.
+Why or why not?\\
+
+This set will be shifty. To see, let's group the elements of the set in pairs.
+All the pairs will have the following type $(5k-1,\ 5k), \ \textnormal{where} \ k \in \mathbb{Z}^+$.
+Then, we know that for for $5k-1$, $5k$ is in the set and for $5k$, $5k-1$ is in the set
+which makes the set shifty.
+\\
+\item[(e)]
+Write the negation of the statement “S is shifty” without using the word “not.”\\
+
+There exists $x \in S$ such that $x-1 \notin S$ and $x+1 \notin S$.
+\\
+\item[(f)]
+Does every non-empty shifty set contain an even integer? Why or why not?\\
+
+Yes. In order for the set $S$ to be shifty, for every element (positive integer) $n$, either $n - 1$
+or $n + 1$ must be in the set. If $n$ is odd, then $n-1$ and $n+1$ are even and if $n$ is even, then
+$n-1$ and $n+1$ are odd. Thus, for a set to be shifty, it must contain an even integer.
 \end{enumerate}
 
 \newpage
