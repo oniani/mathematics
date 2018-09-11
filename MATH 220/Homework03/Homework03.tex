@@ -330,9 +330,15 @@ $S = \{-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8,9,10\}$
 \item[(c)]
 Is $\{n \in \mathbb{Z}^+ \ \vert \ n \ \textnormal{is not a multiple of 5 or 11} \}$ shifty? Why or why not?\\
 
-For the set not to be shifty, we should have an element $n$ for which either $n-1$
-must be either divisible by $5$ or $11$ and $n + 1$ should either be divisible by $5$
-or $11$. Then, all we have to do is solve the systems of the following Diophantine equations:
+If the set is shifty, we have two cases:
+\begin{enumerate}
+\item[1.]
+element $n$ for which $n-1$ is divisible by $5$ and $n + 1$ by $11$
+\item[2.]
+$n-1$ is divisible by $11$ and $n + 1$ by $5$ should either be divisible by $5$ or $11$.
+\end{enumerate}
+
+Then, all we have to do is solve the systems of the following Diophantine equations:
 
 $$
 \begin{cases}
@@ -349,6 +355,7 @@ n - 1 = 11k, \ where \ k \in \mathbb{Z}^+\\
 n + 1 = 5l, \ where \ l \in \mathbb{Z}^+
 \end{cases}
 $$
+
 \end{enumerate}
 Let's only consider the first system. From the first equation, we get:
 $$n = 5k + 1$$
