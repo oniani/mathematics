@@ -1,0 +1,118 @@
+\documentclass[12pt, a4paper]{article}             % use "amsart" instead of "article" for AMSLaTeX format
+\usepackage[a4paper,margin=1in]{geometry}          % Adjust margins
+\usepackage{amsmath,amssymb,listings,color}        % Math packages: amsmath, amssymb, listings, color
+\usepackage[makeroom]{cancel}
+
+\title{\bf{Getting Started with \LaTeX}}
+\author{Author: David Oniani
+\\
+\ \ \ Instructor: Tommy Occhipinti}
+\date{August 29, 2018}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+backgroundcolor=\color{backcolour},
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=left,
+numberstyle=\normalsize\color{gray},
+keywordstyle=\color{blue},
+commentstyle=\color{dkgreen},
+stringstyle=\color{mauve},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=4
+}
+
+
+\begin{document}
+\maketitle
+
+
+\begin{enumerate}
+\item[15.]
+Prove the following statement is false by providing a counterexample: If $n \in \mathbb{Z}^+$ is odd
+and $n > 1$ then there exists a non-negative integer $i$ and a prime $p$ such that $n = 2^i + p$.
+\\
+
+\begin{quote}
+This is the type of statement where "for every" part is hidden. In other words,
+the statement could be translated in the following way: "For every $n > 1 \in \mathbb{Z}^+$
+there exists a non-negative integer $i$ and a prime $p$ such that
+$n = 2^i + p$".
+\end{quote}
+
+Thus, all we have to do is find an integer $n > 1$, $i \in \mathbb{Z}^+$, and $p \in \mathbb{P}$ where $\mathbb{P}$ is a set
+of prime numbers. Now, notice that $n = 2$ is a counterexample. If $n = 2$, then $i$ has to be either 0 or 1 (since $i$ is non-negative and
+if $i > 1$, $2^i > 2$ and the equality will not hold).
+Hence, for $n = 2$, we have $i = 0$ or $i = 1$. Let's only consider the first example.
+If $n = 2$ and $i = 0$, $2^i = 1$ and $p$ has to be 1 which is not prime. Thus, we found $n$ for which the statement is false which
+proves that the initial statement is indeed false.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+
+\item[16.]
+Prove the following statement is false by providing a counterexample:
+If S and T are shifty sets (in the sense of a previous exercise), then $S \cap T$ is also a shifty set.
+\begin{quote}
+Definition of the shifty set: A subset $S$ of $\mathbb{Z}$ is called \textit{shifty} if for every $x \in S, \ x-1 \in S \ \textnormal{or} \ x + 1 \in S$.\\
+
+Suppose $S$ and $T$ and shifty. Let $S = \{1,2,4,5\}$ and $T = \{2,3,6,7\}$.
+Then $S \cap T = \{2\}$ and $1, 3 \notin S \cap T$ so we found an example for which
+$S$ and $T$ are shifty, but $S \cap T$ is not.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[17.]
+Prove that if $x$ is odd, then $x^3$ is odd.
+
+\begin{quote}
+Suppose $x$ is odd. Then, by the definition of an odd number, we have:
+$$x = 2k + 1, \ \textnormal{where} \ k \in \mathbb{Z}$$
+Now, we can plug $2k + 1$ into $x^3$. We get:
+$$
+x = (2k + 1)^3 = 8k^3 + 12k^2 + 6k + 1 = 2 \times (4k^3 + 6k^2 + 3k) + 1
+$$
+
+Let's introduce a new variable $l$ and set it equal to $(4k^3 + 6k^2 + 3k)$.
+Then we can rewrite $x$ as $x = 2l + 1$. Finally, we conclude that since
+$(4k^3 + 6k^2 + 3k) \in \mathbb{Z}$, $l \in \mathbb{Z}$ and $2l + 1$ is odd which
+means that $x$ is also odd.
+\end{quote}
+
+\item[18.]
+Suppose that $m$ and $n$ are doubly even (in the sense of an earlier exercise):
+\begin{quote}
+Definition of the \textit{doubly even} integer: An integer $n$ is called doubly even if there exist even integers $x$ and $y$ such that $n = xy$.\\
+
+\begin{itemize}
+\item[a.]
+Prove that $mn$ is doubly even.
+\begin{quote}
+According to the definition, an integer $k$ is doubly even if there exist even integers $m$ and $n$ such that
+$k = mn$. Then we can write that 
+\end{quote}
+\end{itemize}
+
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\end{enumerate}
+
+
+\end{document}
