@@ -7,7 +7,7 @@
 \author{Author: David Oniani
 \\
 \ \ \ Instructor: Tommy Occhipinti}
-\date{August 29, 2018}
+\date{September 13, 2018}
 
 \usepackage{listings}
 \usepackage{color}
@@ -102,17 +102,49 @@ Definition of the \textit{doubly even} integer: An integer $n$ is called doubly 
 \item[a.]
 Prove that $mn$ is doubly even.
 \begin{quote}
-According to the definition, an integer $k$ is doubly even if there exist even integers $m$ and $n$ such that
-$k = mn$. Then we can write that 
+Suppose $m$ and $n$ be doubly even integers, then we know that both of them are even (as they both are the multiplications of even integers).
+Thus, according to the definition, $mn$ is doubly even since it is the multiplication of two even integers.
+\end{quote}
+
+\item[b.]
+Prove that $m + n$ is doubly even
+\begin{quote}
+Suppose $m$ and $n$ be doubly even integers, then we know that both of them are even (as they both are the multiplications of even integers).
+Let $m = 2a \times 2b$ and $n = 2c \times 2d$, where $a,b,c,d \in \mathbb{Z}$. Then $m + n = 4ab + 4cd = 2 \times (2ab + 2cd)$. Hence, we managed to represent
+$m + n$ as the multiplication of two even integers ($2$ and $2ab + 2cd$) and this proves that $m + n$ is doubly even.
 \end{quote}
 \end{itemize}
-
 \begin{flushright}
 \textit{Q.E.D.}
 \end{flushright}
 \end{quote}
 
-\end{enumerate}
+\item[19.]
+Prove that if $m$ is even but not doubly even then $m + 2$ is doubly even.
+\begin{quote}
+Let's first analyze what it means to be even but not doubly even. As we know, an integer
+is doubly even if and only if it can be represented as a multiplication of two even integers.
+This means that doubly even integer is always divisible by 4. So what would be integers which are even
+but not doubly even? Those are the integers which are divisible by 2 but not by 5 (e.g., 2,6,10 etc.).
+Then we let $m = 4k + 2$, where $k \in \mathbb{Z}$. We get $m + 2 = 4k + 2 + 2 = 2 \times (2k + 2)$.
+Hence, we represented $m + 2$ as a multiplication of two even integers which proves that $m + 2$ is
+doubly even.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
 
+\item[20.]
+Prove or Disprove: if $A$ and $B$ are sets then there exists a set $C$ such that $A \cup B = A \cup C$.
+\begin{quote}
+It is right so let's prove it.
+Suppose $C = B$, then we can rewrite $A \cup C$ as $A \cup B$ and we get $A \cup B = A \cup B$.
+We know that $A \cup B$ is a set itself so let's set it equal to $D$. Finally, we get $D = D$ which
+is true.
+\end{quote}
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{enumerate}
 
 \end{document}
