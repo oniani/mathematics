@@ -49,11 +49,12 @@ and $n > 1$ then there exists a non-negative integer $i$ and a prime $p$ such th
 This is the type of statement where "for every" part is hidden. In other words,
 the statement could be translated in the following way: "For every $n > 1 \in \mathbb{Z}^+$
 there exists a non-negative integer $i$ and a prime $p$ such that
-$n = 2^i + p$". Thus, all we have to do is find an integer $n > 1$, $i \in \mathbb{Z}^+$, and $p \in \mathbb{P}$ where $\mathbb{P}$ is a set
-of prime numbers. Now, notice that $n = 2$ is a counterexample. If $n = 2$, then $i$ has to be either 0 or 1 (since $i$ is non-negative and
+$n = 2^i + p$". Notice that $n = 2$ is a counterexample. If $n = 2$, then $i$ has to be either 0 or 1 (since $i$ is non-negative and
 if $i > 1$, $2^i > 2$ and the equality will not hold).
-Hence, for $n = 2$, we have $i = 0$ or $i = 1$. Let's only consider the first example.
-If $n = 2$ and $i = 0$, $2^i = 1$ and $p$ has to be 1 which is not prime. Thus, we found $n$ for which the statement is false which
+Hence, for $n = 2$, we have $i = 0$ or $i = 1$.
+If $n = 2$ and $i = 0$, $2^i = 1$ and $p$ has to be 1 which is not prime.
+If $n = 2$ and $i = 1$, $2^i = 2$ and $p$ has to be 0 which is also not a prime.
+Thus, we found $n$ for which the statement is false which
 proves that the initial statement is indeed false.
 \begin{flushright}
 \textit{Q.E.D.}
@@ -123,7 +124,7 @@ Prove that if $m$ is even but not doubly even then $m + 2$ is doubly even.
 Let's first analyze what it means to be even but not doubly even. As we know, an integer
 is doubly even if and only if it can be represented as a multiplication of two even integers.
 This means that doubly even integer is always divisible by 4. So what would be integers which are even
-but not doubly even? Those are the integers which are divisible by 2 but not by 5 (e.g., 2,6,10 etc.).
+but not doubly even? Those are the integers which are divisible by 2 but not by 4 (e.g., 2,6,10 etc.).
 Then we let $m = 4k + 2$, where $k \in \mathbb{Z}$. We get $m + 2 = 4k + 2 + 2 = 2 \times (2k + 2)$.
 Hence, we represented $m + 2$ as a multiplication of two even integers which proves that $m + 2$ is
 doubly even.
