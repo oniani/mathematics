@@ -1,0 +1,202 @@
+\documentclass[12pt, a4paper]{article}                      % use "amsart" instead of "article" for AMSLaTeX format
+\usepackage[a4paper,margin=1in]{geometry}                   % Adjust margins
+\usepackage{amsmath,amssymb,listings,color,textcomp}        % Math packages: amsmath, amssymb, listings, color
+\usepackage[makeroom]{cancel}
+
+\title{\bf{Homework \textnumero 4}}
+\author{Author: David Oniani
+\\
+\ \ \ Instructor: Tommy Occhipinti}
+\date{September 20, 2018}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+backgroundcolor=\color{backcolour},
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=left,
+numberstyle=\normalsize\color{gray},
+keywordstyle=\color{blue},
+commentstyle=\color{dkgreen},
+stringstyle=\color{mauve},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=4
+}
+
+
+\begin{document}
+\maketitle
+
+{\large Section 3.2}
+\\
+
+\begin{enumerate}
+\item[23.]
+Prove that if $x$ and $y$ are integers and $xy - 1$ is even then $x$ and $y$ are odd.
+\begin{quote}
+Suppose, for the sake of contradiction, that $x \textnormal{ is even or } y \textnormal{ is even}$.
+Then we know that the multiplication $xy$ is even (since we assumed the statement $x$ is even or $y$ is even is right).
+By the definition of an even number, $xy = 2k$ where $k \in \mathbb{Z}$.
+Finally, $xy - 1 = 2k - 1$ where $k \in \mathbb{Z}$ which now appears to be the definition
+of the odd number which contradicts the fact that $xy - 1$ is even.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[24.]
+Prove that if $x$ and $y$ are real numbers whose mean is $m$ then at least one of\\
+$x$ and $y$ is $\geq m$.
+\begin{quote}
+Suppose, for the sake of contradiction, that $x$ and $y$ are both $< m$.
+Then by adding the inequalities, we get:
+$$
+x + y < 2m
+$$
+And finally,
+$$
+\dfrac{x + y}{2} < m
+$$
+which contradicts the initial statement that the mean of $x$ and $y$ is $m$.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[25.]
+Suppose $S$ is a set of 250 distinct real numbers whose mean is 4. Must there exists
+$x \in S$ such that $x > 4$? Be sure to prove your answer.
+\begin{quote}
+Yes. Let's prove it!\\
+Suppose, for the sake of contradiction, that all elements of $S$ are $\leq 4$.
+Then the sum of all the elements will be less $\leq 1000$ with equality happening only
+when all the members of the set are equal to $4$ which contradict the initial statement that
+$S$ is a set of 250 distinct elements. Thus, all elements of $S$ must be strictly $< 4$.
+This now means that their sum is less than $1000$ which, once again, contradicts the initial
+statement that the mean of all the elements of $S$ is  $250 \times 4 = 1000$.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[26.]
+Suppose $a, b, c \in \mathbb{Z}$ and $a^2 + b^2 = c^2$.
+Prove that at least one of a and b is even.
+\begin{quote}
+Suppose, for the sake of contradiction, that both $a$ and $b$ are odd.
+Then, we can write $a = 2k - 1$ and $b = 2l - 1$ where $k,l \in \mathbb{Z}$.
+Then, we have:
+
+$$
+a^2 + b^2 = 4k^2 - 4k + 1 + 4l^2 - 4l + 1 = 4k^2 + 4l^2 - 4l - 4k + 2 = \\
+$$
+$$
+= 2 \times (2k^2 + 2l^2 - 2l - 2k + 1)
+$$
+
+Now, it's easy to see that $a^2 + b^2$ is the multiplication of an even and odd
+integers ($2$ is even and $(2k^2 + 2l^2 - 2l - 2k + 1)$ is odd). Finally, we conclude
+that $2$ is only once in the number that is supposed to be a perfect square which means
+that $a^2 + b^2$ is not a perfect square.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[27.]
+Prove that if $x,y \in \mathbb{R}^+$,then $x + y \geq 2\sqrt{xy}$.
+\begin{quote}
+Suppose, for the sake of contradiction, that $x + y < 2\sqrt{xy}$.
+Then, since $x,y \in \mathbb{R}^+$, we have:
+\begin{align}
+x + y < 2\sqrt{xy}\\
+x^2 + y^2 + 2xy < 4xy\\
+x^2 + y^2 + 2xy -4xy < 0\\
+x^2 + y^2 - 2xy < 0\\
+(x - y)^2 < 0
+\end{align}
+Thus, we got that $(x-y)^2 < 0$ which is false since square of a number
+is always $\geq 0$.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[28.]
+Prove that if $n$ is an integer, there exist three consecutive integers that sum\\
+to $n$ if and only if $n$ is a multiple of 3.
+\begin{quote}
+Let's first prove that if $n$ is not a multiple of 3, one cannot find
+three consecutive integers with the property that they sum to $n$.
+\begin{itemize}
+\item[(a)]
+Suppose, for the sake of contradiction, that $n$ is not a multiple of 3.
+Then let's define three consecutive integers, $m, m + 1$ and $m + 2$, where $m \in \mathbb{Z}$.
+Then we have:
+$$
+m + m + 1 + m + 2 = 3m + 3 = 3 \times (m + 1)
+$$
+Thus, we got that the sum of three consecutive integers is a multiple of three
+which contradicts the statement that $n$ is not a multiple of 3.
+\end{itemize}
+Now, lets prove the second half of the problem. Let's show that
+if three consecutive integers sum to $n$, then $n$ is a multiple
+of 3.
+\begin{itemize}
+\item[(b)]
+Let $m, m+1, m+2$ where $m \in \mathbb{Z}$ be three consecutive integers.
+We have:
+$$
+n = m + m + 1 + m + 2 = 3m + 3 = 3\times(m+1)
+$$
+Thus, we got that $n$ is a multiple of 3 which proves the iff.
+\end{itemize}
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+
+\item[29.]
+A subset $S$ of $\mathbb{R}$ has the property that for all $x \in \mathbb{R}$
+there exists $y \in S$ such that $|x - y| < 1$. Prove that $S$ is infinite.
+
+\begin{quote}
+Suppose, for the sake of contradiction, that $S$ is finite.
+Inequality, $|x - y| < 1$ can be transformed into the following system:
+$$
+\begin{cases}
+x - y < 1\\
+x - y > -1
+\end{cases}
+$$
+And from the system above, we get the following system:
+$$
+\begin{cases}
+y > x - 1\\
+y < x + 1
+\end{cases}
+$$
+Hence, we know that $y$ is in the open interval $(x-1, x+1)$.
+Now, since we also know that $x \in \mathbb{R}$, interval $(x-1, x+1)$
+has infinitely many elements in it which contradicts our assumption
+that $S$ is finite.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\end{enumerate}
+
+\end{document}
