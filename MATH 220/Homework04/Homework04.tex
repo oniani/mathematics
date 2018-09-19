@@ -43,21 +43,16 @@ tabsize=4
 
 \begin{enumerate}
 \item[15.]
-Prove the following statement is false by providing a counterexample: If $n \in \mathbb{Z}^+$ is odd
+Prove the following statement is false by providing a counterexample: If $n \in \mathbb{Z}^+$
 and $n > 1$ then there exists a non-negative integer $i$ and a prime $p$ such that $n = 2^i + p$.
 \\
 
 \begin{quote}
 This is the type of statement where "for every" part is hidden. In other words,
-the statement could be translated in the following way: "For every $n > 1 \in \mathbb{Z}^+$
+the statement could be translated in the following way: "For every odd $n > 1 \in \mathbb{Z}^+$
 there exists a non-negative integer $i$ and a prime $p$ such that
-$n = 2^i + p$". Notice that $n = 2$ is a counterexample. If $n = 2$, then $i$ has to be either 0 or 1 (since $i$ is non-negative and
-if $i > 1$, $2^i > 2$ and the equality will not hold).
-Hence, for $n = 2$, we have $i = 0$ or $i = 1$.
-If $n = 2$ and $i = 0$, $2^i = 1$ and $p$ has to be 1 which is not prime.
-If $n = 2$ and $i = 1$, $2^i = 2$ and $p$ has to be 0 which is also not a prime.
-Thus, we found $n$ for which the statement is false which
-proves that the initial statement is indeed false.
+$n = 2^i + p$". Let $n = 2$. Then we notice that it's a counterexample since
+at most $i = 0$ and then $p$ must also be 0 which is not prime.
 \begin{flushright}
 \textit{Q.E.D.}
 \end{flushright}
