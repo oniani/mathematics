@@ -45,11 +45,13 @@ tabsize=4
 \item[23.]
 Prove that if $x$ and $y$ are integers and $xy - 1$ is even then $x$ and $y$ are odd.
 \begin{quote}
-Suppose, for the sake of contradiction, that $x \textnormal{ is even or } y \textnormal{ is even}$.
-Then we know that the multiplication $xy$ is even (since we assumed the statement $x$ is even or $y$ is even is right).
-By the definition of an even number, $xy = 2k$ where $k \in \mathbb{Z}$.
-Finally, $xy - 1 = 2k - 1$ where $k \in \mathbb{Z}$ which now appears to be the definition
-of the odd number which contradicts the fact that $xy - 1$ is even.
+Let's prove it by contrapositive. Contrapositive of the initial statement (which is equivalent to the initial statement) is:
+\begin{center}
+If $x$ is even or $y$ is even, then $xy - 1$ is odd.
+\end{center}
+If $x$ is even or $y$ is even, $xy$ is even. Then we can write that $xy = 2k$ where $k \in \mathbb{Z}$.
+Then, $xy - 1 = 2k - 1 = 2(k - 1) + 1$ where $k \in \mathbb{Z}$. Now, let $t = l - 1$ where $l \in \mathbb{Z}$
+and we get $xy - 1 = 2t + 1$. Thus, $xy - 1$ is odd.
 \begin{flushright}
 \textit{Q.E.D.}
 \end{flushright}
@@ -82,9 +84,32 @@ Yes. Let's prove it!\\
 Suppose, for the sake of contradiction, that all elements of $S$ are $\leq 4$.
 Then the sum of all the elements will be less $\leq 1000$ with equality happening only
 when all the members of the set are equal to $4$ which contradict the initial statement that
-$S$ is a set of 250 distinct elements. Thus, all elements of $S$ must be strictly $< 4$.
-This now means that their sum is less than $1000$ which, once again, contradicts the initial
-statement that the mean of all the elements of $S$ is  $250 \times 4 = 1000$.
+$S$ is a set of 250 \underline{distinct} elements. Thus, only one of the elements of $S$ is allowed
+to be equal to 4. Finally, we get two cases:
+\begin{center}
+\begin{itemize}
+\item[1.]
+All 250 elements of $S$ are less than 4.
+\item[2.]
+249 elements of $S$ are less than 4 and one is equal to 4.
+\end{itemize}
+\end{center}
+If all 250 elements of $S$ are less than 4, then their sum is less than $4 \times 250 = 1000$ and their mean
+is less than $1000 / 4 = 250$ which contradicts the initial statement that the mean of all elements of $S$ is 250.
+
+If 249 elements of $S$ are less than 4 and one is equal to 4, then the sum of 249 elements which are less than 4 is less than
+$249 \times 4 = 996$. Then let this sum of 249 numbers be equal to $996 - k$ where $k > 0$. Then the sum of all the elements including
+the one which equals 4 is:
+$$
+996 - k + 4 = 1000 - k \mbox{ where } k > 0
+$$
+Using the fact above, we get that the mean of all the elements of $S$ is $(1000 - k)/250$ where $k > 0$.
+And finally, we get:
+$$
+\dfrac{1000 - k}{250} = 4 - \dfrac{k}{250} \mbox{ where } k > 0
+$$
+And $4 - \dfrac{k}{250} \mbox{ where } k > 0$ is clearly less than 4 which contradicts
+the initial claim that the mean of all elements of $S$ is 4.
 \begin{flushright}
 \textit{Q.E.D.}
 \end{flushright}
@@ -97,7 +122,6 @@ Prove that at least one of a and b is even.
 Suppose, for the sake of contradiction, that both $a$ and $b$ are odd.
 Then, we can write $a = 2k - 1$ and $b = 2l - 1$ where $k,l \in \mathbb{Z}$.
 Then, we have:
-
 $$
 a^2 + b^2 = 4k^2 - 4k + 1 + 4l^2 - 4l + 1 = 4k^2 + 4l^2 - 4l - 4k + 2 = \\
 $$
@@ -106,19 +130,23 @@ $$
 $$
 
 Now, it's easy to see that $a^2 + b^2$ is the multiplication of an even and odd
-integers ($2$ is even and $(2k^2 + 2l^2 - 2l - 2k + 1)$ is odd). Finally, we conclude
-that $2$ is only once in the number that is supposed to be a perfect square which means
-that $a^2 + b^2$ is not a perfect square.
+integers ($2$ is even and $2k^2 + 2l^2 - 2l - 2k + 1$ is odd). $2k^2 + 2l^2 - 2l - 2k + 1$ is
+odd since $2k^2 + 2l^2 - 2l - 2k + 1 = 2 \times (k^2 + l^2 - l - k) + 1$ and if we let $t = k^2 + l^2 - l - k$
+where $t \in \mathbb{Z}$ (since $k^2 + l^2 - l - k \in \mathbb{Z}$), then we have that $2k^2 + 2l^2 - 2l - 2k + 1 = 2t + 1$
+which is an even number plus one which is always odd. Finally, we conclude that $2$ is only once in the number that is supposed to be a perfect square as
+$2k^2 + 2l^2 - 2l - 2k + 1$ is odd and is not a multiple of 2 which means
+that $a^2 + b^2$ is not a perfect square which contradicts the initial claim that the sum
+$a^2 + b^2$ is the perfect square.
 \begin{flushright}
 \textit{Q.E.D.}
 \end{flushright}
 \end{quote}
 
 \item[27.]
-Prove that if $x,y \in \mathbb{R}^+$,then $x + y \geq 2\sqrt{xy}$.
+Prove that if $x,y \in \mathbb{R^+}$, then $x + y \geq 2\sqrt{xy}$.
 \begin{quote}
 Suppose, for the sake of contradiction, that $x + y < 2\sqrt{xy}$.
-Then, since $x,y \in \mathbb{R}^+$, we have:
+Then, since $x,y \in \mathbb{R^+}$, we have:
 \begin{align}
 x + y < 2\sqrt{xy}\\
 x^2 + y^2 + 2xy < 4xy\\
@@ -126,8 +154,10 @@ x^2 + y^2 + 2xy -4xy < 0\\
 x^2 + y^2 - 2xy < 0\\
 (x - y)^2 < 0
 \end{align}
-Thus, we got that $(x-y)^2 < 0$ which is false since square of a number
-is always $\geq 0$.
+Thus, we got that $(x-y)^2 < 0$ which is false since the square of a number
+is always $\geq 0$. Finally, since by assuming that $x + y < 2 \sqrt{xy} \mbox{ where } x, y\in \mathbb{R^+}$, we basically
+got the nonsensical inequality $(x-y)^2 < 0$, something has to be wrong with this assumption and we got that
+if $x,y \in \mathbb{R^+}$, then $x + y \geq 2\sqrt{xy}$
 \begin{flushright}
 \textit{Q.E.D.}
 \end{flushright}
@@ -147,7 +177,7 @@ Then we have:
 $$
 m + m + 1 + m + 2 = 3m + 3 = 3 \times (m + 1)
 $$
-Thus, we got that the sum of three consecutive integers is a multiple of three
+Thus, we got that the sum of three consecutive integers is a multiple of 3
 which contradicts the statement that $n$ is not a multiple of 3.
 \end{itemize}
 Now, lets prove the second half of the problem. Let's show that
@@ -196,6 +226,15 @@ that $S$ is finite.
 \textit{Q.E.D.}
 \end{flushright}
 \end{quote}
+
+\item[29.]
+\begin{quote}
+TEST THIS
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
 
 \end{enumerate}
 
