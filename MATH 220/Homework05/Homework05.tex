@@ -400,7 +400,7 @@ and we proved that the intersection of the two cofinite sets is cofinite.
 The union of two cofinite sets is cofinite.
 \begin{quote}
 It's true.
-Suppose $A = mathbb{R} - F$ and $B = \mathbb{R} - G$ are cofinite sets ($F$ and $G$ are finite).
+Suppose $A = \mathbb{R} - F$ and $B = \mathbb{R} - G$ are cofinite sets ($F$ and $G$ are finite).
 Then, their union will be:
 $$A \cup B = (\mathbb{R} - F) \cup (\mathbb{R} - G) = \mathbb{R} - (F \cap G)$$
 And then we get:
@@ -448,7 +448,8 @@ We say that a subset $S$ of $\mathbb{Z}$ is angled if for every $x, y, z \in S$ 
 S = \{3\} \ \mbox{since 3 + 3 $>$ 3}\\
 S = \{3, 4\} \ \mbox{since 3 + 4 $>$ 3, 3 + 4 $>$ 4, 3 + 3 $>$ 3, and 4 + 4 $>$ 4}\\\\
 S = \{3, 4, 5\}\\
-\mbox{since 4 + 5 $>$ 3, 3 + 5 $>$ 4, $3 + 4 > 5$, 3 + 3 $>$ 3, 4 + 4 $>$ 4, and 5 + 5 $>$ 5}
+\mbox{since 4 + 5 $>$ 3, 3 + 5 $>$ 4, $3 + 4 > 5$, 3 + 3 $>$ 3, 4 + 4 $>$ 4,}\\
+\mbox{and 5 + 5 $>$ 5}
 \end{gather*}
 \end{quote}
 \item[(b)]
@@ -496,29 +497,203 @@ we have $x < c$.
 Prove or disprove: There exists $c \in \mathbb{Z}^+$ such that
 if $S$ is angled and $x \in S$ then we have $x < c$.
 \begin{quote}
-CONTINUE HERE!! CONTINUE HERE!! CONTINUE HERE!!
-CONTINUE HERE!! CONTINUE HERE!! CONTINUE HERE!!
-CONTINUE HERE!! CONTINUE HERE!! CONTINUE HERE!!
-CONTINUE HERE!! CONTINUE HERE!! CONTINUE HERE!!
-CONTINUE HERE!! CONTINUE HERE!! CONTINUE HERE!!
-CONTINUE HERE!! CONTINUE HERE!! CONTINUE HERE!!
-CONTINUE HERE!! CONTINUE HERE!! CONTINUE HERE!!
-CONTINUE HERE!! CONTINUE HERE!! CONTINUE HERE!!
-CONTINUE HERE!! CONTINUE HERE!! CONTINUE HERE!!
-CONTINUE HERE!! CONTINUE HERE!! CONTINUE HERE!!
-CONTINUE HERE!! CONTINUE HERE!! CONTINUE HERE!!
-CONTINUE HERE!! CONTINUE HERE!! CONTINUE HERE!!
-CONTINUE HERE!! CONTINUE HERE!! CONTINUE HERE!!
-CONTINUE HERE!! CONTINUE HERE!! CONTINUE HERE!!
-CONTINUE HERE!! CONTINUE HERE!! CONTINUE HERE!!
+It's true.\\
+In (d), we proved that if $S$ in angled and $x \in S$, then $x > 0$.
+Let $x$ be an element of $S$, then we can set $c = x + 1$ ($c$ is positive
+since $x > 0$) which will be greater than $x$.
 \end{quote}
-\end{itemize}
+\item[(g)]
+Prove or disprove: Every angled set is finite.
+\begin{quote}
+It's true.\\
+Suppose, for the sake of contradiction, that $S$ is an infinite angled set.
+Then, for every $x, y, z, x + y > z$. We also know, from the previous proofs,
+that all elements of $S$ are positive. Now, since all elements of $S$ have to
+be positive and it's infinite, we know that there is no biggest element in the
+set. Then, if we take two fixed elements $x$ and $y$, we can certainly find $z$
+(we can change $z$ until we get the value bigger than $x + y$).
+such that $z \geq x + y$, since the set is infinite and thus, we've encountered a
+contradiction. Hence, every angled set is finite.
+\end{quote}
+\item[(h)]
+Prove or disprove: For every $n \in \mathbb{Z}^+$ there exists an angled set $S$ such that $|S| = n$.
+\begin{quote}
+It's true.\\
+Let's construct a set in the following way:\\
+\begin{align*}
+A = \{a_1, a_2, a_3, ... a_n\} \mbox{ where } a_1 \leq a_2 \leq a_3 \ ... \leq a_n \mbox{ and }\\
+a_1, a_2, a_3 ... \mbox{ are consecutive positive integers}.
+\end{align*}
+Then, our primary concern is that $2a_1 > a_n$. If $a_1, a_2, a_3...$ are conse
+positive integers, then $a_n = a_1 + n - 1$ and we have:
+$$2a_1 > a_1 + n - 1$$
+and finally, we get:
+$$a_1 > n - 1$$
+Thus, the set $A = \{n, n + 1, n + 2, n + 3, n + 4, ... \ 2n\}$ is now angled because
+for every $x,y,z \in \mathbb{Z}, x + y > z$.
 \begin{flushright}
 \textit{Q.E.D.}
 \end{flushright}
 \end{quote}
-
+\end{itemize}
+\item[33.]
+Use quantifiers to precisely write down, in mathematical language, the definition given
+for $\sum^{\infty}_{n=0}a_n = X$ outlined in the video at the 4:00 minute mark.
+\begin{quote}
+This sum means that when we generate a list of numbers by cutting off the sums at finite points:\\
+\begin{align*}
+s_0 = a_0\\
+s_1 = a_0 + a_1\\
+s_2 = a_0 + a_1 + a_2\\
+s_3 = a_0 + a_1 + a_2 + a_3\\
+s_4 = a_0 + a_1 + a_2 + a_3 + a_4\\
+s_5 = a_0 + a_1 + a_2 + a_3 + a_4 + a_5\\
+s_6 = a_0 + a_1 + a_2 + a_3 + a_4 + a_5 + a_6\\
+s_7 = a_0 + a_1 + a_2 + a_3 + a_4 + a_5 + a_6 + a_7\\
+s_8 = a_0 + a_1 + a_2 + a_3 + a_4 + a_5 + a_6 + a_7 + a_8\\
+s_9 = a_0 + a_1 + a_2 + a_3 + a_4 + a_5 + a_6 + a_7 + a_8 + a_9\\
+...
+\end{align*}
+Then, these sums approach $X$ in the sense that no matter how small is the distance,
+at some point down list, all the numbers start falling within this distance of $X$.
+Thus, the further we proceed with the list $s_1, s_2, s_3, s_4, s_5, s_6, s_7, s_8, s_9, s_10, s_11 ...$
+the more these numbers approach $X$ and the smaller the distance between $X$ and the sum.
+\end{quote}
+\item[34.]
+Explain why it makes sense, in a way, for $1 - 1 + 1 - 1 + 1 - 1 + ...$ to equal $1/2$,
+as is suggested in the video at about 6:45. Is this what you learned in Calculus II?
+\begin{quote}
+We can cut the line of the length 1 in two pieces with proportions $(1 - p)$ and $p$.
+Then, we can cut $p$ in two with same proportions ($(1 - p) / p$) and continue doing it
+infinite. Finally, we can sum up the pieces to get the equation:
+$$(1-p) + p(1 - p) + p^2(1 - p) + p^3(1 - p) + ... = 1$$
+Now, we can divide both sides by $1 - p$ and we get:
+$$1 + p + p^2 + p^3 + ... = \dfrac{1}{1 - p}$$
+If we plug in, $p = -1$, we get:
+$$1 - 1 + 1 - 1 + 1 - 1 + 1 ... = \dfrac{1}{2}$$
+which seems to be true. Unfortunately, it is not true. One can calculate
+the sum this way if and only if $-1 < p < 1$ meaning that one cannot
+simply plug $p = -1$ or $p = 12$ and get the sum for the infinite geometric
+series. This sum is sometimes 1 and sometimes -1. That's what Calc II says.
+\end{quote}
+\item[35.]
+In the sense of distance discussed at 12:45, how far apart are 5 and 13? How about
+-1 and -15?
+\begin{quote}
+5 and 13 are 1/8 apart from each other.\\
+-1 and -15 are 1/16 apart from each other.
+\end{quote}
+\newpage
+{\Large Bookwork\\}
+\item[1.]
+Let $a$ be an integer. Prove: If $a^2$ is even, then $a$ is even.
+\begin{quote}
+Let's prove the contrapositive. The contrapositive of the initial
+statement is: If $a$ is not even, $a^2$ is not even (where $a$ is an integer).
+Then suppose an integer $a$ is not even, thus is odd. Since $a$ is odd, we can
+write $a = 2k + 1$ where $k \in \mathbb{Z}$ and we have:
+$$a^2 = (2k + 1)^2 = 4k^2 + 4k + 1 = 2 (2k^2 + 2k) + 1$$
+Now, let $l = 2k^2 + 2k$ where $l \in \mathbb{Z}$ (since $2k^2 + 2k \in \mathbb{Z}$).
+And finally, we have:
+$$a^2 = (2k + 1)^2 = 4k^2 + 4k + 1 = 2 (2k^2 + 2k) + 1 = 2l + 1 \ \mbox{where} \ l \in \mathbb{Z}$$
+Thus, we got that $a^2$ is of the form $2l + 1$ which means that $a^2$ is odd thus, not even.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+\item[5(a)]
+Prove that $\sqrt{3} \notin Q$.
+\begin{quote}
+Suppose, for the sake of contradiction, that $\sqrt{3} \in Q$. Then, we can
+represent $\sqrt{3}$ as $\dfrac{a}{b}$ where $a,b \in \mathbb{Z}$. Let's assume
+that $a$ and $b$ do not have any common factors and if they do,
+let's cancel them out and write already cancelled-out form. Thus, assume that
+the fraction $\dfrac{a}{b}$ is already cancelled out and $a$ and $b$ do not have
+common factors. Then we have:
+\begin{align*}
+\dfrac{a}{b} = \sqrt{3}\\
+\dfrac{a^2}{b^2} = 3\\
+a^2 = 3b^2
+\end{align*}
+Hence, we got that $a^2$ is divisible by 3 which means that $a$ is also divisible by 3.
+Now, let $a = 3k$ where $k \in \mathbb{Z}$. After substituting $a$, we get:
+$$3b^2 = (3k)^2 = 9k^2$$
+$$b^2 = 3k^2$$
+Thus, we got that $b^2$ is divisble by 3 which means that $b$ is also divisble by 3.
+However, we assumed that $a$ and $b$ had no common factors and now, we encounter the
+contradiction.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+\item[6(d)]
+Prove that $r + \sqrt{2} \notin \mathbb{Q}$ where $r \in \mathbb{Q}$.
+\begin{quote}
+Suppose, for the sake of contradiction, that $r + \sqrt{2} \in \mathbb{Q}$.
+Now, since $r, r + \sqrt{2} \in \mathbb{Q}$, we can write $r = \dfrac{a}{b}$ and $r + \sqrt{2} = \dfrac{c}{d}$
+where $a,b,c,d \in \mathbb{Z}$. Then we have:
+$$\dfrac{a}{b} + \sqrt{2} = \dfrac{c}{d}$$
+$$\dfrac{bc - ad}{bd} = \sqrt{2}$$
+Now, let $x = bc - ad$ and $y = bd$ (where $x,y \in \mathbb{Z}$ as $bc - ad, bd \in \mathbb{Z}$).
+And finally, we got that $\dfrac{x}{y} = \sqrt{2}$ which is false since $\sqrt{2}$ is irrational
+and cannot be represented as a fraction of two even integers.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+Proof that $\sqrt{2}$ is irrational:\\\\
+Suppose, for the sake of contradiction, that $\sqrt{2} \in Q$. Then, we can
+represent $\sqrt{2}$ as $\dfrac{a}{b}$ where $a,b \in \mathbb{Z}$. Let's assume
+that $a$ and $b$ do not have any common factors and if they do,
+let's cancel them out and write already cancelled-out form. Thus, assume that
+the fraction $\dfrac{a}{b}$ is already cancelled out and $a$ and $b$ do not have
+common factors. Then we have:
+\begin{align*}
+\dfrac{a}{b} = \sqrt{2}\\
+\dfrac{a^2}{b^2} = 2\\
+a^2 = 2b^2
+\end{align*}
+Hence, we got that $a^2$ is divisible by 3 which means that $a$ is also divisible by 2.
+Now, let $a = 2k$ where $k \in \mathbb{Z}$. After substituting $a$, we get:
+$$2b^2 = (2k)^2 = 4k^2$$
+$$b^2 = 2k^2$$
+Thus, we got that $b^2$ is divisble by 2 which means that $b$ is also divisble by 2.
+However, we assumed that $a$ and $b$ had no common factors and now, we encounter the
+contradiction.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+\item[9.]
+Prove: If $x$ is irrational, then $\sqrt{x}$ is irrational.
+\begin{quote}
+Suppose, for the sake of contradiction, that $x$ is irrational and $\sqrt{x}$
+is rational. Then we can represent $\sqrt{x}$ as $\dfrac{a}{b}$ where $a,b \in \mathbb{Z}$
+and have no common factors. Then, by squaring both sides, we get:
+$$\dfrac{a^2}{b^2} = x$$
+This, now means that $x$ can be represented as the fraction of two integers
+as if $a, b$ are integers, so are $a^2, b^2$ and we've encountered a contradiction.
+Thus, if $x$ is irrational, then $\sqrt{x}$ is irrational.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+\newpage
+\item[11.]
+Prove: $\sqrt[^4]{2} \notin \mathbb{Q}$.
+\begin{quote}
+Suppose, for the sake of contradiction, that $\sqrt[^4]{2} \in \mathbb{Q}$.
+Then we can represent $\sqrt[^4]{2}$ as $\dfrac{a}{b}$ where $a,b \in \mathbb{Z}$
+and have no common factors. Then, by squaring both sides, we get:
+$$\dfrac{a^2}{b^2} = \sqrt{2}$$
+This, however, means that $\sqrt{2}$ can be represented as a fraction of two integers
+(because $a, b$ are integers, so are $a^2, b^2$) which is clearly impossible since
+we've already proven that $\sqrt{2}$ is irrational, thus cannot be represented as a fraction
+of two integers. Hence, we've encountered a contradiction and $\sqrt[^4]{2} \notin \mathbb{Q}$.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+\end{quote}
 
 \end{enumerate}
-
 \end{document}
