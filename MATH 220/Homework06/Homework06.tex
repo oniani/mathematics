@@ -1,0 +1,295 @@
+\documentclass[12pt, a4paper]{article}                      % use "amsart" instead of "article" for AMSLaTeX format
+\usepackage[a4paper,margin=1in]{geometry}                   % Adjust margins
+\usepackage{amsmath,amssymb,listings,color,textcomp}        % Math packages: amsmath, amssymb, listings, color
+\usepackage[makeroom]{cancel}
+
+\title{\bf{Homework \textnumero 6}}
+\author{Author: David Oniani
+\\
+\ \ \ Instructor: Tommy Occhipinti}
+\date{October 05, 2018}
+
+\usepackage{listings}
+\usepackage{color}
+
+\newcommand{\natn}{\mathbb{N}}
+\newcommand{\intz}{\mathbb{Z}}
+\newcommand{\intzp}{\mathbb{Z^+}}
+\newcommand{\intzn}{\mathbb{Z^-}}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+backgroundcolor=\color{backcolour},
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=left,
+numberstyle=\normalsize\color{gray},
+keywordstyle=\color{blue},
+commentstyle=\color{dkgreen},
+stringstyle=\color{mauve},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=4
+}
+
+
+\begin{document}
+\maketitle
+
+
+\begin{itemize}
+\item[36.]
+Prove that if $S$ and $T$ are shifty sets (in the sense of a previous exercise) then $S \cup T$
+is also a shifty set.
+\begin{quote}
+Let's first remember what it means to be shifty.
+A subset $S$ of $\intz$ is called shifty if for every $x \in S$, $x - 1 \in S$ or $x + 1 \in S$.\\
+Let's consider the following two cases:
+\begin{itemize}
+\item[1.]
+Let $x \in S$ and prove that $x - 1$ or $x + 1$ is in $S \cup T$
+\item[2.]
+Let $y \in T$ and prove that $y - 1$ or $y + 1$ is in $S \cup T$
+\\\\
+Let's first consider the case when $x \in S$ and prove that $x - 1$ or $x + 1$ is in $S \cup T$.
+If $x \in S$, since $S$ is shifty, it means that either $x - 1 \in S$ or $x + 1 \in S$. Union $S \cup T$
+will have all the members of $S$ thus, it means that either $x - 1 \in S \cup T$ or $x + 1 \in S \cup T$.
+\\\\
+Now let's show that if $y \in T$, $y - 1$ or $y + 1$ is in $S \cup T$.
+If $y \in T$, since $T$ is shifty, it means that either $y - 1 \in T$ or $y + 1 \in T$. Union $S \cup T$
+will have all the members of $T$ thus, it means that either $y - 1 \in S \cup T$ or $y + 1 \in S \cup T$.
+\\\\
+Thus, we considered all the cases and proved that if $S$ and $T$ are shifty sets (in the sense of a previous exercise) then $S \cup T$
+is also a shifty set.
+\end{itemize}
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[37.]
+Prove that $n \in \intz$ then $1 + (-1)^n(2n-1)$ is a multiple of 4.
+\begin{quote}
+Since $n \in \intz$, it is either even or odd. Let's consider two cases:
+\begin{itemize}
+\item[1.]
+$n$ is even
+\item[2.]
+$n$ is odd
+\end{itemize}
+
+If $n$ is even, then $n = 2k$ where $k \in \intz$. We get:
+$$1 + (-1)^n(2n-1) = 1 + (-1)^{2k}(2 \times 2k-1) = 1 + 4k - 1 = 4k \mbox{, where } k \in \intz$$
+Hence, we got that if $n$ is even, $1 + (-1)^n(2n-1) = 4k$ where $k \in \intz$. Thus, if $n$ is even,
+is a multiple of 4.
+
+If $n$ is odd, then $n = 2k$ where $k \in \intz$. We have:
+$$1 + (-1)^n(2n-1) = 1 + (-1)^{2k+1}(2 \times (2k + 1)-1) = 1  - (4k + 2 - 1) = -4k \mbox{ where } k \in \intz$$
+Thus, we got that if $n$ is odd, $1 + (-1)^n(2n-1) = -4k$ where $k \in \intz$. Hence, if $n$ is odd,
+$1 + (-1)^n(2n-1) = -4k$ is a multiple of 4.
+
+Finally, since integers could either be odd or even, we considered all the cases ($n$ is even and $n$ is odd) and in
+both of the cases, $1 + (-1)^n(2n-1)$ is a multiple of 4.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[38]
+Prove that if $n \in \intzp$ is odd then $n^2 - 1$ is divisible by 8.
+\begin{quote}
+Suppose $n$ is odd. Then $n = 2k + 1$ where $k \in \intzp \cup \{0\}$.
+Then we have:
+$$n^2 - 1 = (2k + 1)^2 - 1 = 4k^2 + 4k + 1 - 1 = 4k^2 + 4k = 4k \times (k + 1)$$
+Thus, if $n$ is odd, $n^2 - 1 = 4k \times (k + 1)$ where $k \in \intzp \cup \{0\}$.
+Since $k$ is in the set of positive integers or equls 0, we can consider the following
+three cases:
+\begin{itemize}
+\item[1.]
+$k$ is 0
+\item[2.]
+$k$ is even
+\item[3.]
+$k$ is odd\\
+\end{itemize}
+If $k = 0$, $n^2 - 1 = 4k \times (k + 1) = 4 \times 0 \times (0 + 1) = 0$ which is divisible by 8.
+\\\\
+If $k$ is even, $k = 2l$ where $l \in \intzp$ (not including zero since we already considered that case above).
+Then $n^2 - 1 = 4k \times (k + 1) = 8 \times (l \times (2l + 1))$ which is divisible by 8.
+\\\\
+If $k$ is even, $k = 2l + 1$ where $l \in \intzp$.
+Then $n^2 - 1 = 4k \times (k + 1) = 4 \times (2l + 1) \times (2l + 2) = 8 \times ((2l + 1) \times (l + 1))$ which
+is divisible by 8.
+\\\\
+Thus, we considered all the cases and we proved that if $n \in \intzp$ is odd then $n^2 - 1$ is divisible by 8.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[39.]
+Prove that every integer can be written as the sum of exactly 3 distinct integers. (For
+example, $5 = 4 + 2 + (-1)$).
+\begin{quote}
+Suppose $k$ is an integer. Then, we should find three distinct integers such that they sum to $k$.
+Now, let's consider the following integers:\\
+$x = k + 1$, $y = -k - 1$, and $z = k$. It is clear that $x \neq z$ and $y \neq z$.\\
+If $x = z$, we have $k + 1 = k \iff 1 = 0$ which is nonsensical.\\
+If $y = z$, we have $-k - 1 = k \iff k = \dfrac{-1}{2}$ which is also
+not possible because $k$ is an integer.\\
+Thus $x \neq z$ and $y \neq z$, but we do not know if $x \neq y$.
+Hence, we have to consider cases.
+\\\\
+Now, consider two cases:
+\begin{itemize}
+\item[1.]
+$x \neq y$
+\item[2.]
+$x = y$
+\end{itemize}
+If $x \neq y$, we already know that $x \neq z$ and $y \neq z$ and thus we found three distinct integers which sum up to $k$, namely $x = k + 1$, $y = -k - 1$, and $z = k$.
+\\\\
+If $x = y$, we get $k + 1 = -k - 1$ and $k = -1$. However, even if $k = -1$, we can find three distinct integers, namely $x = -2$, $y = 2$, and $z = -1$.\\\\
+Thus, we considered all the possible cases and we always find three integers which sum up to $k$.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+\item[40.]
+Prove that if $x, y, \mbox{ and } z$ are integers then at least one of $x + y$, $x + z$, and $y + z$ is even.
+\begin{quote}
+Suppose, for the sake of contradiction, that $x + y$, $x + z$, and $y + z$ are all odd.\\\\
+Now, without a loss of generality, consider the following three cases:
+\begin{itemize}
+\item[1.]
+$x,y,z$ are all even
+\item[2.]
+$x,y,z$ are all odd
+\item[3.]
+$x,y$ are even and $z$ is odd
+\item[4.]
+$x,y$ are odd and $z$ is even
+\end{itemize}
+If $x,y,z$ are all even, $x = 2j$, $y = 2k$, $z = 2l$ where $j,k,l \in \intz$. Thus, we get:
+$x + y = 2j + 2k = 2 \times (j + k)$ which is even.
+\\\\
+If $x,y,z$ are all odd, $x = 2j + 1$, $y = 2k + 1$, $z = 2l + 1$ where $j,k,l \in \intz$. Thus, we get:
+$x + y = 2j + 1 + 2k + 1 = 2j + 2k + 2 = 2 \times (j + k + 1)$ which is even.
+\\\\
+If $x,y$ are even and $z$ is odd, $x = 2j$, $y = 2k$, $z = 2l + 1$ where $j,k,l \in \intz$. Thus, we get:
+$x + y = 2j + 2k = 2 \times (j + k)$ which is even.
+\\\\
+If $x,y$ are odd and $z$ is even, $x = 2j + 1$, $y = 2k + 1$, $z = 2l$ where $j,k,l \in \intz$. Thus, we get:
+$x + y = 2j + 1 + 2k + 1 = 2j + 2k + 2 = 2 \times (j + k) + 1$ which is even.
+\\
+Thus, we've considered all the possible cases and proved that if $x, y, \mbox{ and } z$ are integers then at
+least one of $x + y$, $x + z$, and $y + z$ is even.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[41.]
+Prove or Disprove: There exist prime number $p$ and $q$ such that $p - q = 97$.
+\begin{quote}
+There are no prime numbers $p$ and $q$ such that $p - q = 97$. Let's prove it!
+\\
+First, notice that since $p$ and $q$ are prime, $p,q > 0$. Also, from $p - q = 97$,
+we get $p = 97 + q$ and since $p,q > 0$, $p > q$. Thus, we have $0 < q  < p$.
+Now, since $p - q$ is odd, it is the case that one of $p,q$ is odd and the other one is even
+(because difference of even as well as odd numbers is even). However, we know that there is only
+one even prime number, namely 2. Let's consider following two cases:
+\begin{itemize}
+\item[1.]
+$p = 2$
+\item[2.]
+$q = 2$
+\end{itemize}
+Since $0 < q < p$, we know that $p$ cannot be 2 (if $p = 2$,
+there is no prime number below 2, so $q$ cannot be prime).
+\\\\
+If $q = 2$, $p - 2 = 97$ and $p = 95 = 5 \times 19$ which is also not prime.
+\\\\
+Thus, we considered all the cases and there are no prime numbers, $p$ and $q$,
+which sum up to 95.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+\item[42.]
+For $n \in \intzp$, we define the $n^{th}$ triangular number to be $T_n := 1 + 2 + ... + n$.
+Thus we have $T_1 = 1, T_2 = 3, T_3 = 6, T_4 = 10, T_5 = 15$, and so on. We will prove later
+that $T_n = \dfrac{n(n+1)}{2}$, and you should use that formula for this problem. Prove that
+for $n \in \intzp$, $T_n$ is odd if and only if $n$ is 1 or 2 more than a multiple of $4$.
+\begin{quote}
+Since it is the "if and only if" proof, let's split the proof in two cases:
+\begin{itemize}
+\item[1.]
+Prove that if $n$ is 1 or 2 more than a multiple of 4, $T_n$ is odd.
+\item[2.]
+Prove that if $n$ is not 1 and is not 2 more than a multiple of 4, $T_n$ is not odd (thus is even).
+\end{itemize}
+\textbf{Let's first prove that if $n$ is 1 or 2 more than a multiple of 4, $T_n$ is odd.}\\\\
+If $n$ is 1 more than a multiple of 4, $n = 4k + 1$ where $k \in \intzp$. Then we have:
+$$T_n = \dfrac{n(n+1)}{2} = \dfrac{(4k + 1)((4k + 1) + 1)}{2} = \dfrac{(4k + 1)((4k + 2)}{2} = (2k + 1) \times (2k + 1)$$.
+Thus, we have that if $n$ is 1 more than a multiple of 4, $T_n = (2k + 1) \times (2k + 1)$ which is a multiplication of two
+odd numbers and thus is odd.
+\\\\
+If $n$ is 2 more than a multiple of 4, $n = 4k + 2$ where $k \in \intzp$. Then we have:
+$$T_n = \dfrac{n(n+1)}{2} = \dfrac{(4k + 2)((4k + 2) + 1)}{2} = \dfrac{(4k + 2)((4k + 3)}{2} = (2k + 1) \times (4k + 1)$$
+Hence, we got that $T_n = (2k + 1) \times (4k + 1) = (2k + 1) \times (2(2k) + 1)$ which the multiplication of two odd
+numbers and thus, if $n$ is 2 more than a multiple of 4, $T_n$ is odd.
+\\\\
+\textbf{Now, let's prove that if $n$ is not 1 or 2 more than a multiple of 4, $T_n$ is even.}\\\\
+If $n$ is not $1$ and is not two more than a multiple of four, we have the following five cases to consider:
+\begin{itemize}
+\item[1.]
+$n = 4k$ where $k \in \intzp$
+\item[2.]
+$n = 4k + 3$ where $k \in \intzp$
+\end{itemize}
+If $n = 4k$ where $k \in \intzp$, $T_n = \dfrac{4k(4k+1)}{2} = 2 \times (k(4k + 1))$ which is even.
+\\\\
+If $n = 4k + 3$ where $k \in \intzp$, $T_n = \dfrac{(4k+3)(4k+4)}{2} = 2 \times ((4k + 3)(2k + 2))$ which is even.
+\\\\
+NOTE: SINCE WE CONSIDERED INTEGERS STARTING AT 4 (SINCE WE ASSUMED THAT $n = 4k,4k+1,4k+2,4k+3$ where $k \in \intzp$),
+NOW WE NEED TO CHECK $T_n$ for 1,2, and 3.
+\\\\
+If $n = 1$, $T_n = \dfrac{1(1+1)}{2} = 1$ which is odd and indeed, 1 = 0 + 1 and 0 is a multiple of 4 (thus, 3 has $4l + 1$ form where $l \in \intz$)..
+\\
+If $n = 2$, $T_n = \dfrac{2(2+1)}{2} = 3$ which is odd and indeed, 2 = 0 + 2 and 0 is a multiple of 4 (thus, 3 has $4l + 2$ form where $l \in \intz$)..
+\\
+If $n = 3$, $T_n = \dfrac{3(3+1)}{2} = 6$ which is even and indeed, 3 = 0 + 3 and 0 is a multiple of 4 (thus, 3 has $4l + 3$ form where $l \in \intz$).
+\\\\
+Thus, we considered all the cases and proved that for $n \in \intzp$, $T_n$ is odd if and only if $n$ is 1 or 2 more
+than a multiple of $4$.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+\newpage
+{\large Bookwork}
+\item[1.]
+TODO\\
+TODO\\
+TODO\\
+TODO\\
+TODO\\
+TODO\\
+\\
+Solve the equality $|x + 1| < |x^2 - 1|$. Interpret results geometrically.
+\begin{quote}
+$x + 1$ 
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+\end{itemize}
+\end{document}
