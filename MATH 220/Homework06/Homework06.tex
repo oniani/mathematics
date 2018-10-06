@@ -1,8 +1,7 @@
 \documentclass[12pt, a4paper]{article}                      % use "amsart" instead of "article" for AMSLaTeX format
 \usepackage[a4paper,margin=1in]{geometry}                   % Adjust margins
-\usepackage{amsmath,amssymb,listings,color,textcomp}        % Math packages: amsmath, amssymb, listings, color
+\usepackage{amsmath,amssymb,listings,color,textcomp,adjustbox}        % Math packages: amsmath, amssymb, listings, color
 \usepackage[makeroom]{cancel}
-
 \title{\bf{Homework \textnumero 6}}
 \author{Author: David Oniani
 \\
@@ -276,20 +275,237 @@ than a multiple of $4$.
 \end{quote}
 \newpage
 {\large Bookwork}
-\item[1.]
-TODO\\
-TODO\\
-TODO\\
-TODO\\
-TODO\\
-TODO\\
-\\
+\item[2.]
 Solve the equality $|x + 1| < |x^2 - 1|$. Interpret results geometrically.
 \begin{quote}
-$x + 1$ 
+Let's consider the following two cases:\\
+\begin{itemize}
+\item[1.]
+$x + 1 \geq 0$
+\item[2.]
+$x - 1 \leq 0$
+\\
+\end{itemize}
+
+\textbf{Let's first consider the case} $x + 1 \geq 0$.\\
+If $x + 1 \geq 0$, the inequality will have a form:
+$$x + 1 < |x^2 - 1|$$
+Now, let's consider another two cases:
+\begin{itemize}
+\item[1.]
+$x^2 - 1 \geq 0$
+\item[2.]
+$x^2 - 1 \leq 0$
+\\
+\end{itemize}
+If $x^2 - 1 \geq 0$, the equality we get is:\\
+$$x + 1 < x^2 - 1$$
+And we get:
+$$x^2 - x - 2 > 0$$
+And finally, $x \in (-\infty, -1) \cup (2, +\infty)$.\\
+But since $x + 1 \geq 0$, $x \geq -1$ and we get $x \in (2, +\infty)$
+\\\\\\
+If $x^2 - 1 \leq 0$, the equality we get is:\\
+$$x + 1 < -x^2 + 1$$
+And we get:
+$$x^2 + x < 0$$
+And finally, $x \in (-1, 0)$.\\
+It also satisfies $x + 1 \geq 0$.
+\\\\\\
+\textbf{Now, let's consider the second case,} $x + 1 \leq 0$.\\
+If $x + 1 \leq 0$, the inequality will have a form:
+$$-x - 1 < |x^2 - 1|$$
+Now, as previously, let's consider another two cases:
+\begin{itemize}
+\item[1.]
+$x^2 - 1 \geq 0$
+\item[2.]
+$x^2 - 1 \leq 0$
+\\
+\end{itemize}
+If $x^2 - 1 \geq 0$, the equality we get is:\\
+$$-x - 1 < x^2 - 1$$
+And we get:
+$$x^2 + x > 0$$
+And finally, $x \in (-\infty, -1) \cup (0, +\infty)$.\\
+But since $x + 1 \leq 0$, $x \leq -1$ and we get $x \in (-\infty, -1)$
+\\\\\\
+If $x^2 - 1 \leq 0$, the equality we get is:\\
+$$-x - 1 < -x^2 + 1$$
+And we get:
+$$x^2 - x -2 < 0$$
+And finally, $x \in (-1, 2)$.\\
+But since $x + 1 \leq 0$, $x \leq -1$ and we do not get any solutions for this inequality.
+\\\\
+Thus, we got the following answers: $x \in (2, +\infty)$, $x \in (-1, 0)$, $x \in (-\infty, -1)$.\\
+Finally, by merging these answers, we get: $x \in (-\infty, -1) \cup (-1,0) \cup (2, +\infty)$.
+\end{quote}
+
+\item[4.]
+\begin{itemize}
+\item[(a)]
+\item[]
+Show that any integer can be written in the form $10q + r$ where $0 \leq r \leq 9$.
+\begin{quote}
+I don't really like the way this is phrased, so I will rephrase what we have to prove.
+We have to prove that:\\
+\begin{center}
+for every integer $k$, there exists $q$ and $r$ such that $k = 10q + r$ and $0 \leq r \leq 9$\\\
+\end{center}
+Notice that if an integer ends on 0, it is always divisible by 10. Thus, it is just the problem
+of picking $r$ so that $k - r$ end on 0.\\
+Let's consider the following 10 cases for the possible endings of the number.
+\begin{itemize}
+\item
+Number ends on 0
+\item
+Number ends on 1
+\item
+Number ends on 2
+\item
+Number ends on 3
+\item
+Number ends on 4
+\item
+Number ends on 5
+\item
+Number ends on 6
+\item
+Number ends on 7
+\item
+Number ends on 8
+\item
+Number ends on 9
+\\
+\end{itemize}
+\begin{itemize}
+\item
+If number ends on 0, we can pick $r = 0$, and then $k$ is divisble by 10 and we get the value of $q$.\\
+\item
+If number ends on 1, we can pick $r = 1$, and then $k$ is divisble by 10 and we get the value of $q$.\\
+\item
+If number ends on 2, we can pick $r = 2$, and then $k$ is divisble by 10 and we get the value of $q$.\\
+\item
+If number ends on 3, we can pick $r = 3$, and then $k$ is divisble by 10 and we get the value of $q$.\\
+\item
+If number ends on 4, we can pick $r = 4$, and then $k$ is divisble by 10 and we get the value of $q$.\\
+\item
+If number ends on 5, we can pick $r = 5$, and then $k$ is divisble by 10 and we get the value of $q$.\\
+\item
+If number ends on 6, we can pick $r = 6$, and then $k$ is divisble by 10 and we get the value of $q$.\\
+\item
+If number ends on 7, we can pick $r = 7$, and then $k$ is divisble by 10 and we get the value of $q$.\\
+\item
+If number ends on 8, we can pick $r = 8$, and then $k$ is divisble by 10 and we get the value of $q$.\\
+\item
+If number ends on 9, we can pick $r = 9$, and then $k$ is divisble by 10 and we get the value of $q$.\\
+\end{itemize}
+Thus, we considered all the possible cases and proved that any integer can be written in the form $10q + r$ where $0 \leq r \leq 9$.
 \begin{flushright}
 \textit{Q.E.D.}
 \end{flushright}
+\end{quote}
+\item[(b)]
+\item[]
+Show that the square of any integer ends in 0, 1, 4, 5, 6, or 9.
+\begin{quote}
+There are 9 numbers on which an integer could end.\\
+These numbers are: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9.\\
+Then let's consider the following 10 cases.
+\begin{itemize}
+\item
+Number ends on 0
+\item
+Number ends on 1
+\item
+Number ends on 2
+\item
+Number ends on 3
+\item
+Number ends on 4
+\item
+Number ends on 5
+\item
+Number ends on 6
+\item
+Number ends on 7
+\item
+Number ends on 8
+\item
+Number ends on 9
+\\
+\end{itemize}
+If number ends on 0, its square ends on the same number as $0^2$ ends on, thus on 0.\\
+If number ends on 0, its square ends on the same number as $1^2$ ends on, thus on 1.\\
+If number ends on 0, its square ends on the same number as $2^2$ ends on, thus on 4.\\
+If number ends on 0, its square ends on the same number as $3^2$ ends on, thus on 9.\\
+If number ends on 0, its square ends on the same number as $4^2$ ends on, thus on 6.\\
+If number ends on 0, its square ends on the same number as $5^2$ ends on, thus on 5.\\
+If number ends on 0, its square ends on the same number as $6^2$ ends on, thus on 6.\\
+If number ends on 0, its square ends on the same number as $7^2$ ends on, thus on 9.\\
+If number ends on 0, its square ends on the same number as $8^2$ ends on, thus on 4.\\
+If number ends on 0, its square ends on the same number as $9^2$ ends on, thus on 1.\\
+\\
+Thus, the ending numbers we got are: 0, 1, 4, 9, 6, 5, 6, 9, 4, 1.\\
+Now, if we eliminate the duplicates, we get: 0, 1, 4, 5, 6, and 9.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+\end{itemize}
+\item[8.]
+Can one form a ten-digit integer by putting a digit between 0 and 9 in the empty
+boxes in the given table as follows: The digit in the box labeled 0 indicates the
+number of times 0 appears in the number, the digit in box 1 indicated the number
+of times 1 appears in the number, etc.?
+\begin{table}[h!]
+	\centering
+	\begin{adjustbox}{max width=\textwidth}
+	\resizebox{0.6\linewidth}{!}
+	{
+		\begin{tabular}{*{10}{|c}|}
+		\hline
+		0 & 1 & 2 & 3 & 4 & 5 & 6 & 8 & 9\\ \hline
+		  &   &   &   &   &   &   &   & \\
+        \hline
+	\end{tabular}
+    }
+	\end{adjustbox}
+\end{table}
+\\
+(For instance, if 9 is placed in box 0, then the remaining boxes must be filled with
+0 in order that the nine zeros actually appear. In this case, however, we reach a contradiction
+since box 9 cannot contain 0 as at least one 9 appears in the number. Thus the desired ten-digit
+number cannot have 9 as its leftmost digit.)(Hint: Consider the possible ways of filling the box
+labeled 0.) How many such numbers exist?
+\begin{quote}
+Let's consider the possible ways of filling the column labeled 0.\\
+There are 10 possible ways: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9.
+\\
+\begin{itemize}
+\item[*]
+If 9 is placed in the box under label 0, we reach a contradiction since box 9 cannot contain 0 as at least one 9 appears in the number.
+\item[*]
+If 8 is placed in the box under label 0, we have 1 possible ways of picking number under box labeled 9
+\item[*]
+If 7 is placed in the box under label 0, we have 2 possible ways of picking number under box labeled 9.
+\item[*]
+If 6 is placed in the box under label 0, we have 3 possible ways of picking number under box labeled 9.
+\item[*]
+If 5 is placed in the box under label 0, we have 4 possible ways of picking number under box labeled 9.
+\item[*]
+If 4 is placed in the box under label 0, we have 5 possible ways of picking number under box labeled 9.
+\item[*]
+If 3 is placed in the box under label 0, we have 6 possible ways of picking number under box labeled 9.
+\item[*]
+If 2 is placed in the box under label 0, we have 7 possible ways of picking number under box labeled 9.
+\item[*]
+If 1 is placed in the box under label 0, we have 8 possible ways of picking number under box labeled 9.
+\item[*]
+If 0 is placed in the box under label 0, we have 9 possible ways of picking number under box labeled 9.
+\end{itemize}
+PROVE THAT WE CAN BY SHOWING EXAMPLE.
+Finally, we get that ten-digit number can indeed be formed and there are 999999999 such ten-digit numbers.
 \end{quote}
 \end{itemize}
 \end{document}
