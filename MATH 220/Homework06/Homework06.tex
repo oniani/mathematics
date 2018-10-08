@@ -1,12 +1,14 @@
 \documentclass[12pt, a4paper]{article}                      % use "amsart" instead of "article" for AMSLaTeX format
 \usepackage[a4paper,margin=1in]{geometry}                   % Adjust margins
-\usepackage{amsmath,amssymb,listings,color,textcomp,adjustbox}        % Math packages: amsmath, amssymb, listings, color
+\usepackage{amsmath,amssymb,listings,color,textcomp,adjustbox,tikz,pgfplots}        % Math packages: amsmath, amssymb, listings, color
+\usepgfplotslibrary{external,fillbetween}
+\pgfplotsset{compat=1.14}
 \usepackage[makeroom]{cancel}
 \title{\bf{Homework \textnumero 6}}
 \author{Author: David Oniani
 \\
 \ \ \ Instructor: Tommy Occhipinti}
-\date{October 05, 2018}
+\date{October 07, 2018}
 
 \usepackage{listings}
 \usepackage{color}
@@ -87,15 +89,15 @@ $n$ is odd
 If $n$ is even, then $n = 2k$ where $k \in \intz$. We get:
 $$1 + (-1)^n(2n-1) = 1 + (-1)^{2k}(2 \times 2k-1) = 1 + 4k - 1 = 4k \mbox{, where } k \in \intz$$
 Hence, we got that if $n$ is even, $1 + (-1)^n(2n-1) = 4k$ where $k \in \intz$. Thus, if $n$ is even,
-is a multiple of 4.
+$1 + (-1)^n(2n-1)$ is a multiple of 4.
 
-If $n$ is odd, then $n = 2k$ where $k \in \intz$. We have:
+If $n$ is odd, then $n = 2k + 1$ where $k \in \intz$. We have:
 $$1 + (-1)^n(2n-1) = 1 + (-1)^{2k+1}(2 \times (2k + 1)-1) = 1  - (4k + 2 - 1) = -4k \mbox{ where } k \in \intz$$
 Thus, we got that if $n$ is odd, $1 + (-1)^n(2n-1) = -4k$ where $k \in \intz$. Hence, if $n$ is odd,
 $1 + (-1)^n(2n-1) = -4k$ is a multiple of 4.
-
+\\\\
 Finally, since integers could either be odd or even, we considered all the cases ($n$ is even and $n$ is odd) and in
-both of the cases, $1 + (-1)^n(2n-1)$ is a multiple of 4.
+both of the cases, $1 + (-1)^n(2n-1)$ is a multiple of 4. Thus, if $n \in \intz$, $1 + (-1)^n(2n-1)$ is a multiple of 4.
 \begin{flushright}
 \textit{Q.E.D.}
 \end{flushright}
@@ -108,7 +110,7 @@ Suppose $n$ is odd. Then $n = 2k + 1$ where $k \in \intzp \cup \{0\}$.
 Then we have:
 $$n^2 - 1 = (2k + 1)^2 - 1 = 4k^2 + 4k + 1 - 1 = 4k^2 + 4k = 4k \times (k + 1)$$
 Thus, if $n$ is odd, $n^2 - 1 = 4k \times (k + 1)$ where $k \in \intzp \cup \{0\}$.
-Since $k$ is in the set of positive integers or equls 0, we can consider the following
+Since $k$ is in the set of positive integers or equals 0, we can consider the following
 three cases:
 \begin{itemize}
 \item[1.]
@@ -156,7 +158,8 @@ $x = y$
 If $x \neq y$, we already know that $x \neq z$ and $y \neq z$ and thus we found three distinct integers which sum up to $k$, namely $x = k + 1$, $y = -k - 1$, and $z = k$.
 \\\\
 If $x = y$, we get $k + 1 = -k - 1$ and $k = -1$. However, even if $k = -1$, we can find three distinct integers, namely $x = -2$, $y = 2$, and $z = -1$.\\\\
-Thus, we considered all the possible cases and we always find three integers which sum up to $k$.
+Thus, we considered all the possible cases and we always find three integers which sum up to some random integer $k$.
+Hence, every integer can be written as the sum of exactly 3 distinct integers.
 \begin{flushright}
 \textit{Q.E.D.}
 \end{flushright}
@@ -165,7 +168,7 @@ Thus, we considered all the possible cases and we always find three integers whi
 Prove that if $x, y, \mbox{ and } z$ are integers then at least one of $x + y$, $x + z$, and $y + z$ is even.
 \begin{quote}
 Suppose, for the sake of contradiction, that $x + y$, $x + z$, and $y + z$ are all odd.\\\\
-Now, without a loss of generality, consider the following three cases:
+Now, without a loss of generality, consider the following four cases:
 \begin{itemize}
 \item[1.]
 $x,y,z$ are all even
@@ -187,7 +190,7 @@ $x + y = 2j + 2k = 2 \times (j + k)$ which is even.
 \\\\
 If $x,y$ are odd and $z$ is even, $x = 2j + 1$, $y = 2k + 1$, $z = 2l$ where $j,k,l \in \intz$. Thus, we get:
 $x + y = 2j + 1 + 2k + 1 = 2j + 2k + 2 = 2 \times (j + k) + 1$ which is even.
-\\
+\\\\\\
 Thus, we've considered all the possible cases and proved that if $x, y, \mbox{ and } z$ are integers then at
 least one of $x + y$, $x + z$, and $y + z$ is even.
 \begin{flushright}
@@ -210,14 +213,15 @@ one even prime number, namely 2. Let's consider following two cases:
 $p = 2$
 \item[2.]
 $q = 2$
+\\
 \end{itemize}
 Since $0 < q < p$, we know that $p$ cannot be 2 (if $p = 2$,
 there is no prime number below 2, so $q$ cannot be prime).
 \\\\
-If $q = 2$, $p - 2 = 97$ and $p = 95 = 5 \times 19$ which is also not prime.
+If $q = 2$, $p - 2 = 97$ and $p = 99 = 3 \times 3 \times 11$ which is not prime.
 \\\\
 Thus, we considered all the cases and there are no prime numbers, $p$ and $q$,
-which sum up to 95.
+of which the difference is 97.
 \begin{flushright}
 \textit{Q.E.D.}
 \end{flushright}
@@ -237,13 +241,13 @@ Prove that if $n$ is not 1 and is not 2 more than a multiple of 4, $T_n$ is not 
 \end{itemize}
 \textbf{Let's first prove that if $n$ is 1 or 2 more than a multiple of 4, $T_n$ is odd.}\\\\
 If $n$ is 1 more than a multiple of 4, $n = 4k + 1$ where $k \in \intzp$. Then we have:
-$$T_n = \dfrac{n(n+1)}{2} = \dfrac{(4k + 1)((4k + 1) + 1)}{2} = \dfrac{(4k + 1)((4k + 2)}{2} = (2k + 1) \times (2k + 1)$$.
-Thus, we have that if $n$ is 1 more than a multiple of 4, $T_n = (2k + 1) \times (2k + 1)$ which is a multiplication of two
+$$T_n = \dfrac{n(n+1)}{2} = \dfrac{(4k + 1)((4k + 1) + 1)}{2} = \dfrac{(4k + 1)(4k + 2)}{2} = (4k + 1) \times (2k + 1).$$
+Thus, we have that if $n$ is 1 more than a multiple of 4, $T_n = (4k + 1) \times (2k + 1)$, where $k \in \intzp$, which is a multiplication of two
 odd numbers and thus is odd.
 \\\\
 If $n$ is 2 more than a multiple of 4, $n = 4k + 2$ where $k \in \intzp$. Then we have:
-$$T_n = \dfrac{n(n+1)}{2} = \dfrac{(4k + 2)((4k + 2) + 1)}{2} = \dfrac{(4k + 2)((4k + 3)}{2} = (2k + 1) \times (4k + 1)$$
-Hence, we got that $T_n = (2k + 1) \times (4k + 1) = (2k + 1) \times (2(2k) + 1)$ which the multiplication of two odd
+$$T_n = \dfrac{n(n+1)}{2} = \dfrac{(4k + 2)((4k + 2) + 1)}{2} = \dfrac{(4k + 2)(4k + 3)}{2} = (2k + 1) \times (4k + 3)$$
+Hence, we got that $T_n = (2k + 1) \times (4k + 1) = (2k + 1) \times (4k + 3)$ which the multiplication of two odd
 numbers and thus, if $n$ is 2 more than a multiple of 4, $T_n$ is odd.
 \\\\
 \textbf{Now, let's prove that if $n$ is not 1 or 2 more than a multiple of 4, $T_n$ is even.}\\\\
@@ -258,8 +262,8 @@ If $n = 4k$ where $k \in \intzp$, $T_n = \dfrac{4k(4k+1)}{2} = 2 \times (k(4k + 
 \\\\
 If $n = 4k + 3$ where $k \in \intzp$, $T_n = \dfrac{(4k+3)(4k+4)}{2} = 2 \times ((4k + 3)(2k + 2))$ which is even.
 \\\\
-NOTE: SINCE WE CONSIDERED INTEGERS STARTING AT 4 (SINCE WE ASSUMED THAT $n = 4k,4k+1,4k+2,4k+3$ where $k \in \intzp$),
-NOW WE NEED TO CHECK $T_n$ for 1,2, and 3.
+NOTE: SINCE WE CONSIDERED INTEGERS STARTING AT 4 (SINCE WE ASSUMED THAT $n = 4k,4k+1,4k+2,4k+3$ where $k \in \intzp$,
+the smallest number we get is $n = 4 \times 1 = 4$), NOW WE NEED TO CHECK $T_n$ for 1,2, and 3.
 \\\\
 If $n = 1$, $T_n = \dfrac{1(1+1)}{2} = 1$ which is odd and indeed, 1 = 0 + 1 and 0 is a multiple of 4 (thus, 3 has $4l + 1$ form where $l \in \intz$)..
 \\
@@ -339,6 +343,33 @@ But since $x + 1 \leq 0$, $x \leq -1$ and we do not get any solutions for this i
 \\\\
 Thus, we got the following answers: $x \in (2, +\infty)$, $x \in (-1, 0)$, $x \in (-\infty, -1)$.\\
 Finally, by merging these answers, we get: $x \in (-\infty, -1) \cup (-1,0) \cup (2, +\infty)$.
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+axis lines=center,
+xlabel=\(x\),
+ylabel=\(f(x)\),
+restrict y to domain=-50:50,
+samples=1000,
+]
+
+\addplot [only marks, mark=o] table {
+-1 0
+0 0
+2 0
+};
+\def\ymin{\pgfkeysvalueof{/pgfplots/ymin}}
+\def\ymax{\pgfkeysvalueof{/pgfplots/ymax}}
+\addplot+[style=dotted, style=ultra thick] {abs(x+1) < abs(x^2 - 1)};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+This line shows that $x \in (-\infty, -1) \cup (-1,0) \cup (2, +\infty)$.
+Part where $x \in (0,2)$ is in between two horizontal dotted lines meaning that
+it is not the part of the solution. Also, $x = -1$ is also not in the set (you can see a little circle
+there which basically means that the point is out and $x \neq -1$).
 \end{quote}
 
 \item[4.]
@@ -350,10 +381,10 @@ Show that any integer can be written in the form $10q + r$ where $0 \leq r \leq 
 I don't really like the way this is phrased, so I will rephrase what we have to prove.
 We have to prove that:\\
 \begin{center}
-for every integer $k$, there exists $q$ and $r$ such that $k = 10q + r$ and $0 \leq r \leq 9$\\\
+for every integer $k$, there exists $q$ and $r$ such that $k = 10q + r$ and $0 \leq r \leq 9$.\\\
 \end{center}
 Notice that if an integer ends on 0, it is always divisible by 10. Thus, it is just the problem
-of picking $r$ so that $k - r$ end on 0.\\
+of picking $r$ so that $k - r$ ends on 0 (if $k - r$ ends on zero we devide the result by 10 and get $q$).\\
 Let's consider the following 10 cases for the possible endings of the number.
 \begin{itemize}
 \item
@@ -433,7 +464,6 @@ Number ends on 7
 Number ends on 8
 \item
 Number ends on 9
-\\
 \end{itemize}
 If number ends on 0, its square ends on the same number as $0^2$ ends on, thus on 0.\\
 If number ends on 0, its square ends on the same number as $1^2$ ends on, thus on 1.\\
@@ -465,8 +495,8 @@ of times 1 appears in the number, etc.?
 	{
 		\begin{tabular}{*{10}{|c}|}
 		\hline
-		0 & 1 & 2 & 3 & 4 & 5 & 6 & 8 & 9\\ \hline
-		  &   &   &   &   &   &   &   & \\
+		0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\ \hline
+		  &   &   &   &   &   &   &   &   & \\
         \hline
 	\end{tabular}
     }
@@ -479,33 +509,46 @@ since box 9 cannot contain 0 as at least one 9 appears in the number. Thus the d
 number cannot have 9 as its leftmost digit.)(Hint: Consider the possible ways of filling the box
 labeled 0.) How many such numbers exist?
 \begin{quote}
-Let's consider the possible ways of filling the column labeled 0.\\
-There are 10 possible ways: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9.
-\\
 \begin{itemize}
-\item[*]
-If 9 is placed in the box under label 0, we reach a contradiction since box 9 cannot contain 0 as at least one 9 appears in the number.
-\item[*]
-If 8 is placed in the box under label 0, we have 1 possible ways of picking number under box labeled 9
-\item[*]
-If 7 is placed in the box under label 0, we have 2 possible ways of picking number under box labeled 9.
-\item[*]
-If 6 is placed in the box under label 0, we have 3 possible ways of picking number under box labeled 9.
-\item[*]
-If 5 is placed in the box under label 0, we have 4 possible ways of picking number under box labeled 9.
-\item[*]
-If 4 is placed in the box under label 0, we have 5 possible ways of picking number under box labeled 9.
-\item[*]
-If 3 is placed in the box under label 0, we have 6 possible ways of picking number under box labeled 9.
-\item[*]
-If 2 is placed in the box under label 0, we have 7 possible ways of picking number under box labeled 9.
-\item[*]
-If 1 is placed in the box under label 0, we have 8 possible ways of picking number under box labeled 9.
-\item[*]
-If 0 is placed in the box under label 0, we have 9 possible ways of picking number under box labeled 9.
+\item[**]
+If 9 is placed in box 0, we reach the contradiction since box 9 cannot cointain 0 as at least one 0 appears in the number.
+\item[**]
+If 8 is placed in box 0, we still cannot find such number since the only possibility would be 8000000010 but then 1 is not in a number
+and if we have 8100000010 we have two 1s. Thus, we reach the contradiction.
+\item[**]
+If 7 is placed in box 0, we have one 7 (we cannot have two 7s because $2 \times 7 = 14$ and we have 10 boxes) meaning that box under label 7 should be one.
+Then we must also have 1 under box labeled 1. But now we have a number 7100000100 but we actually have 2 ones, so it should be 7200000100, but now we must have
+2 ones but only have 1 and we cannot add more since we also must have 7 zeros. Thus, 7 cannot be placed under the box 0. Thus, we reach the contradiction.
+\item[**]
+If 6 is placed under the box 0, box 6 should be 1 (we cannot have two 6s because $2 \times 6 = 12 > 10$). Then we should have at least one 1.
+However, now we have two 1s, thus box labeled 2 must be 1 and box labeled 1 must be two and we are actually left with six 0s.
+Hooray, we got a number! It's 6210001000. It has ten digits, six 0s, two 1s, one 2, zero 3s, zero 4s, zero 5s, one 6s, zero 7s, zero 8s, zero 9s.
+\item[**]
+If 5 is placed under the box 0, box 5 should be 1 (we cannot have two 5s, because $2 \times 5 = 10$ and then it means that
+somewhere else, other than under the box labeled 0, we will have another 5 which will then result in some other box having
+some number under it which is not possible since we have 10 boxes in total).
+If we have, one 5, we end up with 5210010000 since we must have at least one 1, but then we will end up with two 1s (since box
+under label 5 is also 1). But now, we have a problem since we have 6 zeros. Thus, we reach the contradiction.
+\item[**]
+If 4 is placed under the box 0, with the same reasoning, we end up with 4210100000 but then we have five 0s.
+Thus, we reach the contradiction.
+\item[**]
+If 3 is placed under the box 0, with the same reasoning, we end up with 3211000000 but then we have five 0s.
+Thus, we reach the contradiction.
+\item[**]
+If 2 is placed under the box 0, we have to write 1 under the box 2, but now we have one 1 as well hence, we have
+to write 2 under box labeled 2 and with the same reasoning as above, we cannot fill in all of these numbers.
+Thus, we reach the contradiction.
+\item[**]
+Case when 1 is placed under the box labeled 0 is also not possible.
+\item[**]
+If 0 is placed under the label 0, it means that at least one number occurs twice, but then
+it means that we will end up with 11 digits in the end.
+\\
 \end{itemize}
-PROVE THAT WE CAN BY SHOWING EXAMPLE.
-Finally, we get that ten-digit number can indeed be formed and there are 999999999 such ten-digit numbers.
+Thus, we can construct a ten-digit number with this approach. The number is 6210001000.
+And there is only one number like this (6210001000). Hence, the answer is yes and there
+is only one such number which is 6210001000.
 \end{quote}
 \end{itemize}
 \end{document}
