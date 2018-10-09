@@ -513,34 +513,33 @@ labeled 0.) How many such numbers exist?
 \item[**]
 If 9 is placed in box 0, we reach the contradiction since box 9 cannot cointain 0 as at least one 0 appears in the number.
 \item[**]
-If 8 is placed in box 0, we still cannot find such number since the only possibility would be 8000000010 but then 1 is not in a number
-and if we have 8100000010 we have two 1s. Thus, we reach the contradiction.
+If 8 is placed in box 0, we have eight 0s and 8 itself in the number, then we are left with only one box. Notice that since 8 is under
+the box labeled 0, we should have 1 under box labeled 8, but then we should also have 1s but we are out of boxes. Thusm, we
+reach the contradiction that there is no way to have 8 zeros. 
 \item[**]
-If 7 is placed in box 0, we have one 7 (we cannot have two 7s because $2 \times 7 = 14$ and we have 10 boxes) meaning that box under label 7 should be one.
-Then we must also have 1 under box labeled 1. But now we have a number 7100000100 but we actually have 2 ones, so it should be 7200000100, but now we must have
-2 ones but only have 1 and we cannot add more since we also must have 7 zeros. Thus, 7 cannot be placed under the box 0. Thus, we reach the contradiction.
+If 7 is placed in box 0, it means that we must have seven 0s and 7 itself in the number, then we are left with 2 boxes. Now, since 7 is
+under box labeled 0, there must be 1 under box labeled 7. But then we should also have 1 under box labeled 1. However, now we have two 1s
+and we said that there is only one and we are even out of boxes. Hence, we reach the contradiction.
 \item[**]
-If 6 is placed under the box 0, box 6 should be 1 (we cannot have two 6s because $2 \times 6 = 12 > 10$). Then we should have at least one 1.
-However, now we have two 1s, thus box labeled 2 must be 1 and box labeled 1 must be two and we are actually left with six 0s.
-Hooray, we got a number! It's 6210001000. It has ten digits, six 0s, two 1s, one 2, zero 3s, zero 4s, zero 5s, one 6s, zero 7s, zero 8s, zero 9s.
+If 6 is placed under the box 0, box 6 should be 1 . Then we should have at least one 1.
+However, now we have two 1s, thus box labeled 2 must be 1 and box labeled 1 must be two and we are actually left with six 0s (ALL BOXES ARE FILLED WITH NUMBERS).
+And we got a number! It's 6210001000. It has ten digits, six 0s, two 1s, one 2, zero 3s, zero 4s, zero 5s, one 6s, zero 7s, zero 8s, zero 9s.
 \item[**]
-If 5 is placed under the box 0, box 5 should be 1 (we cannot have two 5s, because $2 \times 5 = 10$ and then it means that
-somewhere else, other than under the box labeled 0, we will have another 5 which will then result in some other box having
-some number under it which is not possible since we have 10 boxes in total).
-If we have, one 5, we end up with 5210010000 since we must have at least one 1, but then we will end up with two 1s (since box
-under label 5 is also 1). But now, we have a problem since we have 6 zeros. Thus, we reach the contradiction.
+If 5 is placed under the box 0, box 5 should be 1 and we are left with 3 empty boxes. Now, if we have one 1, box under label 1 should also be 1.
+Now, we have two 1s, so box under label one should be 2 and the box under label 2 should be 1. But if we do these operations, we will actually have
+six 0s while we need to have 5 and will end up with 5210010000. Thus, we reach the contradiction.
 \item[**]
-If 4 is placed under the box 0, with the same reasoning, we end up with 4210100000 but then we have five 0s.
-Thus, we reach the contradiction.
+If 4 is placed under the box 0, with the same reasoning, we end up with 4210100000 but then we have six 0s and we reach the contradiction.
 \item[**]
-If 3 is placed under the box 0, with the same reasoning, we end up with 3211000000 but then we have five 0s.
+If 3 is placed under the box 0, with the same reasoning, we end up with 3211000000 but then we have six 0s while we need 3 and we reach the contradiction.
 Thus, we reach the contradiction.
 \item[**]
 If 2 is placed under the box 0, we have to write 1 under the box 2, but now we have one 1 as well hence, we have
 to write 2 under box labeled 2 and with the same reasoning as above, we cannot fill in all of these numbers.
 Thus, we reach the contradiction.
 \item[**]
-Case when 1 is placed under the box labeled 0 is also not possible.
+Case when 1 is placed under the box labeled 0 is also not possible. If we place 1 under box labeled 0, it means that the number has one 0 and we have to put
+1 under box labeled 1. Then we end up with 1100000000 which is seven 0s when we need only 1 and we reach the contradiction.
 \item[**]
 If 0 is placed under the label 0, it means that at least one number occurs twice, but then
 it means that we will end up with 11 digits in the end.
