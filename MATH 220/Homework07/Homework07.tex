@@ -1,0 +1,160 @@
+\documentclass[12pt, a4paper]{article}                      % use "amsart" instead of "article" for AMSLaTeX format
+\usepackage[a4paper,margin=1in]{geometry}                   % Adjust margins
+\usepackage{amsmath,amssymb,mathtools,listings,color,textcomp,adjustbox,tikz,pgfplots}        % Math packages: amsmath, amssymb, listings, color
+\usepgfplotslibrary{external,fillbetween}
+\pgfplotsset{compat=1.14}
+\usepackage[makeroom]{cancel}
+\title{\bf{Homework \textnumero 6}}
+\author{Author: David Oniani
+\\
+\ \ \ Instructor: Tommy Occhipinti}
+\date{October 12, 2018}
+
+\usepackage{listings}
+\usepackage{color}
+
+\newcommand{\natn}{\mathbb{N}}
+\newcommand{\intz}{\mathbb{Z}}
+\newcommand{\intzp}{\mathbb{Z^+}}
+\newcommand{\intzn}{\mathbb{Z^-}}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+backgroundcolor=\color{backcolour},
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=left,
+numberstyle=\normalsize\color{gray},
+keywordstyle=\color{blue},
+commentstyle=\color{dkgreen},
+stringstyle=\color{mauve},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=4
+}
+
+
+\begin{document}
+\maketitle
+
+
+\begin{itemize}
+\item[43.]
+Prove that for all $n \in \intzp$, $11^n - 6$ is divisible by 5.
+\begin{quote}
+Let's prove this by induction. For this we have to have a base case
+and an inductive hypothesis.\\\\
+Base case: if $n = 1$, $11^n - 6 = 11 - 6 = 5$ and thus, since 5 is divisible by 5, $11^n - 6$ is divisible by 5. Hence, the base case check is done.\\\\
+Inductive case: suppose for all $k \in \intzp$, $11^k - 6$ is divisible by 5 and prove that $11^{k + 1} - 6$ is divisible by 5.
+Notice that
+$$11^{k + 1} - 6 = 11 \times 11^k - 6 = 10 \times 11^k + (11^k + 6)$$
+Now, once again, notice that $10 \times 11^k$ is divisible by 5 since 10 is a multiple of 5. According to our assumption,
+$11^k - 6$ is also divisible by 5.
+Finally, we get that $11^{k + 1} - 6 = 10\times 11^k + (11^k + 6)$ which means that $11^{k + 1} - 6$ is the sum of two numbers which
+are both divisible by 5.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[]
+\item[]
+
+\item[44.]
+Prove that for $n \in \intzp$, we have $1^2 + 2^2 + 3^2 + ... + n^2 = \dfrac{n(n + 1)(2n + 1)}{6}$.
+\begin{quote}
+Let's prove this by taking an inductive approach.\\\\
+Base case: if $n = 1$, $1^2 = \dfrac{1(1 + 1)(2 + 1)}{6} = \dfrac{1 \times 2 \times 3}{6} = 1$ and thus, the base case check is done.\\\\
+Inductive hypothesis: suppose for $k \in \intzp$, $1^2 + 2^2 + 3^2 + ... + k^2 = \dfrac{k(k + 1)(2k + 1)}{6}$ and prove that $1^2 + 2^2 + 3^2 + ... + k^2 + (k + 1)^2 = \dfrac{(k + 1)(k + 2)(2k + 3)}{6}$.
+According to our initial assumption, we have:\\
+\begin{align*}
+1^2 + 2^2 + 3^2 + ... + k^2 + (k + 1)^2 = (1^2 + 2^2 + 3^2 + ... + k^2) + (k + 1)^2 =\\
+1^2 + 2^2 + 3^2 + ... + k^2 + (k + 1)^2 = \dfrac{k(k + 1)(2k + 1)}{6} + (k + 1)^2 =\\
+\dfrac{k(k + 1)(2k + 1)}{6} + \dfrac{6(k + 1)^2}{6} =\\
+\dfrac{k(k + 1)(2k + 1) + 6(k + 1)^2}{6} =\\
+\dfrac{(k + 1)(k(2k + 1) + 6(k + 1))}{6} =\\
+\dfrac{(k + 1)(2k^2 + k + 6k + 6)}{6} =\\
+\dfrac{(k + 1)(2k^2 + 7k + 6)}{6} =\\
+\dfrac{(k + 1)((k + 2)(2k + 3))}{6}
+\end{align*}
+Thus, we proved that $1^2 + 2^2 + 3^2 + ... + k^2 + (k + 1)^2 = \dfrac{(k + 1)(k + 2)(2k + 3)}{6}$ which finishes
+our proof.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[]
+\item[]
+
+\item[45.]
+Prove that for all $n \in \intzp$, $2^{n + 2} + 3^{2n + 1}$ is divisible by 7.
+\begin{quote}
+To prove it using induction, we'll need a base case and an inductive hypothesis.\\\\
+Base case: let $n = 1$, then $2^{1 + 2} + 3^{2 \times 1 + 1} = 2^3 + 3^3 = 8 + 27 = 35 = 7 \times 5$ thus is divisible
+by 7. And we've checked the base case.\\\\
+Inductive hypothesis: now, we have to prove the inductive hypothesis. Here is the hypothesis:
+suppose that for all $k \in \intzp$, $2^{k + 2} + 3^{2k + 1}$ is divisible by 7 and show that
+$2^{k + 3} + 3^{2k + 3}$ is also divisible by 7.\\\\
+Notice that
+\begin{align*}
+2^{k + 3} + 3^{2k + 3} = \underbrace{2^{k + 2} + 2^{k + 2}}_{2^{k + 3}} + \underbrace{3^{2k + 1} + 3^{2k + 1} + 7 \times 3^{2k + 1}}_{3^{2k + 3}} =\\
+2 \times (2^{k + 2} + 3 ^ {2k + 1}) + 7 \times 3^{2k + 1}
+\end{align*}
+And now it's clear that since $2^{k + 2} + 3 ^ {2k + 1}$ and $7 \times 3^{2k + 1}$ are the multiples of 7,
+$2 \times (2^{k + 2} + 3 ^ {2k + 1}) + 7 \times 3^{2k + 1}$ is also a multiple of 7 and thus is divisible by 7.
+Hence, we proved the inductive hypothesis and it concludes our proof.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[]
+\item[]
+
+\item[46.]
+Let $F_n$ denote the $n^{th}$ Fibonacci number. Prove that $\displaystyle\sum_{k=1}^{n} F^2_k = F_nF_{n + 1}$.
+\begin{quote}
+Let's prove this using induction. For this we have to have a base case and inductive hypothesis.\\\\
+Let's first look at the Fibonacci sequence. It is 1, 1, 2, 3, 5, 8, 13, 21 ... where each element is the
+sum of two previous elements.\\\\
+Base case: let $k = 1$, then $\displaystyle\sum_{k=1}^{1} F^2_k = 1 \times 1 = 1$ and indeed the second
+element of the sequence is 1.\\\\
+Inductive hypothesis: let $F_m$ denote the $m^{th}$ Fibonacci number and also suppose that $\displaystyle\sum_{j=1}^{m} F^2_j = F_mF_{m + 1}$.\\
+Then, we have to prove that $\displaystyle\sum_{j=1}^{m + 1} F^2_j = F_{m + 1}F_{m + 2}$.\\\\
+Notice that $\displaystyle\sum_{j=1}^{m + 1} F^2_j = F_1^2 + F_2^2 + F_3^2 + ... + F_{m + 1}^2$ and using our assumption, we get:
+$$F_1^2 + F_2^2 + F_3^2 + ... + F_{m + 1}^2 = F_mF_{m + 1} + F_{m + 1}^2 = F_{m + 1}(F_m + F_{m + 1})$$.
+Now, let's remember the way Fibonacci numbers are created. To get the next Fibonacci number, one must sum up the previous two
+thus, $F_m + F_{m + 1} = F_{m + 2}$ and we finally get that $\displaystyle\sum_{j=1}^{m + 1} F^2_j = F_1^2 + F_2^2 + F_3^2 + ... + F_{m + 1}^2 = F_mF_{m + 1} + F_{m + 1}^2 = F_{m + 1}(F_m + F_{m + 1}) = F_{m + 1}F_{m + 2}$.
+Hence, we proved that $\displaystyle\sum_{j=1}^{m + 1} F^2_j = F_{m + 1}F_{m + 2}$ and this concludes our inductive reasoning as well as the proof.\\
+Finally, if $F_n$ denotes the $n^{th}$ Fibonacci number, $\displaystyle\sum_{k=1}^{n} F^2_k = F_nF_{n + 1}$.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[]
+\item[]
+\item[]
+
+\item[47.]
+Prove that for all $n \in \intzp_{\geq 12}$ we have $n! \geq 5^n$.
+\begin{quote}
+To prove the statement above, we can use induction. We need to have a base case as well as an inductive hypothesis.\\\\
+Base case: let $n = 12$, then we have $12! > 5^{12}$ which is true since $12! = 479001600$ and $5^{12} = 244140625$ (thus $12! > 5^{12}$).\\\\
+Inductive hypothesis: suppose that for every $k \in \intzp_{\geq 12}$ we have $k! \geq 5^k$ and prove that $(k + 1)! > 5^{k + 1}$.\\\\
+HAVE TO FINISH THIS.
+\end{quote}
+
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{itemize}
+\end{document}
