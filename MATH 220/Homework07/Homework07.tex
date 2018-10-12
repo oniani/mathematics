@@ -1,6 +1,6 @@
 \documentclass[12pt, a4paper]{article}                      % use "amsart" instead of "article" for AMSLaTeX format
 \usepackage[a4paper,margin=1in]{geometry}                   % Adjust margins
-\usepackage{amsmath,amssymb,mathtools,listings,color,textcomp,adjustbox,tikz,pgfplots}        % Math packages: amsmath, amssymb, listings, color
+\usepackage{amsmath,amssymb,hyperref,mathtools,listings,color,textcomp,adjustbox,tikz,pgfplots}        % Math packages: amsmath, amssymb, listings, color
 \usepgfplotslibrary{external,fillbetween}
 \pgfplotsset{compat=1.14}
 \usepackage[makeroom]{cancel}
@@ -9,7 +9,7 @@
 \\
 \ \ \ Instructor: Tommy Occhipinti}
 \date{October 12, 2018}
-
+\hypersetup{colorlinks=false, pdfborder={0 0 0}}
 \usepackage{listings}
 \usepackage{color}
 
@@ -170,7 +170,7 @@ Notice that
 $$(y + 1/y)(y^m + 1/y^m) =  y^{m + 1} + \dfrac{1}{y^{m + 1}} + y^{m - 1} + \dfrac{1}{y^{m - 1}}$$
 and
 $$y^{m + 1} + \dfrac{1}{y^{m + 1}} = \underbrace{(y + \dfrac{1}{y})(y^m + \dfrac{1}{y^m})}_{\mbox{we know it's an integer}} - \underbrace{(y^{m - 1} + \dfrac{1}{y^{m - 1}})}_{\mbox{it's an integer too}}$$
-By the assumption we made in the inductive hypothersis, we know that $(y + \dfrac{1}{y})(y^m + \dfrac{1}{y^m})$ is an integer.
+By the assumption we made in the inductive hypothesis, we know that $(y + \dfrac{1}{y})(y^m + \dfrac{1}{y^m})$ is an integer.
 According to our assumption, $y^{m - 1} + \dfrac{1}{y^{m - 1}}$ is also an integer and if we subtract one integer from the other, we always end up with an integer.
 Thus, $y^{m + 1} + \dfrac{1}{y^{m + 1}} = (y + \dfrac{1}{y})(y^m + \dfrac{1}{y^m}) - (y^{m - 1} + \dfrac{1}{y^{m - 1}})$ which means that $y^{m + 1} + \dfrac{1}{y^{m + 1}}$
 is an integer and this concludes our proof.
@@ -179,6 +179,76 @@ is an integer and this concludes our proof.
 \end{flushright}
 \end{quote}
 
+\item[49.]
+At about 2:00 he discusses the fact that $1 + 3 + 5 + 7 + ... + (2n - 1) = n^2$. That is,
+the sum of the first n odd numbers is $n^2$. Through triangular squares, he gives a
+striking visual proof of this fact. Give a proof of this fact using mathematical induction
+(without any need to reference triangular squares).
+\begin{quote}
+Base case: let $n = 1$, then $1 = 1^2$ and the base case check is done.\\\\
+Inductive hypothesis: suppose that for $k \geq 1$, $1 + 3 + 5 + 7 + ... + (2k - 1) = k^2$
+and prove that $1 + 3 + 5 + 7 + ... + (2k - 1) + (2k + 1) = (k + 1)^2$.\\\\
+We have:
+\begin{align*}
+1 + 3 + 5 + 7 + ... + (2k - 1)^2 + (2k + 1)^2 =\\
+(1 + 3 + 5 + 7 + ... + (2k - 1)^2) + (2k + 1)^2 =\\
+k^2 + (2k + 1) =\\
+k^2 + 2k + 1 =\\
+(k + 1)^2
+\end{align*}
+Thus, we proved that $1 + 3 + 5 + 7 + ... + (2k - 1) + (2k + 1) = (k + 1)^2$ which
+concludes our proof by induction.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[]
+\item[]
+\item[]
+{\large Mathologer video: \url{https://www.youtube.com/watch?v=yk6wbvNPZW0}}
+
+\item[50.]
+At about 6:35 he shows a diagram and says “at this point, the dark green overlap will
+be exactly as large as the white empty area.” Why is that?
+\begin{quote}
+Well, it is not that they actually are "exactly" the same. If we look closer we see that
+that white empty area is $5^2 + 5^2 = 50$ while the area of the dark green triangle is $7^2 = 49$.
+He said that they must be equal because he is trying to prove that $\sqrt{2}$ is rational. In other words,
+since two triangles overlap on that dark green triangle, we basically have 2 layers of the same triangle
+there so we can just take it off and hope that it fits into the white area. If it fits, it means that $sqrt{2}$
+is rational and otherwise, if it does not, it means that $\sqrt{2}$ is irrational. And obviously it does not fit
+because the areas are different (green triangular area is 49 and the white area is 50).
+\end{quote}
+
+\item[]
+
+\item[51.]
+At 7:20, he suggests that there is an even easier way to reach a contradiction. What
+is it?
+\begin{quote}
+It's what I mentioned above. That rhombus-looking white area is basically two triangles.
+Both of the triangles have 5 rows and we know that their areas are $5^2$, then $2 \times 5^2 =50$.
+On the other hand, the area of the dark green triangle is $7^2 = 49$. Thus, we cannot perform
+any geometric action (rotation, flipping, etc.) to somehow make the dark-green-area triangle fit into
+the white space.
+\end{quote}
+
+\item[]
+\item[52.]
+At the very end of the video, he gives a demonstration that $T_{20} + T_{20} + T_{20} = T_{35}$, and
+uses that identity to produce the smaller identity $T_5 + T_5 + T_5 = T_9$, much like the key step in
+the proofs earlier in the video that $\sqrt{3}$ and $\sqrt{2}$ are irrational. Why is it not a contradiction
+here?
+\begin{quote}
+That's because $T_{20} + T_{20} + T_{20} = T_{35}$ and there are no leftover triangles.
+Then, we can just use the fact that $T_{20} + T_{20} + T_{20} = T_{35}$ as a base case and prove that $T_5 + T_5 + T_5 = T_9$.
+NOTE: Induction is not necessarily about increasing numbers. We can just set something to $1000 - x$ and increase $x$ each time
+while $1000 - x$ decreases. So that's why we can use $T_{20} + T_{20} + T_{20} = T_{35}$ as a base case and prove it
+for smaller triangles.
+\end{quote}
+
+\newpage
 {\Large Bookwork}
 \item[]
 \item[5.]
@@ -210,16 +280,189 @@ Let $b_n = 1/3 + 1/15 + ... + 1/(4n^2 - 1)$.
 \item[(a)]
 Compute $b_1, b_2, b_3, b_4, \mbox{ and } b_5$.
 \begin{quote}
-
 $b_1 = \dfrac{1}{4 \times 1^2 - 1} = 1/3$\\
-$b_2 = b_1 + \dfrac{1}{4 \times 2^2 - 1} = 1/3 + 1/15 = 2/3$\\
-$b_3 = b_1 + b_2 + \dfrac{1}{4 \times 3^2 - 1} = 1/3 + 1/15 + 1/35 = 73/105$\\
-$b_4 = b_1 + b_2 + b_3 + b_4 = 73/105 + \dfrac{1}{4 \times 4^2 - 1} = 73/105 + 1/63 = 56/2205$
-$b_5 = b_1 + b_2 + b_3 + b_4 + \dfrac{1}{4 \times 5^2 - 1} = 56/2205 + 1/99 = 861/24255$.
+$b_2 = b_1 + \dfrac{1}{4 \times 2^2 - 1} = 1/3 + 1/15 = 2/5$\\
+$b_3 = b_1 + b_2 + \dfrac{1}{4 \times 3^2 - 1} = 1/3 + 1/15 + 1/35 = 3/7$\\
+$b_4 = b_1 + b_2 + b_3 + b_4 = 3/7 + \dfrac{1}{4 \times 4^2 - 1} = 3/7 + 1/63 = 4/9$\\
+$b_5 = b_1 + b_2 + b_3 + b_4 + \dfrac{1}{4 \times 5^2 - 1} = 3/9 + 1/99 = 5/11$.
 \end{quote}
-\end{itemize}
+
+\item[]
+\item[]
+\item[]
+
+\item[(b)]
+Conjecture a closed formula for $b_n$.
+\begin{quote}
+I conjectured that $b_n = \dfrac{n}{2n + 1}$.\\
+Here is the explanation:
+\begin{align*}
+b_{\underbar 1} = 1/3 = \underbar 1 / (2 \times \underbar 1 + 1)\\
+b_{\underbar 2} = 2/5 = \underbar 2 / (2 \times \underbar 2 + 1)\\
+b_{\underbar 3} = 3/7 = \underbar 3 / (2 \times \underbar 3 + 1)\\
+b_{\underbar 4} = 4/9 = \underbar 4 /(2 \times \underbar 4 + 1)\\
+b_{\underbar 5} = 5/11 =  \underbar 5 /(2 \times \underbar 5 + 1)\\
+.................................................
+\end{align*}
+After what we have jotted down, I think it's very likely that the pattern is $b_n = \dfrac{n}{2n + 1}$.
+Thus, my conjecture is that $b_n = \dfrac{n}{2n + 1}$ and all we have left is to prove it!
+\end{quote}
+
+\item[]
+
+\item[(c)]
+Prove your conjecture by mathematical induction.
+\begin{quote}
+To prove that $b_n = \dfrac{n}{2n + 1}$, we'll use induction. Thus, we need a base case check and a proof of inductive hypothesis.\\\\
+Base case: let $n = 1$, then $b_1 = \dfrac{1}{2 \times 1 + 1} = 1/3$. Thus the base case check is complete.\\\\
+
+Inductive hypothesis: suppose that for $k \geq 1$, $b_k = \dfrac{k}{2k + 1}$ and prove that $b_{k + 1} = \dfrac{k + 1}{2k + 3}$.\\\\
+Notice that $b_{k + 1} = b_k + \dfrac{1}{4(k + 1)^2 - 1}$.\\
+Thus, according to our assumption in the inductive hypothesis, we have:
+\begin{align*}
+b_{k + 1} = b_k + \dfrac{1}{4(k + 1)^2 - 1} = \dfrac{k}{2k + 1} + \dfrac{1}{4(k + 1)^2 - 1} =\\
+\dfrac{k}{2k + 1} + \dfrac{1}{(2k + 1)(2k + 3)} =\\
+\dfrac{k (2k + 3)}{(2k + 1)(2k + 3)} + \dfrac{1}{(2k + 1)(2k + 3)} =\\
+\dfrac{k (2k + 3) + 1}{(2k + 1)(2k + 3)} =\\
+\dfrac{2k^2 + 3k + 1}{(2k + 1)(2k + 3)} =\\
+\dfrac{(2k + 1)(k + 1)}{(2k + 1)(2k + 3)} =\\
+\dfrac{k + 1}{2k + 3}
+\end{align*}
+Thus, we got that $b_{k + 1} = \dfrac{k + 1}{2k + 3}$ which concludes our proof.
+\end{quote}
 \begin{flushright}
 \textit{Q.E.D.}
 \end{flushright}
+
+\item[(d)]
+Show that the infinite series $\displaystyle\sum_{n=1}^{\infty}\dfrac{1}{4n^2 - 1}$ converges and determine its sum.
+\begin{quote}
+Since we now know that $b_n = \dfrac{n}{2n + 1}$, then we have:
+\begin{align*}
+\lim_{n \rightarrow \infty}\displaystyle\sum_{n=1}^{\infty} \dfrac{1}{4n^2 - 1} = \lim_{n \rightarrow \infty}\dfrac{n}{2n + 1}\\
+\lim_{n \rightarrow \infty}\dfrac{n}{2n + 1} = \lim_{n \rightarrow \infty}\dfrac{1}{2 + \dfrac{1}{n}} = \dfrac{1}{2}
+\end{align*}
+Hence, we found that the sum has a limit when $n \rightarrow \infty$ which is $\dfrac{1}{2}$ and thus, the series converges.
+Finally, it converges and the sum's it's limit when $n$ approaches infinity is $\dfrac{1}{2}$.
+\end{quote}
+\end{itemize}
+
+\item[]
+
+\item[13.]
+Let $c_n = 1^3 + ... + n^3$.
+\begin{itemize}
+\item[(a)]
+\begin{align*}
+c_1 = 1^3 = 1\\
+c_2 = 1^3 + 2^3 = 1 + 8 = 9\\
+c_3 = 1^3 + 2^3 + 3^3 = 1 + 8 + 27 = 36\\
+c_4 = 1^3 + 2^3 + 3^3 + 4^3 = 1 + 8 + 27 + 64 = 100\\
+c_5 = 1^3 + 2^3 + 3^3 + 4^3 5^3 = 1 + 8 + 27 + 64 + 125 = 225
+\end{align*}
+\begin{quote}
+
+\item[]
+
+\item[(b)]
+Conjecture a closed formula for $c_n$.
+\begin{quote}
+I conjectured that $c_n = \dfrac{n^2(n + 1)^2}{4}$.\\
+Here is why:\\\\
+\begin{align*}
+c_{\underbar 1} = 1 = \dfrac{\underbar 1^2(\underbar 1 + 1)^2}{4}\\
+c_{\underbar 2} = 9 = \dfrac{\underbar 2^2(\underbar 2 + 1)^2}{4}\\
+c_{\underbar 3} = 36 = \dfrac{\underbar 3^2(\underbar 3 + 1)^2}{4}\\
+c_{\underbar 4} = 100 = \dfrac{\underbar 4^2(\underbar 4 + 1)^2}{4}\\
+c_{\underbar 5} = 225 = \dfrac{\underbar 5^2(\underbar 5 + 1)^2}{4}
+\end{align*}
+\end{quote}
+
+\item[]
+
+\item[(c)]
+Prove your conjecture.
+\begin{quote}
+Let's prove this conjecture using mathematical induction. Thus, we first need to check the base case
+and the proceed by proving an inductive hypothesis.\\\\
+Base case: let $n = 1$, then $c_1 = \dfrac{\underbar 1^2(\underbar 1 + 1)^2}{4} = 1$ which is correct
+thus, this finishes the base case check.\\\\
+Inductive hypothesis: suppose that $c_k = \dfrac{k^2(k + 1)^2}{4}$ where $k \geq 1$ and prove that
+$c_{k + 1} = \dfrac{(k + 1)^2(k + 2)^2}{4}$.\\\\
+According to our assumption in the inductive hypothesis, we have:
+\begin{align*}
+c_{k + 1} = c_k + (k + 1)^3 = \dfrac{k^2(k + 1)^2}{4} + (k + 1)^3 =\\
+\dfrac{k^2(k + 1)^2 + 4(k + 1)^3}{4} =\\
+\dfrac{(k + 1)^2(k^2 + 4(k + 1))}{4} =\\
+\dfrac{(k + 1)^2(k^2 + 4k + 4)}{4} =\\
+\dfrac{(k + 1)^2(k + 2)^12}{4}
+\end{align*}
+Thus, we got that $c_{k + 1} = \dfrac{(k + 1)^2(k + 2)^2}{4}$ which concludes our proof.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+\end{quote}
+\end{itemize}
+
+\item[]
+
+\item[16.]
+Conjecture and prove a closed formula for the product $(1 - 1/4) \times (1 - 1/9) \times ... \times (1 - 1/n^2)$.
+\begin{quote}
+I conjectured that $P_n = \dfrac{n + 1}{2n}$ for $n \geq 2$.\\
+Here is why:\\
+\begin{align*}
+P_{\underbar 1} = 1 - 1/4 = 3/4 = \dfrac{\underbar 2 + 1}{2 \times \underbar 2}\\
+P_{\underbar 2} = (1 - 1/4) \times (1 - 1/9) = 3/4 \times 8/9 = 2/3 = \dfrac{\underbar 3 + 1}{2 \times \underbar 3}\\
+P_{\underbar 3} = (1 - 1/4) \times (1 - 1/9) \times (1 - 1/16) = 3/4 \times 8/9 \times 15/16 = 5/8 = \dfrac{\underbar 4 + 1}{2 \times \underbar 4}\\
+\end{align*}
+
+Now, let's prove it using mathematical induction.\\\\
+Base case: let $n = 2$, then $\dfrac{\underbar 2 + 1}{2 \times \underbar 2} = 1/4$ which is true.
+Hence the base case is checked.\\\\
+Inductive hypothesis: suppose that for $k \geq 1$, $P_k = \dfrac{k + 1}{2k}$. Then we have
+to show that $P_{k + 1} = \dfrac{k + 2}{2(k + 1)}$.\\\\
+We get:
+\begin{align*}
+P_{k + 1} = P_k \times (1 - \dfrac{1}{(k + 1)^2}) =\\
+\dfrac{k + 1}{2k} \times (1 - \dfrac{1}{(k + 1)^2}) =\\
+\dfrac{k + 1}{2k} \times \dfrac{k^2 + 2k}{(k + 1)^2} =\\
+\dfrac{k + 2}{2(k + 1)}
+\end{align*}
+Thus, we proved that $P_{k + 1} = \dfrac{k + 2}{2(k + 1)}$ which concludes our proof by indunction.
+\end{quote}
+
+\item[18.]
+Prove: For every positive integer $n$, 5 divides $n^5 - n$.
+\begin{itemize}
+\item[(b)]
+\begin{quote}
+Let's prove it using induction. Then we need a base case and an inductive hypothesis.\\\\
+Base case: let $n = 1$, then $1^5 - 1 = 0$ and 0 is indeed divisible by 5 thus the base case is checked.\\\\
+Inductive hypothesis: suppose that $k^5 - k$, where $k \geq 1$, is divisible by 5 and prove that $(k + 1)^5 - (k + 1)$
+is also divisible by 5.\\\\
+We have:
+\begin{align*}
+(k + 1)^5 - (k + 1) = (k + 1)((k + 1)^4 - 1) =\\
+(k + 1)(((k + 1)^2)^2 - 1) =\\
+(k + 1)((k^2 + 2k + 1)^2 - 1) =\\
+(k + 1)(k^4 + 4k^2 + 1 + 4k^3 + 4k + 2k^2 - 1) =\\
+(k + 1)(k^4 + 4k^3 + 6k^2 + 4k) =\\
+k^5 + 4k^4 + 6k^3 + 4k^2 + k^4 + 4k^3 + 6k^2 + 4k =\\
+k^5 + 5k^4 + 10k^3 + 10k^2 + 4k
+\end{align*}
+Thus, we got that $(k + 1)^5 - (k + 1) = k^5 + 5k^4 + 10k^3 + 10k^2 + 4k$. Since $5k^4 + 10k^3 + 10k^2$
+is divisible by 5 we only have to prove that $k^5 + 4k$ is divisible by 5 so that then their sum: $5k^4 + 10k^3 + 10k^2 + k^5 + 4$
+is equal to $(k + 1)^5 - (k + 1)$ and is divisible by 5.\\\\
+Now, notice that $k^5 + 4k = k^5 - k + 5k$. According to our assumption in the inductive hypothesis, $k^5 - k$ is divisible
+by 5 and $5k$ is five times integer positive $k$ thus, is also a multiple of 5. Then, we have that $k^5 + 4k$ is the sum of
+two numbers which are divisible by 5 and $k^5 + 4k$ is itself divisible by 5.\\\\
+Thus, we got that $(k + 1)^5 - (k + 1)$ is divisible by 5 which concludes our proof.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+\end{itemize}
 \end{itemize}
 \end{document}
