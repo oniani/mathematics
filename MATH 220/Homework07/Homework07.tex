@@ -65,7 +65,6 @@ are both divisible by 5.
 \end{quote}
 
 \item[]
-\item[]
 
 \item[44.]
 Prove that for $n \in \intzp$, we have $1^2 + 2^2 + 3^2 + ... + n^2 = \dfrac{n(n + 1)(2n + 1)}{6}$.
@@ -92,7 +91,6 @@ our proof.
 \end{quote}
 
 \item[]
-\item[]
 
 \item[45.]
 Prove that for all $n \in \intzp$, $2^{n + 2} + 3^{2n + 1}$ is divisible by 7.
@@ -117,7 +115,6 @@ Hence, we proved the inductive hypothesis and it concludes our proof.
 \end{quote}
 
 \item[]
-\item[]
 
 \item[46.]
 Let $F_n$ denote the $n^{th}$ Fibonacci number. Prove that $\displaystyle\sum_{k=1}^{n} F^2_k = F_nF_{n + 1}$.
@@ -141,8 +138,6 @@ Finally, if $F_n$ denotes the $n^{th}$ Fibonacci number, $\displaystyle\sum_{k=1
 \end{quote}
 
 \item[]
-\item[]
-\item[]
 
 \item[47.]
 Prove that for all $n \in \intzp_{\geq 12}$ we have $n! \geq 5^n$.
@@ -150,9 +145,79 @@ Prove that for all $n \in \intzp_{\geq 12}$ we have $n! \geq 5^n$.
 To prove the statement above, we can use induction. We need to have a base case as well as an inductive hypothesis.\\\\
 Base case: let $n = 12$, then we have $12! > 5^{12}$ which is true since $12! = 479001600$ and $5^{12} = 244140625$ (thus $12! > 5^{12}$).\\\\
 Inductive hypothesis: suppose that for every $k \in \intzp_{\geq 12}$ we have $k! \geq 5^k$ and prove that $(k + 1)! > 5^{k + 1}$.\\\\
-HAVE TO FINISH THIS.
+Since we assumed that $k! \geq 5^k$, by multiplying both sides on $k + 1$, we have $(k + 1)! \geq 5^k (k + 1)$.
+Now, since $k \geq 12$, we know that $k + 1 \geq 13 > 5$ and thus, since $(k + 1)! \geq 5^k (k + 1)$, we also know that
+$(k + 1)! \geq 5^{k + 1}$.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
 \end{quote}
 
+\item[]
+
+\item[48.]
+Suppose that $x \neq 0$ is a real number and $x + \dfrac{1}{x} \in \intz$.
+Prove that $x^n + 1/x^n \in \intz$ for all $n \in \intzp$. (Hint: $(x + \dfrac{1}{x})(x^n + \dfrac{1}{x^n})$ is probably nicer than you think!).
+\begin{quote}
+Let's use induction to prove this. Hence, we need the base case and an inductive hypothesis.\\\\
+Base case: if $x = 1$, $x + \dfrac{1}{x} = 1 + \dfrac{1}{1} = 2$ thus, we have that if $x = 1$
+$x + \dfrac{1}{x}$ is also in $\intz$. Now, we have to check $x^n + \dfrac{1}{x^n}$.
+$x^n + \dfrac{1}{x^n} = 1^n + \dfrac{1}{1^n} = 1 + \dfrac{1}{1} = 2$ and the base case is checked.\\\\
+Now, we have to come up with an inductive hypothesis.\\
+Inductive hypothesis is that if $y \neq 0$ and $y + \dfrac{1}{y} \in \intz$, we have $y^m + \dfrac{1}{y^m} \in \intz$ and we have to prove that for all $m \in \intzp$,
+$y^{m + 1} + \dfrac{1}{y^{m + 1}} \in \intz$.\\\\
+Notice that
+$$(y + 1/y)(y^m + 1/y^m) =  y^{m + 1} + \dfrac{1}{y^{m + 1}} + y^{m - 1} + \dfrac{1}{y^{m - 1}}$$
+and
+$$y^{m + 1} + \dfrac{1}{y^{m + 1}} = \underbrace{(y + \dfrac{1}{y})(y^m + \dfrac{1}{y^m})}_{\mbox{we know it's an integer}} - \underbrace{(y^{m - 1} + \dfrac{1}{y^{m - 1}})}_{\mbox{it's an integer too}}$$
+By the assumption we made in the inductive hypothersis, we know that $(y + \dfrac{1}{y})(y^m + \dfrac{1}{y^m})$ is an integer.
+According to our assumption, $y^{m - 1} + \dfrac{1}{y^{m - 1}}$ is also an integer and if we subtract one integer from the other, we always end up with an integer.
+Thus, $y^{m + 1} + \dfrac{1}{y^{m + 1}} = (y + \dfrac{1}{y})(y^m + \dfrac{1}{y^m}) - (y^{m - 1} + \dfrac{1}{y^{m - 1}})$ which means that $y^{m + 1} + \dfrac{1}{y^{m + 1}}$
+is an integer and this concludes our proof.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+{\Large Bookwork}
+\item[]
+\item[5.]
+Show: $n^2 \leq 2^n$ for each integer $n \geq 4$.
+\begin{quote}
+Let's use induction.\\\\
+Base case: let $n = 4$, then $2^4 \leq 2^4$ which is equivalent to $16 \leq 16$ which is true
+thus, the base case check is done.\\\\
+Inductive hypothesis: suppose that for $k \geq 4$, $k^2 \leq 2^k$ and prove that $(k + 1)^2 \leq 2^{k + 1}$.\\\\
+Notice that since we assumed that $k^2 \leq 2^k$ for $k \geq 4$, we have effectively assumed that $2k^2 \leq 2^{k + 1}$.
+Thus, if we now prove that for $k \geq 4$, $2k^2 \geq (k + 1)^2$, the proof is done. So, let's just solve the inequality $k \geq 4$, $2k^2 \geq (k + 1)^2$
+and see if it is true for $k \geq 4$. We have:
+\begin{align}
+2k^2 \geq (k + 1)^2\\
+2k^2 \geq k^2 + 2k + 1\\
+k^2 \geq 2k + 1\\
+k^2 - 2k - 1 \geq 0\\
+(k - (1 + \sqrt{2}))(k - (1 - \sqrt{2})) \geq 0
+\end{align}
+And finally, we get that $k \in (-\infty, 1 - \sqrt{2}) \cup (1 + \sqrt{2}, +\infty)$.
+Now, notice that $4 > 1 + \sqrt{2}$ and thus, for all $k \geq 4$, this inequality holds
+and this concludes our proof.
+\end{quote}
+
+\item[]
+\item[12.]
+Let $b_n = 1/3 + 1/15 + ... + 1/(4n^2 - 1)$.
+\begin{itemize}
+\item[(a)]
+Compute $b_1, b_2, b_3, b_4, \mbox{ and } b_5$.
+\begin{quote}
+
+$b_1 = \dfrac{1}{4 \times 1^2 - 1} = 1/3$\\
+$b_2 = b_1 + \dfrac{1}{4 \times 2^2 - 1} = 1/3 + 1/15 = 2/3$\\
+$b_3 = b_1 + b_2 + \dfrac{1}{4 \times 3^2 - 1} = 1/3 + 1/15 + 1/35 = 73/105$\\
+$b_4 = b_1 + b_2 + b_3 + b_4 = 73/105 + \dfrac{1}{4 \times 4^2 - 1} = 73/105 + 1/63 = 56/2205$
+$b_5 = b_1 + b_2 + b_3 + b_4 + \dfrac{1}{4 \times 5^2 - 1} = 56/2205 + 1/99 = 861/24255$.
+\end{quote}
+\end{itemize}
 \begin{flushright}
 \textit{Q.E.D.}
 \end{flushright}
