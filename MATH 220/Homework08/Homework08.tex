@@ -148,6 +148,9 @@ then, we can have a set $L = \{1, p - 2\}$ which is a $P_3$-set because $1 + 1 +
 \begin{itemize}
 If a subset $S$ of $\mathbb{Z}^+$ is a $P_3$-set then the \textbf{core} of $S$ is the set
 $$\mbox{core}(S) := \{s \in S \mid S - \{s\} \mbox{ is not a $P_3$-set}\}.$$
+
+\item[]
+
 \item[(a)]
 What is the core of $S = \{2, 3, 6\}$?
 \begin{quote}
@@ -198,15 +201,16 @@ Thus, we end up with a set core$(S) = \{3\}$ which is not a $P_3$-set since 3 + 
 Prove or Disprove: If $S$ and $T$ are $P_3$-sets then core$(S \cup T) \subseteq \mbox{ core}(S) \cap \mbox{ core}(T)$.
 \begin{quote}
 It's true, let's prove it. Suppose, for the sake of contradiction, that for some two $P_3$-sets $S_1$ and $S_2$,
-$\mbox{ core}(S_1) \ \cap \mbox{ core}(S_2) \subset  \mbox{ core}(S_1 \cup S_2)$. Then we know that there exists $x \in$ core$(S_1 \cup S_2)$ such that $x \notin \mbox{ core}(S_1) \ \cap \mbox{ core}(S_2)$. Now, since $x \in \mbox{ core}(S_1) \cap \mbox{ core}(S_2)$, it means that $x \in \mbox{ core}(S_1)$ and $x \in \mbox{ core}(S_2)$.
+$\mbox{ core}(S_1) \ \cap \mbox{core}(S_2) \subset  \mbox{core}(S_1 \cup S_2)$. Then we know that there exists $x \in$ core$(S_1 \cup S_2)$ such that $x \notin \mbox{core}(S_1) \ \cap \mbox{core}(S_2)$. Now, since $x \in \mbox{core}(S_1) \cap \mbox{ core}(S_2)$, it means that $x \in \mbox{core}(S_1)$ and $x \in \mbox{core}(S_2)$.
 \end{quote} 
 
 \item[]
 \item[(f)]
 Prove or Disprove: If $S$ and $T$ are $P_3$-sets with $S \subseteq T$ then we have $\mbox{core}(T) \subseteq \mbox{ core}(S)$.
-5, 7  5, 7, 9
-
-Blah... 3 EXERCISES LEFT HERE TO FINISH.
+\begin{quote}
+Suppose $S_1$ and $S_2$ are two $P_3$-sets and $S_1 \subseteq S_2$. Then for all $x \in S_1$, $x \in S_2$.
+If there are $k$ elements in core$(S_1)$, it means that core$(S_2)$ will 
+\end{quote}
 \end{itemize}
 
 \item[]
@@ -251,10 +255,21 @@ Since we know that $S$ is a threequaline set, for every $x, y \in S$, $x - y$ is
 \item[(d)]
 Prove that if $S$ and $T$ are threequaline and $S \ \cap \ T \neq \emptyset$ then $S \ \cup \ T$ is threequaline.
 \begin{quote}
-Let's prove the contrapositive. The contrapositive of the statement is:
-prove that if $S$ and $T$ are threequaline and $S \ \cup \ T$ is not a threequaline, then  $S \cap T = \emptyset$. Suppose, $S_1$ and $S_2$ are two threequaline sets and also suppose that $S_1 \cup S_2$ is not a threequaline set. Then there exist $x, y$ in $S_1 \cup S_2$ such that $x - y$ is not a multiple of 3. Since $S_1$ and $S_2$ are both threequaline, we also know that both $x$ and $y$ cannot be a part the same set whether its $S_1$ or $S_2$. Let $x$ be an element of $S_1$ (we could do it with $S_2$ as well, it is arbitrary), then we know that $S_1$ has some element $z$ such that $x - z$ is a multiple of 3. On the other hand, it cannot be in $S_2$ because then it must also have $x$ then which cannot be the case.
-
-FINISH this!!!
+Suppose, for the sake of contradiction, that $S_1$ and $S_2$ are threequaline sets and $S_1 \ \cap \ S_2 \neq \emptyset$ and let's prove that
+$S_1 \ \cup \ S_2$ is not a threequaline. Since $S_1 \cap S_2 \neq 0$, there exists element $x$, such that $x \in S_1$ and $x \in S_2$.
+Let's consider the following cases:\\\\
+Case I : $x$ is divisible by 3, thus $x = 3k$ where $k \in \mathbb{Z}$\\
+Case II: $x$ gives remainder of 1 when divided by 3, thus $x = 3k + 1$ where $k \in \mathbb{Z}$\\
+Case III: $x$ gives remainder of 2 when divided by 3, thus $x = 3k + 2$ where $k \in \mathbb{Z}$\\\\
+In Case I, if $x = 3k$, then all the other elements of $S_1$ as well as $S_2$ must be of the type $3l$ where $l \in \mathbb{Z}$
+and all the elements in the union of $S_1$ and $S_2$ will be the multiples of 3 which means that for all $i, j \in S_1 \cup S_2$,
+$i - j$ is a multiple of 3. And we reached the contradiction.\\\\
+In Case II, if $x = 3k + 1$, then all the other elements of $S_1$ as well as $S_2$ must be of the type $3l + 1$ where $l \in \mathbb{Z}$
+and all the elements in the union of $S_1$ and $S_2$ will be the multiples of 3 plus 1 which means that for all $i, j \in S_1 \cup S_2$,
+$i - j$ is a multiple of 3. And we reached the contradiction.\\\\
+In Case II, if $x = 3k + 2$, then all the other elements of $S_1$ as well as $S_2$ must be of the type $3l + 2$ where $l \in \mathbb{Z}$
+and all the elements in the union of $S_1$ and $S_2$ will be the multiples of 3 plus 2 which means that for all $i, j \in S_1 \cup S_2$,
+$i - j$ is a multiple of 3. And we reached the contradiction.
 \end{quote}
 \end{itemize}
 
@@ -273,7 +288,7 @@ Give some examples of sets that are and are not crunched.
 $S_1 = \{1\}$ is crunched as for all $x \in S$, $0 < x < 2$ ($m = 0, n = 2$).\\
 $S_2 = \{1, 2, 3\}$ is crunched as for all $x \in S$, $0 < x < 4$ ($m = 0, n = 4$).\\
 $S_3 = \mathbb{Z^+}$ is not crunched as it has no bounds and we cannot find $m, n$ such that for all $x \in \mathbb{Z^+}, m< x < n$.\\
-$S_4 = \mathbb{2,4,6 ...}$ (a set of positive even numbers) is not crunched as it has no upper bound and we cannot find $n$ such that for all $x \in \mathbb{Z^+}, m< x < n$ (note: we can find $m$. $m$ can be any integer that is less than or equal to 1 but $n$ cannot be fixed).
+$S_4 = \{2,4,6 ...\}$ (a set of positive even numbers) is not crunched as it has no upper bound and we cannot find $n$ such that for all $x \in \mathbb{Z^+}, m< x < n$ (note: we can find $m$. $m$ can be any integer that is less than or equal to 1 but $n$ cannot be fixed).
 \end{quote}
 
 \item[]
@@ -313,17 +328,205 @@ It's true. Suppose $S$ is a crunched set. Then we know that for all $x \in S$, t
 Prove or Disprove: The union of two crunched sets is crunched.
 \begin{quote}
 Suppose $S_1$ and $S_2$ are two crunched sets.
-Then we know that for all $x_1 \in S_1$, $m_1 < x_1 < n_1$ and for all $x_2 \in S_2$, $m_2 < x_1 < n_2$. Then, for all $z$ in $S_1 \cup S_2, max(m_1, m_2) < z < max(n_1, n_2)$ which means that $S_1 \cup S_2$ is bounded.
+Then we know that for all $x_1 \in S_1$, $m_1 < x_1 < n_1$ and for all $x_2 \in S_2$, $m_2 < x_1 < n_2$. Then, for all $z$ in $S_1 \cup S_2, max(m_1, m_2) < z < max(n_1, n_2)$ which means that $S_1 \cup S_2$ is crunched.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[57.]
+We call a finite subset $S$ of $\mathbb{Z}$ \textbf{balanced} if
+$|\mathbb{Z}^+ \cap S| = |\mathbb{Z}^- \cap S|.$ (Recall that $\mathbb{Z}^- = \{-1, -2, -3, ...\})$.
+\\\\
+NOTE: This statement really means that if $A$ is balanced, the number of positive elements in it equals
+the number of negative elements in it.
+\begin{itemize}
+\item[]
+\item[(a)]
+Prove or Disprove: If $A$ is a balanced set then so is $A \cup \{0\}$.
+\begin{quote}
+It's true. Let's prove it.\\
+Suppose $A$ is a balanced set, then we know that $|\mathbb{Z}^+ \cap A| = |\mathbb{Z}^- \cap A|$.
+Now, since $0 \notin \mathbb{Z}^+$ and $0 \notin \mathbb{Z}^-$, it means that
+$\mathbb{Z}^+ \cap A = \mathbb{Z}^+ \cap (A \cup \{0\})$ and
+$\mathbb{Z}^- \cap A = \mathbb{Z}^- \cap (A \cup \{0\})$
+and finally, $|\mathbb{Z}^+ \cap A \cup \{0\}| = |\mathbb{Z}^- \cap (A \cup \{0\})|$
+Thus, if $A$ is a balanced set then so is $A \cup \{0\}$.
 \begin{flushright}
 \textit{Q.E.D.}
 \end{flushright}
 \end{quote}
 
 \item[]
+
+\item[(b)]
+Prove or Disprove: The union of two balanced sets is balanced.
+\begin{quote}
+It's false. Counterexample: let $S_1 = \{-1, 1\}$ and $S_2 = \{-1, 5\}$.
+Then $S_1$ is balanced since $\mathbb{Z}^+ \cap S_1 = \{1\}$ and $\mathbb{Z}^- \cap S_1 = \{-1\}$ which
+means that $|\mathbb{Z}^+ \cap S_1| = |\mathbb{Z}^- \cap S_1| = 1$. $S_2$ is balanced too since
+$\mathbb{Z}^+ \cap S_2 = \{5\}$ and $\mathbb{Z}^- \cap S_2 = \{-1\}$ which means that
+$|\mathbb{Z}^+ \cap S_2| = |\mathbb{Z}^- \cap S_2| = 1$. On the other hand, set $S_1 \cup S_2$ is not balanced
+since $S_1 \cup S_2 = \{-1, 1, 5\}$ and $|\mathbb{Z}^+ \cap (S_1 \cup S_2)| = 2$ while $|\mathbb{Z}^- \cap (S_1 \cup S_2)| = 1$.
+\end{quote}
+
 \item[]
 
+\item[(c)]
+Prove or Disprove: The intersection of two balanced sets is balanced. 
+\begin{quote}
+It's false. Counterexample: let $S_1 = \{-1, 1\}$ and $S_2 = \{-1, 5\}$.
+Then $S_1$ is balanced since $\mathbb{Z}^+ \cap S_1 = \{1\}$ and $\mathbb{Z}^- \cap S_1 = \{-1\}$ which
+means that $|\mathbb{Z}^+ \cap S_1| = |\mathbb{Z}^- \cap S_1| = 1$. $S_2$ is balanced too since
+$\mathbb{Z}^+ \cap S_2 = \{5\}$ and $\mathbb{Z}^- \cap S_2 = \{-1\}$ which means that
+$|\mathbb{Z}^+ \cap S_2| = |\mathbb{Z}^- \cap S_2| = 1$. On the other hand, $S_1 \cap S_2$ is not balanced
+since $S_1 \cap S_2 = \{-1\}$ and $|\mathbb{Z}^+ \cap (S_1 \cap S_2)| = \emptyset$ while $|\mathbb{Z}^- \cap (S_1 \cap S_2)| = 1$.
+\end{quote}
 
+\item[]
+
+\item[(d)]
+Prove or Disprove: For every $n \in \mathbb{Z}^+$ there exists a balanced set $S$ with exactly $n$ elements.
+\begin{quote}
+It's true. Let's prove it by construction. Let $S$ be a set and for all $n \in \mathbb{Z}^+$, dump in some elements to make it balanced.
+If $n$ is even, then we take $n/2$ elements that are positive
+and $n/2$ elements that are negative which will give us a balanced set since $|\mathbb{Z}^+ \cap S| = |\mathbb{Z}^- \cap S|$.
+If $n$ is odd, then we can throw in $0$ and then take $(n - 1)/2$ positive elements and $(n - 1)/2$ negative elements.
+This will guarantee that $|\mathbb{Z}^+ \cap S| = |\mathbb{Z}^- \cap S|$ since there will be exactly same number of positive and negative
+elements while 0 is neither in $\mathbb{Z}^+$, nor in $\mathbb{Z}^-$.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[]
+
+\item[(e)]
+If $A$ is a subset of $\mathbb{Z}$ we denote by $\overline{A}$ the set $\{-a \ | \ a \in A\}$. Prove or Disprove:
+For every finite subset of $A$ of $\mathbb{Z}$, the set $A \cup \overline{A}$ is balanced.
+\begin{quote}
+It's true. Let's prove it by cases.\\\\
+Case I: suppose that $A$ is a subset of $\mathbb{Z}$ such that it does not contain 0.\\
+Case II: suppose that $A$ is a subset of $\mathbb{Z}$ such that it does contain 0.
+\\\\\\
+Proof of Case I: If $A$ is a subset of $\mathbb{Z}$ such that it does not contain 0, we know that for all $x \in A$,
+we have $-x \in \overline{A}$. This means that the number of negative elements in $A \cup \overline{A}$
+will be equal to the number of positive elements in $A \cup \overline{A}$ and because of this,
+$|\mathbb{Z}^+ \cap (A \cup \overline{A})| = |\mathbb{Z}^- \cap (A \cup \overline{A})|$.\\
+
+Proof of Case II: If $A$ is a subset of $\mathbb{Z}$ such that it does contain 0, for all $x \in A$,
+we have $-x \in \overline{A}$. This means that if we took out 0 out of $A \cup \overline{A}$, the number
+of positive and negative elements in $A \cup \overline{A}$ would be equal. On the other hand, 0 plays no role
+in determining whether $|\mathbb{Z}^+ \cap (A \cup \overline{A})| = |\mathbb{Z}^- \cap (A \cup \overline{A})|$
+or not because $0 \notin \mathbb{Z}^+$ and $0 \notin \mathbb{Z}^-$. Thus, $|\mathbb{Z}^+ \cap (A \cup \overline{A})| = |\mathbb{Z}^- \cap (A \cup \overline{A})|$.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[]
+
+\item[(f)]
+Prove or Disprove: If $A$ is balanced and $|A|$ is odd, then $0 \in A$.
+\begin{quote}
+It's true so let's prove it. Suppose, for the sake of contradiction, that $A$ is balanced
+and $|A|$ is odd, but $0 \notin A$. Now, since $|A|$ is odd, it means that there is no way
+to have the number of positive elements be equal to the number of negative elements and we've
+reached a contradiction.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
 \end{itemize}
+
+\item[]
+\item[]
+
+\item[58.]
+We call a subset $S$ of $\mathbb{R}$ \textbf{positively scattered} if for every $x \in S$
+there exists $y \in \mathbb{R}$ such that $y > x$ and $S \cap (x,y] = \emptyset$. 
+\begin{itemize}
+\item[(a)]
+Is $\mathbb{Z}^+$ positively scattered? 
+\begin{quote}
+It is. Let's prove it by construction. If we take some element $x \in \mathbb{Z}^+$, then we know that it is positive.
+If $y > x$, we know that $y$ is also positive and let $y = x + 0.1$. Then, we know that interval $(x, x + 0.1]$
+contains no positive integers and thus, $\mathbb{Z}^+ \cap (x, x + 01] = \emptyset$. Hence, for all $e \in \mathbb{Z}$, we can
+construct $(e, e+0.1]$ (there are no positive integers in this interval) and finally, $\mathbb{Z}^+$ is indeed positively\
+scattered.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[]
+
+\item[(b)]
+Is $[2, 3]$ positively scattered? 
+\begin{quote}
+It is not. Suppose, for the sake of contradiction, that for all $x \in [2, 3]$, there
+exists $y$ such that $y > x$ and $[2, 3] \cap (x, y] = \emptyset$. Now, since the condition
+holds for all $x \in [2, 3]$ and $[2, 3]$ is a closed interval, it should hold for 2 as well.
+Then, let $x = 2$. If the condition holds for $x = 2$, it means that we can find $y > x$ such
+that $[2, 3] \cap (2, y] = \emptyset$. Since $y > x$, $y = 2 + t$ where $t > 0$. Thus,
+we have $[2, 3] \cap (2, 2 + t] = \emptyset$, but this is impossible and to see why, let's
+consider two cases:\\\\
+Case I: $t \geq 1$\\
+Case I: $0 < t <  1$\\\\
+If $t \geq 1$, it means that $[2, 3] \cap (2, 2 + t] = (2, 3]$ and we have reach the contradiction.\\\\
+If $0 < t < 1$, it means that $[2, 3] \cap (2, 2 + t] = (2, 2 + t]$ and interval $(2, 2 + t)$ is obviously infinite. Thus, we have, once again, reached the contradiction.\\\\
+Thus, in all cases we've reached the contradiction and $[2, 3]$ is not positively scattered.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[]
+
+\item[(c)]
+Is $\{\dfrac{1}{n} \ | \ n \in \mathbb{Z}^+\}$ positively scattered?
+\begin{quote}
+It is. Let's prove it by construction. Let $x \in \{\dfrac{1}{n} \ | \ n \in \mathbb{Z}^+\}$, then
+we know that $x = \dfrac{1}{k}$ where $k \in \mathbb{Z}^+$. Now, let's take $y = \dfrac{1}{k + 0.5}$.
+Then, we know that $\{\dfrac{1}{n} \ | \ n \in \mathbb{Z}^+\} \cap (\dfrac{1}{k}, \dfrac{1}{k + 0.5}] = \emptyset$
+because $n$ is always an integer and there are no integer denominators in the interval $(k, k + 0.5]$.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[]
+
+\item[(d)]
+Is $\{\dfrac{1}{n} \ | \ n \in \mathbb{Z}^+\} \cup \{0\}$ positively scattered? 
+\begin{quote}
+It is not. Suppose, for the sake of contradiction, that $\{\dfrac{1}{n} \ | \ n \in \mathbb{Z}^+\} \cup \{0\}$
+is scattered. Then for all $x \in \{\dfrac{1}{n} \ | \ n \in \mathbb{Z}^+\} \cup \{0\}$, there exist
+$y > x$, such that $(\{\dfrac{1}{n} \ | \ n \in \mathbb{Z}^+\} \cup \{0\}) \cap (x,y] = \emptyset$.
+If the condition holds for all $x \in \{\dfrac{1}{n} \ | \ n \in \mathbb{Z}^+\} \cup \{0\}$, it should hold
+for $x = 0$ too ($x = 0$ is the member of the set as well as the set contains element 0).\\
+If $x = 0$, there must exist $y > 0$ such that $(\{\dfrac{1}{n} \ | \ n \in \mathbb{Z}^+\} \cup \{0\}) \cap (0,y] = \emptyset$.
+This, however, is impossible since the interval $(0, y]$ is infinite and we can always find $n$ for which
+$\dfrac{1}{n} \in (0, y]$. Thus, we've reached the contradiction.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[]
+
+\item[(e)]
+Prove or Disprove: A subset of a positively scattered set is positively scattered.
+\begin{quote}
+
+\end{quote}
+\end{itemize}
+
+
 
 \end{itemize} 
 
