@@ -1,0 +1,330 @@
+\documentclass[12pt, a4paper]{article}                      % use "amsart" instead of "article" for AMSLaTeX format
+\usepackage[a4paper,margin=1in]{geometry}                   % Adjust margins
+\usepackage{amsmath,amssymb,listings,color,textcomp,adjustbox,tikz,pgfplots}        % Math packages: amsmath, amssymb, listings, color
+\usepgfplotslibrary{external,fillbetween}
+\pgfplotsset{compat=1.14}
+\usepackage[makeroom]{cancel}
+\title{\bf{Homework \textnumero 8}}
+\author{Author: David Oniani
+\\
+\ \ \ Instructor: Tommy Occhipinti}
+\date{October 20, 2018}
+
+\usepackage{listings}
+\usepackage{color}
+
+\newcommand{\natn}{\mathbb{N}}
+\newcommand{\intz}{\mathbb{Z}}
+\newcommand{\intzp}{\mathbb{Z^+}}
+\newcommand{\intzn}{\mathbb{Z^-}}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+backgroundcolor=\color{backcolour},
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=left,
+numberstyle=\normalsize\color{gray},
+keywordstyle=\color{blue},
+commentstyle=\color{dkgreen},
+stringstyle=\color{mauve},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=4
+}
+
+
+\begin{document}
+\maketitle
+
+{\Large Additional Proof Practice}
+\\\\
+\begin{itemize}
+\item[53.]
+A subset $S$ of $\mathbb{Z}^{+}$ is called a $P_3$\textbf{-set} if there exists (not necessarily distinct) elements
+$x, y, z \in S$ such that $x + y + z$ is prime.
+
+\begin{itemize}
+\item[(a)]
+Give some examples of $P_3$-sets.
+\begin{quote}
+$\{1\}$ because 1 + 1 + 1 = 3 is a prime.\\
+$\{2, 3\}$ because 2 + 3 = 5 is a prime.\\
+$\{12, 25, 30\}$ because 12 + 25 + 30 = 67 is a prime.
+\end{quote}
+
+\item[]
+
+\item[(b)]
+Prove or Disprove: If $A$ is a $P_3$-set, and $A \subseteq B \subseteq \mathbb{Z}^+$, then $B$ is a $P_3$-set.
+\begin{quote}
+It's right so let's prove it.
+Since we know that $A$ is a $P_3$-set, we know there exist elements (not necessarily distinct) $x,y$ and $z$ such that
+$x + y + z$ is prime.\ Since $A \subseteq B$, we know that all elements of $A$ are also in $B$ meaning that $x,y$ and $z$
+are in $B$ as well and there exist elements $x,y,z$ (which are also in $A$) such that $x + y + z$ is a prime.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[]
+
+\item[(c)]
+Prove or Disprove: If $S$ is a $P_3$-set, then so is $S_{+3} := \{x + 3 \mid x \in S\}$.
+\begin{quote}
+It's false. Counterexample: Let $S = \{1\}$, then we know that $S$ is a $P_3$-set since $1 + 1 + 1 = 3$
+is a prime. However, $S_{+3} = \{4\}$ and $4 + 4 + 4 = 12$ which is certainly composite.
+\end{quote}
+
+\item[]
+
+\item[(d)]
+Prove or Disprove: Every $P_3$ set contains a prime.
+\begin{quote}
+False. Let $S = \{1\}$, then 1 is not a prime but $1 + 1 + 1 = 3$ is a prime.
+\end{quote}
+
+\item[]
+
+\item[(e)]
+Prove or Disprove: The intersection of two $P_3$-sets is a $P_3$-set.
+\begin{quote}
+It's false. Let $A = \{1\}$, then $A$ is $P_3$-set since 1 + 1 + 1 = 3 is a prime.
+Let $B = \{2, 3\}$, then $2 + 3 = 5$ is a prime thus $B$ is also $P_3$-set. $A \cap B = \emptyset$
+which means that there are no elements $x,y,z$ such that $x + y + z$ is a prime and thus,
+the intersection of two $P_3$-sets is not necessarily a $P_3$-set.
+\end{quote} 
+
+\item[]
+
+\item[(f)]
+Prove or Disprove: Every $P_3$-set contains an odd integer.
+\begin{quote}
+It's true. Suppose, for the sake of contradiction, that $S$ is a $P_3$-set and it does not contain any odd integers. Thus, it means
+that all the elements of $S$ are even. Now, since all the elements are even, it means that no matter
+what 3 elements $x, y$ and $z$ we take, their sum will always be even. On the other hand, the only even
+prime we have is 2. But unfortunately, there are no three numbers $x, y, z \in \mathbb{Z}^+$ which sum up to 2. The best we can do is 1 + 1 + 1
+which is 3 and is one more than 2. Thus, there is no way to get 2 and 
+otherwise, we won't have 3 elements which sum up to the prime. Hence,
+we have reached the contradiction and $S$ is a not a $P_3$-set.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[]
+
+\item[(g)]
+Prove or Disprove: Every infinite subset $S$ of $\mathbb{Z}^+$ is a $P_3$-set.
+\begin{quote}
+It's false. Since we already proved that every $P_3$-set contains an odd integer,
+we can take a set of all positive even integers which is a subset of $\mathbb{Z}^+$. Let's call this subset $E$. Then, we know that every element of the subset $E$ is even and sum of any 3 elements (not necessarily distinct) will also be even. However, once again, the only even integer which is a prime is 2 and we cannot get 2 by summing 3 integers which are greater than or equal to 2 (greater than equal because $E = \{2, 4, 6, 8, 10 ...\}$).
+\end{quote}
+
+\item[]
+
+\item[(h)]
+Prove or Disprove: If $S$ is a finite subset of $\mathbb{Z}^+$, then $\mathbb{Z}^+ - S$ is a $P_3$-set.
+\begin{quote}
+It's true. Let's prove it. Since $S$ is a finite set, we know that it cannot contain all the elements of $\mathbb{Z}^+$ because $\mathbb{Z}^+$ is infinite.\ We already proved that there are infinitely many primes.\ Then we can find a prime $p$ such that $p - 2 \notin S$.
+then, we can have a set $L = \{1, p - 2\}$ which is a $P_3$-set because $1 + 1 + p - 2 = p$ is a prime.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[54.]
+\begin{itemize}
+If a subset $S$ of $\mathbb{Z}^+$ is a $P_3$-set then the \textbf{core} of $S$ is the set
+$$\mbox{core}(S) := \{s \in S \mid S - \{s\} \mbox{ is not a $P_3$-set}\}.$$
+\item[(a)]
+What is the core of $S = \{2, 3, 6\}$?
+\begin{quote}
+The core of $S = \{2, 3, 6\}$ is core$(S) = \{2, 3\}$.
+The reason is that if we take out $2$, we are left with 3 and 6 which are both multiples of 3 and any variations of their sums will never be a prime (3 + 3 + 3 is a not a prime, 3 + 6 + 3 is not a prime etc.).
+If we take out 3, we are left with two even numbers, namely 2 and 6, and still we know that every $P_3$-set contains an odd integer thus, taking out 3 will leave us with non-$P_3$-set (any variations of the sums of the even integers will not be even; the only case is 2 but 2 + 2 + 2 = 6 is the best we can do). On the other hand, if we take out 6, $S$ will still be a $P_3$-set since 2 + 2 + 3 = 7 is a prime.
+Thus, core$(S) = \{2, 3\}$.
+\end{quote}
+
+\item[]
+
+\item[(b)]
+Give an example of a $P_3$-set whose core is the empty set, or prove none exists.
+\begin{quote}
+Here is an example: let $S = \{1\}$, then $S$ is a $P_3$ set since 1 + 1 + 1 = 3 is a prime. However, if we take out 1, we have $S = \emptyset$
+and there are no $x, y, z$ such that $x + y + z$ is a prime.
+\end{quote}
+
+\item[]
+
+\item[(c)]
+Give an example of a $P_3$-set whose core is infinite, or prove none exists.
+\begin{quote}
+There is no such $P_3$-set. Let's prove it. Suppose, for the sake of contradiction, there exists a $P_3$ set $S$ such that its core is infinite. Let the core be the set $C = \{c_0, c_1, c_2, c_3 \ ...\}$.
+Then, we know that if we took out $c_0$, the set $S$ would not be $P_3$.
+Then, since $c_0$ affected the outcome of whether $S$ is a $P_3$-set or not, it means that $c_0$ plays a role in $x + y + z$. Same goes if we took out $c_1$. The same for $c_2$, and the same for $c_4, c_5...$ etc.
+However, since $c_0, c_1$ and $c_2$ play a role in the sum, we know that there are at most 3 different elements of the set in the sum as by the definition $x + y + z$ must be a prime. But here we see that infinitely many elements are in this sum and we reached a contradiction.
+Thus, there are no $P_3$-set whose core is finite.
+\end{quote}
+
+\item[]
+
+\item[(d)]
+Prove or Disprove: If $S$ is a $P_3$-set then core$(S)$ is a $P_3$-set. 
+\begin{quote}
+It's false. Counterexample: let $S = \{2, 3, 5\}$. Then core$(S) = \{3\}$ since if we take out 2, 3 + 3 + 5 = 11 is still a prime and if we take out 5, 2 + 2 + 3 = 7 is still a prime. However, if we take out 3, all the possible sums are:\\
+2 + 2 + 2 = 6 is not a prime\\
+2 + 2 + 5 = 9 is not a prime\\
+2 + 5 + 5 = 12 is not a prime\\
+5 + 5 + 5 = 15 is not a prime\\
+
+Thus, we end up with a set core$(S) = \{3\}$ which is not a $P_3$-set since 3 + 3 + 3 = 9 is the only sum we can get and it is not a prime.
+\end{quote}
+
+\item[]
+
+\item[(e)]
+Prove or Disprove: If $S$ and $T$ are $P_3$-sets then core$(S \cup T) \subseteq \mbox{ core}(S) \cap \mbox{ core}(T)$.
+\begin{quote}
+It's true, let's prove it. Suppose, for the sake of contradiction, that for some two $P_3$-sets $S_1$ and $S_2$,
+$\mbox{ core}(S_1) \ \cap \mbox{ core}(S_2) \subset  \mbox{ core}(S_1 \cup S_2)$. Then we know that there exists $x \in$ core$(S_1 \cup S_2)$ such that $x \notin \mbox{ core}(S_1) \ \cap \mbox{ core}(S_2)$. Now, since $x \in \mbox{ core}(S_1) \cap \mbox{ core}(S_2)$, it means that $x \in \mbox{ core}(S_1)$ and $x \in \mbox{ core}(S_2)$.
+\end{quote} 
+
+\item[]
+\item[(f)]
+Prove or Disprove: If $S$ and $T$ are $P_3$-sets with $S \subseteq T$ then we have $\mbox{core}(T) \subseteq \mbox{ core}(S)$.
+5, 7  5, 7, 9
+
+Blah... 3 EXERCISES LEFT HERE TO FINISH.
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[55.]
+A subset $S$ of $\mathbb{Z}$ is called threequaline if for every $x, y \in S$ one has $3 \mid (x - y)$.
+\begin{itemize}
+\item[(a)]
+Prove or Disprove: Every subset of a threequaline set is threequaline.
+\begin{quote}
+It's false. Let, for the sake of contradiction, that $S$ is a threequaline set and also suppose that all the subsets of $S$ are threequaline. Then we know that an empty set is a subset of every set and $S$ is also a set thus, the emptyset is also a subset of $S$. However, an empty set has no elements and we cannot find $x, y$ such that $x - y$ is a multiple of 3 and we reached the contradiction.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[]
+
+\item[(b)]
+Prove that if $S$ is threequaline than either every element of $S$ is divisible by 3 or none are.
+\begin{quote}
+Suppose, for the sake of contradiction, that $S$ is a threequaline set and there exists two elements $x, y$ such that $x$ is a multiple of 3 and $y$ is not a multiple of 3. Then $x - y$ will not be a multiple of 3 and we have reached the contradiction.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[]
+
+\item[(c)]
+Prove that if $S$ is threequaline and $r$ and $t$ are integers, then the set $\{rx + t \mid x \in S\}$ is also threequaline.
+\begin{quote}
+Since we know that $S$ is a threequaline set, for every $x, y \in S$, $x - y$ is a multiple of 3. Suppose, $z_1, z_2$ are some elements of the set $S$. Then, we know that $z_1 - z_2$ is a multiple of 3. The new set will "transform" these elements into $rz_1 + t$ and $rz_2 + t$. On the other hand, $z_1 - z_2 = rz_1 + t - (rz_2 + t) = r(z_1 - z_2)$ which is a multiple of 3 since $z_1, z_2$ are the members of $S$ and $z_1 - z_2$ is a multiple of 3.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[]
+
+\item[(d)]
+Prove that if $S$ and $T$ are threequaline and $S \ \cap \ T \neq \emptyset$ then $S \ \cup \ T$ is threequaline.
+\begin{quote}
+Let's prove the contrapositive. The contrapositive of the statement is:
+prove that if $S$ and $T$ are threequaline and $S \ \cup \ T$ is not a threequaline, then  $S \cap T = \emptyset$. Suppose, $S_1$ and $S_2$ are two threequaline sets and also suppose that $S_1 \cup S_2$ is not a threequaline set. Then there exist $x, y$ in $S_1 \cup S_2$ such that $x - y$ is not a multiple of 3. Since $S_1$ and $S_2$ are both threequaline, we also know that both $x$ and $y$ cannot be a part the same set whether its $S_1$ or $S_2$. Let $x$ be an element of $S_1$ (we could do it with $S_2$ as well, it is arbitrary), then we know that $S_1$ has some element $z$ such that $x - z$ is a multiple of 3. On the other hand, it cannot be in $S_2$ because then it must also have $x$ then which cannot be the case.
+
+FINISH this!!!
+\end{quote}
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[56.]
+A subset $S$ of $\mathbb{R}$ is called \textbf{crunched} if there exist integers $m, n \in \mathbb{Z}$ such that for all $x \in S$ we have $m < x < n$.\\\\
+NOTE: When I mention lower bound or upper bound, I really mean the smallest element or the biggest element of the set.
+\begin{itemize}
+\item[]
+
+\item[(a)]
+Give some examples of sets that are and are not crunched.
+\begin{quote}
+$S_1 = \{1\}$ is crunched as for all $x \in S$, $0 < x < 2$ ($m = 0, n = 2$).\\
+$S_2 = \{1, 2, 3\}$ is crunched as for all $x \in S$, $0 < x < 4$ ($m = 0, n = 4$).\\
+$S_3 = \mathbb{Z^+}$ is not crunched as it has no bounds and we cannot find $m, n$ such that for all $x \in \mathbb{Z^+}, m< x < n$.\\
+$S_4 = \mathbb{2,4,6 ...}$ (a set of positive even numbers) is not crunched as it has no upper bound and we cannot find $n$ such that for all $x \in \mathbb{Z^+}, m< x < n$ (note: we can find $m$. $m$ can be any integer that is less than or equal to 1 but $n$ cannot be fixed).
+\end{quote}
+
+\item[]
+
+\item[(b)]
+Prove or Disprove: All crunched sets are finite.
+\begin{quote}
+That's false. Counterexample: let $S = \{1, 1/2, 1/4, ...\}$ (infinite geometric series), then we know that $S$ has an upper bound 1 and the lower bound which is 0. Then, we can say with the great certainty, that for all $x \in S$, $-10 < x < 10$ ($m = -10$, $n = 10$).
+Thus, crunched sets are not necessarily finite and the initial claim is false.
+\end{quote} 
+
+\item[]
+
+\item[(c)]
+Prove or Disprove: All finite sets are crunched.
+\begin{quote}
+It's true. Let $S$ be a finite set. Then it must have a lower bound (the smallest element), let it be $k_1$ and the upper bound (the biggest element), let it be $k_2$. Then let $m = k_1 - 1$ and let $n = k_2 + 1$ and we have that for all $x \in S$, $m < x < n$.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[]
+
+\item[(d)]
+Prove or Disprove: Every subset of a crunched set is crunched
+\begin{quote}
+It's true. Suppose $S$ is a crunched set. Then we know that for all $x \in S$, there exist $m, n$ such that $m < x < n$. Let $S_0$ be a subset of $S$. Then, since all the elements of $S_0$ are also in $S_1$, we know that all elements of $S_0$ are between $m$ and $n$ which makes $S_0$ crunched. Thus, every subset of a crunched set is crunched.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[]
+
+\item[(e)]
+Prove or Disprove: The union of two crunched sets is crunched.
+\begin{quote}
+Suppose $S_1$ and $S_2$ are two crunched sets.
+Then we know that for all $x_1 \in S_1$, $m_1 < x_1 < n_1$ and for all $x_2 \in S_2$, $m_2 < x_1 < n_2$. Then, for all $z$ in $S_1 \cup S_2, max(m_1, m_2) < z < max(n_1, n_2)$ which means that $S_1 \cup S_2$ is bounded.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[]
+\item[]
+
+
+\end{itemize}
+
+\end{itemize} 
+
+\end{document}
