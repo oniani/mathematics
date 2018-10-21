@@ -165,8 +165,11 @@ Thus, core$(S) = \{2, 3\}$.
 \item[(b)]
 Give an example of a $P_3$-set whose core is the empty set, or prove none exists.
 \begin{quote}
-Here is an example: let $S = \{1\}$, then $S$ is a $P_3$ set since 1 + 1 + 1 = 3 is a prime. However, if we take out 1, we have $S = \emptyset$
-and there are no $x, y, z$ such that $x + y + z$ is a prime.
+Here is an example: Let $S = \{3, 6, 9, 12, 15, ...\}$, thus the set of all positive
+multiples of 3. Then, no matter what we take out, we will still be left with multiples
+of three and any variation of their sums is also a multiple of 3. Hence, no matter what
+we take out, $S$ will still be a $P_3$-set and we showed an example where the core of the
+$P_3$-set is empty.
 \end{quote}
 
 \item[]
@@ -174,11 +177,17 @@ and there are no $x, y, z$ such that $x + y + z$ is a prime.
 \item[(c)]
 Give an example of a $P_3$-set whose core is infinite, or prove none exists.
 \begin{quote}
-There is no such $P_3$-set. Let's prove it. Suppose, for the sake of contradiction, there exists a $P_3$ set $S$ such that its core is infinite. Let the core be the set $C = \{c_0, c_1, c_2, c_3 \ ...\}$.
-Then, we know that if we took out $c_0$, the set $S$ would not be $P_3$.
-Then, since $c_0$ affected the outcome of whether $S$ is a $P_3$-set or not, it means that $c_0$ plays a role in $x + y + z$. Same goes if we took out $c_1$. The same for $c_2$, and the same for $c_4, c_5...$ etc.
-However, since $c_0, c_1$ and $c_2$ play a role in the sum, we know that there are at most 3 different elements of the set in the sum as by the definition $x + y + z$ must be a prime. But here we see that infinitely many elements are in this sum and we reached a contradiction.
-Thus, there are no $P_3$-set whose core is finite.
+There is no such $P_3$-set. In fact, there is no way for the core of the set to be bigger than 3.
+Let's prove it. Suppose, for the sake of contradiction, there exists a $P_3$-set $S$ such that its core is infinite. Let the core be the set $C = \{c_0, c_1, c_2, c_3 \ ...\}$.
+Then we know that $S - \{c_0\}$ is not a $P_3$-set. Thus, $c_0$ must have contributed
+to some summation of 3 elements (among which is $c_0$). Then, we also know that $S - \{c_1\}$
+is not a $P_3$ set as well as $S - \{c_2\}$ is not a $P_3$-set. We also know that $S - \{c_4\}$
+is not a $P_3$-set and we've reached the contradiction. The reason we've reached the contradiction
+is that if there are 3 elements such that taking out either of those makes $S$ a non-$P_3$-set,
+they at most are in the same sum ($x = c_0, y = c_1, z = c_2$) and then taking out $c_4$ should not
+make $S$ non-$P_3$-set. On the other hand, if $c_0, c_1, c_2$ are not in the same sum, we've reached
+even "worse" contradiction since leaving $c_0$ for instance and taking out $c_1$ would still
+result in $P_3$-set.
 \end{quote}
 
 \item[]
@@ -521,6 +530,39 @@ $\dfrac{1}{n} \in (0, y]$. Thus, we've reached the contradiction.
 
 \item[(e)]
 Prove or Disprove: A subset of a positively scattered set is positively scattered.
+\begin{quote}
+It's true.\\
+Suppose, for the sake of contradiction, that the set $S_0$ is a subset of the positively
+scattered set $S$ and that $S_0$ is not positively scattered. Then we know that for some
+$x \in S_0$, there is no $y \in \mathbb{R}$ such that $y > x$ and $S \cap (x, y] = \emptyset$.
+$S_0$, however, is a subset of $S$ which means that if $x \in S_0$, then $x \in S$. Finally, we have
+that for some $x \in S$ there is no $y$ such that $S \cap (x, y] = \emptyset$
+which means that $S$ is not positively scattered. Thus, we've reached the contradiction since we
+assumed that $S$ was positively scattered.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
+
+\item[]
+
+\item[(f)]
+Prove or Disprove: The union of two positively scattered sets is positively scattered.
+\begin{quote}
+It's true.\\\\
+Suppose we have two positively scattered sets $S_1$ and $S_2$. Then we know that for all
+$x \in S_1$ there exists $y \in \mathbb{R}$ such that $y > x$ and $S_1 \cap (x, k] = \emptyset$.
+Likewise, since $S_2$ is scattered, we know that for all
+$i \in S_1$ there exists $j \in \mathbb{R}$ such that $j > i$ and $S_1 \cap (i, j] = \emptyset$.\\\\
+Let $S = S_1 \cup S_2$ and let $x \in S$. Then we know that $x \in S_1$ or $x \in S_2$.\\\\
+If $x \in S_1$, 
+\end{quote}
+
+\item[]
+
+\item[(g)]
+Prove or Disprove: If $S$ is a positively scattered then $\mathbb{R} - S$ is not positively
+scattered.
 \begin{quote}
 
 \end{quote}
