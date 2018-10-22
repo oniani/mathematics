@@ -56,7 +56,7 @@ $x, y, z \in S$ such that $x + y + z$ is prime.
 Give some examples of $P_3$-sets.
 \begin{quote}
 $\{1\}$ because 1 + 1 + 1 = 3 is a prime.\\
-$\{2, 3\}$ because 2 + 3 = 5 is a prime.\\
+$\{2, 3\}$ because 2 + 2 + 3 = 7 is a prime.\\
 $\{12, 25, 30\}$ because 12 + 25 + 30 = 67 is a prime.
 \end{quote}
 
@@ -68,7 +68,7 @@ Prove or Disprove: If $A$ is a $P_3$-set, and $A \subseteq B \subseteq \mathbb{Z
 It's right so let's prove it.
 Since we know that $A$ is a $P_3$-set, we know there exist elements (not necessarily distinct) $x,y$ and $z$ such that
 $x + y + z$ is prime.\ Since $A \subseteq B$, we know that all elements of $A$ are also in $B$ meaning that $x,y$ and $z$
-are in $B$ as well and there exist elements $x,y,z$ (which are also in $A$) such that $x + y + z$ is a prime.
+are in $B$ as well. Then there exist elements $x,y,z \in B$ (which are also in $A$) such that $x + y + z$ is a prime.
 \begin{flushright}
 \textit{Q.E.D.}
 \end{flushright}
@@ -80,7 +80,7 @@ are in $B$ as well and there exist elements $x,y,z$ (which are also in $A$) such
 Prove or Disprove: If $S$ is a $P_3$-set, then so is $S_{+3} := \{x + 3 \mid x \in S\}$.
 \begin{quote}
 It's false. Counterexample: Let $S = \{1\}$, then we know that $S$ is a $P_3$-set since $1 + 1 + 1 = 3$
-is a prime. However, $S_{+3} = \{4\}$ and $4 + 4 + 4 = 12$ which is certainly composite.
+is a prime. However, $S_{+3} = \{4\}$ and $4 + 4 + 4 = 12$ which is certainly not a prime $(12 = 2^2 * 3^1)$.
 \end{quote}
 
 \item[]
@@ -88,17 +88,19 @@ is a prime. However, $S_{+3} = \{4\}$ and $4 + 4 + 4 = 12$ which is certainly co
 \item[(d)]
 Prove or Disprove: Every $P_3$ set contains a prime.
 \begin{quote}
-False. Let $S = \{1\}$, then 1 is not a prime but $1 + 1 + 1 = 3$ is a prime.
+False. Counterexample: Let $S = \{1\}$, then 1 is not a prime but $1 + 1 + 1 = 3$ is a prime.
 \end{quote}
 
+\item[]
+\item[]
 \item[]
 
 \item[(e)]
 Prove or Disprove: The intersection of two $P_3$-sets is a $P_3$-set.
 \begin{quote}
 It's false. Let $A = \{1\}$, then $A$ is $P_3$-set since 1 + 1 + 1 = 3 is a prime.
-Let $B = \{2, 3\}$, then $2 + 3 = 5$ is a prime thus $B$ is also $P_3$-set. $A \cap B = \emptyset$
-which means that there are no elements $x,y,z$ such that $x + y + z$ is a prime and thus,
+Let $B = \{2, 3\}$, then $2 + 2 + 3 = 7$ is a also prime thus $B$ is also a $P_3$-set. On the other hand,
+$A \cap B = \emptyset$ which means that there are no elements $x,y,z$ such that $x + y + z$ is a prime and thus,
 the intersection of two $P_3$-sets is not necessarily a $P_3$-set.
 \end{quote} 
 
@@ -107,12 +109,12 @@ the intersection of two $P_3$-sets is not necessarily a $P_3$-set.
 \item[(f)]
 Prove or Disprove: Every $P_3$-set contains an odd integer.
 \begin{quote}
-It's true. Suppose, for the sake of contradiction, that $S$ is a $P_3$-set and it does not contain any odd integers. Thus, it means
-that all the elements of $S$ are even. Now, since all the elements are even, it means that no matter
+It's true. Suppose, for the sake of contradiction, that $S$ is a $P_3$-set and it does not contain any odd integers. Then it must be the case that
+all the elements of $S$ are even. Now, since all the elements are even, it means that no matter
 what 3 elements $x, y$ and $z$ we take, their sum will always be even. On the other hand, the only even
-prime we have is 2. But unfortunately, there are no three numbers $x, y, z \in \mathbb{Z}^+$ which sum up to 2. The best we can do is 1 + 1 + 1
-which is 3 and is one more than 2. Thus, there is no way to get 2 and 
-otherwise, we won't have 3 elements which sum up to the prime. Hence,
+prime we have is 2, but unfortunately there are no three numbers $x, y, z \in \mathbb{Z}^+$ which sum up to 2. The best we can do is 1 + 1 + 1
+which is 3 and is one more than 2 (in all other cases the sum of three positive integers will be greater than 2).
+Thus, there is no way to get 2 and otherwise, we won't have 3 elements which sum up to the prime. Hence,
 we have reached the contradiction and $S$ is a not a $P_3$-set.
 \begin{flushright}
 \textit{Q.E.D.}
@@ -124,8 +126,11 @@ we have reached the contradiction and $S$ is a not a $P_3$-set.
 \item[(g)]
 Prove or Disprove: Every infinite subset $S$ of $\mathbb{Z}^+$ is a $P_3$-set.
 \begin{quote}
-It's false. Since we already proved that every $P_3$-set contains an odd integer,
-we can take a set of all positive even integers which is a subset of $\mathbb{Z}^+$. Let's call this subset $E$. Then, we know that every element of the subset $E$ is even and sum of any 3 elements (not necessarily distinct) will also be even. However, once again, the only even integer which is a prime is 2 and we cannot get 2 by summing 3 integers which are greater than or equal to 2 (greater than equal because $E = \{2, 4, 6, 8, 10 ...\}$).
+It's false. Counterexample: Since we already proved that every $P_3$-set contains an odd integer,
+we can take a set of all positive even integers which is a subset of $\mathbb{Z}^+$. Let's call this subset $E$.
+Then, we know that every element of the subset $E$ is even and sum of any 3 elements (not necessarily distinct)
+will also be even. However, once again, the only even integer which is a prime is 2 and we cannot get 2 by summing
+3 integers which are greater than or equal to 2 (greater than equal to 2 because $E = \{2, 4, 6, 8, 10 ...\}$).
 \end{quote}
 
 \item[]
@@ -133,14 +138,17 @@ we can take a set of all positive even integers which is a subset of $\mathbb{Z}
 \item[(h)]
 Prove or Disprove: If $S$ is a finite subset of $\mathbb{Z}^+$, then $\mathbb{Z}^+ - S$ is a $P_3$-set.
 \begin{quote}
-It's true. Let's prove it. Since $S$ is a finite set, we know that it cannot contain all the elements of $\mathbb{Z}^+$ because $\mathbb{Z}^+$ is infinite.\ We already proved that there are infinitely many primes.\ Then we can find a prime $p$ such that $p - 2 \notin S$.
-then, we can have a set $L = \{1, p - 2\}$ which is a $P_3$-set because $1 + 1 + p - 2 = p$ is a prime.
+It's true. Let's prove it by construction. Since $S$ is a finite set, we know that it cannot contain all the elements of $\mathbb{Z}^+$ because $\mathbb{Z}^+$ is infinite.
+We already proved that there are infinitely many primes (in the previous chapter(s)).\ Thus, since $S$ is finite, it cannot possibly contain all the primes.
+Then we can find a prime $p$ and integer $k$ such that $k, p - 2k \notin S$. Finally, let's have a look at the set $\mathbb{Z}^+ - S = \{k, p - 2k...\}$ which is a $P_3$-set
+because $p - 2k + k + k = p$ is a prime.
 \begin{flushright}
 \textit{Q.E.D.}
 \end{flushright}
 \end{quote}
 \end{itemize}
 
+\item[]
 \item[]
 \item[]
 
@@ -165,11 +173,11 @@ Thus, core$(S) = \{2, 3\}$.
 \item[(b)]
 Give an example of a $P_3$-set whose core is the empty set, or prove none exists.
 \begin{quote}
-Here is an example: Let $S = \{3, 6, 9, 12, 15, ...\}$, thus the set of all positive
-multiples of 3. Then, no matter what we take out, we will still be left with multiples
-of three and any variation of their sums is also a multiple of 3. Hence, no matter what
-we take out, $S$ will still be a $P_3$-set and we showed an example where the core of the
-$P_3$-set is empty.
+Here is an example: Let $S = \{1, 2, 3\}$. If we take out 1, we are left with $A = \{2, 3\}$
+which is still a $P_3$-set because 2 + 2 + 3 = 7 is a prime. If we take out 2, we are left with
+$B = \{1, 3\}$ which is still a $P_3$ set because 1 + 1 + 1 = 3 is a prime. Finally, if we take out
+3, we are left with $C = \{1, 2\}$ which, once again, is a $P_3$-set. Thus, we've showed exhaustively
+that no matter what we take out of $S$, it is still a $P_3$-set and hence, core$(S) = \emptyset$.
 \end{quote}
 
 \item[]
@@ -184,10 +192,18 @@ to some summation of 3 elements (among which is $c_0$). Then, we also know that 
 is not a $P_3$ set as well as $S - \{c_2\}$ is not a $P_3$-set. We also know that $S - \{c_4\}$
 is not a $P_3$-set and we've reached the contradiction. The reason we've reached the contradiction
 is that if there are 3 elements such that taking out either of those makes $S$ a non-$P_3$-set,
-they at most are in the same sum ($x = c_0, y = c_1, z = c_2$) and then taking out $c_4$ should not
-make $S$ non-$P_3$-set. On the other hand, if $c_0, c_1, c_2$ are not in the same sum, we've reached
+they, in the worst case, are in the same sum ($x = c_0, y = c_1, z = c_2$) and then taking out $c_4$ should not
+make $S$ non-$P_3$-set (because $c_0, c_1$, and $c_3$ are still there). On the other hand, if $c_0, c_1, c_2$ are not in the same sum, we've reached
 even "worse" contradiction since leaving $c_0$ for instance and taking out $c_1$ would still
-result in $P_3$-set.
+result in $P_3$-set (the same logic, if $c_0, c_1, c_2$ are in the different sums it means that leaving
+one of them would still give us a $P_3$ set). Without a loss of generality, if two of the $c_1, c_2, c_3$
+are in the same sum, it means that $c_0, c_1$ (took them arbitrarily, without a loss of generality) are in some
+sum in which $c_2$ plays no role. Then taking out $c_0$ or $c_1$ would still leave us with a $P_3$-set because
+$c_2$ is there and if we take out $c_2$, then $c_0, c_1$ and some other member of the sum is still in the set
+and we, once again, reach the contradiction. Thus, we've considered all the cases and have reached the contradiction. 
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
 \end{quote}
 
 \item[]
@@ -195,7 +211,7 @@ result in $P_3$-set.
 \item[(d)]
 Prove or Disprove: If $S$ is a $P_3$-set then core$(S)$ is a $P_3$-set. 
 \begin{quote}
-It's false. Counterexample: let $S = \{2, 3, 5\}$. Then core$(S) = \{3\}$ since if we take out 2, 3 + 3 + 5 = 11 is still a prime and if we take out 5, 2 + 2 + 3 = 7 is still a prime. However, if we take out 3, all the possible sums are:\\
+It's false. Counterexample: Consider the set $S = \{2, 3, 5\}$. Then core$(S) = \{3\}$ since if we take out 2, 3 + 3 + 5 = 11 is still a prime and if we take out 5, 2 + 2 + 3 = 7 is still a prime. However, if we take out 3, all the possible sums are:\\
 2 + 2 + 2 = 6 is not a prime\\
 2 + 2 + 5 = 9 is not a prime\\
 2 + 5 + 5 = 12 is not a prime\\
@@ -209,19 +225,29 @@ Thus, we end up with a set core$(S) = \{3\}$ which is not a $P_3$-set since 3 + 
 \item[(e)]
 Prove or Disprove: If $S$ and $T$ are $P_3$-sets then core$(S \cup T) \subseteq \mbox{ core}(S) \cap \mbox{ core}(T)$.
 \begin{quote}
-It's true, let's prove it. Suppose, for the sake of contradiction, that for some two $P_3$-sets $S_1$ and $S_2$,
-$\mbox{ core}(S_1) \ \cap \mbox{core}(S_2) \subset  \mbox{core}(S_1 \cup S_2)$. Then we know that there exists $x \in$ core$(S_1 \cup S_2)$ such that $x \notin \mbox{core}(S_1) \ \cap \mbox{core}(S_2)$. Now, since $x \in \mbox{core}(S_1) \cap \mbox{ core}(S_2)$, it means that $x \in \mbox{core}(S_1)$ and $x \in \mbox{core}(S_2)$.
-\end{quote} 
+It's true, let's prove it. Let $x \in \mbox{core}(S \cup T)$. Then $x \in \mbox{core}(S)$ or $x \in \mbox{core}(T)$ (not the \textbf{exclusive} or). Now then, without a loss
+of generality and for the sake of contradiction, assume that $x \in \mbox{core}(S)$ and $x \notin \mbox{core}(T)$. If $x \in \mbox{core}(S)$ and $x \notin \mbox{core}(T)$,
+it means that $x \notin \mbox{core}(S \cup T)$ and we've reached the contradiction.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+\end{quote}
 
 \item[]
 \item[(f)]
 Prove or Disprove: If $S$ and $T$ are $P_3$-sets with $S \subseteq T$ then we have $\mbox{core}(T) \subseteq \mbox{ core}(S)$.
 \begin{quote}
-Suppose $S_1$ and $S_2$ are two $P_3$-sets and $S_1 \subseteq S_2$. Then for all $x \in S_1$, $x \in S_2$.
-If there are $k$ elements in core$(S_1)$, it means that core$(S_2)$ will 
+Suppose $S$ and $T$ are two $P_3$-sets and $S \subseteq T$. Then for all $x \in S$, $x \in T$.
+Let $y \in \mbox{core}(T)$. Then since $T$ has all the elements of $S$ in addition to some other elements
+which $S$ does not have (if they have the same elements, they are obviously equal and if $T = S$, $\mbox{core}(T) \subseteq \mbox{core}(S)$),
+it is harder to make the set a non-$P_3$ because of simply having more elements to deal with.
+Thus, if $T$ has simply more elements which do not contribute to any summation $x + y + z = p$ where $p$ is prime then $\mbox{core}(S) = \mbox{core}(T)$
+and if there exist such numbers, then one has to take out the additions (e.g. $T$ has extra number $m$ which in not in $S$ and plays a role in some sum, then the core of
+$T$ will obviously shrink). Thus, if $S$ and $T$ are $P_3$-sets and $S \subseteq T$, then $\mbox{core}(T) \subseteq \mbox{core}(S)$.
 \end{quote}
 \end{itemize}
 
+\item[]
 \item[]
 \item[]
 
@@ -231,7 +257,9 @@ A subset $S$ of $\mathbb{Z}$ is called threequaline if for every $x, y \in S$ on
 \item[(a)]
 Prove or Disprove: Every subset of a threequaline set is threequaline.
 \begin{quote}
-It's false. Let, for the sake of contradiction, that $S$ is a threequaline set and also suppose that all the subsets of $S$ are threequaline. Then we know that an empty set is a subset of every set and $S$ is also a set thus, the emptyset is also a subset of $S$. However, an empty set has no elements and we cannot find $x, y$ such that $x - y$ is a multiple of 3 and we reached the contradiction.
+It's false. Suppose, for the sake of contradiction, that $S$ is a threequaline set and also suppose that all the subsets of $S$ are threequaline.
+Then we know that an empty set is a subset of every set and $S$ is a set thus, the emptyset is also a subset of $S$.
+However, the empty set has no elements and we cannot find $x, y$ such that $x - y$ is a multiple of 3 and we've reached the contradiction.
 \begin{flushright}
 \textit{Q.E.D.}
 \end{flushright}
@@ -242,7 +270,13 @@ It's false. Let, for the sake of contradiction, that $S$ is a threequaline set a
 \item[(b)]
 Prove that if $S$ is threequaline than either every element of $S$ is divisible by 3 or none are.
 \begin{quote}
-Suppose, for the sake of contradiction, that $S$ is a threequaline set and there exists two elements $x, y$ such that $x$ is a multiple of 3 and $y$ is not a multiple of 3. Then $x - y$ will not be a multiple of 3 and we have reached the contradiction.
+Suppose, for the sake of contradiction, that $S$ is a threequaline set and there exists two elements
+$x, y$ such that $x$ is a multiple of 3 and $y$ is not a multiple of 3.
+Then, without a loss of generality, consider the following two cases:\\\\
+Case I: $x = 3k$ and $y = 3l + 1$ where $k,l \in \mathbb{Z}$\\
+Case II: $x = 3k$ and $y = 3l + 2$ where $k,l \in \mathbb{Z}$.\\\\
+Case I Proof: if $x = 3k$ and $y = 3l + 1$, $x + y = 3k + 3l + 1 = 3(k + l) + 1$ which is not a multiple of 3.\\\\
+Case II Proof: if $x = 3k$ and $y = 3l + 2$, $x + y = 3k + 3l + 2 = 3(k + l) + 2$ which is not a multiple of 3.
 \begin{flushright}
 \textit{Q.E.D.}
 \end{flushright}
@@ -253,7 +287,10 @@ Suppose, for the sake of contradiction, that $S$ is a threequaline set and there
 \item[(c)]
 Prove that if $S$ is threequaline and $r$ and $t$ are integers, then the set $\{rx + t \mid x \in S\}$ is also threequaline.
 \begin{quote}
-Since we know that $S$ is a threequaline set, for every $x, y \in S$, $x - y$ is a multiple of 3. Suppose, $z_1, z_2$ are some elements of the set $S$. Then, we know that $z_1 - z_2$ is a multiple of 3. The new set will "transform" these elements into $rz_1 + t$ and $rz_2 + t$. On the other hand, $z_1 - z_2 = rz_1 + t - (rz_2 + t) = r(z_1 - z_2)$ which is a multiple of 3 since $z_1, z_2$ are the members of $S$ and $z_1 - z_2$ is a multiple of 3.
+Since we know that $S$ is a threequaline set, for every $x, y \in S$, $x - y$ is a multiple of 3. Suppose, $z_1, z_2$ are some elements of the set $S$.
+Then, we know that $z_1 - z_2$ is a multiple of 3. The new set will ``transform" these elements into $z_1^{'} = rz_1 + t$ and $z_2^{'} = rz_2 + t$.
+On the other hand, $z_1^{'} - z_2^{'} = rz_1 + t - (rz_2 + t) = r(z_1 - z_2)$ which is a multiple of 3 since $z_1, z_2$ are the members of $S$ and
+$z_1 - z_2$ is a multiple of 3.
 \begin{flushright}
 \textit{Q.E.D.}
 \end{flushright}
@@ -457,7 +494,10 @@ reached a contradiction.
 
 \item[58.]
 We call a subset $S$ of $\mathbb{R}$ \textbf{positively scattered} if for every $x \in S$
-there exists $y \in \mathbb{R}$ such that $y > x$ and $S \cap (x,y] = \emptyset$. 
+there exists $y \in \mathbb{R}$ such that $y > x$ and $S \cap (x,y] = \emptyset$.\\
+
+NOTE: The statement above really means that for every $x \in S$, there exists some $y > 0 \in \mathbb{R}$ such that $S \cap (x, x + y] = \emptyset.$
+\\
 \begin{itemize}
 \item[(a)]
 Is $\mathbb{Z}^+$ positively scattered? 
@@ -517,7 +557,7 @@ It is not. Suppose, for the sake of contradiction, that $\{\dfrac{1}{n} \ | \ n 
 is scattered. Then for all $x \in \{\dfrac{1}{n} \ | \ n \in \mathbb{Z}^+\} \cup \{0\}$, there exist
 $y > x$, such that $(\{\dfrac{1}{n} \ | \ n \in \mathbb{Z}^+\} \cup \{0\}) \cap (x,y] = \emptyset$.
 If the condition holds for all $x \in \{\dfrac{1}{n} \ | \ n \in \mathbb{Z}^+\} \cup \{0\}$, it should hold
-for $x = 0$ too ($x = 0$ is the member of the set as well as the set contains element 0).\\
+for $x = 0$ too ($x = 0$ is the member of the set).
 If $x = 0$, there must exist $y > 0$ such that $(\{\dfrac{1}{n} \ | \ n \in \mathbb{Z}^+\} \cup \{0\}) \cap (0,y] = \emptyset$.
 This, however, is impossible since the interval $(0, y]$ is infinite and we can always find $n$ for which
 $\dfrac{1}{n} \in (0, y]$. Thus, we've reached the contradiction.
@@ -536,7 +576,7 @@ Suppose, for the sake of contradiction, that the set $S_0$ is a subset of the po
 scattered set $S$ and that $S_0$ is not positively scattered. Then we know that for some
 $x \in S_0$, there is no $y \in \mathbb{R}$ such that $y > x$ and $S \cap (x, y] = \emptyset$.
 $S_0$, however, is a subset of $S$ which means that if $x \in S_0$, then $x \in S$. Finally, we have
-that for some $x \in S$ there is no $y$ such that $S \cap (x, y] = \emptyset$
+that for some $x \in S$ there is no $y$ such that $S \cap (x, x + y] = \emptyset$
 which means that $S$ is not positively scattered. Thus, we've reached the contradiction since we
 assumed that $S$ was positively scattered.
 \begin{flushright}
@@ -545,17 +585,17 @@ assumed that $S$ was positively scattered.
 \end{quote}
 
 \item[]
+\item[]
 
 \item[(f)]
 Prove or Disprove: The union of two positively scattered sets is positively scattered.
 \begin{quote}
-It's true.\\\\
-Suppose we have two positively scattered sets $S_1$ and $S_2$. Then we know that for all
-$x \in S_1$ there exists $y \in \mathbb{R}$ such that $y > x$ and $S_1 \cap (x, k] = \emptyset$.
-Likewise, since $S_2$ is scattered, we know that for all
-$i \in S_1$ there exists $j \in \mathbb{R}$ such that $j > i$ and $S_1 \cap (i, j] = \emptyset$.\\\\
-Let $S = S_1 \cup S_2$ and let $x \in S$. Then we know that $x \in S_1$ or $x \in S_2$.\\\\
-If $x \in S_1$, 
+Suppose, for the sake of contradiction, that $S = S_1 \cup S_2$ and let $x \in S$. Then we know that $x \in S_1$ or $x \in S_2$.
+Without the loss of generality suppose that $x \in S_1$, we can find $y > 0$ such that $(x, x + y]$ not in $S_1$. Then,
+the only way we cannot find $k > 0$ such that $(x, x + k) \cap S \neq \emptyset$ is if $S_2$ contains the part of the interval
+thus, infinitely many numbers in the range $(x, x + k]$. But then $S_2$ would not be positively scattered,
+because since it contains all the elements in the range $(x, x + k]$, it means that for all $l \in \mathbb{R}$,
+$(x, l] \cap S_2 \neq \emptyset$. Thus, we have reached the contradiction and the union of two scattered sets is indeed scattered.
 \end{quote}
 
 \item[]
@@ -564,12 +604,25 @@ If $x \in S_1$,
 Prove or Disprove: If $S$ is a positively scattered then $\mathbb{R} - S$ is not positively
 scattered.
 \begin{quote}
+It's true. Suppose, for the sake of contradiction, that $S$ is a positively scattered set. Then, consider $\mathbb{R} - S$.
+If $\mathbb{R} - S$ is scattered, it must be the case that all the sets in $\mathbb{R}$ are scattered which is not true
+since we have already shown that set $\{\dfrac{1}{n} \ \mid \ n \in \mathbb{Z}^+ \} \cup \{0\}$ is not scattered.
+\end{quote}
 
+\item[]
+
+\item[(h)]
+Prove or Disprove: If S is positively scattered then the set $\overline{S} := \{-x \ | \ x \in S \}$ is positively scattered.
+\begin{quote}
+It's true. Suppose, $S$ is a positively scattered set. Let $x \in S$. We know that for some $y$, $(x, x + y] \cap S = \emptyset$.
+Then we also know that in $\overline{S}$, $x$ will be mapped to $-x$. Note that $\overline{S}$ will be absolutely ``symmetric"
+which means that if $y$ worked for $S$, it will also work for $\overline {S}$. In ``symmetric" I really mean the difference between
+two elements next to each other ($x_1 - x_2 = -x_2 - (-x_1)$). Then we can take the same $y$, and for $-x \in \overline{S}$,
+$(-x, -x + y] \cap \overline{S} = \emptyset$.
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
 \end{quote}
 \end{itemize}
-
-
-
 \end{itemize} 
-
 \end{document}
