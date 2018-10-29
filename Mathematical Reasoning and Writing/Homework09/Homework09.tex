@@ -1,0 +1,753 @@
+\documentclass[12pt, a4paper]{article}                      % use "amsart" instead of "article" for AMSLaTeX format
+\usepackage[a4paper,margin=1in]{geometry}                   % Adjust margins
+\usepackage{amsmath,soul,mathtools, amsthm, amssymb,listings,color,textcomp,adjustbox,tikz,pgfplots}        % Math packages: amsmath, amssymb, listings, color
+\usepackage[hidelinks]{hyperref}
+\usepgfplotslibrary{external,fillbetween}
+\pgfplotsset{compat=1.14}
+\usepackage[makeroom]{cancel}
+\title{\bf{Homework \textnumero 9}}
+\author{Author: David Oniani
+\\
+\ \ \ Instructor: Tommy Occhipinti}
+\date{October 25, 2018}
+
+\usepackage{listings}
+\usepackage{color}
+
+%%%%%%%%%%%%%%% S E T S %%%%%%%%%%%%%%%
+\newcommand{\nats}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\irrats}{\mathbb{I}}
+
+\newcommand{\pnats}{\mathbb{N}^+}
+\newcommand{\pints}{\mathbb{Z}^+}
+\newcommand{\prats}{\mathbb{Q}^+}
+\newcommand{\preals}{\mathbb{R}^+}
+\newcommand{\nreals}{\mathbb{R}^-}
+
+\newcommand{\nints}{\mathbb{Z}^-}
+\newcommand{\nrats}{\mathbb{Q}^-}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Calligraphy
+\newcommand\und[1]{\underline{\smash{#1}}}
+
+% Operators
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+
+
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+backgroundcolor=\color{backcolour},
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=left,
+numberstyle=\normalsize\color{gray},
+keywordstyle=\color{blue},
+commentstyle=\color{dkgreen},
+stringstyle=\color{mauve},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=4
+}
+
+
+\begin{document}
+\maketitle
+\begin{itemize}
+\item[64.]
+List three elements of each of the following sets:
+\begin{itemize}
+\item[(a)]
+$\mathcal{P} (\{2, 7\})$
+\begin{quote}
+$\emptyset, \{2\}, \{7\}$
+\end{quote}
+
+\item[]
+
+\item[(b)]
+$\mathbb{Q} \times (\mathbb{R} - \mathbb{Q})$
+\begin{quote}
+$(-\dfrac{1}{2}, \sqrt{2}), (\dfrac{2}{5}, \sqrt{5}), (-\dfrac{3}{7}, \sqrt{7})$
+\end{quote}
+
+\item[]
+
+\item[(c)]
+$U_{i = 3}^5\{2^i, 2^i + 1\}$
+\begin{quote}
+$\{8, 9\}, \{16, 17\}, \{32, 33\}$
+\end{quote}
+
+\item[]
+
+\item[(d)]
+$\mathcal{P}(\mathcal{P}(\{1, 2\}))$
+\begin{quote}
+$\{1\}, \{2\}, \emptyset$
+\end{quote}
+
+\item[]
+
+\item[(e)]
+$\mathcal{P}([0, 1]) \times \mathcal{P}([0, 1])$
+\begin{quote}
+$(\{0\}, \{0\}), (\{0.37\}, \{0.86512\}), (\{1\}, \{1\})$
+\end{quote}
+
+\item[]
+
+\item[(f)]
+$\mathcal{P}([0, 1] \times [0, 1])$
+\begin{quote}
+$\{(0, 0)\}, \{(0.1, 0.2), (0.5, 0.6)\}, \{(0.892, 0.912), (0.942, 0.999)\}$
+\end{quote}
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[65.]
+Prove or Disprove: If $A$ and $B$ are sets, then $\mathcal{P}(A - B) = \mathcal{P}(A) - \mathcal{P}(B)$.
+\begin{quote}
+It's false. Counterexample: Let $A = \{1, 2\}$ and $B = \{1\}$. Then we have
+$A - B = \{2\}$ and $\mathcal{P}(A - B) = \{\emptyset, \{2\}\}$. On the other hand, $\mathcal{P}(A) = \{\emptyset, \{1\}, \{2\}, \{1, 2\}\}$ and $\mathcal{P}(B) = \{\emptyset, \{1\}\}$.
+Thus, $\mathcal{P}(A) - \mathcal{P}(B) = \{\{2\}, \{1, 2\}\}$. Hence, we got that:
+$$\mathcal{P}(A - B) = \{\emptyset, \{2\}\} \mbox{ and } \mathcal{P}(A) - \mathcal{P}(B) = \{\{2\}, \{1, 2\}\}$$
+which means that $\mathcal{P}(A - B) \neq \mathcal{P}(A) - \mathcal{P}(B)$ and the initial claim is false.
+\end{quote}
+
+\item[]
+
+\item[66.]
+If for all $n \in \pints$ we have $A_n = \{n, n + 1, n + 2, ..., 2n\}$, find $\bigcap_{i = 10}^{20} A_i$. Can you generalize this result?
+\begin{quote}
+$\bigcap_{i = 10}^{20} A_i = \{20\}$ because the last element of the set when $i = 10$ is 20 (and all other elements of the set are less than 20),
+the first element of the set when $i = 20$ is $20$ (and all the elements of the set are greater than 20), and all the sets in-between contain the element
+20 meaning that the only element that is shared in-between is $\{20\}$.\\\\\\
+Generalization: $\bigcap_{i=k}^{2k}A_i = 2k$ where $1 \leq k \leq 2k$.\\\\
+Proof: Since $A_n = \{n, n + 1, n + 2, ..., 2n\}$, we know that the biggest element of $A_k$
+is $2k$. On the other hand, we also know that the smallest element of $A_{2k}$
+is $2k$. Besides, all the sets in-between ($A_k, A_{k + 1}, ... A_{2k - 1}$) will have $2k$ in them.
+Thus, $\bigcap_{i=k}^{2k}A_i = 2k$.\\\\
+Note: This is nearly the best generalization we can do. The generalization will only work with the
+intersections of the type $\bigcap_{i=k}^{2k}A_i$. It won't work with some random intersection like $\bigcap_{i=1}^{3}A_i$.
+In this case, we have $A_1 = \{1, 2\}, A_2 = \{2, 3, 4\}$, and $A_3 = \{3, 4, 5, 6\}$ thus, their intersection is the empty set
+and not $2 \times 3 = 6$.
+\end{quote}
+
+\item[]
+\item[]
+
+\item[67.]
+If $S$ is a set, define $\Xi(S)$ to be the set $\{(x, y) \in \mathcal{P}(S) \times \mathcal{P}(S) \ | \ x \cap y \neq \emptyset\}$.
+\begin{itemize}
+\item[(a)]
+Explain why $(\{1, 3\}, \{2, 3\})$ is an element of $\Xi(\{1, 2, 3\})$.
+\begin{quote}
+Let's first notice that $\{1, 3\} \cap \{2, 3\} \neq \emptyset$ thus, we took that possibility out of way.
+Next, sets $\{1, 3\}$ and $\{2, 3\}$ are in $\mathcal{P}(\{1, 2, 3\})$ (the powerset of $\{1, 2, 3\}$).
+At last, the elements of the set $\Xi(\{1, 2, 3\})$ are the elements of the cartesian product of $\mathcal{P}(\{1, 2, 3\})$ and $\mathcal{P}(\{1, 2, 3\})$.
+Then, since $\mathcal{P}(\{1, 2, 3\})$ itself contains $\{1, 3\}$ and $\{2, 3\}$, we know that the cartesian product of $\{1, 3\}$ and $\{2, 3\}$ on itself will
+contain a tuple $(\{1, 3\}, \{2, 3\})$. Hence, $(\{1, 3\}, \{2, 3\}) \in \Xi(\{1, 2, 3\})$.
+\end{quote}
+
+\item[]
+
+\item[(b)]
+If $S = \{1, 2, 3, 4\}$, give 3 examples of $\mathcal{P} \times \mathcal{P}$
+that are not in $\Xi(\{1, 2, 3\})$.
+\begin{quote}
+Note: In \underline{tuples}, the order MATTERS!\\\\
+1. $(\{1\}, \{2, 3\})$ because $\{1\} \cap \{2, 3\} = \emptyset$.\\
+2. $(\{\emptyset\}, \{\emptyset\})$ because $\emptyset \cap \emptyset = \emptyset$.\\
+3. $(\{2, 3\}, \{1\})$ because $\{2, 3\} \cap \{1\} = \emptyset$.\\
+\end{quote}
+
+\item[(c)]
+Explain carefully in words what $\Xi(S)$ is.\\
+\begin{quote}
+It is the set of ordered pairs (tuples) of sets such that the sets in the tuples
+have at least one common element.\ Besides, the sets in the tuples are also the subsets
+of the cartesian product of the powerset of the same set.
+\end{quote}
+
+\item[]
+\item[]
+
+\item[(d)]
+Prove that if $S$ is a subset of $T$ then $\Xi(S)$ is a subset of $\Xi(T)$.
+\begin{quote}
+Suppose, we have two sets $S$ and $T$ such that $S \subseteq T$. If $S = T$, then it is clear that $\Xi(S)$ equals and thus, is a subset of $\Xi(T)$.
+Now then, let's consider the case where $S \subset T$. If $S \subset T$, then $T = S + U$ where $U$ is some set of elements which $T$ has but $S$ does not.
+Because $T = S + U$, $\mathcal{P}(T)$ or the powerset of the set $T$ will have all the subsets of $S$. On the other hand,
+$\Xi(T)$ is concerned about the cartesian of the powerset of $T$ on itself. Thus, since $T$ has all the subsets of $S$,
+$\Xi(T)$ will contain all the elements that $\Xi(S)$ does.
+\end{quote}
+
+\item[]
+
+\item[(e)]
+Prove that if $S$ is finite, then $\mid\Xi(S)\mid \ \geq \ \mid S\mid$. (Hint: To do this, explain how to find
+a different element of $\Xi(S)$ for each $s \in S$. How do you know they are different?)
+\begin{quote}
+For each element $s \in S$, we can find a tuple $(\{s\}, \{S\})$ which is not in $\Xi(S)$.
+We know that it is not in $S$ because there is no way for the set to contain itself unless it
+is the infinite set. Thus, we have: for each $s \in S$, we construct a tuple $(\{s\}, \{S\})$
+which is not in $S$. This will give us that the cardinality of $\Xi{(S)}$ equals the cardinality
+of $S$. But then there is a tuple $(\{S\}, \{S\})$ which is in $\Xi{(S)}$, but not in $S$. Thus,
+if $S$ is not empty $\mid\Xi(S)\mid \geq \mid S\mid$. If $S$ is empty, then $\mid\Xi(S)\mid \ = \ \mid S\mid$
+and finally, if $S$ is finite, then $\mid\Xi(S)\mid \ \geq \ \mid S\mid$.
+\end{quote}
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[68.]
+Here are five similar looking definitions that apply to subsets $S$ of $\mathbb{R}$.
+\item[$\bullet$]
+$S$ is \textbf{spread out} if for every $x, y \in S$ if $x \neq y$ then $\abs{x - y} \geq 1$.
+\item[$\bullet$]
+$S$ is called \textbf{broad} if for every $x \in \mathbb{R}$, there exists $y \in S$ such that $\abs{x - y} \leq 1$.
+\item[$\bullet$]
+$S$ is called \textbf{clumped} if for every $x, y \in S$ one has $\abs{x - y} \leq 1$.
+\item[$\bullet$]
+$S$ is called \textbf{bunched} if there exists $x \in S$ such that for every $y \in S$ one has $\abs{x - y} \leq 1$.
+\item[$\bullet$]
+$S$ is called \textbf{clustered} if for every $x \in S$ there exists $y \in S - \{x\}$ such that $\abs{x - y} \leq 1$.
+\begin{itemize}
+\item[]
+\item[]
+IMPORTANT NOTE: When talking about \und{broad, clumped, and bunched}\\
+sets I will not consider the cases $x = y$. The reason
+is that if $x = y$, then $\abs{x - y} = 0 \leq 1$ and it does not give us any valuable
+info about the set.
+\item[]
+\item[]
+\item[(a)]
+Decide which of the above five definitions apply to each of the following sets.
+
+\begin{itemize}
+\item[i.]
+$\{1, 2, 3\}$
+
+\item[]
+
+\begin{quote}
+Set $\{1, 2, 3\}$ is \textbf{spread out} because for $1, 2 \in \{1, 2, 3\}$, $\abs{1 - 2} = \abs{2 - 1} = 1 \geq 1$;
+for $2, 3 \in \{1, 2, 3\}$, we have $\abs{2 - 3} = \abs{2 - 3} = 1 \geq 1$; and finally, for $1, 3 \in \{1, 2, 3\}$, we have $\abs{1 - 3} = \abs{3 - 1} = 2 \geq 1$.
+\\\\
+Set $\{1, 2, 3\}$ is \und{NOT} \textbf{broad} because for $5 \in \mathbb{R}$, we have $\abs{5 - 1} = \abs{1 - 5} = 4 > 1$,
+$\abs{5 - 2} = \abs{2 - 5} = 3 > 1$, and $\abs{5 - 3} = \abs{3 - 5} = 2 > 1$.\\
+\\
+Set $\{1, 2, 3\}$ is \textbf{clumped} because for $1, 2 \in \{1, 2, 3\}$, $\abs{1 - 2} = \abs{2 - 1} = 1 \leq 1$;
+for $2, 3 \in \{1, 2, 3\}$, we have $\abs{2 - 3} = \abs{2 - 3} = 1 \leq 1$; and for $1, 3 \in \{1, 2, 3\}$, we have $\abs{1 - 3} = \abs{3 - 1} = 2 \leq 1$.
+Besides, for $1, 2, 3 \in \{1, 2, 3\}$ we have $\abs{1 - 1} = \abs{2 - 2} = \abs{3 - 3} = 0 \leq 1$.
+\\\\
+Set $\{1, 2, 3\}$ is \textbf{bunched} because for $2 \in S$, we have $\abs{2 - 1} = 1 \leq 1$, $\abs{2 - 2} = 0 \leq 1$, and $\abs{2 - 3} = 1 \leq 1$.
+\\\\
+Set $\{1, 2, 3\}$ is \textbf{clustered} because for $1 \in S$, $\abs{1 - 2} = 1 \leq 1$; for $2 \in S$, $\abs{2 - 3} = 1 \leq 1$;
+for $3 \in S$, $\abs{3 - 2} = 1 \leq 1$.
+\end{quote}
+
+\item[]
+
+\item[ii.]
+$\mathbb{R}$
+\begin{quote}
+Set $\mathbb{R}$ is not \und{NOT} \textbf{spread out} because for $0.1, 0.2 \in \mathbb{R}$, we have $0.1 \neq 0.2$ but $\abs{0.1 + 0.2} = 0.3 < 1$.
+\\\\
+Set $\mathbb{R}$ is \textbf{broad} because for every $x \in \mathbb{R}$, we can find $y \in \mathbb{R}$ such that $y = x + 1$ and then $\abs{x - y} = \abs{x - (x + 1)} = \abs{x - x - 1} = \abs{-1} = 1 \leq 1$.
+\\\\
+Set $\mathbb{R}$ is \und{NOT} \textbf{clumped} because for $5, 7 \in \mathbb{R}$, we have $\abs{5 - 7} = \abs{7 - 5} = 2 > 1$.
+\\\\
+$\mathbb{R}$ is \und{NOT} \textbf{bunched}. Proof: Suppose, for the sake of contradiction, that $x \in \mathbb{R}$ and also suppose that for every $y \in \mathbb{R}$, we have $\abs{x - y} \leq 1$ (thus, suppose that $\mathbb{R}$ is bunched).
+Then we can take $y = x + 2$ (note that $y \in \mathbb{R}$) and we have $\abs{x - y} = \abs{x - x + 2} = 2 > 1$. Thus, we have reached the contradiction and $\mathbb{R}$ is not bunched.
+\\\\
+$\mathbb{R}$ is \textbf{clustered}. Let $x \in \mathbb{R}$, then we can have $y = x + 1$. Then since $x \neq y$ we know that $y \in \mathbb{R} - \{x\}$
+and finally, $\abs{x - y} = \abs{x - (x + 1)} = \abs{x - x - 1} = \abs{-1} = 1 \leq 1$.
+\end{quote}
+
+\item[]
+
+\item[iii.]
+$\mathbb{Z}$
+\begin{quote}
+Set $\mathbb{Z}$ is \textbf{spread out}. Suppose $x, y \in \mathbb{Z}$ and $x \neq y$, then we have two cases:\\\\
+Case I: $x > y$\\
+Case II: $x < y$\\
+\\
+Proof of Case I: If $x > y$, we know that $x - y \geq 1$ and then $\abs{x - y} = \abs{y - x} \geq 1$.\\
+Proof of Case II: If $x < y$, we know that $y - x \geq 1$ and then $\abs{x - y} = \abs{y - x} \geq = 1$.
+\\\\
+Set $\mathbb{Z}$ is \textbf{broad} because for every $x \in \mathbb{Z}$, we can find $y \in \mathbb{Z}$ such that $y = x + 1$ and then $\abs{x - y} = \abs{x - (x + 1)} = \abs{x - x - 1} = \abs{-1} = 1 \leq 1$.
+\\\\
+Set $\mathbb{Z}$ is \und{NOT} \textbf{clumped} because for $5, 7 \in \mathbb{Z}$, we have $\abs{5 - 7} = \abs{7 - 5} = 2 > 1$.
+\\\\
+$\mathbb{Z}$ is \und{NOT} \textbf{bunched}. Proof: Suppose, for the sake of contradiction, that $x \in \mathbb{Z}$ and also suppose that for every $y \in \mathbb{Z}$, we have $\abs{x - y} \leq 1$ (thus, suppose that $\mathbb{Z}$ is bunched).
+Then we can take $y = x + 2$ (note that $y \in \mathbb{Z}$) and we have $\abs{x - y} = \abs{x - x + 2} = 2 > 1$. Thus, we have reached the contradiction and $\mathbb{Z}$ is not bunched.
+\\\\
+$\mathbb{Z}$ is \textbf{clustered}. Let $x \in \mathbb{Z}$, then we can have $y = x + 1$. Then since $x \neq y$ we know that $y \in \mathbb{Z} - \{x\}$
+and finally, $\abs{x - y} = \abs{x - (x + 1)} = \abs{x - x - 1} = \abs{-1} = 1 \leq 1$.
+\end{quote}
+
+\item[]
+
+\item[iv.]
+$[2, 4]$
+\begin{quote}
+Interval $[2, 4]$ is \und{NOT} \textbf{spread out} because for $2.25, 2.5 \in [2, 4]$ we have that $2.25 \neq 2.5$ but $\abs{2.25 - 2.5} = 0.25 < 1$.
+\\\\
+Interval $[2, 4]$ is \und{NOT} \textbf{broad} because for $8 \in \mathbb{R}$, the differences between 8 and the members of $[2, 4]$ will range from 4 to 6.
+Thus, if we take $x = 8 \in \mathbb{R}$, for all $y \in [2, 4]$, $\abs{x - y} = [4, 6]$ and it is clear that for all $y \in [2, 4]$, $\abs{x - y} \geq 4 > 1$.
+\\\\
+Interval $[2, 4]$ is \und{NOT} \textbf{clumped} because for $2.2, 3.4 \in S$, we have $\abs{2.2 - 3.4} = 1.2 > 1$.
+\\\\
+Interval $[2, 4]$ is \textbf{bunched}. Proof: Let $x = 3 \in [2, 4]$. Then consider the following three cases:\\\\
+Case I: $2 \leq y < 3$\\
+Case II: $y = 3$\\
+Case III: $3 < y \leq 4$\\\\
+If $2 \leq y < 3$, then $x - y \in [0, 1)$ and thus $\abs{x - y} \leq 1$.\\
+If $y = 3$, then $x - y = 0$ and thus $\abs{x - y} = 0 \leq 1$.\\
+If $3 < y \leq 4$, then $x - y \in [-1, 0)$ and thus $\abs{x - y} \leq 1$.\\
+Thus, we have exhaustively shown that the interval $[2, 4]$ is bunched.
+\\\\
+Interval $[2, 4]$ is \textbf{clustered}. Proof: Suppose $x \in [2, 4]$. Then consider the following three cases:\\\\
+Case I: $2 \leq x < 3$\\
+Case II: $x = 3$\\
+Case III: $3 < x \leq 4$\\\\
+If $2 \leq x < 3$, then we can take $y = 3$ and we have that $x \neq y$ while $\abs{x - y} \leq 1$.\\
+If $x = 3$, then we can take $y = 2.8$ and we have that $x \neq y$ while $\abs{x - y} = 0.2 \leq 1$.\\
+If $3 < x \leq 4$, then we can take $y = 3$ and we have that $x \neq y$ while $\abs{x - y} \leq 1$.\\
+Thus, we have exhaustively shown that the interval $[2, 4]$ is clustered.
+\end{quote}
+
+\item[]
+
+\item[v.]
+The set of even integers.\\\\
+\und{\textbf{Note: We denote the set of even integers as the set $E = \{... -2, 0, 2 ...\}$.}}
+\item[]
+\item[]
+\begin{quote}
+Set $E$ is \textbf{spread out}. Proof: Suppose $x, y \in S$ and $x \neq y$. Then, since $E$ is the set of even integers,
+we know that $x - y \geq 2$ and finally $\abs{x - y} \geq 2 \geq 1$.\\\\
+Set $E$ is \und{NOT}  \textbf{broad}. Proof: Suppose, for the sake of contradiction, that $E$ is broad and let $x = 0$.
+Then we know that $x \in E$, but for all $y \in E$, $\abs{x - y} \geq 2$ which contradicts the fact that $E$ is broad (for every $x \in E$ there exists $y$ such that $x \neq y$ and $\abs{x - y} \leq 1$).\\\\
+Set $E$ is \und{NOT} \textbf{clumped}. Proof: Suppose, for the sake of contradiction, that $E$ is clumped. Then for all $x, y \in S$, we must have $\abs{x - y} \leq 1$. However, if $x = 0, y = 2$, we have $\abs{x - y} = 2 > 1$.\\\\
+Set $E$ is \und{NOT} \textbf{bunched}. Proof: Suppose, for the sake of contradiction, that $E$ is bunched. Then, since $E$ is the set of even integers, if $x \in E$, then for all $y \in E - \{x\}$, $\abs{x - y} \geq 2$ and we have reached the contradiction.\\\\
+Set $E$ is \und{NOT} \textbf{clustered}. Proof: Suppose, for the sake of contradiction, that $E$ is clustered. Then, since $E$ is the set of even integers, if $x \in E$, then for all $y \in E - \{x\}$, $\abs{x - y} \geq 2$ and we have reached the contradiction.
+\end{quote}
+
+\item[]
+
+\item[vi.]
+$\bigcup_{i\in\mathbb{Z}}[2i, 2i + 1]$
+\begin{quote}
+$\bigcup_{i\in\mathbb{Z}}[2i, 2i + 1]$ is \textbf{spread out}. Proof: Suppose $x, y \in \bigcup_{i\in\mathbb{Z}}[2i, 2i + 1]$ and $x \neq y$.
+Then we know that the difference between any two different elements of the set is either greater than or equal than 1 or less than or equal than -1 and thus, $\abs{x - y} \geq 1$.\\\\
+$\bigcup_{i\in\mathbb{Z}}[2i, 2i + 1]$ is \und{NOT} \textbf{broad}. Proof: Let $i = 1$, then $\bigcup_{i\in\mathbb{Z}}[2i, 2i + 1] = \{2, 3\}$. Now, let's take $10 \in \mathbb{R}$. Then
+$\abs{10 - 2} = \abs{2 - 10} = 8 > 1$ and $\abs{10 - 3} = \abs{3 - 10} = 7 > 1$.\\\\
+$\bigcup_{i\in\mathbb{Z}}[2i, 2i + 1]$ is \textbf{clumped}. Proof: Suppose $x, y \in \bigcup_{i\in\mathbb{Z}}[2i, 2i + 1]$. Then we know that the difference between any two elements are greater than
+or equal than 1. Thus, if $x \neq y$, $\abs{x - y} \leq 1$ and if $x = y$, $\abs{x - y} \leq 1$.\\\\
+$\bigcup_{i\in\mathbb{Z}}[2i, 2i + 1]$ is \textbf{bunched}. Proof: Consider $\bigcup_{i\in\mathbb{Z}}[2i, 2i + 1]$. We know that $\bigcup_{i\in\mathbb{Z}}[2i, 2i + 1]$ always has 2 elements
+$2i$ and $2i + 1$. Then if we take $2i$, we can find $2i + 1$ and $\abs{(2i + 1) - (2i)} = 1 \leq 1$ and if we take $2i + 1$, we can find $2i + 1$ and $\abs{(2i) - (2i + 1)} = 1 \leq 1$.
+Now, if we take $3, $\\\\
+$\bigcup_{i\in\mathbb{Z}}[2i, 2i + 1]$ is \textbf{clustered}. Proof: Suppose $x \in \bigcup_{i\in\mathbb{Z}}[2i, 2i + 1]$. Then we know that $x = 2k$ or $x = 2k + 1$.\\
+Case I: If $x = 2k$, we can take $y = 2k - 1$ and if $2k - 1$ does not exist, take $y = 2k + 1$ and then $\abs{x - y} = 1 \leq 1$.\\
+Case II: If $x = 2k + 1$, we can take $y = 2k$ and if $2k$ does not exist, take $y = 2k + 2$ and then $\abs{x - y} = 1 \leq 1$.\\
+\end{quote}
+\end{itemize}
+\item[]
+\item[(b)]
+Give examples of the following, or explain why none exists.
+\item[]
+\begin{itemize}
+\item[i.]
+A broad, spread out set
+\begin{quote}
+There exists such set. Example: The set of positive integers.\\\\
+Proof: Consider the set of integers $\mathbb{Z}$. Then we know that for every $x, y \in \mathbb{Z}$, if $x \neq y$, then $\abs{x - y} \geq 1$. Thus, \und{it is spread out}.
+On the other hand, suppose $y \in \mathbb{R}$. Then, let's define the $round$ of $y$ as the closest integer to $y$ rounded down (e.g., $round(1.2) = 1$ and $round(1.9) = 1$).
+We can then take $x = round(y)$ and this way, we have $\abs{x - y} \leq 1$. Thus, for each $y$, we can follow the process above and we get that \und{the set $\mathbb{Z}$ is broad}. $\qedsymbol$
+\end{quote}
+
+\item[]
+
+\item[ii.]
+A spread out, clumped set
+\begin{quote}
+There exists. Example: $S = \{1, 2\}$.\\\\
+Proof: $S$ is spread out because $\abs{1 - 2} = \abs{2 - 1} = 1 \geq 1$ and $S$ is clumped because
+$\abs{1 - 1} = \abs{2 - 2} = 0 \leq 1$ and $\abs{1 - 2} = \abs{2 - 1} = 1 \leq 1$. $\qedsymbol$
+\end{quote}
+
+\item[]
+
+\item[iii.]
+A subset of $\mathbb{R}$ that is not broad, not clumped, and not spread out.
+\begin{quote}
+Such set exists. Example: $S = \{1, 1.2, 3\}$.\\\\
+Proof:\\
+$S$ \und{is not} broad because for $x = 25$, $\abs{25 - 1} = 24 > 1$, $\abs{25 - 1.2} = 23.8 > 1$ and $\abs{25 - 3} = 22 > 1$.\\
+$S$ \und{is not} clumped because $\abs{3 - 1.2} = 1.8 > 1$.\\
+$S$ \und{is not} spread out because $\abs{1 - 1.2} = 0.8 < 1$. $\qedsymbol$
+\end{quote}
+\item[]
+\item[]
+\item[iv.]
+An infinite clumped set
+\begin{quote}
+There exists. Example $S = [1, 2]$ (a closed interval from 1 to 2).\\\\
+Proof: Suppose $x, y \in S$. Then, $1 \leq x \leq 2$ and $1 \leq y \leq 2$ and
+finally, $0 \leq \abs{x - y} \leq 1$. $\qedsymbol$
+\end{quote}
+\end{itemize}
+
+\item[]
+\item[(c)]
+For each of the five properties above, prove or disprove the statement: A subset of a set with PROPERTY is also PROPERTY.
+\\\\
+Note: \und{The empty set is spread out, broad, clumped, bunched, and clustered}. Thus, I am not going to consider it.
+\begin{itemize}
+\item[i.]
+A subset of the spread out set is also spread out.
+\begin{quote}
+It's true.\\\\
+Proof: Suppose $S$ is a spread-out set and $B \subseteq S$. Now, since $S$ is spread out, we know that for all $x, y \in S$, if $x \neq y$, then $\abs{x - y} \geq 1$.
+Let $x, y \in B$. Then, since $B \subseteq S$, we know that $x, y \in S$ and thus, $\abs{x - y} \geq 1$.
+$\qedsymbol$
+\end{quote}
+\item[]
+\item[ii.]
+A subset of the broad set is also broad.
+\begin{quote}
+It is false.\\\\
+Proof: Suppose $S = \reals$. Then $S$ is broad because for every $y \in \reals$, we can take the same element $y \in S$ (since $S = \reals$)
+and then $\abs{y - y} = 0 \leq 1$. Now, let's take a look at the subset $A$ of $S$ such that $A = \{0\}$. Then for $y = 12$, $\abs{12 - 0} = 12 > 1$.
+Thus, the subset of the broad set is not necessarily broad.
+$\qedsymbol$
+\end{quote}
+\item[]
+\item[iii.]
+A subset of the clumped set is also clumped.
+\begin{quote}
+It is true.\\\\
+Proof: Suppose $S$ is a clumped set and $A$ is subset of $S$. Let $x, y \in A$.
+Then, since $A \subseteq S$, we have $x, y \in S$ and $\abs{x - y} \leq 1$. $\qedsymbol$
+\end{quote}
+\item[]
+\item[iv.]
+A subset of the bunched set is also bunched.
+\begin{quote}
+It is false.\\\\
+Proof: Suppose we have a set $S = \{1, 1.5, 2.2\}$. Then $S$ is broad since $\abs{1.5 - 1} = 0.5 \leq 1$, $\abs{1.5 - 2.2} = 0.7 \leq 1$,
+and $\abs{1.5 - 1.5} = 0 \leq 1$. However, the subset of $S$, $A = \{1, 2.2\}$ is not bunched because $\abs{1 - 2.2} = \abs{2.2 - 1} = 1.2 > 1. \qed$
+\item[]
+\item[v.]
+A subset of the clustered set is also clustered.
+\begin{quote}
+It is false.\\\\
+Proof: Let $S = \{1.2, 2, 3\}$. Then $S$ is clustered because $\abs{3 - 2} = 1 \leq 1$, $\abs{2 - 3} = 1 \leq 1$, and $\abs{1.2 - 2} = 0.8 \leq 1$.
+However, if we now take a look at the subset $A$ of $S$, such that $A = \{1.2, 3\}$, then $\abs{3 - 1.2} = 1.8 > 1. \qed$
+\end{quote}
+\end{quote}
+\end{itemize}
+
+\item[]
+
+\item[(d)]
+For each of the five properties above, prove or disprove the statement: If $S$ and
+$T$ are sets with PROPERTY than $S \cup T$ is a set with PROPERTY.
+\begin{itemize}
+\item[i.]
+If $S$ and $T$ are spread out, then $S \cup T$ is spread out.
+\begin{quote}
+It is false. Proof: Let $S = \{1, 2\}$ then $\abs{1 - 2} = \abs{2 - 1} = 1 \geq 1$ and thus, $S$ is spread out.\\
+Now, let $T = \{2.2, 3.2\}$. Then $\abs{2.2 - 3.2} = \abs{3.2 - 2.2} = 1 \geq 1$ and hence, $T$ is spread out. On the other
+hand, $S \cup T = \{1, 2, 2.2, 3.2\}$ and $\abs{2.2 - 2} = 0.2 < 1$. Thus, while $S$ and $T$ are
+spread out, $S \cup T$ is not spread out.
+\end{quote}
+
+\item[]
+
+\item[ii.]
+If $S$ and $T$ are broad, then $S \cup T$ is broad.
+\begin{quote}
+It is true.\\
+Proof: Suppose $S$ and $T$ are the broad sets, let $y \in \reals$.
+Then we know that $S \cup T$ contains the elements of $S$ and $T$.
+Besides, for $y$, we could find $s \in S$ or $t \in T$ such that $\abs{y - s} \leq 1$
+and $\abs{y - t} \leq 1$. Therefore, for $y \in \reals$ we can just take $s \in S$ (or $t \in T$) which will
+also be an element of the set $S \cup T$ and we will have $\abs{y - s} \leq 1$.
+\qed
+\end{quote}
+
+\item[]
+
+\item[iii.]
+If $S$ and $T$ are clumped, then $S \cup T$ is clumped.
+\begin{quote}
+It is false.\\
+Proof: Let $S = \{1, 2\}$ and $T = \{3, 4\}$. Then $S$ is clumped because $\abs{1 - 2} = \abs{2 - 1} = 1 > 1$
+and $T$ is clumped because $\abs{3 - 4} = \abs{3 - 4} = 1 \leq 1$. Now, consider the set $S \cup T$.
+$S \cup T = \{1, 2, 3, 4\}$ and $\abs{1 - 4} = 3 > 1$ and the set $S \cup T$ is not clumped. $\qed$
+\end{quote}
+\item[]
+\item[iv.]
+If $S$ and $T$ are bunched, then $S \cup T$ is bunched.
+\begin{quote}
+It is false.\\
+Proof: Let $S = \{1\}$ and $T = \{3\}$. Then $S$ is bunched because $\abs{1 - 1} = 0 \leq 1$
+and $T$ is bunched as well since $\abs{3 - 3} = 0 \leq 1$. Consider the set $S \cup T$.
+$S \cup T = \{1, 3\}$ and then $\abs{1 - 3} = \abs{3 - 1} = 2 > 1$. Thus, the union of two bunched
+sets is not necessarily bunched. $\qed$
+\end{quote}
+\item[]
+\item[v.]
+If $S$ and $T$ are clustered, then $S \cup T$ is clustered.
+\begin{quote}
+It is true.\\
+Proof: Suppose $S$ and $T$ are clustered. Then we know that for every $s \in S$, there exists $x \in S - \{s\}$
+such that $\abs{s - x} \leq 1$. Also, we know that for every $t \in T$, there exists $y \in T - \{t\}$ such that $\abs{t - y} \leq 1$.
+Now, consider the set $S \cup T$ and let $z \in S \cup T$. Since $z \in S \cup T$, it means that $z \in S$ or $x \in T$.
+If $z \in S$, we know that there exists an element $f \in S$ such that $\abs{z - f} \leq 1$ and since $f \in S$, $f \in S \cup T$.
+And if $z \in T$, we know that there exists an element $g \in T$ such that $\abs{z - g} \leq 1$ and since $g \in T$, $g \in S \cup T$.
+\qed
+\end{quote}
+\end{itemize}
+
+\item[]
+\item[(e)]
+For each of the five properties above, prove or disprove the statement:
+If $S$ and $T$ are sets with PROPERTY than $S \cap T$ is a set with PROPERTY.
+\begin{itemize}
+\item[i.]
+If $S$ and $T$ are spread out, then $S \cap T$ is spread out.
+\begin{quote}
+It is true.\\
+Proof: Suppose $S$ and $T$ are spread out sets. Then we know that $S \cap T$
+is a subset of $S$. Then since we already proved that the subset of the spread
+out set is spread out, $S \cap T$ is also spread out. $\qed$
+\end{quote}
+\item[]
+\item[ii.]
+If $S$ and $T$ are broad, then $S \cap T$ is broad.
+\begin{quote}
+It is false.\\
+Proof: Let $S = \{-2.4, -1,2, 0, 1.2, 2.4 ...\}$ and $T = \{-3, -1.5, 0, 1.5, 3, \}$.
+Then $S$ and $T$ are both broad, however, $S \cap T = \{-12, -6, 6, 12\}$ is not as if we take
+$2 \in \reals$, the best we can get is $\abs{2 - 6} = 4 > 1$. $\qed$
+\end{quote}
+\item[]
+\item[iii.]
+If $S$ and $T$ are clumped, then $S \cap T$ is clamped.
+\begin{quote}
+Since we have already proved that any subset of the clumped set is clumped.
+Then $S \cap T$ is just a subset of $S$ (and $T$) and it is clumped as well. $\qed$
+\end{quote}
+\item[]
+\item[iv.]
+If $S$ and $T$ are bunched, then $S \cap T$ is bunched.
+\begin{quote}
+It is false.\\
+Proof: Let $S = \{1, 2, 2.8\}$ and $T = \{1, 1.9, 2.8\}$. Then $S$ is bunched
+because $\abs{2 - 1} = 1 \leq 1$ and $\abs{2 - 2.8} = 0.8 \leq 1$.
+$T$ is bunched too as $\abs{1.9 - 1} = 0.9 \leq 1$ and $\abs{1.9 - 2.8} = 0.9 \leq 1$.
+On the other hand, set $S \cap T = \{1, 2.8\}$ which is not bunched as $\abs{1 - 2.8} = \abs{2.8 - 1} = 1.8 > 1$.
+$\qed$
+\end{quote}
+\item[]
+\item[v.]
+If $S$ and $T$ are clustered, then $S \cap T$ is clustered.
+\begin{quote}
+It is false.\\
+Proof: Consider two clustered sets $S = \{1, 2, 2.7\}$ and $T = \{1, 1.8, 2.7\}$.
+Then $S \cap T = \{1, 2.7\}$ and $\abs{1 - 2.7} = 1.7 > 1$.
+$\qed$
+\end{quote}
+\end{itemize}
+\item[]
+\item[]
+\item[]
+{\Large Video: Ramanujan, 1729, and Fermat’s Last Theorem}
+\\\\
+Description: Matt Parker discusses Hardy (author of A Mathematician’s Apology)’s relationship with Ramanujan,
+and discusses a famous story of the taxi cab number 1729, as well as surprising connections between this story and an attempted proof of Fermat’s Last Theorem.
+Link: \url{https://www.youtube.com/watch?v=_o0cIpLQApk}
+\item[]
+\item[69.]
+How did Ramanujan and Hardy meet?
+\begin{quote}
+Hardy wanted to learn more about Ramanujan since he heard that every number was a Ramanujan's friend.
+Since Ramanujan was ill, Hardy personally visited Ramanujan who was residing Putney.
+\end{quote}
+\item[]
+\item[70.]
+In the video Parker discusses the near miss “solution” $65601^3 + 67402^3 = 83802^3$
+to Fermat’s Last Theorem. Explain how you could know this equation was not correct
+without doing any calculation at all.
+\begin{quote}
+65601 is odd thus, $65601^3$ is odd as well. 67402 is even, thus $67402^3$ is even as well.
+83802 is even and thus, $83802^3$ is even too. Hence, we have that the sum of the odd and
+the even integer is even which is not true.
+\end{quote}
+\item[]
+\item[71.]
+What is the connection between 1729 and Fermat’s Last Theorem?
+\begin{quote}
+There was a reason why Ramanujan knew that $1729 = 9^3 + 10^3 = 12^3 + 1^3$ (1729 is the smallest number
+to be written in as the sum of two cubes in two different ways). In 1976, a researched discovered that Ramanujan
+was working on the Fermat's Last Theorem. And the fermat last theorem says $x^n + y^n = z^n$ has no solutions
+when $a, b, c \in \pnats$ and $n > 2$ (it is easy to notice that the pattern in 1729 is, at some extent, similar to that in the Fermat’s Last Theorem).
+\end{quote}
+\newpage
+
+{\Large \und{Bookwork 4.1}}
+\item[]
+\item[1.]
+Let $U = \{1, 2, 3, 4, 5, 6\}, A = \{1, 2, 3\}, B = \{2, 3, 4\}$, and $C = \{4, 5, 6\}$.
+Find each of the following sets.\\\\
+Note: I am assuming that $U$ is the universal set.
+\\
+\begin{itemize}
+\item[(a)]
+$A \cup B = \{1, 2, 3, 4\}$
+\item[(b)]
+$A \cap B = \{2, 3\}$
+\item[(c)]
+$A^c = U - \{1, 2, 3\} = \{4, 5, 6\}$
+\item[(d)]
+$B^c = U - \{2, 3, 4\} = \{1, 5, 6\}$
+\item[(e)]
+$B \cap C = \{4\}$
+\item[(f)]
+$A \cap (B \cup C) = A \cap \{2, 3, 4, 5, 6\} = \{2, 3\}$
+\item[(g)]
+$(A \cap B) \cup (A \cap C) = \{2, 3\} \cup \emptyset = \emptyset$
+\item[(h)]
+$A \cap C^c = \{1, 2, 3\} \cap \{1, 2, 3\} = \{1, 2, 3\}$
+\item[(i)]
+$A - C = \{1, 2, 3\}$
+\item[(j)]
+$\mathcal{P}(A) \cap \mathcal{P}(B) = \{\emptyset, \{1\}, \{2\}, \{3\}, \{1, 2\}, \{2, 3\}, \{1, 3\}, \{1, 2, 3\}\} \ \cap$\\
+$\{\emptyset, \{4\}, \{5\}, \{6\}, \{4, 5\}, \{5, 6\}, \{4, 6\}, \{4, 5, 6\}\} = \emptyset$
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[3.]
+\begin{itemize}
+\item[(b)]
+Prove: $A \subseteq B$ if and only if $A \cap B = A$.
+\begin{proof}
+Since this is the if and only if proof, we first have to prove the
+statement and then the converse of it.\\\\
+I. Suppose, for the sake of contradiction, that $A \subseteq B$ and
+$A \cap B \neq A$. Then it must be the case that $A$ has some elements which
+$B$ does not and $A \nsubseteq B$.\\\\
+II. Suppose that $A \cap B = A$, then we have that $B$ has all the elements of $A$
+which makes $A$ the subset of $B$ and thus $A \subseteq B$.
+\end{proof}
+\item[]
+\item[(c)]
+Prove: If $A \subseteq B$ and $A \subseteq C$, then $A \subseteq B \cap C$.
+\begin{proof}
+Suppose $A, B$, and $C$ are the sets such that $A \subseteq B$ and $A \subseteq C$.
+Then, we know that both $B$ and $C$ have all the elements of $A$ and thus, $A \subseteq B \cap C$.
+\end{proof}
+\item[]
+\item[(e)]
+Prove: $(A - B) \cap (A \cap B) = \emptyset$.
+\begin{proof}
+Suppose $A$ and $B$ are the sets. Then $(A - B) \cap B = \emptyset$.
+Now, consider $A \cap B$ which is the set of elements which are both in $A$ and $B$.
+Since $(A - B) \cap B = \emptyset$, it means that $(A - B) \cap (A \cap B) = \emptyset$.
+\end{proof}
+\item[]
+\item[(f)]
+Prove: $(A - B) \cap C = (A \cap C) - B$
+\begin{proof}
+To show the equality of two sets, we must show that the first one is the subset
+of the second one and that the second one is the subset of the first one.
+\\\\
+Prove that $(A - B) \cap C \subseteq (A \cap C) - B$:\\
+Let $x \in (A - B) \cap C$. Then $x \in A - B$, $x \notin B$, and $x \in C$. Since $x \in A - B$,
+$x \in A$ and as $x \in C$, we have $x \in A \cap C$. Finally, since $x \notin B$ and $x \in A \cap C$,
+we have $x \in (A \cap C) - B$.
+\\\\
+Prove that $(A \cap C) - B \subseteq (A - B) \cap C$\\
+Let $x \in (A \cap C) - B$. then $x \in A$, $x \in C$, and $x \notin B$.
+Since $x \in A$ and $x \notin B$, $x \in A - B$. At last, since $x \in A - B$
+and $x \in C$, $x \in (A - B) \cap C$.
+\end{proof}
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[7.]
+\begin{itemize}
+\item[(a)]
+For any set $A$, is $\{\emptyset\} \subseteq \mathcal{P}(A)$.
+\begin{quote}
+No. Counterexample: Let $A = \{1\}$. Then $\mathcal{P}(A) = \{\emptyset, \{1\}\}$
+and $\{\emptyset\} \nsubseteq \mathcal{P}(A)$.
+\end{quote}
+\item[]
+\item[(b)]
+Prove: If $A \cap B = \emptyset$, then $\mathcal{P}(A) \cap \mathcal{P}(B) = \emptyset$. Is the converse true?
+\begin{proof}
+Suppose $A$ and $B$ are the sets such that $A \cap B = \emptyset$. Then let's take a look
+at $\mathcal{P}(A)$ and $\mathcal{P}(B)$. Since the $\emptyset$ is the subset of every set,
+$\emptyset \in \mathcal{P}(A)$ and $\emptyset \in \mathcal{P}(B)$. On the other hand, $\mathcal{P}(A)$
+is the powerset of $A$ which is the set of all subsets of $A$ as well as $\mathcal{P}(B)$ is the set
+of all subsets of $B$ and since $A \cap B = \emptyset$, $\mathcal{P}(A) \cap \mathcal{P}(B) = \emptyset$.
+\\\\
+Is the converse true?
+The converse will be true as well. If $\mathcal{P}(A) \cap \mathcal{P}(B) = \emptyset$, it means
+that there were no shared elements in $\mathcal{P}(A)$ and $\mathcal{P}(B)$. Therefore, since
+powersets are the sets of all subsets of $A$ and $B$, it must be the case that they have no elements
+in common and $A \cap B = \emptyset$.
+\end{proof}
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[9.]
+Suppose $A$ is a set with $n$ elements where $n$ is a positive integer.
+\begin{itemize}
+\item[(a)]
+How many subsets of $A$ contain exactly one element?
+\begin{quote}
+Since there are $n$ elements in the set $A$, there will be $n$ subsets with one element.
+\end{quote}
+\item[]
+\item[(b)]
+How many subsets of $A$ contain exactly $n - 1$ elements.
+\begin{quote}
+Since there are $n$ elements in $A$, the number of subsets
+with $n - 1$ elements will be $A_{n - 1}^n = \dfrac{n!}{n - (n - 1)!} = n$ (a.k.a, the number of permutations).
+(the question does not ask for the proof, but if one wanted to, it could be proved
+using mathematical induction).
+\end{quote}
+\end{itemize}
+\end{itemize}
+
+\end{itemize}
+
+\end{document}

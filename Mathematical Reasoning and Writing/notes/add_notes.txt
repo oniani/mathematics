@@ -1,0 +1,5 @@
+One-to-one: different inputs map to different outputs
+
+Onto: A function f:A -> B is called onto (or surjective)
+if for every b /in B,there exists a /in A
+such that f(a) = b.
