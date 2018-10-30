@@ -1,0 +1,245 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+
+
+\usepackage{adjustbox}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{systeme}
+
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{tikz}
+
+\usepackage{textcomp}
+\usepackage{soul}
+
+\usepackage[hidelinks]{hyperref}
+\usepgfplotslibrary{external,fillbetween}
+\pgfplotsset{compat=1.14}
+\usepackage[makeroom]{cancel}
+\title{\bf{Homework \textnumero 10}}
+\author{Author: David Oniani
+\\
+\ \ \ Instructor: Tommy Occhipinti}
+\date{October 31, 2018}
+
+\usepackage{listings}
+\usepackage{color}
+
+%%%%%%%%%%%%%%% S E T S %%%%%%%%%%%%%%%
+\newcommand{\nats}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\irrats}{\mathbb{I}}
+
+\newcommand{\pnats}{\mathbb{N}^+}
+\newcommand{\pints}{\mathbb{Z}^+}
+\newcommand{\prats}{\mathbb{Q}^+}
+\newcommand{\preals}{\mathbb{R}^+}
+\newcommand{\nreals}{\mathbb{R}^-}
+
+\newcommand{\nints}{\mathbb{Z}^-}
+\newcommand{\nrats}{\mathbb{Q}^-}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Calligraphy
+\newcommand\und[1]{\underline{\smash{#1}}}
+
+% Operators
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+
+
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+backgroundcolor=\color{backcolour},
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=left,
+numberstyle=\normalsize\color{gray},
+keywordstyle=\color{blue},
+commentstyle=\color{dkgreen},
+stringstyle=\color{mauve},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=4
+}
+
+
+\begin{document}
+\maketitle
+
+\begin{itemize}
+\item[72.]
+For each $A$ and $B$ below, give an example of a function from $A$ to $B$ that is non-constant and not given piecewise.
+\begin{itemize}
+\item[(a)]
+$A = (0, 1), \ B = [0, 1]$
+\begin{quote}
+$f : A \rightarrow B : x \mapsto \dfrac{\cos{x} + 1}{2}$
+\end{quote}
+
+\item[]
+
+\item[(b)]
+$A = [0, 1], \ B = (0, 1)$
+\begin{quote}
+$f : A \rightarrow B : x \mapsto \dfrac{x}{x + 1}$
+\end{quote}
+
+\item[]
+
+\item[(c)]
+$A = \reals, \ B = 2 \ints$ (the set of even integers)
+\begin{quote}
+$f : A \rightarrow B : x \mapsto round(x) \times 2$\\\\
+Round is the function that rounds $x$ down to the nearest integer.
+\end{quote}
+
+\item[]
+
+\item[(d)]
+$A$ is the set of finite subsets of $\pints$, $B = \pints$.
+\begin{quote}
+$f : A \rightarrow B : x \mapsto \bigcup^*A$
+\end{quote}
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[73.]
+Consider the function: $f : \ints \rightarrow \ints : n \mapsto 2n + 1$. Is it one-to-one? Is it onto?
+Be sure to prove your answers.
+\begin{quote}
+The function is one-to-one but \und{NOT} onto.
+\\\\
+To prove that $f$ is one-to-one, suppose, for the sake of contradiction, that $x_1, x_2 \in \ints$ such that $x_1 \neq x_2$
+and $2x_1 + 1 = 2x_2 + 1$. Then, if $2x_1 + 1 = 2x_2 + 1$, it means that $2x_1 = 2x_2$ and $x_1 = x_2$. Hence, we have reached
+the contradiction and $f$ is one-to-one.
+\\\\
+To prove that $f$ is not onto, let the output for some input of the function be $4$ (since $4 \in \ints$, it is perfectly valid assumption).
+Then we have that for some $n$, $2n + 1 = 4$
+and $n = \dfrac{3}{2}$. Hence we got that $n \neq \mathbb{Z}$ and thus the function $f$ is not onto.
+$\qed$
+\end{quote}
+
+\item[74.]
+\begin{itemize}
+\item[(a)]
+Prove the function $f : \reals \times \reals \rightarrow \reals \times \reals : (x, y) \mapsto (x + y, x - y)$
+is a bijection.
+\begin{quote}
+If we want to prove that the function is bijection, we must prove that the function is both one-to-one and onto.
+\\\\
+\und{One-to-one proof}\\\\
+Suppose, for the sake of contradiction, that $(x_1, y_1), (x_2, y_2) \in \reals \times \reals$
+and $f(x_1, y_1) = f(x_2, y_2)$. Then it must be the case that $x_1 + y_1 = x_2 + y_2$ and $x_1 - y_1 = x_2 - y_2$.
+Thus, we have the following system of two equations:\\
+\begin{equation*}
+    \systeme{
+    x_1 + y_1 = x_2 + y_2,
+    x_1 - y_1 = x_2 - y_2
+    }
+\end{equation*}
+Now, if we sum up the equations, we get $2x_1 = 2x_2$ which means that $x_1 = x_2$. On the other hand,
+if we substitute $x_2$ with $x_1$ in the second equation of the system, we get $-y_1 = -y_2$ from which
+we also get that $y_1 = y_2$. Hence, we got that if $f(x_1, y_1) = f(x_2, y_2)$, it must be the case
+that $x_1 = x_2$ and $y_1 = y_2$. In other words, the inputs map the same outputs only if they are the same.
+Hence, the different inputs map to the different outputs and the function is one-to-one.
+\\\\
+\und{Onto proof}\\\\
+Suppose $(x_1, y_1)$ is in the codomain of the function (where $x_1, y_1 \in \reals$). Then we can let $x = \dfrac{x_1 + y_1}{2}$
+and $y = \dfrac{x_1 - y_2}{2}$. We get $x + y = \dfrac{x_1 + y_1}{2} + \dfrac{x_1 - y_2}{2} = \dfrac{2x_1}{2} = x_1$
+and $x - y = \dfrac{x_1 + y_1}{2} - \dfrac{x_1 - y_2}{2} = \dfrac{2y_1}{2} = y_1$.
+Hence, we have shown that for every element in the codomain, we can find the element in the domain
+that maps to that element. Thus, the function is onto.
+\\\\
+Now, since we proved that the function is both one-to-one and onto, we have effectively proven that the function is bijection.
+$\qed$
+\end{quote}
+\end{itemize}
+
+\item[]
+
+\item[(b)]
+Prove that function $g : \ints \times \ints \rightarrow \ints \times \ints : (x, y) \mapsto (x + y, x - y)$ is NOT a bijection.
+\begin{quote}
+For the function to be bijection, it should be both one-to-one and onto. This function is not onto. Here is the proof by counterexample:\\\\
+Let the output of the function be $(1, 2)$. Then $(1, 2) \in \ints \times \ints$ thus, is in the codomain. Then, we have a system:\\\\
+\begin{equation*}
+    \systeme{
+    x + y = 1,
+    x - y = 2
+    }
+\end{equation*}
+If we add the two equations together, we get $2x = 3$ and $x = \dfrac{3}{2}$. Now, if we substitute $x$
+in the first equation, we get $y = -\dfrac{1}{2}$. Thus, we got the input pair $(\dfrac{3}{2}, \dfrac{1}{2})$
+where both of the elements are non-integers and hence, $(\dfrac{3}{2}, \dfrac{1}{2}) \notin \ints \times \ints$
+and the function is not onto which also proves that the function is not bijection.
+$\qed$
+\end{quote}
+
+\item[]
+\item[]
+
+\item[75.]
+Consider the function $f : \ints \times \ints \rightarrow \rats$ given by $f(a, b) = \dfrac{a}{\abs{b} + 1}$.
+Is $f$ one-to-one. Is $f$ onto? Be sure to prove your answers.
+\begin{quote}
+$f$ is onto but \und{NOT} one-to-one.\\\\
+To prove that $f$ is not one-to-one consider the following pairs: $a = 1, b = 2$ and $a = 1, b = -2$.
+If $a = 1$ and $b = 2$, $f(1, 2) = \dfrac{1}{\abs{2} + 1} = \dfrac{1}{3}$. On the other hand, if $a = 1$ and $b = -2$,
+$f(1, -2) = \dfrac{1}{\abs{-2} + 1} = \dfrac{1}{3}$. Thus, we have that $f(1, 2) = f(1, -2)$ and different inputs
+give us the same outputs from which we deduce that $f$ is not one-to-one.
+\\\\
+To prove that $f$ is onto, suppose $x \in \rats$. Then $x = \dfrac{m}{n}$ where $m, n \in \ints$.
+Now, consider the following two cases:\\\\
+Case I: $x$ is negative.\\
+Case II: $x$ is zero\\
+Case III: $x$ is positive.\\\\
+Case I Proof: If $x < 0$, then $\dfrac{m}{n} < 0$. If $\dfrac{m}{n} < 0$, $-\dfrac{m}{n} > 0$.
+Then, let $a = -m$ and $\abs{b} + 1 = n$ and we get two solution pairs $(-m, n - 1)$ and $(-m, 1 - n)$.
+\\\\
+Case II: If $x = 0$, let $a = 0$ and we will have infinitely many solutions.
+\\\\
+Case III: If $x > 0$, $\dfrac{m}{n} > 0$ and we let $a = m$ and $\abs{b} + 1 = n$. Finally,
+we get two solution pairs $(m, n - 1)$ and $(-m, 1 - n)$.
+$\qed$
+\end{quote}
+
+\item[]
+\item[]
+
+\item[76.]
+Consider the function $g : \mathcal{P}(\{1, 2, 3, 4, 5\}) \rightarrow \mathcal{P}(\{1, 2, 3, 4\}) : A \mapsto A - \{5\}$.
+Is $g$ one-to-one? Is it onto? Be sure to prove your answers.
+\begin{quote}
+Function $g$ is both onto but \und{NOT} one-to-one.\\\\
+\und{Onto proof}\\\\
+Let $S$ be a set in the codomain. Now, let's explore the connections between $\mathcal{P}(\{1, 2, 3, 4, 5\})$ and $\mathcal{P}(\{1, 2, 3, 4\})$.
+It is clear that $\mathcal{P}(\{1, 2, 3, 4\}) \subset \mathcal{P}(\{1, 2, 3, 4, 5\})$.\ In other words, $\mathcal{P}(\{1, 2, 3, 4, 5\})$ is $\mathcal{P}(\{1, 2, 3, 4\})$ plus
+the sets generated by all the combinations of 5 with the elements of $\mathcal{P}(\{1, 2, 3, 4, 5\})$. Then, since $S$ is in the codomain,
+$S - \{5\}$ is guaranteed to be in the domain since if we subtract 5 from all the element sets of $\mathcal{P}(\{1, 2, 3, 4, 5\})$, we get the set $\mathcal{P}(\{1, 2, 3, 4\})$.
+Hence, for every output, we have an input and the set is onto.
+\\\\
+\und{Proving that $g$ is not one-to-one}\\\\
+Let $A_1 = \{1, 2, 3\}$ and $A_2 = \{2, 3, 4\}$, then $A_1 \neq A_2$, but $g(A_1) = g(A_2)$
+since $A_1 - \{5\} = A_2 - \{5\} = \{2, 3, 4\}$. Hence, for different inputs, we got the same output
+and thus, the function $g$ is not one-to-one.
+$\qed$
+\end{quote}
+\end{itemize}
+\end{document}
