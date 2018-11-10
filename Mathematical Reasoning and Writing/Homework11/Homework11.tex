@@ -7,7 +7,6 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
-\usepackage{systeme}
 
 \usepackage{pgfplots}
 \usepackage{listings}
@@ -55,6 +54,8 @@
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
+% Other
+\newcommand{\rarr}{\rightarrow}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -83,7 +84,208 @@ tabsize=4
 \maketitle
 
 \begin{itemize}
-\item[72.]
+\item[77.]
+Suppose $A$ and $B$ are sets and that $f : A \rightarrow B$ is a function. Define the function
+$\mathcal{F} : A \times A \rightarrow B \times B : (a_1, a_2) \mapsto (f(a_1), f(a_2))$.
+\begin{itemize}
+\item[(a)]
+Prove or Disprove: If $f$ is onto, so is $\mathcal{F}$.
+\begin{quote}
+It's true.\\\\
+Proof: Suppose that $f : A \rightarrow B$ is an onto function.
+Then, we know that every element of $B$ has at least one element
+of $A$ mapped to it. Now, consider $\mathcal{F} : A \times A \rightarrow B \times B : (a_1, a_2) \mapsto (f(a_1), f(a_2))$.
+To prove that $\mathcal{F}$ is onto, we have to show that for every $x \in B \times B$, we can find $y \in A \times A$ that maps
+to it. Every $x \in B \times B$ will have a type $(f(a_1), f(a_2))$. Let's take a look at $(f(a_1), f(a_2))$.
+We have $f(a_1) \in B$ and $f(a_2) \in B$ because $f : A \rightarrow B$ is onto. Finally, since $B \times B$
+is a set of all possible pairs of $B$, we get that for arbitrary $(a_1, a_2) \in A \times A$, $(f(a_1), f(a_2)) \in B \times B$.
+And we showed that $\mathcal{F}$ is onto.
+\qed
+\end{quote}
 
+\item[]
+
+\item[(b)]
+Prove or Disprove: If $f$ is one-to-one, so is $\mathcal{F}$.
+\begin{quote}
+It is true.\\\\
+Suppose $f : A \rightarrow B$ is a one-to-one function. Then we know that every $a \in A$,
+maps to a different $b \in B$. Consider $\mathcal{F} : A \times A \rightarrow B \times B : (a_1, a_2) \mapsto (f(a_1), f(a_2))$.
+Since we know that all the ordered pairs in the set $A \times A$ are different (fortunately, sets do not allow duplicates),
+we can say that every $(a_1, a_2)$ will map to a different $(b_1, b_2)$.\\\\
+Extended proof:\\\\
+Suppose, for the sake of contradiction, that $(a_1, a_2), (a_3, a_4) \in A \times A$, $(b_1, b_2) \in B \times B$ where $(a_1, a_2) \neq (a_3, a_4)$, and
+that $\mathcal{F}((a_1, a_2)) =(b_1, b_2)$ and $\mathcal{F}((a_3, a_4)) =(b_1, b_2)$. Our assumption is equivalent to assuming
+that $(f(a_1), f(a_2)) =(b_1, b_2)$ and $(f(a_3), f(a_4)) = (b_1, b_2)$ where $f$ is one-to-one (according to the problem description).
+Since, by our assumption, $(a_1, a_2) \neq (a_3, a_4)$, it means that either $a_1 \neq a_3$ or $a_2 \neq a_4$ or both). In any case, since $f$ is one-to-one,
+tuples $(f(a_1), f(a_2))$ and $(f(a_2), f(a_3))$ will be different and thus $(f(a_1), f(a_2)) \neq (f(a_2), f(a_3))$.
+Hence, we've reached the contradiction and $\mathcal{F}$ is one-to-one.
+\end{quote}
+
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[78.]
+Suppose $S$ is a set.
+\begin{itemize}
+\item[(a)]
+If there is a function $f : S \rightarrow \emptyset$, what does that tell you about $S$?
+\begin{quote}
+Every function $g$ is a subset of the cartesian product of its domain and codomain.
+Thus, $f$ is a subset of $S \times \emptyset = \emptyset$. Then the only
+to have a function being a subset of $\emptyset$ is to make its domain
+an empty set thus $S = \emptyset$ (it is vacuously true). Thus, if $f : S \rightarrow \emptyset$ is a function,
+it tells me that $S = \emptyset$.
+\end{quote}
+
+\item[]
+
+\item[(b)]
+If there is an onto function $g : \emptyset \rightarrow S$, what does that tell you about $S$?
+\begin{quote}
+It tells me that $S = \emptyset$. It is vacuously onto because everything in the codomain ($\emptyset$)
+has an element in domain ($\emptyset$) that maps to it. Hence, it is a nothing-to-nothing onto function.
+Thus, if there is an onto function $g : \emptyset \rightarrow S$, it tells me that $S = \emptyset$.
+\end{quote}
+
+\item[]
+
+\item[(b)]
+If there is a one-to-one function $h : \emptyset \rightarrow S$, what does that tell you about $S$?
+\begin{quote}
+It tells me that $S = \emptyset$. It is vacuously one-to-one because everything in the domain ($\emptyset$)
+maps to a different element in the codomain ($\emptyset$). In all other cases, where $S$ is non-empty, we have
+that nothing maps to some element which is vacuously not true.
+Thus, if there is an onto function $g : \emptyset \rightarrow S$, it tells me that $S = \emptyset$.
+\end{quote}
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[79.]
+Suppose that $S$ is an arbitrary set, and that $f : S \rightarrow \mathcal{P}(S)$ is a function. Prove
+that $f$ is not onto. [Big Hint: Consider the set $A = \{x \in S \ | \ x \notin f(x)\}$. Is $A$ in the image of $f$?]
+\begin{quote}
+Consider the set $A = \{x \in S \ | \ x \notin f(x)\}$. In other words, set $A$ is a set of all elements
+which are in $S$ but not in $f(x)$. Then we know that $A \in \mathcal{P}(S)$ because $A$
+is the set of all elements of $S$ except for the empty set if $S$ contains one.
+Now, all we have to do is to show that $f(x) \neq A$ where $x \in S$.\\\\
+To prove that $f(x) \neq A$ for all $x \in S$, consider the following two cases:\\\\
+1. Case I: $x \in A$.\\
+2. Case II: $x \notin A$.
+\\\\
+Case I Proof: If $x \in A$, then we know that $x \notin f(x)$. Thus, $f(x) \neq A$.\\
+Case II Proof: If $x \notin A$, then we know that $x \in f(x)$. Thus, $f(x) \neq A$.\\\\
+Hence, we got that there is no $x \in S$ such that $f(x) = A$ where $A = \{x \in S \ | \ x \notin f(x)\}$.
+Finally, we found an element in $\mathcal{P}(S)$ to which no element in $S$ maps to and thus,
+$f$ is not onto.
+\qed
+\end{quote}
+
+\item[]
+\item[]
+
+\item[80.]
+\begin{itemize}
+\item[(a)]
+If $f : A \rightarrow B$ is a function and $\hat{A}$ is a subset of $A$, we may define a function\\
+$\hat{f} : \hat{A} \rightarrow B : \hat{a} \mapsto f(\hat{a})$ called a \textbf{restriction} of $f$ to $\hat{A}$.
+Prove that if $f : A \rightarrow B$ is one-to-one, the so is the restriction of $f$ to every subset $\hat{A}$ of $A$.
+\begin{quote}
+Suppose, for the sake of contradiction, that $f : A \rightarrow B$ is a one-to-one function and that $\hat{f} : \hat{A} \rightarrow B : \hat{a} \mapsto f(\hat{a})$
+is not one-to-one (where $\hat{A}$ is arbitrary subset of $A$). Since $f$ is one-to-one, know that for all $a_1, a_2 \in A$, if $f(a_1) = f(a_2)$,
+it means that $a_1 = a_2$. Now, consider $\hat{f} : \hat{A} \rightarrow B : \hat{a} \mapsto f(\hat{a})$.
+Since it is not one-to-one, we have that for some $\hat{a_1} \neq \hat{a_2}$, $f(\hat{a_1}) = f(\hat{a_2})$.
+Then, since $\hat{A}$ is a subset of $A$, it means that $a_1, a_2 \in A$ and that $f(a_1) = f(a_2)$ while $a_1 \neq a_2$
+and we have reached the contradiction. Hence, if $f : A \rightarrow B$ is one-to-one, then $\hat{f} : \hat{A} \rightarrow B : \hat{a} \mapsto f(\hat{a})$ is also one-to-one.
+\qed
+\end{quote}
+
+\item[]
+
+\item[(b)]
+Find a way analogous to the previous question to replace a function $f : A \mapsto B$
+with a function $f : A \mapsto \hat{B}$ if $B \subseteq \hat{B}$. This is called \textbf{corestriction}.
+Prove that every corestriction of a one-to-one function is one-to-one. Is every corestriction of an onto function onto?
+\begin{quote}
+The corestriction of $f$ to $\hat{B}$ is $f : A \rightarrow \hat{B} : a \mapsto f(\hat{b})$.\\\\
+\und{Proving that every corestriction of a one-to-one function is one-to-one.}\\
+Suppose, for the sake of contradiction, that $f : A \rightarrow B$ is a one-to-one function
+and that $f : A \rightarrow \hat{B} : a \mapsto f(\hat{b})$ is not (where $B \subset \hat{B}$).
+Thus, we have that for any $a_1, a_2 \in A$, if $f(a_1) = f(a_2)$, then $a_1 = a_2$.
+And we also effectively assumed that there exists $a_3, a_4 \in A$ such that $a_3 \neq a_4$ and $\hat{f(a_3)} = \hat{f(a_4)}$.
+Now consider the function $\hat{f} : A \rightarrow \hat{B} : a \mapsto f(\hat{b})$.
+\end{quote}
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[81.]
+If $A$ is a set, we call function $f : A \rightarrow \reals$ \textbf{bounded above} if there exists
+$B \in \reals$ such that for every $a \in A$, we have $f(a) \leq B$.
+\begin{itemize}
+\item[(a)]
+Prove that function $f : \reals \rightarrow \reals : x \mapsto sin(x)$ is bounded above. Be sure you
+explicitly use the definition.
+\begin{quote}
+Since the function is $sin(x)$ its codomain is the set of all values from -1 to 1. In other words, the codomain
+of $f$ is a closed interval $[-1, 1]$. Then, we can let $B = 25$ and we have that for all x in $\reals$,
+$-1 \leq f(x) \leq -1$ and thus for all $x \in reals$, $f(x) \leq B$.
+\qed
+\end{quote}
+
+\item[]
+
+\item[(b)]
+Prove that the function $g : \preals \rarr \reals : x \mapsto \mbox{ln}(x)$ is NOT bounded above.
+Be sure to explicitly use the definition.
+\begin{quote}
+Suppose, for the sake of contradiction, that there exists $B \in \reals$, such that for all $a \in A$,
+we have that $f(a) \leq B$. Then it must be the case that $\mbox{ln}(x)$ has some
+fixed upper bound. This is, however, false because $\lim_{x \to + \infty} \mbox{ln}(x) = +\infty$.
+Hence, the function $\mbox{ln}(x)$ has no upper bound and we have reached the contradiction.
+\end{quote}
+
+\item[]
+
+\item[(c)]
+Prove or Disprove: No one-to-one function $f : \reals \rarr \reals$ is bounded above.
+\begin{quote}
+It is true so let's prove it. Suppose, for the sake of contradiction, that there exists $B \in \reals$
+such that for all $x$ in the $f$'s domain, $f(x) \leq B$. Now, since $f$ is one-to-one,
+it means that if $x_1 \neq x_2$ then $f(x_1) \neq f(x_2)$. Thus, $f$ is the function that
+always increases and there is no upper bound.
+\qed
+\end{quote}
+
+\item[]
+
+\item[(d)]
+
+\item[]
+
+\item[(e)]
+
+\item[]
+
+\item[(f)]
+
+\item[]
+
+\item[(g)]
+
+\item[]
+
+\item[(h)]
+
+\item[]
+
+\item[(i)]
+
+\end{itemize}
 \end{itemize}
 \end{document}
