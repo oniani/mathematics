@@ -85,11 +85,8 @@ tabsize=4
 
 \begin{itemize}
 \item[77.]
-Suppose $A$ and $B$ are sets and that $f : A \rightarrow B$ is a function. Define the function
-$\mathcal{F} : A \times A \rightarrow B \times B : (a_1, a_2) \mapsto (f(a_1), f(a_2))$.
 \begin{itemize}
 \item[(a)]
-Prove or Disprove: If $f$ is onto, so is $\mathcal{F}$.
 \begin{quote}
 It's true.\\\\
 Proof: Suppose that $f : A \rightarrow B$ is an onto function.
@@ -100,13 +97,12 @@ to it. Every $x \in B \times B$ will have a type $(f(a_1), f(a_2))$. Let's take 
 We have $f(a_1) \in B$ and $f(a_2) \in B$ because $f : A \rightarrow B$ is onto. Finally, since $B \times B$
 is a set of all possible pairs of $B$, we get that for arbitrary $(a_1, a_2) \in A \times A$, $(f(a_1), f(a_2)) \in B \times B$.
 And we showed that $\mathcal{F}$ is onto.
-\qed
+$\qed$
 \end{quote}
 
 \item[]
 
 \item[(b)]
-Prove or Disprove: If $f$ is one-to-one, so is $\mathcal{F}$.
 \begin{quote}
 It is true.\\\\
 Suppose $f : A \rightarrow B$ is a one-to-one function. Then we know that every $a \in A$,
@@ -128,10 +124,8 @@ Hence, we've reached the contradiction and $\mathcal{F}$ is one-to-one.
 \item[]
 
 \item[78.]
-Suppose $S$ is a set.
 \begin{itemize}
 \item[(a)]
-If there is a function $f : S \rightarrow \emptyset$, what does that tell you about $S$?
 \begin{quote}
 Every function $g$ is a subset of the cartesian product of its domain and codomain.
 Thus, $f$ is a subset of $S \times \emptyset = \emptyset$. Then the only
@@ -143,7 +137,6 @@ it tells me that $S = \emptyset$.
 \item[]
 
 \item[(b)]
-If there is an onto function $g : \emptyset \rightarrow S$, what does that tell you about $S$?
 \begin{quote}
 It tells me that $S = \emptyset$. It is vacuously onto because everything in the codomain ($\emptyset$)
 has an element in domain ($\emptyset$) that maps to it. Hence, it is a nothing-to-nothing onto function.
@@ -152,8 +145,7 @@ Thus, if there is an onto function $g : \emptyset \rightarrow S$, it tells me th
 
 \item[]
 
-\item[(b)]
-If there is a one-to-one function $h : \emptyset \rightarrow S$, what does that tell you about $S$?
+\item[(c)]
 \begin{quote}
 It tells me that $S = \emptyset$. It is vacuously one-to-one because everything in the domain ($\emptyset$)
 maps to a different element in the codomain ($\emptyset$). In all other cases, where $S$ is non-empty, we have
@@ -166,8 +158,6 @@ Thus, if there is an onto function $g : \emptyset \rightarrow S$, it tells me th
 \item[]
 
 \item[79.]
-Suppose that $S$ is an arbitrary set, and that $f : S \rightarrow \mathcal{P}(S)$ is a function. Prove
-that $f$ is not onto. [Big Hint: Consider the set $A = \{x \in S \ | \ x \notin f(x)\}$. Is $A$ in the image of $f$?]
 \begin{quote}
 Consider the set $A = \{x \in S \ | \ x \notin f(x)\}$. In other words, set $A$ is a set of all elements
 which are in $S$ but not in $f(x)$. Then we know that $A \in \mathcal{P}(S)$ because $A$
@@ -182,7 +172,7 @@ Case II Proof: If $x \notin A$, then we know that $x \in f(x)$. Thus, $f(x) \neq
 Hence, we got that there is no $x \in S$ such that $f(x) = A$ where $A = \{x \in S \ | \ x \notin f(x)\}$.
 Finally, we found an element in $\mathcal{P}(S)$ to which no element in $S$ maps to and thus,
 $f$ is not onto.
-\qed
+$\qed$
 \end{quote}
 
 \item[]
@@ -191,9 +181,6 @@ $f$ is not onto.
 \item[80.]
 \begin{itemize}
 \item[(a)]
-If $f : A \rightarrow B$ is a function and $\hat{A}$ is a subset of $A$, we may define a function\\
-$\hat{f} : \hat{A} \rightarrow B : \hat{a} \mapsto f(\hat{a})$ called a \textbf{restriction} of $f$ to $\hat{A}$.
-Prove that if $f : A \rightarrow B$ is one-to-one, the so is the restriction of $f$ to every subset $\hat{A}$ of $A$.
 \begin{quote}
 Suppose, for the sake of contradiction, that $f : A \rightarrow B$ is a one-to-one function and that $\hat{f} : \hat{A} \rightarrow B : \hat{a} \mapsto f(\hat{a})$
 is not one-to-one (where $\hat{A}$ is arbitrary subset of $A$). Since $f$ is one-to-one, know that for all $a_1, a_2 \in A$, if $f(a_1) = f(a_2)$,
@@ -201,23 +188,25 @@ it means that $a_1 = a_2$. Now, consider $\hat{f} : \hat{A} \rightarrow B : \hat
 Since it is not one-to-one, we have that for some $\hat{a_1} \neq \hat{a_2}$, $f(\hat{a_1}) = f(\hat{a_2})$.
 Then, since $\hat{A}$ is a subset of $A$, it means that $a_1, a_2 \in A$ and that $f(a_1) = f(a_2)$ while $a_1 \neq a_2$
 and we have reached the contradiction. Hence, if $f : A \rightarrow B$ is one-to-one, then $\hat{f} : \hat{A} \rightarrow B : \hat{a} \mapsto f(\hat{a})$ is also one-to-one.
-\qed
+$\qed$
 \end{quote}
 
 \item[]
 
 \item[(b)]
-Find a way analogous to the previous question to replace a function $f : A \mapsto B$
-with a function $f : A \mapsto \hat{B}$ if $B \subseteq \hat{B}$. This is called \textbf{corestriction}.
-Prove that every corestriction of a one-to-one function is one-to-one. Is every corestriction of an onto function onto?
 \begin{quote}
-The corestriction of $f$ to $\hat{B}$ is $f : A \rightarrow \hat{B} : a \mapsto f(\hat{b})$.\\\\
+The corestriction of $f$ to $\hat{B}$ is $f : A \rightarrow \hat{B} : a \mapsto f(\hat{a})$.\\\\
 \und{Proving that every corestriction of a one-to-one function is one-to-one.}\\
 Suppose, for the sake of contradiction, that $f : A \rightarrow B$ is a one-to-one function
-and that $f : A \rightarrow \hat{B} : a \mapsto f(\hat{b})$ is not (where $B \subset \hat{B}$).
+and that $f : A \rightarrow \hat{B} : a \mapsto f(\hat{a})$ is not (where $B \subseteq \hat{B}$).
 Thus, we have that for any $a_1, a_2 \in A$, if $f(a_1) = f(a_2)$, then $a_1 = a_2$.
 And we also effectively assumed that there exists $a_3, a_4 \in A$ such that $a_3 \neq a_4$ and $\hat{f(a_3)} = \hat{f(a_4)}$.
-Now consider the function $\hat{f} : A \rightarrow \hat{B} : a \mapsto f(\hat{b})$.
+Now consider the function $f : A \rightarrow \hat{B} : a \mapsto f(\hat{a})$. We know that $f(\hat{a}) \in B$ and since we
+have already proven that $f$ is one-to-one, it means that if $f(a_1) = f(a_2)$, it means that $a_1 = a_2$ and $f$ is one-to-one
+as well.\\\\
+If the initial function is onto, it does not mean that function $f$ is onto too. We can find $\hat{b} \in \hat{B}$
+such that $\hat{b} \notin B$ and then since the domain of both of the functions is the same, the function cannot have
+multiple outputs of the same input and the function $f$ is not onto (NOTE: it is not onto if $B \subset \hat{B}$, if $B = \hat{B}$, then obviously both functions are onto).
 \end{quote}
 \end{itemize}
 
@@ -225,24 +214,18 @@ Now consider the function $\hat{f} : A \rightarrow \hat{B} : a \mapsto f(\hat{b}
 \item[]
 
 \item[81.]
-If $A$ is a set, we call function $f : A \rightarrow \reals$ \textbf{bounded above} if there exists
-$B \in \reals$ such that for every $a \in A$, we have $f(a) \leq B$.
 \begin{itemize}
 \item[(a)]
-Prove that function $f : \reals \rightarrow \reals : x \mapsto sin(x)$ is bounded above. Be sure you
-explicitly use the definition.
 \begin{quote}
 Since the function is $sin(x)$ its codomain is the set of all values from -1 to 1. In other words, the codomain
 of $f$ is a closed interval $[-1, 1]$. Then, we can let $B = 25$ and we have that for all x in $\reals$,
 $-1 \leq f(x) \leq -1$ and thus for all $x \in reals$, $f(x) \leq B$.
-\qed
+$\qed$
 \end{quote}
 
 \item[]
 
 \item[(b)]
-Prove that the function $g : \preals \rarr \reals : x \mapsto \mbox{ln}(x)$ is NOT bounded above.
-Be sure to explicitly use the definition.
 \begin{quote}
 Suppose, for the sake of contradiction, that there exists $B \in \reals$, such that for all $a \in A$,
 we have that $f(a) \leq B$. Then it must be the case that $\mbox{ln}(x)$ has some
@@ -253,39 +236,428 @@ Hence, the function $\mbox{ln}(x)$ has no upper bound and we have reached the co
 \item[]
 
 \item[(c)]
-Prove or Disprove: No one-to-one function $f : \reals \rarr \reals$ is bounded above.
 \begin{quote}
 It is true so let's prove it. Suppose, for the sake of contradiction, that there exists $B \in \reals$
-such that for all $x$ in the $f$'s domain, $f(x) \leq B$. Now, since $f$ is one-to-one,
-it means that if $x_1 \neq x_2$ then $f(x_1) \neq f(x_2)$. Thus, $f$ is the function that
-always increases and there is no upper bound.
-\qed
+such that for all $x$ in the $f$'s domain, $f(x) \leq B$. On the other hand, $f$ is defined for all $\reals$
+thus, with the pigeonhole principle we get that $f$ always increases. Thus, $f$ is the function that
+always increases and there is no upper bound and have reached the contradiction.
+$\qed$
 \end{quote}
 
 \item[]
 
 \item[(d)]
+\begin{quote}
+It is true. Suppose that $f : A \rarr \reals$ and $g : \reals \rarr \reals$ are the functions such that $g$ is a bounded above function.
+Since $g$ is bounded above it means that there exists $B \in \reals$ such that for all $r \in \reals$, we have $g(r) \leq B$.
+$g \circ f : A \rightarrow \reals$ is a composition of functions $g$ and $f$.
+We can then rewrite the composition in the following way: $g \circ f : A \rarr \reals : a \mapsto g(f(a))$ (note that we could write it only because
+the image of $f$ is in $\reals$ and fortunately, function $g$ can take all elements in $\reals$ as inputs).
+Let's look at the expression $g(f(a))$. We know that $f(a) \in \reals$ and $g$ is the function that takes inputs from $\reals$
+and is bounded above. Hence, there exists $B \in \reals$ such that for all $f(a) \in \reals$, $g(f(a)) \leq B$.
+$\qed$
+\end{quote}
 
 \item[]
 
 \item[(e)]
+\begin{quote}
+It is true. Suppose that $A$ is a set and that $f : A \rarr \reals$ and $g : A \rarr \reals$ are two functions
+such that for every $x \in A$, we have $f(x) \leq g(x)$ and that $g$ is bounded above. Since $g$ is bounded
+above, it means that there exists $B \in \reals$ such that for all $y \in A$, $g(y) \leq B$. On the other hand,
+we know that for all $x \in A$, $f(x) \leq g(x)$. Hence, we have that for all $a \in A$, $f(x) \leq g(x) \leq B$.
+Finally, we get that for all $a \in A$, $f(a) \leq B$ which means that $f$ is bounded.
+\qed
+\end{quote}
 
 \item[]
 
 \item[(f)]
+\begin{quote}
+It is false. Consider the function $f : \pints \rarr \ints : x \mapsto x + 1$.
+Then $f$ is not onto since $-1 \notin image(f)$. On the other hand, it is not bounded
+above. To see why, for the sake of contradiction, suppose that there exists $B \in \reals$
+such that for all $z \in \pints$, $f(z) \leq B$. In other words, we have assumed
+that for all $z \in Z$, $z + 1 \leq B$ which is false because we can set $z = \floor{B} + 1$
+and we get that $z + 1 = \floor{B} + 1 > B$.
+$\qed$
+\end{quote}
 
 \item[]
 
 \item[(g)]
-
+\begin{quote}
+It is false. Consider the function $f : \pints \rarr \reals : x \mapsto -x$. Then $f$
+is bounded above since we can take $B = 1$ and for all $z \in \pints$, $f(z) \leq B$ (due to the fact
+that all the elements in the image of $f$ are negative).
+Now, consider the function $\overline{f} : \pints \rarr \reals : x \mapsto -f(x)$.
+We can then rewrite $\overline{f}$ in the following manner: $\overline{f} : \pints \rarr \reals : x \mapsto x$.
+And now we have that $\overline{f}$ is not bounded above. To see why, suppose, for the sake of contradiction, that
+there exists $B \in \reals$ such that for all $z \in \pints$, $\overline{f}(z) \leq B$.
+In other words, for all $z \in \pints$, $z \leq B$. However, this is false since we can set $z = \floor{B} + 100000$
+and we get that $\overline{f}(z) = z = \floor{B} + 100000 > B$.
+\end{quote}
 \item[]
 
 \item[(h)]
+\begin{quote}
+It is false. Consider the function $f : \pints \rarr \reals : x \mapsto x + 0.25$.
+Then we know that all $f$ is not bounded above. (Proof: suppose that there exists $B \in reals$
+such that for all $z \in \pints$, $f(z) \leq B$. Then we assumed that for all $z \in \pints$, $z + 0.25 \leq B$.
+This is, however, false since we can set $z = \floor{B} + 500$ and $f(z) = z = \floor{B} + 500 > B$).
+However, $\pints \cap \mbox{\textbf{im}}(f)$ is not infinite but rather an empty set. That is because
+all the elements in the image of $f$ will be of the type $integer + float$ which will always give us a $float$.
+$\qed$
+\end{quote}
 
 \item[]
 
 \item[(i)]
-
+\begin{quote}
+It is true. If $f : A \rarr \reals$ is onto, and that there exists $B \in reals$ such that for all $a \in A$, $f(a) \leq B$.
+Now, since $f$ is onto, it means that its image has all the elements of $\reals$. Then the value $B + 123123$ will also be in
+the image of $f$ and we get that for some $a \in A$, $f(a) = B + 123123$. And we have reached the contradiction since $f(a) = B + 123123 > B$.
+$\qed$
+\end{quote}
 \end{itemize}
+
+\item[]
+\item[]
+\item[]
+
+\item[82.]
+\begin{itemize}
+\item[(a)]
+It is \und{NOT} onto because the image of $g$ will contain only integers
+and $5.5 \in \reals$ while $5.5 \notin image(g)$. It is, however, weakly onto
+since for every $y \in \reals$, we can take $g(x) = g(y) = \floor{y}$ and we get
+$\abs{g(x) - y} = \abs{\floor{y} - y} = \abs{y - \floor{y}}  < 1$ (note that $y - \floor{y}$ is the fraction
+part of $y$ of which the absolute value is always less than 1).
+
+\item[]
+
+\item[(b)]
+If $f : \reals \rarr \reals$ is onto, it means that the image of $f$ has all of the elements
+of $\reals$. Then, since $f$ is onto, for every $y \in \reals$, we can find $x \in \reals$ such that $f(x) = y + 0.25$.
+And finally, $\abs{f(x) - y} = \abs{y + 0.25 - y} = 0.25 < 1$.
+$\qed$
+
+\item[]
+
+\item[(c)]
+Yes. Suppose that $f : \reals \rarr \reals$ and $g : \reals \rarr \reals$
+are two weakly onto function. Now, consider $f \circ g$ which is a composition
+of $f$ and $g$. We then can rewrite $f \circ g$ as $f \circ g : \reals \rarr \reals : x \mapsto f(g(x))$.
+Now, since $g$ has all of $\reals$ in its image, for all $y \in \reals$, there exists
+$x \in \reals$ such that $f(g(x)) = x + 0.5$ and then $\abs{f(g(x)) - x} = x + 0.5 - x = 0.5 < 1$.
+$\qed$
+
+\item[]
+
+\item[(d)]
+Yes. Suppose that $f : \reals \rarr \reals$ is weakly onto. It then means that for all $y \in \reals$
+there exists $x \in \reals$ such that $\abs{f(x) - y} < 1$. Consider $g = \dfrac{1}{2} f(x)$.
+To show that $g(x)$ is weakly onto, we must show that for all $y \in \reals$, there exists $x \in \reals$
+such that $\abs{g(x) - y} < 1$. For every $y \in \reals$, let $g(x) = \dfrac{1}{2}f(x)$ such that $\abs{f(x) - y} < 1$.
+Then, for every $y \in \reals$, we have $\abs{g(x) - y} = \abs{\dfrac{1}{2}f(x) - y} < \abs{f(x) - y} < 1$ and $g(x)$ is weakly onto.
+$\qed$
+
+\item[]
+
+\item[(e)]
+\begin{quote}
+$f(x) = x + \dfrac{1}{2 + x^2}$. It is a non-trivial $jiggle$ because $\abs{f(x) - x} = \abs{x + \frac{1}{2 + x^2} - x = \frac{1}{2 + x^2}} = \dfrac{1}{2 + x^2} < \dfrac{1}{1 + x^2}$.
+\end{quote}
+
+\item[]
+
+\item[(f)]
+It is true. Suppose we have a $jiggly$ function $f(x)$. Then we know that for every $x \in \reals$,
+we have $\abs{f(x) - x} < \dfrac{1}{1 + x^2}$. Notice that $\dfrac{1}{1 + x^2} < 1$ for all $x \in \reals$.
+Thus, we have the $jiggle$ function, then for all $x \in \reals$, $\abs{f(x) - x} < \dfrac{1}{1 + x^2} < 1$.
+Now, for a $jiggle$ to also be onto, we need to show that for every $y \in \reals$, there exists $x \in reals$
+such that $\abs{f(x) - y} < 1$. Now, for every $y \in \reals$, let $x = y$ and then
+we get $\abs{f(x) - y} = \abs{f(y) - y} < \dfrac{1}{1 + x^2} < 1$.
+$\qed$
+\end{itemize}
+\newpage
+{\Large Reading: A Mathematician’s Apology by G. H. Hardy}
+\begin{itemize}
+
+\item[]
+
+\item[59.]
+For hardy, a mathematical idea is a serious mathematical theorem
+that can, within itself, represent a whole class of different mathematical
+theorems.
+
+\item[]
+
+\item[60.]
+Hardy states: "For me, and I suppose for most mathematicians,
+there is another reality, which I will call ‘mathematical reality’;
+and there is no sort of agreement about the nature of mathematical
+reality among either mathematicians or philosophers." Thus, for Hardy,
+there is some other reality which is called mathematics.\\\\
+I certainly do not think that mathematics is another reality. In fact,
+I would never study it if I knew that it was useless. Mathematics has infinitely
+many application to the real world and that is why it is important to me. Solving
+problems via mathematics is what it is all about.
+
+\item[]
+
+\item[61.]
+I am interested in the fundamental problems of humanity and the universe such as ``why do we exist?", 
+``how was the universe created?", ``is there some superior being like God?'', ``can we artificially create a being like human? (if so, does it mean that we are Gods?)"
+etc. the list goes on and on.
+And I think that mathematics might be useful. That's the primary reason of my interest in math.
+
+\item[]
+
+\item[62.]
+Hardy did not have much applications of number theory back in his time. He thought it was virtually useless.
+If he was alive, he would probably smile or do something similar to it (seeing that he was wrong).
+
+\item[]
+
+\item[63.]
+For mathematics.
+\end{itemize}
+
+
+\newpage
+
+
+{\Large Bookwork}
+\item[1.]
+\begin{itemize}
+\item[(a)]
+A function $f$ such that $f(1) = 1$ and $f(2) = 1$ (thus, there is only one function).
+
+\item[]
+
+\item[(b)]
+A function $f$ such that $f(1) = 1$, $f(2) = 1$, and $f(3) = 1$ (thus, there is only one function).
+
+\item[]
+
+\item[(c)]
+A function $f$ such that $f(a_1) = b$, $f(a_2) = b$ ... $f(a_n) = b$ (thus, there is only one function).
+
+\item[]
+
+\item[(d)]
+A function $f_1$ such that $f_1(1) = 1$\\
+A function $f_2$ such that $f_2(1) = 2$\\\\
+Thus, there are two functions in total.
+
+\item[]
+
+\item[(e)]
+A function $f_1$ such that $f_1(1) = 1$\\
+A function $f_2$ such that $f_2(1) = 2$\\
+A function $f_3$ such that $f_3(3) = 2$\\\\
+Thus, there are three functions in total.
+
+\item[]
+
+\item[(f)]
+A function $f_1$ such that $f_1(a) = b_1$\\
+A function $f_2$ such that $f_2(a) = b_2$\\
+A function $f_3$ such that $f_3(a) = b_3$\\
+... ... ... ... ... ... ... ... ... ... ... ...\\
+A function $f_n$ such that $f_3(a) = b_n$\\\\
+Thus, there are $n$ functions in total.
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[2.]
+\begin{itemize}
+\item[(a)]
+It is bijective.\\
+Explanation: If for some $x_1, x_2$, $f(x_1) = f(x_2)$, then $2x_1 = 2x_2$ and $x_1 = x_2$ and thus, it is injective.\\
+If we have $r \in \reals$, then we can take $x = \dfrac{r}{2}$ and we get $f(x) = 2 \times \dfrac{r}{2} = r$ and hence, it is surjective.
+
+\item[]
+
+\item[(b)]
+It is bijective.\\
+Explanation: If for some $x_1, x_2$, $f(x_1) = f(x_2)$, then $3 - x_1 = 3 - x_2$ and $x_1 = x_2$ and thus, it is injective.\\
+If we have $r \in \reals$, then we can take $x = 3 - r$ and we get $f(x) = 3 - 3 + r = r$ and hence, it is surjective.
+\item[]
+
+\item[(c)]
+It is neither injective nor surjective.
+Explanation: If for some $x_1, x_2$, $f(x_1) = f(x_2)$, then $3 - x_1 = 3 - x_2$ and $x_1 = x_2$ and thus, it is injective.\\
+Consider the $r = 3 \in \reals$ which is in the image of $f$. Then, we have that $x^2 + 2x + 3 = 3$ and $x = -2, 0$ are two legitimate
+solutions to the equations. Thus $f$ is not injective.\\
+On the other hand, consider $r = 0 \in \reals$. Then $x^2 + 2x + 3 = 0$ where $\mathcal{D} = 4 - 12 = -8$ and since the discriminant is negative,
+the equation has no solutions.
+\item[]
+
+\item[(d)]
+It is surjective but \und{NOT} injective.\\
+Explanation: $\mbox{sin}(\dfrac{\pi}{4}) = \mbox{sin}(\dfrac{3\pi}{4})$ thus it is not injective.\\
+Domain $[0, \pi)$ covers everything in the interval $[0, 1]$ thus, it is surjective.
+
+\item[]
+
+\item[(e)]
+It is neither injective nor surjective.\\
+Explanation: It is not injective because $f(1) = f(-1) = e^1 = e$.\\
+It is not surjective because $\dfrac{1}{e} \in \reals$ but $f(x) = \dfrac{1}{e}$
+has no solutions (because $x^2 \geq 0$).
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[5.]
+\begin{itemize}
+\item[(a)]
+$g(-5) = 10 - 1 = 9$\\
+$g(-4) = 8 - 1 = 7$\\
+$g(-3) = 6 - 1 = 5$\\
+$g(-2) = 4 - 1 = 3$\\
+$g(-1) = 2 - 1 = 1$\\
+$g(0) = 2 \times 0 = 0$\\
+$g(1) = 2 \times 1 = 2$\\
+$g(2) = 2 \times 2 = 4$\\
+$g(3) = 2 \times 3 = 6$\\
+$g(4) = 2 \times 4 = 8$\\
+$g(5) = 2 \times 5 = 10$
+
+\item[]
+
+\item[(b)]
+$g$ is a function which has a set of integers as a domain and the set of natural numbers as a codomain and if the input
+is negative, it outputs minus twice the input minus one and in all other cases, twice the input.
+
+\item[]
+
+\item[(c)]
+For the arbitrary $x \in \ints$, let's consider the following two cases:\\\\
+Case I: $x < 0$\\
+Case I: $x \geq 0$\\\\
+If $x < 0$, then $g(x) = -2x - 1$ which is an integer because $x \in \ints$.\\
+If $x \geq 0$, then $g(x) = 2x$ which is an integer because $x \in \ints$.
+$\qed$
+
+\item[]
+
+\item[(d)]
+Suppose that for some $x_1, x_2$, $g(x_1) = g(x_2)$. Then we have two cases to consider:\\\\
+Case I: $x_1 \geq 0$ and $x_2 \geq 0$
+Case II: $x_1 \geq 0$ and $x_2 \geq 0$\\\\
+If $x_1, x_2 \geq 0$, then $g(x_1) = g(x_2)$ is equivalent to saying that $2x_1 = 2x_2$ and we get that $x_1 = x_2$.
+If $x_1, x_2 < 0$, then $g(x_1) = g(x_2)$ is equivalent to saying that $-2x_1 -1 = -2x_2 - 1$ and we get that $x_1 = x_2$.\\\\
+Thus, $g$ is injective.
+
+\item[]
+
+\item[(e)]
+Let $y \in N$. Then if $y$ is even, let $x = \dfrac{y}{2}$ and if $y$ is odd, let $x = \dfrac{1 - y}{2}$.
+In both cases $f(x) = y$. Thus $g$ is surjective.
+
+\item[]
+
+\item[(f)]
+$g^{-1} : N \rarr \ints = \begin{cases} \dfrac{x}{2} & \mbox{if } x \mbox{ is even} \\\\ \dfrac{1 - x}{2} & \mbox{if } x \mbox{ is odd.} \end{cases}$
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[6.]
+\begin{itemize}
+\item[(a)]
+Suppose, for some $x_1, x_2 \in \reals$, $f(x_1) = f(x_2)$. Then we have that
+$ax_1 + b = ax_2 + b$ where $a \neq 0$. After simplifying the expression, we get that $ax_1 = ax_2$
+and finally, since $a \neq 0$, $x_1 = x_2$. Thus, $f$ is injective.
+
+\item[]
+
+\item[(b)]
+$Ran(f) = \reals$ since any real number is in the image of the function.
+
+\item[]
+
+\item[(c)]
+We should just solve an equation $x = f^{-1}(x)a + b$ for $f^{-1}(x)$.\\
+We get that $f^{-1}x = \dfrac{x - b}{a}$.
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[12.]
+\begin{itemize}
+\item[(b)]
+This is a combinatorics question. The answer is the number of permutations that is $3! = 6$.
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[19.]
+\begin{itemize}
+\item[(c)]
+Generalized function in (a): $f : \reals - \{0\} \rarr \reals : x \mapsto \dfrac{1}{x}$. The function is still bijective.\\
+Explanation: it is injective because if $f(x_1) = f(x_2)$ for some $x_1, x_2 \in \reals - \{0\}$, then we have $\dfrac{1}{x_1} = \dfrac{1}{x_2}$
+and since $x_1, x_2 \neq 0$, we have $x_1 = x_2$.\\
+It is also surjective because for arbitrary $y \in \reals$, we can take $x = \dfrac{1}{y}$ and we get that $f(x) = \dfrac{1}{\dfrac{1}{y}} = y$.\\
+Thus, the generalized function $f$ is also bijective.\\\\\\
+Generalized function in (b): $f : \reals - \{0\} \rarr \preals : x \mapsto \dfrac{1}{x}$. This function is surjective but \und{NOT} injective.\\
+Explanation: it is not injective because if $f(x_1) = f(x_2)$ for some $x_1, x_2 \in \reals - \{0\}$, then we have $\dfrac{1}{x_1^2} = \dfrac{1}{x_2^2}$
+and it leads to two solutions, $x_1 = x_2$ and $x_1 = -x_2$.
+It is surjective because for arbitrary $y \in \preals$, we can take $x = \dfrac{1}{\sqrt{y}}$ and we get that $f(x) = \dfrac{1}{(\dfrac{1}{\sqrt{y}})^2} = y$.\\
+Thus, the generalized function $f$ is neither injective nor surjective.
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[20.]
+I will denote floor and ceiling operations as $floor$ and $ceil$.\\\\
+\und{Proof that floor function is onto but not one-to-one.}\\
+The floor function will be $f : \reals \rarr \ints : x -> floor(x)$. Then we know that $floor(2.2) = floor(2.3) = 2$
+thus, it is not one-to-one. On the other hand, for an arbitrary $y \in ints$, we can let $x = y + 0.1$ and get that $floor(x) = floor(y + 0.1) = y$.
+Thus, the floor function is onto but not one-to-one.\\\\\\
+\und{Proof that ceiling function is onto but not one-to-one.}\\
+The floor function will be $f : \reals \rarr \ints : x -> ceil(x)$. Then we know that $floor(26.7) = floor(26.8) = 3$
+thus, it is not one-to-one. On the other hand, for an arbitrary $y \in \ints$, we can let $x = y - 0.1$ and get that $ceil(x) = floor(y - 0.1) = y$.
+Thus, the ceiling function is onto but not one-to-one.
+
+\item[]
+\item[]
+
+\item[25.]
+\begin{itemize}
+\item[(a)]
+Consider the function $F : \mathcal{P}(A) \rarr \mathcal{P}(B) : x \mapsto f(x)$.
+Thus, we can use $f$ to define a function $F$.
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[26.]
+Suppose for two elements $z_1, z_2 \in \ints$, we have that $f(z_1) = f(z_2)$.
+Then, it means that the sets of divisors of $z_1$ and $z_2$ are the same. This means that $z_1 = z_2$.
+To see why, consider $f(z_1)$ and $f(z_2)$. Let's now consider the biggest elements in $f(z_1)$ and $f(z_2)$.
+It is obvious that the biggest element in $f(z_1)$ will be $z_1$ and in the $f(z_2)$, it will be $z_2$.
+Now, since the sets are equal, it must be the case that the biggest elements of $f(z_1)$ and $f(z_2)$ are also
+equal and we have that $z_1 = z_2$.
+$\qed$
+
+\item[]
+\item[]
+
+\item[29.]
+Notice that $m - n + m + n = 2m$ and $m - n - m - n = -2n$. Thus $m + n$
+and $m - n$ are either both odd or both even. Then the range of the function $F$
+will be $\{(x, y) \ | \ x, y \mbox{ mod } 2 \in \{0, 1\} \}$\\\\
 \end{itemize}
 \end{document}
