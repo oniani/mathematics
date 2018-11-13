@@ -1,0 +1,253 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+
+
+\usepackage{adjustbox}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{tikz}
+
+\usepackage{textcomp}
+\usepackage{soul}
+
+\usepackage[hidelinks]{hyperref}
+\usepgfplotslibrary{external,fillbetween}
+\pgfplotsset{compat=1.14}
+\usepackage[makeroom]{cancel}
+\title{\bf{Homework \textnumero 11}}
+\author{Author: David Oniani
+\\
+\ \ \ Instructor: Tommy Occhipinti}
+\date{November 13, 2018}
+
+\usepackage{listings}
+\usepackage{color}
+
+%%%%%%%%%%%%%%% S E T S %%%%%%%%%%%%%%%
+\newcommand{\nats}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\irrats}{\mathbb{I}}
+
+\newcommand{\pnats}{\mathbb{N}^+}
+\newcommand{\pints}{\mathbb{Z}^+}
+\newcommand{\prats}{\mathbb{Q}^+}
+\newcommand{\preals}{\mathbb{R}^+}
+\newcommand{\nreals}{\mathbb{R}^-}
+
+\newcommand{\nints}{\mathbb{Z}^-}
+\newcommand{\nrats}{\mathbb{Q}^-}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Calligraphy
+\newcommand\und[1]{\underline{\smash{#1}}}
+
+% Operators
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% Other
+\newcommand{\rarr}{\rightarrow}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+backgroundcolor=\color{backcolour},
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=left,
+numberstyle=\normalsize\color{gray},
+keywordstyle=\color{blue},
+commentstyle=\color{dkgreen},
+stringstyle=\color{mauve},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=4
+}
+
+
+\begin{document}
+\maketitle
+\begin{itemize}
+\item[87.]
+To prove that a relation is an equivalence relation, we must show that the
+relation is reflexive, symmetric, and transitive.\\\\
+I. Showing that $\sim$ is reflexive.\\\\
+$x \sim x = x + 2x = 3x$ Thus, $\sim$ is reflexive.\\\\\\
+II. Showing that $\sim$ is symmetric.\\\\
+Suppose that $x \sim y$, then $x + 2y = 3k \mbox{ where } k \in \ints$. Then, if we solve the
+equation for $x$, we get $x = 3k - 2y$. Now, consider $y + 2x$. Let's substitute $x$ with $3k - 2y$.
+We get, $y + 6k - 4y = 6k - 3y = 3 \times (2k - y)$. Hence, if $x + 2y$ is divisible by 3, then $y + 2x$
+is also divisible by 3 and the relation is symmetric.\\\\\\
+III. Showing that $\sim$ is transitive.\\\\
+Suppose that $x \sim y$ and $y \sim z$. Then $x + 2y = 3k \mbox{ where } k \in \ints$ and $y + 2z = 3l \mbox{ where } l \in \ints$.
+Consider the relation on the variables $x$ and $z$. The relation is $x \sim z = x + 2z$. Now, from the first equation, let's substitute $x$
+and from the second one, substitute $z$. We get that $x = 3k - 2y$ and $z = \dfrac{3l - y}{2}$. Finally, we get:
+$x + 2z = 3k - 2y + 2 \times \dfrac{3l - y}{2} = 3k - 2y + 3l - y = 3k + 3l - 3y = 3 \times (k + l - 1)$ and $3 \times (k + l - 1)$
+is clearly a multiple of 3. Hence, we got that $\sim$ is transitive.
+\\\\\\
+Now, we proved that the relation $\sim$ is reflexive, symmetric, and transitive and thus, the relation $\sim$
+is the equivalence relation.
+$\qed$
+
+\newpage
+
+\item[88.]
+\begin{itemize}
+\item[(a)]
+$\Xi(S)$ is a relation on $\mathcal{P}(S)$ such that it takes the powerset of $S$
+\item[]
+
+\item[(b)]
+It is not symmetric. Let $A = $
+\item[]
+
+\item[(c)]
+
+\item[]
+
+\item[(d)]
+\end{itemize}
+
+\newpage
+
+{\Large Bookwork}
+\item[]
+\item[]
+
+{\Large \textbf{\und{4.2}}}
+
+\item[]
+
+\item[2.]
+$\in, \ \ \notin, \ \ \subset, \ \ =, \ \ \mathcal{P}$
+
+\item[]
+\item[]
+
+\item[4.]
+\begin{itemize}
+\item[(a)]
+It is not. Consider tuples $(a, b)$ and $(b, a)$. For the relation $R$
+to be transitive, since $(a, b) \in R$ and $(b, a) \in R$, it must be the
+case that $(a, a) \in R$. However, $(a, a) \notin R$. Thus, the relation is not transitive.
+$\qed$
+
+\item[]
+
+\item[(b)]
+\begin{itemize}
+\item[i.]
+It is. Suppose that $x - y = q_1$ and $y - z = q_2$ where $q_1, q_2 \in \rats$.
+Let's then sum those two equations up, and we get $x - y + y - z = q_1 + q_ 2$
+and finally $x - z = q_1 + q_2$. Hence, we got that $x - z$ is a sum of two rational
+numbers and thus is rational itself. Therefore, the relation $R$ is transitive.
+$\qed$
+
+\item[]
+
+\item[ii.]
+It is not. Consider $x = \sqrt{2}, \ \ y = 1 \mbox{, and } z = \sqrt{2} + 1$.
+Then $x - y = \sqrt{2} - 1$ thus is irrational and $y - z = 1 - (\sqrt{2} + 1) = -\sqrt{2}$
+hence, is also irrational. However, $x - z = \sqrt{2} - (\sqrt{2} + 1) = \sqrt{2} - \sqrt{2} - 1 = -1$
+which is rational. Therefore, the relation $R$ is not transitive.
+$\qed$
+
+\item[]
+
+\item[iii.]
+It is not. Consider $x = 1, \ \ y = 2 \mbox{, and } z = 4$. Then $\abs{x - y} = 1$
+and $\abs{y - z} = 2$. However, $\abs{x - z} = 3 > 2$. Hence, the relation $R$ is not transitive.
+$\qed$
+\end{itemize}
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[12.]
+\begin{itemize}
+\item[(a)]
+It is reflexive. Suppose that $x \in R \cap S$. Then $x \in R$ and $x \in S$. Since $R$ and $S$
+are reflexive, $(x, x) \in R$ and $(x, x) \in \ S$. Therefore, $(x,x) \in R \cap S$.
+$\qed$
+
+\item[]
+
+\item[(b)]
+It is reflexive. Suppose that $x \in R \cup S$. Then, without a loss of generality, let $x \in S$.
+Now, since $S$ is reflexive, $(x, x) \in S$ and thus, $(x, x) \in R \cup S$.
+$\qed$
+
+\item[]
+
+\item[(e)]
+It is transitive. Suppose that $(x, y), (y, z) \in R \cap S$. Then $(x, y), (y, z) \in R$
+and $(x, y), (y, z) \in S$. Since $R, S$ are transitive, $(x, z) \in R$ and $(x, z) \in S$.
+Finally, $(x, z) \in R \cap S$ and $R \cap S$ is transitive.
+$\qed$
+
+\item[]
+
+\item[(f)]
+It is transitive. Suppose that $(x, y), (y, z) \in R \cup S$. Then, without a loss of generality, $(x, y), (y, z) \in R$.
+Since $R$ is transitive, $(x, z) \in R$ and $(x, z) \in R \cup S$. Therefore, $R \cup S$ is transitive.
+$\qed$
+\end{itemize}
+
+\item[]
+\item[]
+\item[]
+
+{\Large \textbf{\und{4.4}}}
+
+\item[]
+
+\item[1.]
+\begin{itemize}
+\item[(a)]
+Yes, it is an equivalence relation since it satisfies all the criteria: reflexive, transitive, symmetric.\\\\
+1. It is reflexive, since $(a, a), \ (b, b), \ (c, c) \in R$.\\\\
+2. It is transitive. $(a, a), (a,c) \in R$ and $(a, c) \in R$; $(c, a), (a, a) \in R$ and $(c, a) \in R$;
+$(c, c), (c, a) \in R$ and $(c, a) \in R$; $(a, c), (c, c) \in R$ and $(a, c) \in R$.\\\\
+3. It is symmetric. $(a, a) \in R \mbox{ and } (a, a) \in R$; $(b, b) \in R \mbox{ and } (b, b) \in R$;
+$(c, c) \in R \mbox{ and } (c, c) \in R$; $(a, c) \in R \mbox{ and } (c, a) \in R$; $(c, a) \in R \mbox{ and } (a, c) \in R$.
+
+\item[]
+
+\item[(b)]
+No, it is not since $(b, a), (a, c) \in R$ but $(b, c) \notin R$ (it is not transitive).
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[3.]
+It is not. For a relation to be the equivalence relation, it must be reflexive, transitive, symmetric.
+It is not transitive since if we have three lines $x, y, z$ in the euclidean space and if $x \perp y$ and $y \perp z$,
+then $y \not\perp z$ (because $y \parallel z$). As a side note, it is not reflexive either since the line cannot be perpendicular to itself.
+
+\item[]
+\item[]
+
+\item[9]
+\begin{itemize}
+\item[(a)]
+
+\end{itemize}
+\end{itemize}
+\end{document}
