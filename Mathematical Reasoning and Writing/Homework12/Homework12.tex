@@ -20,7 +20,7 @@
 \usepgfplotslibrary{external,fillbetween}
 \pgfplotsset{compat=1.14}
 \usepackage[makeroom]{cancel}
-\title{\bf{Homework \textnumero 11}}
+\title{\bf{Homework \textnumero 12}}
 \author{Author: David Oniani
 \\
 \ \ \ Instructor: Tommy Occhipinti}
@@ -109,18 +109,29 @@ $\qed$
 \item[88.]
 \begin{itemize}
 \item[(a)]
-$\Xi(S)$ is a relation on $\mathcal{P}(S)$ such that it takes the powerset of $S$
+$\Xi(S)$ is a relation on $\mathcal{P}(S)$ which is a set of ordered pairs of elements of $\mathcal{P}(S)$
+such that the intersection of the elements of each of the ordered pairs is not equal to the empty set.
+
 \item[]
 
 \item[(b)]
-It is not symmetric. Let $A = $
+It is symmetric. Suppose $(X, Y) \in R$. Then we know that $X \cap Y \neq \emptyset$. Therefore,
+we also know that $Y \cap X \neq \emptyset$. Hence, we got that if $(X, Y) \in R$, then $(Y, X) \in R$
+and thus, the relation is symmetric.
+
 \item[]
 
 \item[(c)]
+It is not transitive. Let $S = \{1, 2, 3, 4\}$. Let's take three tuples: $(\{1, 2\}, \{2, 3\}$, 
+$(\{2, 3\}, \{4, 3\}$, and $(\{1, 2\}, \{4, 3\})$. Then $\{1, 2\} \cap \{2, 3\} \neq \emptyset$ as well as $\{2, 3\} \cap \{4, 3\} \neq \emptyset$,
+however, $\{1, 2\} \cap \{4, 3\} = \emptyset$. Hence, the relation is not transitive.
 
 \item[]
 
 \item[(d)]
+It is not reflexive. Suppose we have a set $S$. Then, we know that $\mathcal{P}(S) \times \mathcal{P}(S)$ contains the ordered pair $\{\emptyset, \emptyset\}$.
+Consequently, we have that $\emptyset \cap \emptyset = \emptyset$ and thus, the relation is not reflexive.
+
 \end{itemize}
 
 \newpage
@@ -251,7 +262,7 @@ Equivalence relation $R$ such that $x R y$ if $x, y \leq 0$ or $x, y > 0$.
 \item[]
 
 \item[(b)]
-Equivalence relation $R$ such that $x R y = 0$ if $x, y < 0$, $x, y = 0$ or $x, y > 0$.
+Equivalence relation $R$ such that $x R y$ if $x, y < 0$, $x, y = 0$ or $x, y > 0$.
 \end{itemize}
 
 \item[]
@@ -307,7 +318,48 @@ At this point, we have shown that the relation is all three: reflexive, symmetri
 \item[]
 
 \item[(b)]
+We have 5 equivalence classes.\\
+The first equivalence class will have all the sets of the size 0 (empty set).\\
+The second equivalence class will have all the sets of the size 1.\\
+The third equivalence class will have all the sets of the size 2.\\
+The four equivalence class will have all the sets of the size 3.\\
+The five equivalence class will have all the sets of the size 4.
+\end{itemize}
 
+\item[]
+\item[]
+
+\item[36.]
+\begin{itemize}
+\item[(a)]
+To prove that the relation is the equivalence relation, we must prove that the
+relation is reflexive, symmetric, and transitive.\\\\
+Suppose we have a number $n \in A$ which has a highest dividing power of two equal to $2^k$.
+Then, we know that the highest dividing power of 2 of the same number is the same and thus $n \sim n$.
+Hence, relation is reflexive.\\\\
+Suppose we have a number $m, n \in A$ which have a highest dividing power of two equal to $2^k$.
+Then we know that $m \sim n$. On the other hand $n \sim m$ too since the numbers did not change and
+accordingly, the highest dividing power of 2 is the same. Thus, the relation is symmetric.\\\\
+Suppose we have a number $m, n, o \in A$ where $m, n$ have the same highest dividing power of 2 and
+$n, o$ have the same highest dividing power of 2. For $m, n$ let it be $2^k$ and for $m, o$ let it be $2^l$.
+Then we know that $m$ has the same highest dividing factor as $n$ which is $2^k$. And from the second assumption,
+the $n$ has the highest dividing factor of $2^l$. Thus, $2^l = 2^k$ and $k = l$. Finally, we have that all of the three
+$m, n, o$ have the same highest dividing power of 2 and we have proven that if $m R n$ and $n R o$, then $m R o$.
+Thus, the relation is transitive.\\\\
+At this point, we have proven that the relation is reflexive, symmetric, and transitive. Thus, the relation is the equivalence relation.
+
+\item[]
+
+\item[(b)]
+$\{1, 2, 3\}$. For all of these number, the highest dividing power of 2 is 1.
+
+\item[]
+
+\item[(c)]
+The set is:
+$$\{\{-2^1 - 1, -2^1, -2^0, 2^0, 2^1, 2^1 + 1\}, \{-2^2, -2^2 + 1, 2^2, 2^2 + 1\}, \{-2^3, -2^3 + 1, 2^3, 2^3 + 1\},$$
+$$\{-2^4, -2^4 + 1, 2^4 + 1\} ... \{-2^n, -2^n + 1, 2^n, 2^n + 1\} ...\}$$
+Notice that only the first element of the set has 6 elements - the rest of the element sets contain only 4.
 \end{itemize}
 \end{itemize}
 \end{document}
