@@ -1,0 +1,163 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+
+
+\usepackage{adjustbox}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{tikz}
+
+\usepackage{textcomp}
+\usepackage{soul}
+
+\usepackage[hidelinks]{hyperref}
+\usepgfplotslibrary{external,fillbetween}
+\pgfplotsset{compat=1.14}
+\usepackage[makeroom]{cancel}
+\title{\bf{Homework \textnumero 13}}
+\author{Author: David Oniani
+\\
+\ \ \ Instructor: Tommy Occhipinti}
+\date{November 28, 2018}
+
+\usepackage{listings}
+\usepackage{color}
+
+%%%%%%%%%%%%%%% S E T S %%%%%%%%%%%%%%%
+\newcommand{\nats}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\irrats}{\mathbb{I}}
+
+\newcommand{\pnats}{\mathbb{N}^+}
+\newcommand{\pints}{\mathbb{Z}^+}
+\newcommand{\prats}{\mathbb{Q}^+}
+\newcommand{\preals}{\mathbb{R}^+}
+\newcommand{\nreals}{\mathbb{R}^-}
+
+\newcommand{\nints}{\mathbb{Z}^-}
+\newcommand{\nrats}{\mathbb{Q}^-}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Calligraphy
+\newcommand\und[1]{\underline{\smash{#1}}}
+
+% Operators
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% Other
+\newcommand{\rarr}{\rightarrow}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+backgroundcolor=\color{backcolour},
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=left,
+numberstyle=\normalsize\color{gray},
+keywordstyle=\color{blue},
+commentstyle=\color{dkgreen},
+stringstyle=\color{mauve},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=4
+}
+
+
+\begin{document}
+\maketitle
+\begin{itemize}
+
+\item[89.]
+\begin{itemize}
+\item[(a)]
+There is such function. Consider the following function:
+$$f : S \rarr \mathcal{P}(S) : x \mapsto \{x\}$$
+It is injective since if $f(x_1) = f(x_2)$, it means that $\{x_1\} = \{x_2\}$
+and thus, $x_1 = x_2$. In other words, $x_1$ and $x_2$ are the same since sets do not
+allow duplicates. Hence, we got that different inputs give us different outputs and the
+function is injective.
+
+\item[]
+
+\item[(b)]
+Unfortunately (or fortunately), there is none. For a function $f : S \rarr \mathcal{P}(S)$
+to be onto, we need to have something mapped to all of the elements of $\mathcal{P}(S)$.
+However, since $S$ is finite (actually, it would also work with infinite sets), we know that $\abs{\mathcal{P}(S)} > \abs{S}$ and even if
+we map all of the elements of $S$ to some elements of $\mathcal{P}(S)$, we will still be left
+with at least one element. Thus, there is no such function.
+
+\item[]
+
+\item[(c)]
+There is such function. Consider the following function:
+$$f : \mathcal{P}(S) \rarr S : \{x\} \mapsto x \mbox{ such that } \abs{\{x\}} = 1$$
+Then we know that all of the elements of $S$ will have the set of the element
+mapped to it and the function is onto.
+
+\item[]
+
+\item[(d)]
+There is such. Consider the following function:
+$$f : S \rarr S \times S : x \mapsto (x, x)$$
+Now, to make it crystal clear that it is injective, suppose, for the sake
+of contradiction that $f(x_1) = f(x_2)$ and $x_1 \neq x_2$. Then we have that
+$(x_1, x_1) = (x_2, x_2)$ and thus $x_1 = x_2$. However, we assumed that $x_1 \neq x_2$
+and we have reached the contradiction. Hence, if $f(x_1) = f(x_2)$, then $x_1 = x_2$
+and the function is injective.
+
+\item[]
+
+\item[(e)]
+There is such. Consider the following function:
+$$f : S \times S \rarr S : (x, x) \mapsto x$$
+
+Notice that it is surjective since for any $s \in S$, we have
+$(s, s)$ that maps to it.
+\end{itemize}
+
+\newpage
+
+\item[90.]
+Suppose, for the sake of contradiction, that we have twelve people $p_1, p_2, p_3, ... p_{11}, p_{12}$ and
+there are no disjoint groups such that the sums of their ages are the same. 
+We have that $p_1, p_2, p_3, ... p_{11}, p_{12} \leq 122$. We also know that
+$p_1 \neq p_2 \neq p_3 ... \neq p_{11} \neq p_{12}$ since if $p_i = p_j$ for some $i \neq j \leq 12$,
+then we can take two disjoint groups/sets $\{p_i\}$ and $\{p_j\}$ and their sums would be the same and we reach the contradiction.
+Therefore, we have that $1 \leq p_1 \neq p_2 \neq p_3 ... p_{11} \neq p_{12} \leq 122$. Now let's figure
+how many ways are there to decompose 12 people into proper subsets/subgroups. There will be $2^{12} - 2$ ways of doing it.
+This is because for a person $p_k \in \{p_1, p_2, p_3, ... p_12\}$, $p_k$ is either in a subgroup or not and since there are 12 people,
+we get $2^{12}$ subgroups and we exclude the group with no people in it and the group with all 12 people in it (so that the subgroup/subset is proper).
+Hence, we can form $2^{12} - 2 = 4094$ subgroups. The sum of the arbitrarily taken subgroup will be at least 1 and at most $112 + 113 + 114 + ... + 122 = 1287$.
+Now, since $4096 > 2 \times 1287 = 2807$, according to the pigeonhole principle, there will be at least 3 different groups with the same sum. Thus, there will be
+two different groups with the same sum. Now, to ensure that they are disjoint, let's take out all the elements they share and we are done.$\qed$
+
+
+\item[]
+\item[]
+
+\item[91.]
+Zhang has proven that there are infinitely many consecutive prime pairs that can be separated by number $N$ which is less than or equal than $7 \times 10^7$.
+
+\item[92.]
+If there is no integer $N$ such that there are infinitely many consecutive primes with the property $p_2 - p_1 = N$,
+it means that there are finitely many consecutive consecutive primes such that $\abs{p_1 - p_2} < 70, 000, 000$ and
+we would face the contradiction.
+\end{itemize}
+\end{document}
