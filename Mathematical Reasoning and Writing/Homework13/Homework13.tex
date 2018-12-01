@@ -24,7 +24,7 @@
 \author{Author: David Oniani
 \\
 \ \ \ Instructor: Tommy Occhipinti}
-\date{November 28, 2018}
+\date{November 30, 2018}
 
 \usepackage{listings}
 \usepackage{color}
@@ -82,8 +82,8 @@ tabsize=4
 
 \begin{document}
 \maketitle
+{\Large 5.2 - Combinatorics of Finite Sets}
 \begin{itemize}
-
 \item[89.]
 \begin{itemize}
 \item[(a)]
@@ -152,12 +152,163 @@ two different groups with the same sum. Now, to ensure that they are disjoint, l
 \item[]
 \item[]
 
+{\Large \textbf{Video: Gaps Between Primes}}
+
 \item[91.]
-Zhang has proven that there are infinitely many consecutive prime pairs that can be separated by number $N$ which is less than or equal than $7 \times 10^7$.
+Zhang proved that there are infinitely many consecutive prime pairs that can be separated by number $N$ which is less than or equal to $7 \times 10^7$.
 
 \item[92.]
 If there is no integer $N$ such that there are infinitely many consecutive primes with the property $p_2 - p_1 = N$,
-it means that there are finitely many consecutive consecutive primes such that $\abs{p_1 - p_2} < 70, 000, 000$ and
-we would face the contradiction.
+it means that there are finitely many consecutive primes such that $\abs{p_1 - p_2} < 7 \times 10^7$ and
+we would face the contradiction (contradicts what Zhang has proven).
+
+\item[]
+\item[]
+
+{\Large Bookwork}
+\item[1.]
+Since $\abs{A^c} = 7$ and $A$ is a subset of the set $X$ which has the cardinality of 16, $\abs{A} = 16 - 7 = 9$.
+Now, since $A \cap B = 5$ and $A \cup B = X$, we have:
+\begin{align}
+\abs{X}= \abs{A} + \abs{B} - \abs{A \cap B}\\
+16 = 9 + \abs{B} - 5\\
+\abs{B} = 12
+\end{align}
+Hence, we've got that $\abs{B} = 12$.
+
+\item[]
+
+\item[2.]
+\begin{itemize}
+\item[(a)]
+Suppose $B$ is a finite set and $A$ is an arbitrary set.
+Then, $\abs{A \cap B} \leq \abs{B}$ and hence, $A \cap B$ is finite.
+$\qed$
+\item[(b)]
+Suppose, for the sake of contradiction, that $B$ is infinite, $A$ is finite, and $B - A$ is finite.
+From the previous question, we know that $A \cap B$ is finite.
+Notice that $(B - A) \cup (A \cap B) = B$. Now, if $B - A$ is finite,
+then $A \cap B$ is finite and $(B - A) \cup (A \cap B)$ which means that
+$B$ is finite and we face the contradiction. Thus, $B - A$ is infinite.
+$\qed$
+\end{itemize}
+
+\item[]
+
+\item[11.]
+\begin{itemize}
+\item[(a)]
+The maximum number of days in a year is 366.
+If some of the people share the birth date, it automatically shows that at least two of the people have a birthday on the same date.
+Then the worst case scenario for this problem would be that all the people were born on different days. That will give us $100 \times 36600$
+different days. But since there are 36601 people, according to the pigeonhole principle,
+two of the people will have to be born on the same date. Hence, we've proven
+that in all cases, at least two people are born on the same date (the same year and the same date).
+$\qed$
+
+\item[(b)]
+Again, if two people share the same birth date (in this case, the same year, the same day, and the same hour of birth) then we have automatically shown that at least two of the people are born on the same date.
+The worst case scenario would be that every person is born on a different date. There are $366 \times 100 \times 24 = 36600 \times 24$ hours in 100 years and since we have $36600 \times 24 + 1$ people, according
+to the pigeonhole principle, at least two will share the same birth date.
+$\qed$
+\end{itemize}
+
+\item[]
+
+\item[14.]
+Consider the following two cases:\\\\
+Case I: There is a person who knows everyone.\\
+Case II: There is a person who knows nobody.\\
+Case III: There is no person who knows everyone and no person who knows nobody.
+\\\\
+Case I proof: If there is a person who knows everyone, it means that he knows $n - 1$ people. Hence, all people know at least 1 person. Now since there are $n$ people in total, by the pigeonhole principle, it must be the case that two people have the same number of friends. \\\\
+Case II: If there is a person who does not know anyone, it means that a maximum number of people one can know is $n - 2$. However, now we got that for any person, the number of people he/she knows is between
+0 and $n - 2$. And now, since there are $n$ party members and $n - 2 + 1 = n - 1$ different possibilities, according to the pigeonhole principle, it must be the case that at least two know the same number of people.
+\\\\
+If there are no person who knows everyone and no person who knows nobody, then the number of people a given person knows will be between $1$ and $n - 2$ and there will be $n - 2 - 1 + 1 = n - 2$ possibilities in total
+resulting in at least 3 people knowing the same number of people which automatically means that at least two people know the same number of people.
+$\qed$
+
+\item[]
+
+\item[17.]
+\begin{itemize}
+\item[(a)]
+Suppose, for the sake of contradiction, that $A = \{(x_1, y_1), (x_2, y_2), (x_3, y_3), (x_4. y_4), (x_5, y_5)\}$ where $x_1, x_2, x_3, x_4, x_5, y_1, y_2, y_3, y_4, y_5 \in \ints$
+and also suppose that there are no points $P, Q \in A$ such that a line segment $PQ$ contains a lattice point that is different from $P$ and $Q$.
+Now, since all of the lattice points in the set $A$ are different, 
+\end{itemize}
+
+\item[]
+\item[]
+\item[]
+
+{\Large 5.1 - Cardinality}
+\item[93.]
+We have proven (in the class) that if $\abs{A} = \abs{B}$ and $\abs{B} = \abs{C}$, then $\abs{A} = \abs{C}$ and thus, $\abs{A} = \abs{B} = \abs{C}$.
+Hence, let's first show that $\abs{A} = \abs{B}$. To show this, we must show that there exists a bijection from $A$ to $B$.
+And there exists such, it is $f : A \rarr B : x \mapsto x + 1$. Likewise, $g : B \rarr C : x \mapsto x + 1$ is also a bijection.
+Hence, we've got that $\abs{A} = \abs{B}$ and $\abs{B} = \abs{C}$. Thus, $\abs{A} = \abs{B} = \abs{C}$.
+
+\item[]
+
+\item[94.]
+Yes (we could prove it using the Cantor-Bernstein theorem).
+We define the bijection by the following function construction:
+$$f : [0, 1] \rarr [0, 1)=  x \mapsto x \mbox{ if } x \in [0, 1) \mbox{ and  } x \mapsto $$
+
+\item[]
+
+\item[95.]
+We have proven in the class that for any set $S$, $\abs{S} < \abs{\mathcal{P}(S)}$ (theorem).
+Hence, if we have a set $\ints$, we can say $\abs{\ints} < \abs{\mathcal{P}(\ints)}$.
+Thus, $\ints$ and $\mathcal{P}(\ints)$ are not equinumerous.
+
+\item[]
+\item[]
+
+{\Large 5.3/5.4 - Cardinalities of Infinite Sets}
+\item[1.]
+The bijection is $f : N \rarr A_k : x \mapsto x + k + 1$ \\\\
+It is injection since if $f(x_1) = f(x_2)$, it means that $x_1 + k + 1 = x_2 + k + 1$ and thus, $x_1 = x_2$.
+It is surjection since if we have some $y \in A_k$, then we let $x = y - k - 1$ and we get that $f(x) = y - k - 1 + k + 1 = y$.
+Hence, the function is both injective and surjective and thus, it is a bijection.
+
+\item[2.]
+\begin{itemize}
+\item[(a)]
+If $A$ is finite, then $A - \{a_0\}$ is automatically denumerable (since $A$ is finite).\\
+If $A$ is infinite, we can show that $f : A \rarr A - \{a_0\} : x \mapsto x$ is a bijection and thus, since
+$A$ is countable, $A - \{a_0\}$ is countable as well.
+\item[(b)]
+If $A$ is finite, then $A - \{a\}$ is automatically denumerable (since $A$ is finite).\\
+If $A$ is infinite, we can show that $f : A \rarr A - \{a\} : x \mapsto x$ is a bijection and thus, since
+$A$ is countable, $A - \{a\}$ is countable as well.
+\end{itemize}
+
+\item[]
+
+\item[8.]
+Suppose, for the sake of contradiction, $B - A$ is countable, $A$ is also countable, and $B$ is uncountable,.
+Notice that $B = (B \cap A) \cup (B - A)$ is countable since it is the union of two countable sets.
+Hence, we have reached the contradiction since we assumed that $B$ is uncountable and thus, $B - A$ is countable.
+$\qed$
+
+\item[]
+
+\item[15.]
+Since $A \times A$ is countable, then its subset $B = \{(x, x) \ | \ x \in A\}$ is also countable.
+Then, $f : A \rarr B : x \mapsto (x, x)$ is a bijection and thus, $\abs{A} = \abs{B}$ which means that
+$A$ is countable as well (since $B$ is countable).\\\\
+\und{Proof that $f : A \rarr B : x \mapsto (x, x)$ is a bijection.}\\
+If $f(x_1) = f(x_2)$, it means that $(x_1, x_1) = (x_2, x_2)$
+and thus, $x_1 = x_2$. Hence, $f$ is injective.\\
+For every $(x_i, x_i) \in B$, we can let $x = x_i$ and we get $f(x_i) = (x_i, x_i)$ and thus $f$ is surjective.\\\\
+Since we have proven that $f$ is both injective and surjective, it means that $f$ is a bijection.
+
+\item[]
+
+\item[16.]
+
 \end{itemize}
 \end{document}
