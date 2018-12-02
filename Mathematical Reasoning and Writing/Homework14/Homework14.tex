@@ -1,0 +1,165 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+
+
+\usepackage{adjustbox}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{tikz}
+
+\usepackage{textcomp}
+\usepackage{soul}
+
+\usepackage[hidelinks]{hyperref}
+\usepgfplotslibrary{external,fillbetween}
+\pgfplotsset{compat=1.14}
+\usepackage[makeroom]{cancel}
+\title{\bf{Homework \textnumero 14}}
+\author{Author: David Oniani
+\\
+\ \ \ Instructor: Tommy Occhipinti}
+\date{December 1, 2018}
+
+\usepackage{listings}
+\usepackage{color}
+
+%%%%%%%%%%%%%%% S E T S %%%%%%%%%%%%%%%
+\newcommand{\nats}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\irrats}{\mathbb{I}}
+
+\newcommand{\pnats}{\mathbb{N}^+}
+\newcommand{\pints}{\mathbb{Z}^+}
+\newcommand{\prats}{\mathbb{Q}^+}
+\newcommand{\preals}{\mathbb{R}^+}
+\newcommand{\nreals}{\mathbb{R}^-}
+
+\newcommand{\nints}{\mathbb{Z}^-}
+\newcommand{\nrats}{\mathbb{Q}^-}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Calligraphy
+\newcommand\und[1]{\underline{\smash{#1}}}
+
+% Operators
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% Other
+\newcommand{\rarr}{\rightarrow}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+backgroundcolor=\color{backcolour},
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=left,
+numberstyle=\normalsize\color{gray},
+keywordstyle=\color{blue},
+commentstyle=\color{dkgreen},
+stringstyle=\color{mauve},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=4
+}
+
+
+\begin{document}
+\maketitle
+{\Large 5.3/5.4 - Cardinalities of Infinite Sets}
+\begin{itemize}
+\item[]
+\item[]
+{\und{\large Section 5.3}}
+\item[1.]
+The bijection is $f : N \rarr A_k : x \mapsto x + k + 1$ \\\\
+It is injection since if $f(x_1) = f(x_2)$, it means that $x_1 + k + 1 = x_2 + k + 1$ and thus, $x_1 = x_2$.
+It is surjection since if we have some $y \in A_k$, then we let $x = y - k - 1$ and we get that $f(x) = y - k - 1 + k + 1 = y$.
+Hence, the function is both injective and surjective and thus, it is a bijection.
+
+\item[2.]
+\begin{itemize}
+\item[(a)]
+If $A$ is finite, then $A - \{a_0\}$ is automatically denumerable (since $A$ is finite).\\
+If $A$ is infinite, we can show that $f : A \rarr A - \{a_0\} : x \mapsto x$ is a bijection and thus, since
+$A$ is countable, $A - \{a_0\}$ is countable as well.
+\item[(b)]
+If $A$ is finite, then $A - \{a\}$ is automatically denumerable (since $A$ is finite).\\
+If $A$ is infinite, we can show that $f : A \rarr A - \{a\} : x \mapsto x$ is a bijection and thus, since
+$A$ is countable, $A - \{a\}$ is countable as well.
+\end{itemize}
+
+\item[]
+
+\item[8.]
+Suppose, for the sake of contradiction, $B - A$ is countable, $A$ is also countable, and $B$ is uncountable,.
+Notice that $B = (B \cap A) \cup (B - A)$ is countable since it is the union of two countable sets.
+Hence, we have reached the contradiction since we assumed that $B$ is uncountable and thus, $B - A$ is countable.
+$\qed$
+
+\item[]
+
+\item[15.]
+Since $A \times A$ is countable, then its subset $B = \{(x, x) \ | \ x \in A\}$ is also countable.
+Then, $f : A \rarr B : x \mapsto (x, x)$ is a bijection and thus, $\abs{A} = \abs{B}$ which means that
+$A$ is countable as well (since $B$ is countable).\\\\
+\und{Proof that $f : A \rarr B : x \mapsto (x, x)$ is a bijection.}\\
+If $f(x_1) = f(x_2)$, it means that $(x_1, x_1) = (x_2, x_2)$
+and thus, $x_1 = x_2$. Hence, $f$ is injective.\\
+For every $(x_i, x_i) \in B$, we can let $x = x_i$ and we get $f(x_i) = (x_i, x_i)$ and thus $f$ is surjective.\\\\
+Since we have proven that $f$ is both injective and surjective, it means that $f$ is a bijection.
+
+\item[]
+
+\item[16.]
+NOT DONE YET.
+
+\item[]
+\item[]
+
+{\und{\large Section 5.4}}
+
+\item[6.]
+Suppose, for the sake of contradiction, that the infinite set $I' = \{x \in (0, 1) \ | x = .a_1a_2...a_n... \mbox{ where each $a_i = 3$ or 8}\}$ is countable.
+Being countable means having a bijection with $\pints$. Hence, we have essentially assumed that there exists a function $f$ such that
+$f : \pints \rarr I'$ is a bijection. Let's visualize it.
+\begin{align*}
+1 \mapsto .a_{1,1}a_{1,2}a_{1,3}...\\
+2 \mapsto .a_{2,1}a_{2,2}a_{2,3}...\\
+3 \mapsto .a_{3,1}a_{3,2}a_{3,3}...\\
+...........................
+\end{align*}
+Now, let's define a function $transform$ in the following way:
+$$transform(x) = \begin{cases} 8 & \mbox{if } n\mbox{ is 3} \\ 3 & \mbox{if } n\mbox{ is 8} \end{cases}$$
+Simply put, this function is defined for only two inputs - 3 and 8 - and if the input is 3, it returns 8 while
+if the input is 8, it returns 3.\\\\
+Now, consider the number $.transform(a_{1,1})transform(a_{2,2})transform(a_{3,3})...$. We know that it is not equal
+to the first number ($.a_{1,1}a_{1,2}a_{1,3}...$) since $transform(a_{1,1}) \neq a_{1,1}$. We also know that it is not equal
+to the second number in the mapping as $transform(a_{2,2}) \neq a_{2,2}$. It does not equal to the third either because $transform(a_{3,3}) \neq a_{3,3}$.
+As a result, we've got that:
+\begin{align*}
+.transform(a_{1,1})transform(a_{2,2})transform(a_{3,3})... \neq .a_{1,1}a_{1,2}a_{1,3}...\\
+.transform(a_{1,1})transform(a_{2,2})transform(a_{3,3})... \neq .a_{2,1}a_{2,2}a_{2,3}...\\
+.transform(a_{1,1})transform(a_{2,2})transform(a_{3,3})... \neq .a_{3,1}a_{3,2}a_{3,3}...\\
+............................................................................................................
+\end{align*}
+Hence, we have constructed an element of the set $I'$ such that there is no corresponding element in $\ints$ that maps to it and the function $f : \pints \rarr I'$ is not onto hence, is not a bijection.
+Finally, we have reached the contradiction and the set $I'$ is not countable.
+\end{itemize}
+\end{document}
