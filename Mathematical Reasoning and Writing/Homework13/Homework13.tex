@@ -98,7 +98,7 @@ function is injective.
 
 \item[(b)]
 Unfortunately (or fortunately), there is none. For a function $f : S \rarr \mathcal{P}(S)$
-to be onto, we need to have something mapped to all of the elements of $\mathcal{P}(S)$.
+to surjective, we need to have something mapped to all of the elements of $\mathcal{P}(S)$.
 However, since $S$ is finite (actually, it would also work with infinite sets), we know that $\abs{\mathcal{P}(S)} > \abs{S}$ and even if
 we map all of the elements of $S$ to some elements of $\mathcal{P}(S)$, we will still be left
 with at least one element. Thus, there is no such function.
@@ -109,7 +109,7 @@ with at least one element. Thus, there is no such function.
 There is such function. Consider the following function:
 $$f : S \rarr \mathcal{P}(S) : x \mapsto \{x\}$$
 Then we know that all of the elements of $\mathcal{P}(S)$ will have the element
-mapped to it and the function is onto. It is one-to-one as well seince the set does not
+mapped to it and the function is surjective. It is injective as well seince the set does not
 allow duplicates. Then, $f^{-1}$ or the inverse of $f$ will be a bijection from $\mathcal{P}(S)$
 to $S$.
 \item[]
@@ -132,8 +132,6 @@ $$f : S \times S \rarr S : (x, x) \mapsto x$$
 Notice that it is surjective since for any $s \in S$, we have
 $(s, s)$ that maps to it.
 \end{itemize}
-
-\newpage
 
 \item[90.]
 Suppose, for the sake of contradiction, that we have twelve people $p_1, p_2, p_3, ... p_{11}, p_{12}$ and
@@ -160,7 +158,7 @@ Zhang proved that there are infinitely many consecutive prime pairs that can be 
 
 \item[92.]
 If there is no integer $N$ such that there are infinitely many consecutive primes with the property $p_2 - p_1 = N$,
-it means that there are finitely many consecutive primes such that $\abs{p_1 - p_2} < 7 \times 10^7$ and
+it means that there are finitely many consecutive primes such that $\abs{p_1 - p_2} \leq 7 \times 10^7$ and
 we would face the contradiction (contradicts what Zhang has proven).
 
 \item[]
@@ -269,7 +267,7 @@ $$f : [0, 1] \rarr [0, 1)=  \begin{cases} x \mbox{ if $0 \leq x < 1$, and $x \ne
 \item[95.]
 These two sets are not equinumerous hence, there is no bijection between them.
 We have proven in class that for any set $S$, $\abs{S} \leq \abs{\mathcal{P}(S)}$. Hence, we can set $S = \pints$
-and we have $\abs{\pints} \leq \abs{\mathcal{P}(\pints)}$ and the function $f : \ints \mapsto \mathcal{P}$ is not onto thus, is not a bijection.\\\\
+and we have $\abs{\pints} \leq \abs{\mathcal{P}(\pints)}$ and the function $f : \ints \mapsto \mathcal{P}$ is not surjective thus, is not a bijection.\\\\
 P.S. I could repeat the proof that for any set $S$, $\abs{S} \leq \abs{\mathcal{P}(S)}$, but we have proven it so
 I just used it.
 
@@ -286,13 +284,24 @@ then $\abs{B} = \abs{A}$ (it is not necessary but still mentioning it).
 \und{Showing that $C \approx \nats$.}\\
 Here is a bijection:
 $$f : \nats \rarr C : x \mapsto x^3$$
+It is injective since if $f(x_1) = f(x_2)$, it means that $x_1^3 = x_2^3$ and thus, $x_1 = x_2$.
+It is surjective since for every element $y$ in the codomain, we can find element $\sqrt[3]{y}$ in the domain that maps to it.
+Hence, it is a bijection.
 \\\\
 \und{Showing that $C \approx \ints$.}\\
 Here is a bijection:
 $$f : \ints \rarr C : x \mapsto x^3$$
+
+It is injective since if $f(x_1) = f(x_2)$, it means that $x_1^3 = x_2^3$ and thus $x_1 = x_2$.
+It is surjective since for every element $y$ in the codomain, we can find the element $\sqrt[3]{y}$ in the domain which maps to it.
+Hence, it is a bijection.
 \item[(b)]
 Here is a bijection:
 $$f : \pints \rarr \nints : x \mapsto -x$$
+
+It is injective since if $f(x_1) = f(x_2)$, it means that $-x_1 = -x_2$ and thus, $x_1 = x_2$.
+It is surjective since for every element $y$ of the codomain, we can find element $-y$ in the domain that maps to it.
+Hence, it is a bijection.
 \end{itemize}
 
 \item[]
@@ -303,10 +312,20 @@ $$f : \pints \rarr \nints : x \mapsto -x$$
 To show that $(0,1) \approx (0, 3)$ we must show that there exists a bijection from $(0, 1)$ to $(0, 3)$.\\\\
 Here is a bijection:
 $$f : (0, 1) \rarr (0, 3) : x \mapsto 3x$$
-
+It is injective since if $f(x_1) = f(x_2)$, then $3x_1 = 3x_2$ and thus, $x_1 = x_2$ and it is surjective since for
+every element y in the codomain, element $\dfrac{y}{3}$ in the domain will map to it (since $3 \times \dfrac{y}{3} = y$).
+Hence, it is a bijection.
 \item[(e)]
+To show that $(0, 1) \approx (a, a + 3)$, it is sufficient to show that there exists a bijection
+between $(a, a + 3)$ and $(0, 1)$.
 Here is a bijection:
-$$f : (0, 1) \rarr (a, a + 3) = \begin{cases} x + a \mbox{ if $0 < x < \dfrac{1}{3}$}\\ x + a + 1 \mbox{ if $\dfrac{1}{3} \leq x \leq \dfrac{2}{3}$ }\\x + a + 2 \mbox{ if $\dfrac{2}{3} < x < 1$}\end{cases}$$
+
+$$f : (a, a + 3) \rarr (0, 1) : x \mapsto 3x + a$$
+
+Function $f$ is injective since if $f(x_1) = f(x_2)$, it means that $3x_1 + a = 3x_2 + a$ and thus, $x_1 = x_2$.
+The function $f$ is also surjective since for every element $y$ of the codomain, we can find the element of the domain $\dfrac{y - a}{3}$
+which maps to it. Hence, function $f$ is a bijection. Therefore, it has the inverse which is also bijection and thus, $(0, 1) \approx (a, a + 3)$.
+$\qed$
 \end{itemize}
 
 \item[]
@@ -325,7 +344,19 @@ The generalization would be that for any interval $P = (m, n)$ where $x, y \in \
 $P \times P \times P = \reals^3$. To prove this, it is sufficient to prove that $P \approx \reals$.
 Thus, we have to show that there exists a bijection between $P$ and $\reals$.
 Here is the bijection:
-$$f : P \rarr \reals : x = \dfrac{n}{x} + m$$
+$$f : P \rarr \reals : x = \mbox{tan}(\dfrac{\pi}{n - m}x + \dfrac{\pi(m + n)}{2(m - n)})$$
+
+Notice that if we plug $x = m$ in $\mbox{tan}(\dfrac{\pi}{n - m}x + \dfrac{\pi(m + n)}{2(m - n)})$,
+we get:
+$$\mbox{tan}(\dfrac{\pi}{n - m}m + \dfrac{\pi(m + n)}{2(m - n)}) = \dfrac{-2\pi m + \pi m + \pi n}{2(m - n)} = \dfrac{-\pi}{2}$$
+
+And we if plug $x = n$, we get:
+$$\mbox{tan}(\dfrac{\pi}{n - m}n + \dfrac{\pi(m + n)}{2(m - n)}) = \dfrac{-2\pi n + \pi m + \pi n}{2(m - n)} = \dfrac{\pi}{2}$$
+
+Hence, we will get all the values from $-\pi/2$ to $\pi/2$ for which tangent is actually defined.
+And since, function $\mbox{tan}$ is always increasing, we know that it is now both, injective and surjective and hence, the bijection.
+Thus, we have proven that $P \approx R$ and thus, $P \times P \times P = R \times R \times R = R^3$.
+$\qed$
 \end{itemize}
 
 \item[]
@@ -334,7 +365,7 @@ $$f : P \rarr \reals : x = \dfrac{n}{x} + m$$
 \begin{itemize}
 \item[(b)]
 Interval $(0, 1)$ is a proper subset of $\reals$. Here is a bijection between $(0, 1)$ and $\reals$:
-$$f : (0, 1) \rarr \reals : x = \mbox{tan}(\pi x - \dfrac{\pi}{2})$$
+$$f : (0, 1) \rarr \reals : x \mapsto \mbox{tan}(\pi x - \dfrac{\pi}{2})$$
 \end{itemize}
 
 \item[15.]

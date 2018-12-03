@@ -85,14 +85,67 @@ tabsize=4
 {\Large 5.3/5.4 - Cardinalities of Infinite Sets}
 \begin{itemize}
 \item[]
-\item[]
-{\und{\large Section 5.3}}
-\item[1.]
-The bijection is $f : N \rarr A_k : x \mapsto x + k + 1$ \\\\
-It is injection since if $f(x_1) = f(x_2)$, it means that $x_1 + k + 1 = x_2 + k + 1$ and thus, $x_1 = x_2$.
-It is surjection since if we have some $y \in A_k$, then we let $x = y - k - 1$ and we get that $f(x) = y - k - 1 + k + 1 = y$.
-Hence, the function is both injective and surjective and thus, it is a bijection.
 
+\item[98.]
+To prove if and only if statement, we should prove the statement directly and then prove the converse of it.\\\\
+\textbf{Proving that if $\abs{A} = \abs{A - \{a\}}$, then $A$ is infinite where $A$ is a set and $a \in A$.}
+\begin{quote}
+Suppose, for the sake of contradiction, that $A$ is finite and $\abs{A} = \abs{A - \{a\}}$. Then it has some fixed size $k$ where $k \in \pints$. Thus, $\abs{A} = k$.
+If we remove one element from $A$, its size will be $k - 1$. Hence, $\abs{A - \{a\}} = k - 1$. Finally, $\abs{A} \neq \abs{A - \{a\}}$
+since $k \neq k - 1$ and we have reached the contradiction. Therefore, $A$ is infinite.
+$\qed$
+\end{quote}
+\item[]
+\textbf{Proving that if $A$ is infinite, then $\abs{A} = \abs{A - \{a\}}$ where $A$ is a set and $a \in A$.}
+\begin{quote}
+If $A$ is infinite, we can find a bijection betweewn $\abs{A}$ and $\abs{A - \{a\}}$ where $a \in A$.
+To make the bijection easier to understand, let's have the set $A$ as the set of elements $a_1, a_2, a_3 ...$.
+Thus, $A = \{a_1, a_2, a_3, ...\}$. Let's suppose that the element which we took out of $A$ is some $a_k$ (instead of calling it $a$, we call it $a_k$).
+Now we want to produce a bijection from $A$ to $A - \{a_k\}$.
+Here is the bijection:
+$$f : A \mapsto A - \{a_k\} : a_x \mapsto \begin{cases} a_x \mbox{ if $x < k$} \\ a_{x + 1} \mbox{ if $x \geq k$}\end{cases}$$
+If you look at the function, all we first took the mapping $A \rarr A$ (such that $a_1 \mapsto a_1, a_2 \mapsto a_2$ etc.) and then removed one element from the right side of the mapping,
+and shifted the set up. Hence, now we have a bijection (since $f : A \mapsto A$ is always a bijection if we map the first element of $A$
+to the first element of $A$, then the second element of $A$ to the second element of $A$ and proceed this way).
+$\qed$
+\end{quote}
+Finally, we have proved the if and only statment in both ways first directly and then conversely and thus, we have proven
+that the set $A$ is infinite if and only if $\abs{A} = \abs{A - \{a\}}$ where $a \in A$.
+$\qed$
+
+\item[]
+
+\item[99.]
+The set is countable if it has the same cardinality as $\pints$.
+Hence, all we have to do is to show that $\mathcal{P}(\pints)$ does
+not have the same cardinality as $\pints$. According to the
+theorem that we covered in class, for an arbitrary set $S$, $\abs{S} < \abs{\mathcal{P}(S)}$.
+Hence, we know that $\mathcal{P}(S)$ has a different cardinality from $\pints$ (more precisely, greater cardinality)
+and thus, $\mathcal{P}(S)$ is uncountable.
+$\qed$
+
+\item[]
+\item[]
+
+{\Large \textbf{Video: Who Cares about Topology?}}
+\item[100.]
+He means that any point $(x, y)$ where $0 \leq x, y \leq 1$ will be a part
+of the square (he mentions loop since these points were initially on the closed loop but he then opened
+and straightened out the loop and made a copy of that line to create a mini coordinate system).
+\item[101.]
+That's because if he allowed $(x, y)$ and $(y, x)$, since the points $(x, y)$ and $(y, x)$
+represent the same line segment on a closed loop, he would always the the trivial solution to the problem (would make him think that he solved the problem where in reality, he just showed that the line segment shares a midpoint with itself which is vacuously true).
+This would not be helpful since he would get an automatic trivial
+solution to all the points. He needs to have distinct segments which intersect and share a midpoint.
+Hence, to make the problem-solving process more comfortable, he got rid of the annoying case.
+
+\item[102.]
+The theorem that says that one cannot glue the edge of a mobius strip to a plane without forcing it to intersect itself.
+
+\item[]
+\item[]
+
+{\und{\large Section 5.3}}
 \item[2.]
 \begin{itemize}
 \item[(a)]
@@ -128,7 +181,10 @@ Since we have proven that $f$ is both injective and surjective, it means that $f
 \item[]
 
 \item[16.]
-NOT DONE YET.
+Two such sets are $(0, 1)$ and $\reals$. We know that $(0, 1) \neq \reals$. We also know that $(0, 1) \approx \reals$ (we have proved it multiple times at this point, but here
+is a bijection: $f : (0, 1) \rarr \reals : x \mapsto \mbox{tan}(\pi x - \dfrac{\pi}{2})$). Besides, $(0, 1) \cup \reals = \reals$ and $(0, 1) \cap \reals = (0, 1)$.
+Thus, we have found two sets $(0, 1)$ and $\reals$, such that:
+$$(0, 1) \approx \reals \approx (0, 1) \cup \reals \approx (0, 1) \cap \reals$$
 
 \item[]
 \item[]
@@ -147,7 +203,7 @@ $f : \pints \rarr I'$ is a bijection. Let's visualize it.
 \end{align*}
 Now, let's define a function $transform$ in the following way:
 $$transform(x) = \begin{cases} 8 & \mbox{if } n\mbox{ is 3} \\ 3 & \mbox{if } n\mbox{ is 8} \end{cases}$$
-Simply put, this function is defined for only two inputs - 3 and 8 - and if the input is 3, it returns 8 while
+Simply put, this function is defined for only two inputs -- 3 and 8 -- and if the input is 3, it returns 8 while
 if the input is 8, it returns 3.\\\\
 Now, consider the number $.transform(a_{1,1})transform(a_{2,2})transform(a_{3,3})...$. We know that it is not equal
 to the first number ($.a_{1,1}a_{1,2}a_{1,3}...$) since $transform(a_{1,1}) \neq a_{1,1}$. We also know that it is not equal
