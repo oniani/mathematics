@@ -144,9 +144,9 @@ how many ways are there to decompose 12 people into proper subsets/subgroups. Th
 This is because for a person $p_k \in \{p_1, p_2, p_3, ... p_12\}$, $p_k$ is either in a subgroup or not and since there are 12 people,
 we get $2^{12}$ subgroups and we exclude the group with no people in it and the group with all 12 people in it (so that the subgroup/subset is proper).
 Hence, we can form $2^{12} - 2 = 4094$ subgroups. The sum of the arbitrarily taken subgroup will be at least 1 and at most $112 + 113 + 114 + ... + 122 = 1287$.
-Now, since $4096 > 2 \times 1287 = 2807$, according to the pigeonhole principle, there will be at least 3 different groups with the same sum. Thus, there will be
-two different groups with the same sum. Now, to ensure that they are disjoint, let's take out all the elements they share and we are done.$\qed$
-
+Now, since $4096 > 3 \times 1287 = 3861$, according to the pigeonhole principle, there will be at least 3 different groups with the same sum. Thus, there will be
+two different groups with the same sum. Now, to ensure that they are disjoint, let's take out all the elements they share (out of the two groups) and we are done.
+$\qed$
 
 \item[]
 \item[]
