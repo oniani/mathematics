@@ -1,0 +1,158 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{bookmark}
+\usepackage{adjustbox}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{algorithmic}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{pst-solides3d}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage[cache=false]{minted}
+
+\usepackage{soul}
+\usepackage{cite}
+\usepackage{textcomp}
+
+% Sets and related operations
+\newcommand{\nats}{\mathbb{N}} % Natural numbers
+\newcommand{\pnats}{\mathbb{N}^+} % Positive natural numbers
+
+\newcommand{\ints}{\mathbb{Z}} % Integers
+\newcommand{\pints}{\mathbb{Z}^+} % Positive integers
+\newcommand{\nints}{\mathbb{Z}^-} % Negative integers
+
+\newcommand{\rats}{\mathbb{Q}} % Rational numbers
+\newcommand{\prats}{\mathbb{Q}^+} % Positive rational numbers
+\newcommand{\nrats}{\mathbb{Q}^-} % Negative rational numbers
+
+\newcommand{\reals}{\mathbb{R}} % Real numbers
+\newcommand{\preals}{\mathbb{R}^+} % Positive real numbers
+\newcommand{\nreals}{\mathbb{R}^-} % Negative real numbers
+
+\newcommand{\irrats}{\mathbb{I}} % Irrational numbers
+
+
+\newcommand{\pset}{\mathcal{P}} % Powerset
+\newcommand{\card}{\abs} % Cardinality
+
+% Calligraphy
+\newcommand\und[1]{\underline{\smash{#1}}}
+
+% Operators
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% Other
+\newcommand{\rarr}{\rightarrow}
+\newcommand{\larr}{\leftarrow}
+
+% Setting stuff
+\setlength{\parindent}{0pt}
+
+
+% Title
+\title{\rule{\paperwidth - 150pt}{1pt}\textbf{\\\textit{Topology}\\}\rule{\paperwidth - 150pt}{1pt}}
+
+\author
+{
+\textit{Author: David Oniani}
+\\
+\textit{Instructor: Dr. Eric Westlund}
+}
+
+\date{\textit{January }7\textit{, }2019}
+
+
+\begin{document}
+\maketitle
+
+\center{\Large Exercises}
+
+\begin{itemize}
+\vspace{0.3cm}
+
+% Begin here!
+
+\item[2.]
+Let $f : A \rarr B$ and let $A_i \subset A$ and $B_i \subset B$
+for $i = 0$ and $i = 1$. Show that if $f^{-1}$ preserves inclusions,
+unions, intersections, and differences of sets:
+
+\begin{itemize}
+\item[(c)]
+$f^{-1}(B_0 \cap B_1) = f^{-1}(B_0) \cap f^{-1}(B_1)$.
+\vspace{0.25cm}
+
+\begin{quote}
+To prove that the set $f^{-1}(B_0 \cap B_1)$
+is equal to the set $f^{-1}(B_0) \cap f^{-1}(B_1)$,
+we have to show that $f^{-1}(B_0 \cap B_1) \subseteq f^{-1}(B_0) \cap f^{-1}(B_1)$
+and $f^{-1}(B_0) \cap f^{-1}(B_1) \subseteq f^{-1}(B_0 \cap B_1)$.
+\\
+\vspace{0.5cm}
+Case I: $f^{-1}(B_0 \cap B_1) \subseteq f^{-1}(B_0) \cap f^{-1}(B_1)$\\
+\vspace{0.15cm}
+
+\begin{quote}
+Let $x \in B_0 \cap B_1$. Then $x \in B_0$ and $x \in B_1$. Besides,
+$f(x) = A_p$ where $A_p \subseteq A$ (the author calls it the preimage).
+Now, since $x \in B_0 \cap B_1$, its preimage is in $f^{-1}(B_0 \cap B_1)$.
+On the other hand, as $x \in B_0$, its preimage lies in $f^{-1}(B_0)$ and as
+$x \in B_1$, its preimage also lies in $f^{-1}(B_1)$. In other words, the preimage of $x$
+lies in $f^{-1}(B_0) \cap f^{-1}(B_1)$. Therefore, $f^{-1}(B_0 \cap B_1) \subseteq f^{-1}(B_0) \cap f^{-1}(B_1)$.
+\end{quote}
+
+\vspace{0.5cm}
+Case II: $f^{-1}(B_0) \cap f^{-1}(B_1) \subseteq f^{-1}(B_0 \cap B_1)$\\
+\vspace{0.15cm}
+
+\begin{quote}
+Let $x_0 \in B_0$ and $x_1 \in B_1$. Then the preimages of $x_0$ and $x_1$ are in
+$f^{-1}(B_0)$ and $f^{-1}(B_1)$ respectively. Thus, $x$ mapping to $f^{-1}(B_0) \cap f^{-1}(B_1)$
+has the preimage that maps to both $f^{-1}(B_0)$ and $f^{-1}(B_1)$. In other words,
+$x \in B_0$ and $x \in B_1$ which means that the preimage of $x$ also lies in $f^{-1}(B_0 \cap B_1)$.
+Therefore, $f^{-1}(B_0) \cap f^{-1}(B_1) \subseteq f^{-1}(B_0 \cap B_1)$.
+\end{quote}
+\vspace{0.5cm}
+
+We have now proven that $f^{-1}(B_0 \cap B_1) \subseteq f^{-1}(B_0) \cap f^{-1}(B_1)$
+and $f^{-1}(B_0) \cap f^{-1}(B_1) \subseteq f^{-1}(B_0 \cap B_1)$ and thus, $f^{-1}(B_0 \cap B_1) = f^{-1}(B_0) \cap f^{-1}(B_1)$.
+
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+
+\end{quote}
+
+\item[(g)]
+$f(A_0 \cap A_1) \subset f(A_0) \cap f(A_1)$; show that inequality holds if $f$ is injective.
+\vspace{0.25cm}
+
+\begin{quote}
+Let $x \in A_0 \cap A_1$. Then $x \in A_0$ and $x \in A_1$.
+\vspace{0.5cm}
+
+sadasdasd
+
+\begin{flushright}
+\textit{Q.E.D.}
+\end{flushright}
+
+\end{quote}
+
+\end{itemize}
+
+\end{itemize}
+\end{document}
