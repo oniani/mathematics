@@ -1,5 +1,5 @@
 \documentclass[12pt, a4paper]{article}
-\usepackage[margin=0.5in]{geometry}
+\usepackage[margin=0.7in]{geometry}
 
 \usepackage{bookmark}
 \usepackage{adjustbox}
@@ -78,7 +78,7 @@
 \begin{document}
 \maketitle
 
-\center{\Large Exercises}
+\center{\Large Assignment \textnumero{1}}
 
 \begin{itemize}
 \vspace{0.3cm}
@@ -98,58 +98,121 @@ $f^{-1}(B_0 \cap B_1) = f^{-1}(B_0) \cap f^{-1}(B_1)$.
 \begin{quote}
 To prove that the set $f^{-1}(B_0 \cap B_1)$
 is equal to the set $f^{-1}(B_0) \cap f^{-1}(B_1)$,
-we have to show that $f^{-1}(B_0 \cap B_1) \subseteq f^{-1}(B_0) \cap f^{-1}(B_1)$
-and $f^{-1}(B_0) \cap f^{-1}(B_1) \subseteq f^{-1}(B_0 \cap B_1)$.
+we have to show that $f^{-1}(B_0 \cap B_1) \subset f^{-1}(B_0) \cap f^{-1}(B_1)$
+and $f^{-1}(B_0) \cap f^{-1}(B_1) \subset f^{-1}(B_0 \cap B_1)$.
 \\
 \vspace{0.5cm}
-Case I: $f^{-1}(B_0 \cap B_1) \subseteq f^{-1}(B_0) \cap f^{-1}(B_1)$\\
+Case I: $f^{-1}(B_0 \cap B_1) \subset f^{-1}(B_0) \cap f^{-1}(B_1)$\\
 \vspace{0.15cm}
 
 \begin{quote}
-Let $x \in B_0 \cap B_1$. Then $x \in B_0$ and $x \in B_1$. Besides,
-$f(x) = A_p$ where $A_p \subseteq A$ (the author calls it the preimage).
-Now, since $x \in B_0 \cap B_1$, its preimage is in $f^{-1}(B_0 \cap B_1)$.
-On the other hand, as $x \in B_0$, its preimage lies in $f^{-1}(B_0)$ and as
-$x \in B_1$, its preimage also lies in $f^{-1}(B_1)$. In other words, the preimage of $x$
-lies in $f^{-1}(B_0) \cap f^{-1}(B_1)$. Therefore, $f^{-1}(B_0 \cap B_1) \subseteq f^{-1}(B_0) \cap f^{-1}(B_1)$.
+Let $x \in f^{-1}(B_0 \cap B_1)$. Then $f(x) \in B_0 \cap B_1$. Thus, $f(x) \in B_0$
+and $f(x) \in B_1$. From this, we get that $x \in f^{-1}(B_0)$ and $x \in f^{-1}(B_1)$.
+Therefore, $x \in f^{-1}(B_0) \cap f^{-1}(B_1)$. Hence, if $x \in f^{-1}(B_0 \cap B_1)$,
+then $x \in f^{-1}(B_0) \cap f^{-1}(B_1)$ which means that $f^{-1}(B_0 \cap B_1) \subset f^{-1}(B_0) \cap f^{-1}(B_1)$.$\qed$
 \end{quote}
 
 \vspace{0.5cm}
-Case II: $f^{-1}(B_0) \cap f^{-1}(B_1) \subseteq f^{-1}(B_0 \cap B_1)$\\
+Case II: $f^{-1}(B_0) \cap f^{-1}(B_1) \subset f^{-1}(B_0 \cap B_1)$\\
 \vspace{0.15cm}
 
 \begin{quote}
-Let $x_0 \in B_0$ and $x_1 \in B_1$. Then the preimages of $x_0$ and $x_1$ are in
-$f^{-1}(B_0)$ and $f^{-1}(B_1)$ respectively. Thus, $x$ mapping to $f^{-1}(B_0) \cap f^{-1}(B_1)$
-has the preimage that maps to both $f^{-1}(B_0)$ and $f^{-1}(B_1)$. In other words,
-$x \in B_0$ and $x \in B_1$ which means that the preimage of $x$ also lies in $f^{-1}(B_0 \cap B_1)$.
-Therefore, $f^{-1}(B_0) \cap f^{-1}(B_1) \subseteq f^{-1}(B_0 \cap B_1)$.
+Let $x \in f^{-1}(B_0) \cap f^{-1}(B_1)$. Then $x \in f^{-1}(B_0)$ and $x \in f^{-1}(B_1)$.
+Thus, $f(x) \in B_0$ and $f(x) \in B_1$. Finally, we have that $f(x) \in B_0 \cap B_1$ which
+is equivalent to saying $x \in f^{-1}(B_0 \cap B_1)$. Hence, if $x \in f^{-1}(B_0) \cap f^{-1}(B_1)$,
+then $x \in f^{-1}(B_0 \cap B_1)$ which means that $f^{-1}(B_0) \cap f^{-1}(B_1) \subset f^{-1}(B_0 \cap B_1)$.$\qed$
 \end{quote}
 \vspace{0.5cm}
 
-We have now proven that $f^{-1}(B_0 \cap B_1) \subseteq f^{-1}(B_0) \cap f^{-1}(B_1)$
-and $f^{-1}(B_0) \cap f^{-1}(B_1) \subseteq f^{-1}(B_0 \cap B_1)$ and thus, $f^{-1}(B_0 \cap B_1) = f^{-1}(B_0) \cap f^{-1}(B_1)$.
-
-\begin{flushright}
-\textit{Q.E.D.}
-\end{flushright}
+We have now proven that $f^{-1}(B_0 \cap B_1) \subset f^{-1}(B_0) \cap f^{-1}(B_1)$
+and $f^{-1}(B_0) \cap f^{-1}(B_1) \subset f^{-1}(B_0 \cap B_1)$ and thus, $f^{-1}(B_0 \cap B_1) = f^{-1}(B_0) \cap f^{-1}(B_1)$.$\qed$
 
 \end{quote}
+
+\item[]
 
 \item[(g)]
 $f(A_0 \cap A_1) \subset f(A_0) \cap f(A_1)$; show that inequality holds if $f$ is injective.
 \vspace{0.25cm}
 
 \begin{quote}
-Let $x \in A_0 \cap A_1$. Then $x \in A_0$ and $x \in A_1$.
-\vspace{0.5cm}
+Let's first show that $f(A_0 \cap A_1) \subset f(A_0) \cap f(A_1)$ even if $f$ is not injective.\\
+\medskip
+Let $x \in f(A_0 \cap A_1)$. Then $\exists x^\prime \in A_0 \cap A_1$ such that $f(x^\prime) = x$.
+Now, since $x^\prime \in A_0$ and $x^\prime \in A_1$, we get that $x \in f(A_0)$ and $x \in f(A_1)$
+thus, $x \in f(A_0) \cap f(A_1)$.$\qed$\\
+\bigskip
+Now let's prove that $f(A_0 \cap A_1) = f(A_0) \cap f(A_1)$ if $f$ is injective.
+We have already shown that independent of whether $f$ is injective or not, $f(A_0 \cap A_1) \subset f(A_0) \cap f(A_1)$.
+Thus, we just have to show that $f(A_0) \cap f(A_1) \subset f(A_0 \cap A_1)$ if $f$ is injective.\\
+\medskip
+Let $x \in f(A_0) \cap f(A_1)$.\ Then $x \in f(A_0)$ and $x \in f(A_1)$.\
+Besides, since $f$ is injective, there exists \textbf{\und{unique}} $x^\prime$ such that $f(x^\prime) = x$.\ Therefore, $x^\prime \in A_0$ and $x^\prime \in A_1$.
+Finally, we get that $x \in f(A_0 \cap A_1)$.$\qed$
+\end{quote}
+\end{itemize}
 
-sadasdasd
+\item[]
 
-\begin{flushright}
-\textit{Q.E.D.}
-\end{flushright}
+\item[5.]
+In general, let us denote the $\textit{\textbf{identity function}}$ for a set $C$ by $i_C$. That is, define
+$i_C : C \rarr C$ to be the function given by the rule $i_C(x) = x$ for all $x \in C$.
+Given $f : A \rarr B$, we say that a function $g : B \rarr A$ is a $\textbf{\textit{left inverse}}$ for $f$
+if $g \circ f = i_A$; and we say that $h : B \rarr A$ is a $\textit{\textbf{right inverse}}$ for $f$ if $f \circ h = i_B$.
 
+\begin{itemize}
+\item[(a)]
+Show that if $f$ has a left inverse, $f$ is injective; and if $f$ has a right inverse, $f$ is surjective.
+
+\begin{quote}
+Let's first show that if $f$ has a left inverse, then $f$ is injective.\\
+\medskip
+Suppose, for the sake of contradiction, that $f : A \rarr B$ is function such that it has a left inverse
+and that $f$ is not injective. Since $f$ is not injective, there exists $x_0, x_1 \in A$ such that $f(x_0) = f(x_1)$ and $x_0 \neq x_1$.\
+Since $f$ has the left inverse, there exists $g : B \rarr A$ such that $g \circ f = i_A$.
+Consider functions $(g \circ f)(x_0)$ and $(g \circ f)(x_1)$.\ These functions could be rewritten as
+$g(f(x_0))$ and $g(f(x_1))$.\ Since $f(x_0) = f(x_1)$, we have that $g(f(x_0)) = g(f(x_1))$. Therefore,
+we got that $i_A(x_0) = i_A(x_1)$ and thus, $x_0 = x_1$. At last, we have reached the contradiction since initially we assumed that $x_0 \neq x_1$.
+Hence, if $f$ has a left inverse, then $f$ is injective.$\qed$
+\\
+\bigskip
+Now let's show that if $f$ has a right inverse, then $f$ is surjective.\\
+\medskip
+Suppose $f : A \rarr B$ is function such that it has a right inverse.\
+Then there exists $h : B \rarr A$ such that $f \circ h = i_A$.
+\end{quote}
+
+\item[]
+
+\item[(b)]
+Give an example of a function that has a left inverse but no right inverse.
+\begin{quote}
+Solution to b.
+\end{quote}
+
+\item[]
+
+\item[(c)]
+Give an example of a function that has a right inverse but no left inverse.
+\begin{quote}
+Solution to c.
+\end{quote}
+
+\item[]
+
+\item[(d)]
+Can a function have more than one left inverse? More than one right inverse?
+\begin{quote}
+Solution to d.
+\end{quote}
+
+\item[]
+
+\item[(e)]
+Show that if $f$ has both a left inverse $g$ and a right inverse $h$, then $f$
+is bijective and $g = h = f^{-1}$.
+\begin{quote}
+Solution to e.
 \end{quote}
 
 \end{itemize}
