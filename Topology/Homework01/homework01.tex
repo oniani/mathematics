@@ -81,6 +81,8 @@
 \center{\Large Assignment \textnumero{1}}
 
 \begin{itemize}
+\item[]
+{\large Chapter 2}
 \vspace{0.3cm}
 
 % Begin here!
@@ -178,8 +180,11 @@ Hence, if $f$ has a left inverse, then $f$ is injective.$\qed$
 \bigskip
 Now let's show that if $f$ has a right inverse, then $f$ is surjective.\\
 \medskip
-Suppose $f : A \rarr B$ is function such that it has a right inverse.\
-Then there exists $h : B \rarr A$ such that $f \circ h = i_A$.
+Suppose $f : A \rarr B$ is a function such that it has a right inverse.\
+Then there exists $h : B \rarr A$ such that $f \circ h = i_B$.
+Note that $\forall x \in B$, we have $f(h(x)) = x$ and since $h(x) \in A$,
+we effectively got that every $x \in B$ has something that maps to it.
+In other words, $f$ is surjective.$\qed$
 \end{quote}
 
 \item[]
@@ -187,7 +192,7 @@ Then there exists $h : B \rarr A$ such that $f \circ h = i_A$.
 \item[(b)]
 Give an example of a function that has a left inverse but no right inverse.
 \begin{quote}
-Solution to b.
+$f : \ints \rarr \reals : x \mapsto x$.
 \end{quote}
 
 \item[]
@@ -195,7 +200,7 @@ Solution to b.
 \item[(c)]
 Give an example of a function that has a right inverse but no left inverse.
 \begin{quote}
-Solution to c.
+$f : \ints \rarr \pints \cup \{0\} : x \mapsto x^2$.
 \end{quote}
 
 \item[]
@@ -203,7 +208,13 @@ Solution to c.
 \item[(d)]
 Can a function have more than one left inverse? More than one right inverse?
 \begin{quote}
-Solution to d.
+Yes, it can have more than one left inverse.\\
+Consider the following functions:
+\begin{align*}
+f : \{1, 2, 3\} \rarr \{1, 2, 3\}\\
+g : \{1, 2, 3\} \rarr \{1, 2, 3\}\\
+g^{\prime} : \{1, 2, 3\} \rarr \{1, 2, 3\}\\
+\end{align*}
 \end{quote}
 
 \item[]
@@ -216,6 +227,44 @@ Solution to e.
 \end{quote}
 
 \end{itemize}
+
+\item[]
+\item[]
+\item[]
+
+{\large Chapter 3}
+\vspace{0.3cm}
+
+\item[10.]
+\begin{itemize}
+\item[(a)]
+Show that the map $f : (-1, 1) \rarr \reals$ of Example 9 is order preserving.
+\begin{quote}
+We have to show that $f : (-1, 1) \rarr \reals : x \mapsto \dfrac{x}{1 - x^2}$ is
+an order-preserving map. In other words, we have to prove that for arbitrary $x_0, x_1 \in (-1, 1)$,
+if $x_1 > x_0$, then $f(x_1) > f(x_0)$. Suppose $x_0, x_1 \in (-1, 1)$ and $x_1 > x_0$.
+Then we have:
+$$f(x_1) - f(x_0) = \dfrac{x_1}{1 - x_1^2} - \dfrac{x_0}{1 - x_0^2} = \dfrac{x_1 - x_1x_0^2 - x_0 + x_0x_1^2}{(1 - x_1^2)(1 - x_0^2)} = \dfrac{(x_1 - x_0)(x_0x_1 + 1)}{(1 - x_1^2)(1 - x_0^2)}$$
+\vspace{0.15cm}
+Finally, we got that $f(x_1) - f(x_0) = \dfrac{x_1 - x_1x_0^2 - x_0 + x_0x_1^2}{(1 - x_1^2)(1 - x_0^2)} = \dfrac{(x_1 - x_0)(x_0x_1 + 1)}{(1 - x_1^2)(1 - x_0^2)}$
+where $x_1 > x_0$. Notice that all the members of the fraction are positive.\\
+$x_1 - x_0 > 0$ since $x_1 > x_0$, $x_0x_1 + 1 > 0$ as $x_0, x_1 \in (-1, 1)$, and $(1 - x_1^2)(1 - x_0^2)$ is positive
+since, once again, $x_0, x_1 \in (0, 1)$. Thus, we have effectively shown that if $x_0, x_1 \in (0, 1)$ such that $x_1 > x_0$,
+then $f(x_1) - f(x_0) > 0$. In others, if $x_0, x_1 \in (0, 1)$ and $x_1 > x_0$, then $f(x_1) > f(x_0)$ and $f$ is indeed an order-preserving map.$\qed$
+\end{quote}
+
+\item[]
+
+\item[(b)]
+Show that the equation $g(y) = 2y / [1 + (1 + 4y^2)^{1/2}]$ defines a function
+$g : \reals \rarr (-1, 1)$ that is both a left and a right inverse for $f$.
+
+\begin{quote}
+Solution.
+\end{quote}
+\end{itemize}
+
+
 
 \end{itemize}
 \end{document}
