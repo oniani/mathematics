@@ -89,8 +89,8 @@
 
 \item[2.]
 Let $f : A \rarr B$ and let $A_i \subset A$ and $B_i \subset B$
-for $i = 0$ and $i = 1$. Show that if $f^{-1}$ preserves inclusions,
-unions, intersections, and differences of sets:
+for $i = 0$ and $i = 1$. Show that if $f^{-1}$\\
+preserves inclusions, unions, intersections, and differences of sets:
 
 \begin{itemize}
 \item[(c)]
@@ -131,7 +131,7 @@ and $f^{-1}(B_0) \cap f^{-1}(B_1) \subset f^{-1}(B_0 \cap B_1)$ and thus, $f^{-1
 
 \end{quote}
 
-\item[]
+\newpage
 
 \item[(g)]
 $f(A_0 \cap A_1) \subset f(A_0) \cap f(A_1)$; show that inequality holds if $f$ is injective.
@@ -249,8 +249,8 @@ $$f(x_1) - f(x_0) = \dfrac{x_1}{1 - x_1^2} - \dfrac{x_0}{1 - x_0^2} = \dfrac{x_1
 Finally, we got that $f(x_1) - f(x_0) = \dfrac{x_1 - x_1x_0^2 - x_0 + x_0x_1^2}{(1 - x_1^2)(1 - x_0^2)} = \dfrac{(x_1 - x_0)(x_0x_1 + 1)}{(1 - x_1^2)(1 - x_0^2)}$
 where $x_1 > x_0$. Notice that all the members of the fraction are positive.\\
 $x_1 - x_0 > 0$ since $x_1 > x_0$, $x_0x_1 + 1 > 0$ as $x_0, x_1 \in (-1, 1)$, and $(1 - x_1^2)(1 - x_0^2)$ is positive
-since, once again, $x_0, x_1 \in (0, 1)$. Thus, we have effectively shown that if $x_0, x_1 \in (0, 1)$ such that $x_1 > x_0$,
-then $f(x_1) - f(x_0) > 0$. In others, if $x_0, x_1 \in (0, 1)$ and $x_1 > x_0$, then $f(x_1) > f(x_0)$ and $f$ is indeed an order-preserving map.$\qed$
+since, once again, $x_0, x_1 \in (-1, 1)$. Thus, we have effectively shown that if $x_0, x_1 \in (-1, 1)$ such that $x_1 > x_0$,
+then $f(x_1) - f(x_0) > 0$. In others, if $x_0, x_1 \in (-1, 1)$ and $x_1 > x_0$, then $f(x_1) > f(x_0)$ and $f$ is indeed an order-preserving map.$\qed$
 \end{quote}
 
 \item[]
@@ -260,11 +260,163 @@ Show that the equation $g(y) = 2y / [1 + (1 + 4y^2)^{1/2}]$ defines a function
 $g : \reals \rarr (-1, 1)$ that is both a left and a right inverse for $f$.
 
 \begin{quote}
-Solution.
+Let's first show that it is indeed the left inverse for the function $f$.\\
+Consider the function composition $g \circ f$. This composition is possible
+since the codomain of $f$ is the same as the domain of $g$. Now, let's do some high
+school algebra:
+\begin{align*}
+(g \circ f)(x) = g(f(x)) = \dfrac{2f(x)}{1 + (1 + 4f(x)^2)^{\frac{1}{2}}}
+= \dfrac{\dfrac{2x}{1 - x^2}}{1 + (1 + 4(\dfrac{x}{1 - x^2})^2)^{\frac{1}{2}}}\\[1em]
+= \dfrac{\dfrac{2x}{1 - x^2}}{1 + (\dfrac{(x^2 + 1)^2}{(1 - x^2)^2})^{\frac{1}{2}}}
+= \dfrac{\dfrac{2x}{1 - x^2}}{\dfrac{1 - x^2 + x^2 + 1}{1 - x^2}}
+= \dfrac{\dfrac{2x}{1 - x^2}}{\dfrac{2}{1 - x^2}}
+= x
+\end{align*}
+Hence, we've got that $(g \circ f)(x) = x = i_{(-1, 1)}$ thus, is the identity function for the open interval $(-1, 1)$.
+This is sufficient show for the function $g$ to be the left inverse for the function $f$.$\qed$
+\\
+\vspace{0.4cm}
+Now, let's show that $g$ is also the right inverse for $f$.
+Consider, the function composition $f \circ g$. Once again, we will need
+to do some high school math:
+\begin{align*}
+(f \circ g)(x) = f(g(x)) = \dfrac{g(x)}{1 - g(x)^2}
+= \dfrac{\dfrac{2x}{1 + (1 + 4x^2)^\frac{1}{2}}}{1 - (\dfrac{2x}{1 + (1 + 4x^2)^\frac{1}{2}})^2}\\[1em]
+= \dfrac{2x(1 + (1 + 4x^2)^\frac{1}{2})}{(1 + (1 + 4x^2)^\frac{1}{2})^2 - 4x^2}
+= \dfrac{2x(1 + (1 + 4x^2)^\frac{1}{2})}{1 + 1 + 4x^2 + 2(1 + 4x^2)^\frac{1}{2} -4x^2}\\[1em]
+= \dfrac{2x(1 + (1 + 4x^2)^\frac{1}{2})}{2(1 + (1 + 4x^2)^\frac{1}{2})}
+= x
+\end{align*}
+Thus, we got that $(f \circ g)(x) = x = i_{\reals}$. This means that the function composition $f \circ g$
+yields the identity function and this means that function $g$ is indeed the right inverse for the function $f$.$\qed$
 \end{quote}
 \end{itemize}
 
+\item[]
+\item[]
+\item[]
 
+{\large Chapter 6}
+\vspace{0.3cm}
+
+\item[2.]
+Show that if $B$ is not finite and $B \subset A$, then $A$ is not finite.
+\begin{quote}
+Suppose, for the sake of contradiction, that $B$ is not finite, $B \subset A$, and $A$ is finite.
+Then since $B \subset A$ and $A$ is finite, it must be the case that $B$ is finite too as it is
+the portion of the set with finite elements. This, however, contradicts our initial assumption that $B$
+is not finite thus, we have reached the contradiction and if $B$ is not finite and $B \subset A$, then $A$
+is not finite.$\qed$
+\end{quote}
+
+\item[]
+
+\item[3.]
+Let $X$ be the two-element set $\{0, 1\}$. Find a bijective correspondence between $X^\omega$ and a proper
+subset of itself.
+\begin{quote}
+Let $S = \{A \in X^\omega \ | \ A = (0, x_1, x_2, ...)\}$ and define $f : X^\omega \rarr S$ such that $f(x_1, x_2, x_3, ...) = (0, x_1, x_2, x_3 ...)$.
+This is a function that shifts each element of the sequence one place to the right.
+\end{quote}
+
+\item[]
+
+\item[7.]
+If $A$ and $B$ are finite, show that the set of all functions $f : A \rarr B$ is finite.
+\begin{quote}
+Notice that there are $\abs{B}^{\abs{A}}$ different functions of the form $f : A \rarr B$.
+Since $A$ and $B$ are finite, so is $\abs{B}^{\abs{A}}$. Hence, we got that the cardinality
+of the set of all functions $f : A \rarr B$ is finite which implies that the set of all functions
+$f : A \rarr B$ is also finite.$\qed$
+\end{quote}
+
+\item[]
+\item[]
+\item[]
+
+{\large Chapter 7}
+\vspace{0.3cm}
+
+\item[1.]
+Show that $\rats$ is countably infinite.
+
+\begin{quote}
+To show that the set of rational numbers is countable, it is sufficient to show that there is a way to enumerate (count down)
+all of them. This is the classic visual proof of enumerability/countability of the set of rational numbers.\\
+\vspace{0.15cm}
+In order to prove the countability of the set of rational numbers, let's first construct a two-dimensional, infinite matrix.
+We will construct it in the following way:
+\begin{enumerate}
+\item[1.]
+The first column of the matrix is comprised of non-negative integers.
+\item[2.]
+The first row of the matrix is comprised of non-negative integers.
+\item[3.]
+The rest of the cells are pairs which are composed by dividing the cell value of the first row by the corresponding column (the division product with its opposite).
+\end{enumerate}
+The grid will look like this:
+\\
+\begin{table}[h!]
+	\centering
+	\begin{adjustbox}{max width=\textwidth}
+	\resizebox{0.8\linewidth}{!}
+	{
+		\begin{tabular}{*{7}{|c}|}%%{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+		\hline
+		0 & 1 & 2 & 3 & 4 & 5 & etc\\ \hline
+		1 & (1/1, -1/1) & (2/1, -2/1) & (3/1, -3/1) & (4/1, -4/1) & (5/1, -5/1) & etc\\ \hline
+		2 & (1/2, -1/2) & (2/2, -2/2) & (3/2, -3/2) & (4/2, -4/2) & (5/2, -5/2) & etc\\ \hline
+		3 & (1/3, -1/3) & (2/3, -2/3) & (3/3, -3/3) & (4/3, -4/3) & (5/3, -5/3) & etc\\ \hline
+		4 & (1/3, -1/4) & (2/3, -2/4) & (3/3, -3/4) & (4/3, -4/4) & (5/3, -5/4) & etc\\ \hline
+		5 & (1/5, -1/5) & (2/5, -2/5) & (3/5, -3/5) & (4/5, -4/5) & (5/5, -5/5) & etc\\ \hline
+		etc & etc & etc & etc & etc & etc & etc\\
+		\hline
+	\end{tabular}
+    }
+	\end{adjustbox}
+\end{table}
+Now, our enumeration could proceed as follows: 0, 1/1, -1/1, 1/2, -1/2, 2/1, -2/1, 1/3, -1/3, 2/3, -2/3, 3/3, -3/3 etc.
+Notice that the enumeration starts at the first entry of the first row and proceeds diagonally.
+This will guarantee that all of the rational numbers will be listed (notice that we would not be able to list them if we proceeded horizontally or vertically).
+Thus, the set of rational numbers is countable.$\qed$
+\end{quote}
+
+\item[]
+
+\item[5.]
+Determine, for each of the following sets, whether or not it is countable. Justify
+your answers.
+\begin{itemize}
+\item[(a)]
+Solution.
+
+\item[(b)]
+Solution.
+
+\item[(c)]
+Solution.
+
+\item[(d)]
+Solution.
+
+\item[(e)]
+Solution.
+
+\item[(f)]
+Solution.
+
+\item[(g)]
+Solution.
+
+\item[(h)]
+Solution.
+
+\item[(i)]
+Solution.
+
+\item[(j)]
+Solution.
+\end{itemize}
 
 \end{itemize}
 \end{document}
