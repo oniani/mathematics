@@ -1,6 +1,8 @@
 \documentclass[12pt, a4paper]{article}
 \usepackage[margin=0.7in]{geometry}
 
+\usepackage[none]{hyphenat}
+
 \usepackage{bookmark}
 \usepackage{adjustbox}
 \usepackage{mathtools}
@@ -67,12 +69,11 @@
 
 \author
 {
-\textit{Author: David Oniani}
-\\
-\textit{Instructor: Dr. Eric Westlund}
+Author: David Oniani\\
+Instructor: Dr. Eric Westlund
 }
 
-\date{\textit{January }7\textit{, }2019}
+\date{January 7, 2019}
 
 
 \begin{document}
@@ -82,7 +83,8 @@
 
 \begin{itemize}
 \item[]
-{\large Chapter 2}
+\item[]
+{\large \textbf{Section 2}}
 \vspace{0.3cm}
 
 % Begin here!
@@ -130,8 +132,6 @@ We have now proven that $f^{-1}(B_0 \cap B_1) \subset f^{-1}(B_0) \cap f^{-1}(B_
 and $f^{-1}(B_0) \cap f^{-1}(B_1) \subset f^{-1}(B_0 \cap B_1)$ and thus, $f^{-1}(B_0 \cap B_1) = f^{-1}(B_0) \cap f^{-1}(B_1)$.$\qed$
 
 \end{quote}
-
-\newpage
 
 \item[(g)]
 $f(A_0 \cap A_1) \subset f(A_0) \cap f(A_1)$; show that inequality holds if $f$ is injective.
@@ -192,7 +192,8 @@ In other words, $f$ is surjective.$\qed$
 \item[(b)]
 Give an example of a function that has a left inverse but no right inverse.
 \begin{quote}
-$f : \ints \rarr \reals : x \mapsto x$.
+$f : \reals \rarr \reals - \{0\} : x \mapsto 2^x$. It has the left inverse $g(x) = log_2{\abs{x}}$ but no right inverse.
+From \und{\textbf{exercise (a)}}, we know that it has no right inverse as the function is not surjective.
 \end{quote}
 
 \item[]
@@ -200,21 +201,33 @@ $f : \ints \rarr \reals : x \mapsto x$.
 \item[(c)]
 Give an example of a function that has a right inverse but no left inverse.
 \begin{quote}
-$f : \ints \rarr \pints \cup \{0\} : x \mapsto x^2$.
+$f : \reals \rarr \reals \cup \{0\} : x \mapsto x^2$. It has the right inverses $h(x) = \sqrt{x}$ and $h^{\prime}(x) = -\sqrt{x}$ but no left inverse.
+From \und{\textbf{exercise (a)}}, we know that it has no left inverse since as the function is not injective.
 \end{quote}
 
-\item[]
+\newpage
 
 \item[(d)]
 Can a function have more than one left inverse? More than one right inverse?
 \begin{quote}
 Yes, it can have more than one left inverse.\\
-Consider the following functions:
-\begin{align*}
-f : \{1, 2, 3\} \rarr \{1, 2, 3\}\\
-g : \{1, 2, 3\} \rarr \{1, 2, 3\}\\
-g^{\prime} : \{1, 2, 3\} \rarr \{1, 2, 3\}\\
-\end{align*}
+Let $A = \{1, 2\}$ and $B = \{1, 2, 3\}$.
+Then consider the following function:
+$$f : A \rarr B : x \mapsto x$$
+Notice that $f$ has two left inverses.\ One is $g(x) = x \mbox{ if } x \in \{1, 2\}$
+and $g(3) = 1$. And the other one is $g^{\prime}(x) = x \mbox{ if } x \in \{1, 2\}$ and $g^{\prime}(3) = 2$.
+
+\item[]
+\item[]
+
+Yes, it can also have more than one right inverse.\\
+The example is in \und{\textbf{exercise (c)}}, but here is another one for diversity:\\
+\vspace{0.25cm}
+Let $A = \{1, 2\}$ and $B = \{1\}$.
+Then consider the following function:
+$$f : A \rarr B : x \mapsto x$$
+Notice that it has two right inverses.\ One is $h(1) = 1$.
+And the other one is $h^{\prime}(1) = 2$.
 \end{quote}
 
 \item[]
@@ -223,7 +236,12 @@ g^{\prime} : \{1, 2, 3\} \rarr \{1, 2, 3\}\\
 Show that if $f$ has both a left inverse $g$ and a right inverse $h$, then $f$
 is bijective and $g = h = f^{-1}$.
 \begin{quote}
-Solution to e.
+From \textbf{exercise (a)} we know that if $f$ has both left and right inverses,
+then $f$ is bijective (it is injective if it has the left inverse and surjective if
+it has the right inverse hence if it is has both left and right inverses, then it is
+bijective). Now, $\forall x \in B$, there is a unique $y \in A$ such that $f(x) = y$.
+Then $f(x) = f(h(y)) = y$ and $g(y) = g(f(x)) = x$. Also, as $f$ is injective, $h(y) =  x$.
+Finally, since $h(y) = g(y) = h(f(x)) = g(f(x)) = x$, we get that $g = h = f^{-1}$.$\qed$
 \end{quote}
 
 \end{itemize}
@@ -232,7 +250,7 @@ Solution to e.
 \item[]
 \item[]
 
-{\large Chapter 3}
+{\large \textbf{Section 3}}
 \vspace{0.3cm}
 
 \item[10.]
@@ -296,7 +314,7 @@ yields the identity function and this means that function $g$ is indeed the righ
 \item[]
 \item[]
 
-{\large Chapter 6}
+{\large \textbf{Section 6}}
 \vspace{0.3cm}
 
 \item[2.]
@@ -334,14 +352,14 @@ $f : A \rarr B$ is also finite.$\qed$
 \item[]
 \item[]
 
-{\large Chapter 7}
+{\large \textbf{Section 7}}
 \vspace{0.3cm}
 
 \item[1.]
 Show that $\rats$ is countably infinite.
 
 \begin{quote}
-To show that the set of rational numbers is countable, it is sufficient to show that there is a way to enumerate (count down)
+To show that the set of rational numbers is countable, it is sufficient to show that there is a way to enumerate (count/list down)
 all of them. This is the classic visual proof of enumerability/countability of the set of rational numbers.\\
 \vspace{0.15cm}
 In order to prove the countability of the set of rational numbers, let's first construct a two-dimensional, infinite matrix.
@@ -352,7 +370,7 @@ The first column of the matrix is comprised of non-negative integers.
 \item[2.]
 The first row of the matrix is comprised of non-negative integers.
 \item[3.]
-The rest of the cells are pairs which are composed by dividing the cell value of the first row by the corresponding column (the division product with its opposite).
+The rest of the cells are pairs which are composed by dividing the cell value of the first row by the corresponding column (pairing the division product with its opposite).
 \end{enumerate}
 The grid will look like this:
 \\
@@ -388,34 +406,137 @@ Determine, for each of the following sets, whether or not it is countable. Justi
 your answers.
 \begin{itemize}
 \item[(a)]
-Solution.
+The set $A$ of all functions $f : \{0, 1\} \rarr \pints$.
+\begin{quote}
+It is countable.\\
+Notice that the set of all functions $f : \{0, 1\} \rarr \pints$
+is in bijective correspondence with $\pints \times \pints$. Since $\pints \times \pints$ is countable
+(we can prove it using the same grid technique as in the previous exercise),
+$f : \{0, 1\} \rarr \pints$ is countable.\\
+\vspace{0.5cm}
+NOTE: The fact that $\pints \times \pints$ is countable is \textbf{Corollary 7.4}.\\
+\end{quote}
 
 \item[(b)]
-Solution.
+The set $B_n$ of all functions $f : \{1, ... n\} \rarr \pints$.
+\begin{quote}
+It is countable.\\
+Notice that the set of all functions $f : \{1, ... n\} \rarr \pints$
+is in a bijective correspondence with $\underbrace{\pints \times \pints \times .... \times \pints}_{\text{\normalsize n times}}$.
+Now, according to \textbf{Thorem 7.6},\\
+\smallskip
+the product of countable sets is countable and hence,
+the set $B_n$ of all functions $f : \{1, ... n\} \rarr \pints$ is also countable.
+\end{quote}
+
+\item[]
 
 \item[(c)]
-Solution.
+The set $C = \bigcup_{n \in \pints} B_n$.
+\begin{quote}
+It is countable.\\
+\smallskip
+$C = \bigcup_{n \in \pints} B_n = B_1 \cup B_2 \cup B_3 \cup \ ... \ B_{n-1} \cup B_n$.
+Now, from the previous question, we know that $B_n$ is countable. This also leads
+to $B_1, B_2, ... B_{n - 1}$ being countable. Then, according to the \textbf{Theorem 7.5},
+the union of countable sets is countable and the set $C$ is countable.
+\end{quote}
+
+\item[]
 
 \item[(d)]
-Solution.
+The set $D$ of all functions $f : \pints \rarr \pints$.
+\begin{quote}
+It is not countable.\\
+Notice that set $D$ is the set of all sequences of positive integers.
+Thus, using the book's notation, $D = (\pints)^{\omega}$.
+Then according to $\textbf{Theorem 7.7}$, $D$ is not countable.\\
+\smallskip
+Notice that the theorem implies that $\{0, 1\}^{\omega}$ is uncountable, however,
+it is obviously sufficient to show in order to say that $(\pints)^{\omega}$ is also not countable.
+This can also be shown using \textit{Cantor's diagonalization argument}.
+
+\end{quote}
+
+\item[]
 
 \item[(e)]
-Solution.
+The set $E$ of all functions $f : \pints \rarr \{0, 1\}$.
+\begin{quote}
+It is not countable.\\
+This is similar to the previous question. Once again, according
+to $\textbf{Theorem 7.7}$, the set $E$ is not countable.
+\end{quote}
+
+\item[]
 
 \item[(f)]
-Solution.
+The set $F$ of all functions $f : \pints \rarr \{0, 1\}$ that are ``eventually zero.''\\
+$[$We say that $f$ is \textbf{eventually zero} if there is a positive integer $N$ such that
+$f(n) = 0$ for all $n \geq N]$.
+\begin{quote}
+It is countable.\\
+For some $N$, we can define $F_N$ as the set of all functions where $f(n) = 0 \ \forall n \geq N$.
+Then the function $f : F_N \rarr \{0, 1\}^{N - 1}$ such that\\
+$f(\{x_1, x_2, ... x_{N-1}, 0, 0, 0 ...\}) = (x_1, x_2, x_3, ... x_{N - 1})$
+is a bijection.\ According to the \textbf{Theorem 7.6}, $\{0, 1\}^{N - 1}$ is countable and hence, we got that $F_N$ is countable. Now, since $F_N$ is countable for any arbitrary $N$,
+according to the \textbf{Theorem 7.5}, $F$ is countable too as $F = \bigcup_{N = 1}^{\infty}F_N$.
+\end{quote}
+
+\item[]
 
 \item[(g)]
-Solution.
+The set $G$ of functions $f : \pints \rarr \pints$ that are eventually 1.
+\begin{quote}
+It is countable.\\
+The proof is almost the same as in the previous exercise.
+For some $N$, we can define $G_N$ as the set of all functions where $g(n) = 1 \ \forall n \geq N$.
+Then the function $g : G_N \rarr (\pints)^{N - 1}$ such that\\
+$g(\{x_1, x_2, ... x_{N-1}, 1, 1, 1 ...\}) = (x_1, x_2, x_3, ... x_{N - 1})$
+is a bijection.\ According to the \textbf{Theorem 7.6}, $(\pints)^{N - 1}$ is countable and hence, we got that $G_N$ is countable. Now, since $F_N$ is countable for any arbitrary $N$,
+according to the \textbf{Theorem 7.5}, $G$ is countable too as $G = \bigcup_{N = 1}^{\infty}G_N$.
+\end{quote}
+
+\item[]
 
 \item[(h)]
-Solution.
+The set $H$ of all functions $f : \pints \rarr \pints$ that are eventually constant.
+\begin{quote}
+It is countable.\\
+$\forall C \in \pints$, we can define $H_C$ to be the set of all $f : \pints \rarr \pints$
+functions which are eventually $C$. From the \und{\textbf{exercise (f)}}, we know that $H_C$
+is countable. Then, according to the \textbf{Theorem 7.5}, $H$ is countable as well
+since $H = \bigcup_{C = 1}^{\infty}H_C$
+\end{quote}
+
+\item[]
 
 \item[(i)]
-Solution.
+The set $I$ of all two-element subsets of $\pints$.
+\begin{quote}
+It is countable.\\
+We can define the function $f : I \rarr \pints$
+such that $f(\{x_0, x_1\}) = 3^{x_0} \times 5^{x_1}$.
+Then $f$ is injective since if $f(x_0, x_1) = f(x_0\prime, x_1\prime)$,
+then $3^{x_0} \times 5^{x_1} = 3^{x_0\prime} \times 5^{x_1\prime}$ and
+since $x_0, x_1, x_0\prime, x_1\prime \in \pints$ and $\mbox{gcd}(3, 5) = 1$,
+it must be the case that $x_0 = x_0\prime$ and $x_1 = x_1\prime$.
+Hence, according to \textbf{Theorem 7.1}, the set $I$ is countable.\\
+\vspace{0.25cm}
+NOTE: The gcd function returns the greatest common divisor of two numbers.
+\end{quote}
+
+\item[]
 
 \item[(j)]
-Solution.
+The set $J$ of all finite subsets of $\pints$.
+\begin{quote}
+It is countable.\\
+Consider the function $f : J \rarr \pints$ such that
+$f(\{x_0, x_1, ... x_{n-1}\}) = x_0, x_1, .... x_{n - 1}$ if $x_1 < x_2 < x_3 < ... x_n$.
+For instance, $f(\{1, 2, 3\}) = 123$ and $f(\{4, 5, 1, 3\}) = 1345$. Then, the map injective since if $f(S_1) = f(S_2)$ it must be the case that $S_1 = S_2$ (the order matters!).
+Thus, according to \textbf{Theorem 7.1}, the set $J$ is countable.
+\end{quote}
 \end{itemize}
 
 \end{itemize}
