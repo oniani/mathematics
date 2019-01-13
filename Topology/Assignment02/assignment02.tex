@@ -77,7 +77,7 @@ Author: David Oniani\\
 Instructor: Dr. Eric Westlund
 }
 
-\date{January 11, 2019}
+\date{January 13, 2019}
 
 
 \begin{document}
@@ -107,7 +107,7 @@ Determine, for each of these topologies, which of the other it contains.
 From \textbf{Lemma 13.4}, we know that $\topology_2$ is strictly finer than $\topology_1$.
 \newline
 \newline
-The finite complement topology will look like $(-\infty, x_0) \ \cup \ (x_0, x_1) \ \cup .... (x_{n - 1}, +\infty) \ \cup \ (x_n, +\infty)$.
+The finite complement topology will look like $(-\infty, x_0) \ \cup \ (x_0, x_1) \ \cup .... (x_{n - 1}, +\infty)$.
 Then it is easy to notice that $\topology_1$ is strictly finer than $\topology_3$ (since $\topology_3$ is an open set in $\topology_1$; also $(2, 3)$ is open in standard topology but not in finite complement topology).
 \newline
 \newline
@@ -317,8 +317,206 @@ topology on $I \times I$, and the topology $I \times I$ inherits the subspace of
 in the dictionary order topology.
 \begin{quote}
 Let's first compare the product topology on $I \times I$ and the dictionary order topology on $I \times I$.
+Notice that the dictionary order topology and the product topology are strictly contained in the subspace
+topology from the dictionary order on the plane, and hence are incomparable with one another.
+\newline
+\newline
 CONTINUE HERE!
 \end{quote}
+
+\item[]
+\item[]
+\item[]
+
+{\large \textbf{Section 17}}
+\vspace{0.3cm}
+\item[3.]
+Show that if $A$ is closed in $X$ and $B$ is closed in $Y$, then $A \times B$ is closed in $X \times Y$.
+\begin{quote}
+Notice that $A \times B = X \times Y - (((X - A) \times Y) \cup (X \times (Y - B)))$.
+Since $A$ is closed in $X$, $X - A$ is open in $X$ and thus $(X - A) \times Y$ is open in $X \times Y$.
+Similarly, since $B$ is closed in $Y$, $Y - B$ is open in $Y$ and therefore $X \times (Y - B)$ is open in $X \times Y$.
+Then we have that $((X - A) \times Y) \cup (X \times (Y - B))$ is open and hence $X \times Y - ((X - A) \times Y) \cup (X \times (Y - B))$
+is closed. Finally, $A \times B$ is closed in $X \times Y$.$\qed$
+\end{quote}
+
+\item[]
+\item[]
+
+\item[6.]
+Let $A, B,$ and $A_\alpha$ denote subsets of a space $X$. Prove the following:
+\begin{itemize}
+\item[(a)]
+If $A \subset B$, then $\bar{A} \subset \bar{B}$.
+\begin{quote}
+Suppose that $A, B \subset X$ and $A \subset B$.
+\end{quote}
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[11.]
+Show that the product of two Hausdorff spaces are Hausdorff.
+\begin{quote}
+To prove that the product of two Hausdorff spaces are Hausdorff,
+it is sufficient to show that $\forall x_1, x_2$ such that $x_1 \neq x_2$,
+$\exists U_1, U_2$ of $x_1$ and $x_2$ respectively with $U_1 \cap U_2 = \emptyset$ ($U_1, U_2$ are neighborhoods).
+Suppose we have two Hausdorff spaces $X$ and $Y$.
+Let $x_1, x_2 \in X$. Then $\exists U_1, U_2 \subset X$
+such that $U_1 \cap U_2 = \emptyset$. Now consider the sets
+$V_1 = U_1 \times Y$ and $V_2 = U_2 \times Y$. Notice that
+$V_1 \cap V_2 = (U_1 \cap U_2) \times Y = \emptyset \times Y = \emptyset$.
+Thus, we got that $X \times Y$ is Hausdorff.$\qed$
+\end{quote}
+
+\item[]
+\item[]
+
+\item[16.]
+Consider the five topologies on $\reals$ given in Exercise 7 of §13.
+\begin{itemize}
+\item[(a)]
+Determine the closure of the set $K = \{1/n \mid n \in \pints\}$ under each of these topologies.
+\begin{quote}
+Let's consider each of these topologies one by one.
+\item[]
+\item[]
+\begin{itemize}
+\item[1.]
+$\topology_1 = \mbox{ the standard topology.}$
+\begin{quote}
+Let $x < 0$. Then notice that $(\frac{5x}{4}, \frac{x}{2})$
+is an open neighborhood of $x$ that has no intersection
+with $K$. Now, since $K \subset \bar{K}$, it follows that $x \notin \bar{K}$. Now consider the case when $x > 1$.
+Notice that open set $(x + \frac{1 - x}{2}, x - \frac{1 - x}{2})$ is a neighborhood of $x$ that does not intersect $K$.
+Therefore, since $K \subset \bar{K}$, it follows that $x \notin \bar{K}$. If $x \in (0, 1)$. Then notice that $\exists l \in \pints$ such that $\frac{1}{l + 1} < x < \frac{1}{l}$.
+Then this neighborhood has no intersection with $K$ and therefore, $x \notin \bar{K}$. We are now left with point $0$.
+Suppose that $U$ is an open neighborhood of $0$. Then there
+exists the basis element $0 \in (a, b) \subset U$. In fact,
+there must exist $m \in \pints$ such that $\frac{1}{m} < b$
+with $\frac{1}{m} \in U \cap K$. The notice that $U \cap K$
+is non-empty for any neighborhood $U$ of 0. Therefore, $0 \in \bar{K}$. Finally, $\bar{K} = \{0\}$
+
+\end{quote}
+
+\item[]
+
+\item[2.]
+$\topology_2 = \mbox{ the topology of $\reals_K$.}$
+\begin{quote}
+In the topology of $\reals_K$, $\reals - K$ is considered open.
+Thus, $K$ is closed and, according to \textbf{Theorem 17.6}, $\bar{K} = K + \emptyset = K$.
+Therefore, the closure of the set $K$ is $K$.
+\end{quote}
+
+\item[]
+
+\item[3.]
+$\topology_3 = \mbox{ the finite complement topology.}$
+\begin{quote}
+Notice that in the finite complement topology,
+every closed set is either finite or all of $\reals$.
+Then obviously infinite set $K$ cannot be a subset of any finite set
+and it follows that $\reals$ must be the only closed set that contains $K$.
+Therefore, $\bar{K} = \reals$.
+\end{quote}
+
+\item[]
+
+\item[4.]
+$\topology_4 = \mbox{ the upper limit topology, having all sets $(a, b]$ as basis.}$
+\begin{quote}
+Consider the set $\reals - K$. Notice that $\reals - K = (-\infty, 0] \cup \bigcup_{i \in \pints}(\frac{1}{i + 1}, \frac{1}{i}) \cup (1, +\infty)$.
+Then $\forall U \in \reals - K$, $U$ is open in the upper limit topology and hence, $\reals - K$ is open.
+Therefore, $K$ is closed and $\bar{K} = K$.
+\end{quote}
+
+\item[]
+
+\item[5.]
+$\topology_5 = \mbox{the topology having all sets }(-\infty, a] = \{x \ | \ x < a\} \mbox{ as basis.}$
+\begin{quote}
+Let $x < 0$, then $(-\infty, x]$ has no intersections with $K$, hence $x \notin \bar{K}$. Now let $x \geq 0$. Then
+all neighborhoods of $x$ contain a basis set $(-\infty, y)$
+where $y > 0$. Let $U$ be a neighborhood of $x$. Then $\exists z$ such that $\frac{1}{z} < y$. Therefore, $\frac{1}{z} \in U \cup K$. Finally, $x \in \bar{K}$ and $\bar{K} = [0, +\infty)$.
+\newline
+\newline
+To summarize, we got that the closure of $K$ under $\topology_1$ is $\{0\}$, under $\topology_2$ is $K$, under
+$\topology_3$ is $\reals$, under $\topology_4$ is $K$,
+and under $\topology_5$ is $[0, +\infty)$.
+\end{quote}
+\end{itemize}
+\end{quote}
+
+\item[]
+\item[]
+
+\item[(b)]
+Which of these topologies satisfy the Hausdorff axiom? the $T_1$ axiom?
+\begin{quote}
+Once again, let's go through all of the topologies one at a time.
+\begin{itemize}
+\item[1.]
+$\topology_1 = \mbox{ the standard topology.}$
+\begin{quote}
+Notice that $\forall x, y$ such that $x \neq y$, $x \in (x - \frac{{\abs{x - y}}}{2}, x + \frac{{\abs{x - y}}}{2})$
+and $y \in (y - \frac{{\abs{x - y}}}{2}, y + \frac{{\abs{x - y}}}{2})$. Besides, $(x - \frac{{\abs{x - y}}}{2}, x + \frac{{\abs{x - y}}}{2}) \cap (y - \frac{{\abs{x - y}}}{2}, y + \frac{{\abs{x - y}}}{2}) = \emptyset$. Hence, the standard
+topology is both Hausdorff and $T_1$.
+\end{quote}
+
+\item[]
+
+\item[2.]
+$\topology_2 = \mbox{ the topology of $\reals_K$.}$
+\begin{quote}
+We know that the topology on $\reals_K$ is finer than
+the standard topology. This is sufficient to say that
+it is both Hausdorff and $T_1$.
+\end{quote}
+
+\item[]
+
+\item[3.]
+$\topology_3 = \mbox{ the finite complement topology.}$
+\begin{quote}
+Notice that in the finite complement topology, there are no two non-empty open sets $U_1$ and $U_2$ such that $U_1 \cap U_2 = \emptyset$. Therefore, finite complement topology is not
+Hausdorff. However, all the singleton sets are finite and therefore closed. This means that the finite complement topology is $T_1$.
+
+\end{quote}
+
+\item[]
+
+\item[4.]
+$\topology_4 = \mbox{ the upper limit topology, having all sets $(a, b]$ as basis.}$
+\begin{quote}
+We know that the upper limit topology is finer than the standard topology. Therefore, it is both Hausdorff and $T_1$.
+\end{quote}
+
+\item[]
+
+\item[5.]
+$\topology_5 = \mbox{the topology having all sets }(-\infty, a] = \{x \ | \ x < a\} \mbox{ as basis.}$
+\begin{quote}
+Suppose that $U$ is an open set and let $x \in U$. Then there exists a basis element $x \in (-\infty, a) \subset U$
+where $a > x$. Hence, every real number less than $x$
+is in $U$. Consider $\reals - \{0\}$. $1$ is in the set,
+but $0 < 1$ and $0$ is not in this set, and hence cannot be
+open. Thus, $\{0\}$ is not close which means that the topology is not $T_1$. As being Hausdorff implies being $T_1$,
+it is also not Hausdorff.
+\newline
+\newline
+To summarize, we got that the closure of $\topology_1$ is both Hausdorff and $T_1$. $\topology_2$ is both Hausdorff and $T_1$, $\topology_3$ is $T_1$ but not Hausdorff, $\topology_4$ is both Hausdorff and $T_1$, and $\topology_5$ is neither Hausdorff nor $T_1$.
+\end{quote}
+\end{itemize}
+\end{quote}
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[19.]
+
 
 \end{itemize}
 \end{document}
