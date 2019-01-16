@@ -669,15 +669,22 @@ Then $\mbox{Int} \ \overline{\reals - \{0\}} = \mbox{Int} \ \reals = \reals \neq
 
 \item[20.]
 Find the boundary and the interior of each of the following subsets of $\reals^2$.
+\newline
+\newline
+NOTE: These are just the boundaries and the interiors of the sets.\ There are no formal proofs accompanying the observations.
+All of the observations are made by visualizing the problem.
 \begin{itemize}
 \item[(a)]
 $A = \{x \times y \mid y = 0\}$
 \begin{quote}
-Notice that $\reals \times (-\infty, 0) \cup (0, +\infty)$
-is open as a union of open sets. Therefore, $A$ is closed as a complement of $\reals \times (-\infty, 0) \cup (0, +\infty)$.
-Now, since $\forall x \in \reals$, $\lim_{x \to \infty} (x, \frac{1}{x}) = (x, 0)$, the closure of the complement of $A$ is all of $\reals^2$.
-Therefore, every open point of $A$ is a limit point of $\reals^2 - A$. Hence, the boundary of $A$ is $A \cap \reals^2 = A$.
-Hence, we got that the $\mbox{Bd} \ A = A$ and $\mbox{Int} \ A = \emptyset$.
+Notice that the set of limit points of $A$ is equal to $A$
+as it is the $X$ axis. Therefore, $\bar{A} = A \cup A^\prime = A \cup A = A$. Now,
+$\mbox{Bd} \ A = \bar{A} \cap \overline{(\reals^2 - A)}$. Now, also
+notice that the closure of the complement of $X$ axis is all of $\reals^2$.
+Therefore $\overline{(\reals^2 - A)} = \reals^2$. Finally, we have $\mbox{Bd} \ A = \bar{A} \cap \overline{(\reals^2 - A)} = A \cap \reals^2 = A$.
+As for interior, according the formula $\bar{A} = \mbox{Int} \ A \cup \mbox{Bd} \ A$ and the fact that $\mbox{Int} \ A$ ad $\mbox{Bd} \ B$
+the correctness of which we proved in \textbf{Exercise 19 (a)}, it follows that $\mbox{Int} \ A = \emptyset$.
+Finally, $\mbox{Bd} \ A = A$ and $\mbox{Int} \ A = \emptyset$.
 \end{quote}
 
 \item[]
@@ -686,17 +693,16 @@ Hence, we got that the $\mbox{Bd} \ A = A$ and $\mbox{Int} \ A = \emptyset$.
 \item[(b)]
 $B = \{x \times y \mid x > 0 \mbox{ and } y \neq 0\}$
 \begin{quote}
-The closure of $B$ is the set of all points where $x \geq 0$
-and the complement is just the complement of $B$ due to the fact
-that the latter is open in $\reals^2$.\
-Thus, $\mbox{Bd} \ B = \bar{B} - B$ and is comprised of all
-points where $x = 0$ or both $x > 0$ and $y = 0$.
-Thus, $\mbox{Bd} \ B = \{0\} \times \reals \cup \preals \times \{0\}$
-and $\mbox{Int} \ B = B$.
+Notice that the set of limit points of $B$ is $B^\prime = \{(x, y) \mid x \geq 0\}$.
+Then $\bar{B} = B \cap B^\prime = B^\prime = \{(x, y) \mid x \geq 0\}$.
+Let's now calculate the closure of the complement of $B$ to then apply our formula for calculating the boundary.
+Notice that $\overline{\reals^2 - B} = \{(x, y) \mid x \leq 0 \mbox{ or } x > 0 \mbox{ and } y = 0\}$.
+Now, we can apply our formula for computing the boundary.
+We have $\mbox{Bd} \ B = \bar{B} \cap \overline{\reals^2 - B} = \{(x, y) \mid x = 0 \mbox{ or } x > 0 \mbox{ and } y = 0\} = \{0\} \times \reals \cup \preals \times \{0\}$.
+Once again, using the results we've got in \textbf{Exercise 19 (a)}, we have $\mbox{Int} \ C = \preals \times \reals$.
+Finally, we got that $\mbox{Bd B} \ = \{0\} \times \reals \cup \preals \times \{0\}$ and $\mbox{Int B} \ = B$.
 \end{quote}
 
-\item[]
-\item[]
 \item[]
 \item[]
 
@@ -705,51 +711,64 @@ $C = A \cup B$
 \begin{quote}
 The set $C$ is the set which consists of all points where $x > 0$ or $y = 0$.\
 The closure of this set is the set of all points such that $x \geq 0$ or $y = 0$.\
-$C^c$ (the complement set of the set $C$) is the set where $x \geq 0$ and $y \neq 0$ hold for all points
-and the closure of $C^c$ is the set of all points where $x \leq 0$. Then the intersection
-of $C$ and $C^c$ is the set of all points where $x = 0$ or both $x < 0$ and $y = 0$.
-Therefore, $\mbox{Bd} \ C = \nreals \times \{0\} \cup \{0\} \times \reals$
-and $\mbox{Int} \ C = \preals \times \reals$.
-
+The complement set of the set $C$ is the set where $x \geq 0$ and $y \neq 0$ hold for all points
+and the closure of it is the set of all points where $x \leq 0$. Then the intersection
+of the closure of $C$ and the closure of the complement of $C$ is the set of all points
+where $x = 0$ or both $x < 0$ and $y = 0$. Therefore, $\mbox{Bd} \ C = \nreals \times \{0\}
+\cup \{0\} \times \reals$ and $\mbox{Int} \ C = \preals \times \reals$.
 \end{quote}
+
 \item[]
 \item[]
 
 \item[(d)]
 $D = \{x \times y \mid x \ \mbox{is rational}\}$
 \begin{quote}
-As every real number is the limit of irrational numbers,
-the closure of $D$ is all of $\reals^2$. $D^c$ consists
-of all points where the first coordinates are rational
-and since every rational number is a limit of a sequence
-of the rational numbers, the closure of $\reals^2 - D$ is
-$\reals^2$. Therefore, we got that $\mbox{Bd} \ D = \reals^2$
-and $\mbox{Int} \ C = \emptyset$.
+Every open interval (which is not empty) of $\reals$ has infinitely many rational and
+irrational numbers. Hence, each product of intervals contains infinitely many
+elements of $D$ and $\reals^2 - D$. Therefore, $\bar{D} = \reals^2$ (and $\mbox{Bd} \ D$ is $\reals^2$ as
+well since it is defined as union of the closure of $D$ and the closure of its complement and it cannot be bigger than $\reals^2$).
+Once again, using the formula $\bar{D} = \mbox{Int} \ D \cup \mbox{Bd} \ D$ and fact that $\mbox{Bd} \ D$ and $\mbox{Int} \ D$ are disjoint,
+we have that $\mbox{Int} \ D = \emptyset$. At last, we have $\mbox{Bd} \ D = \reals^2$
+and $\mbox{Int} \ D = \emptyset$.
 
 \end{quote}
 \item[]
 \item[]
 
 \item[(e)]
-Could not solve this over the weekend {\Large\frownie}
-\newline
-A hint or two will be appreciated !!
+$E = \{x \times y \mid 0 < x^2 - y^2 \leq 1\}$
+\begin{quote}
+Once the visualization is done, it is easy to see that the set
+of all limit points of $E$ is the butterfly-shaped plot. Therefore,
+the closure of $E$ will be that butterfly-shaped plot (it includes $E$
+but also has the wings of the butterfly included).\ In other words,
+$\bar{E} = \{(x, y) \mid 0 \leq x^2 - y^2 \leq 1\}$. Now, the closure
+of $\reals^2 - E$ will visually be the diagonal lines plus the area outside
+of the wings of the butterfly. Therefore, since $\mbox{Bd} \ E = \bar{E} \cap \overline{\reals^2 - E}$,
+the boundary of $E$ appears to be the skeleton of the butterfly. In other words, $\mbox{Bd} \ E = \{(x, y) \mid x^2 - y^2 = 1 \mbox{ or } \abs{x} = \abs{y}\}$.
+Also, by just looking at the butterfly, it is almost trivial to see (but certainly not trivial to show)
+that its interior is the space inside and $\mbox{Int} \ E = \{(x, y) \mid 0 < x^2 + y^2 < 1\}$.
+Finally, we have that $\mbox{Bd} \ E = \{(x, y) \mid x^2 - y^2 = 1 \mbox{ or } \abs{x} = \abs{y}\}$ and $\mbox{Int} \ E = \{(x, y) \mid 0 < x^2 + y^2 < 1\}$.
+\end{quote}
 
 \item[]
 \item[]
 
 \item[(f)]
-Could not solve this over the weekend {\Large\frownie}
-\newline
-A hint or two will be appreciated !!
-\newline
-\newline
-My hunch here is that the closure of $F$ is the union
+$F = \{x \times y \mid x \neq 0 \mbox{ and } y \leq 1/x\}$
+\begin{quote}
+The closure of $F$ is the union
 of $F$ with $Y$ axis.\ The reason is that geometrically,
 this is the region underneath either positive
-or negative branch of hyperbola $y = \dfrac{1}{x}$
+or negative branches of hyperbola $y = \dfrac{1}{x}$
 with $X$ axis removed and with branches of hyperbola included
-in the set. Could not prove or disprove it so far.
+in the set (in other words, the set of limit points would contain
+the $Y$ axis as we can put a square around it and it would include
+an open neighborhood). Hence, $\mbox{Bd} \ F = \{(x, y) \mid x \neq 0 \mbox{ and } (y = 1/x \mbox{ or } x = 0)\}$.
+Once again, the visualization of this shows us that $\mbox{Int} \ F = \{(x, y) \mid x \neq 0 \mbox{ and } y < 1/x\}$.
+Finally, we have $\mbox{Bd} \ F = \{(x, y) \mid x \neq 0 \mbox{ and } (y = 1/x \mbox{ or } x = 0)\}$ and $\mbox{Int} \ F = \{(x, y) \mid x \neq 0 \mbox{ and } y < 1/x\}$.
+\end{quote}
 \end{itemize}
 \end{itemize}
 \end{document}
