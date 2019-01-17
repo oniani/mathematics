@@ -1,0 +1,157 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[margin=0.7in]{geometry}
+
+\usepackage[none]{hyphenat}
+
+\usepackage{bookmark}
+\usepackage{adjustbox}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{algorithmic}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{graphicx}
+\usepackage{pst-solides3d}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage[cache=false]{minted}
+
+\usepackage{soul}
+\usepackage{cite}
+\usepackage{textcomp}
+
+\usepackage{wasysym}
+
+% Sets and related operations
+\newcommand{\nats}{\mathbb{N}} % Natural numbers
+\newcommand{\pnats}{\mathbb{N}^+} % Positive natural numbers
+
+\newcommand{\ints}{\mathbb{Z}} % Integers
+\newcommand{\pints}{\mathbb{Z}^+} % Positive integers
+\newcommand{\nints}{\mathbb{Z}^-} % Negative integers
+
+\newcommand{\rats}{\mathbb{Q}} % Rational numbers
+\newcommand{\prats}{\mathbb{Q}^+} % Positive rational numbers
+\newcommand{\nrats}{\mathbb{Q}^-} % Negative rational numbers
+
+\newcommand{\reals}{\mathbb{R}} % Real numbers
+\newcommand{\preals}{\mathbb{R}^+} % Positive real numbers
+\newcommand{\nreals}{\mathbb{R}^-} % Negative real numbers
+
+\newcommand{\irrats}{\mathbb{I}} % Irrational numbers
+
+
+\newcommand{\pset}{\mathcal{P}} % Powerset
+\newcommand{\card}{\abs} % Cardinality
+\newcommand{\topology}{\mathcal{T}} % Topology
+\newcommand{\basis}{\mathcal{B}} % Basis
+
+% Calligraphy
+\newcommand\und[1]{\underline{\smash{#1}}}
+
+% Operators
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% Other
+\newcommand{\rarr}{\rightarrow}
+\newcommand{\larr}{\leftarrow}
+
+% Setting stuff
+\setlength{\parindent}{0pt}
+
+
+% Title
+\title{\rule{\paperwidth - 150pt}{1pt}\textbf{\\\textit{Topology}\\}\rule{\paperwidth - 150pt}{1pt}}
+
+\author
+{
+Author: David Oniani\\
+Instructor: Dr. Eric Westlund
+}
+
+\date{January 18, 2019}
+
+
+\begin{document}
+\maketitle
+
+\center{\Large Assignment \textnumero{3}}
+
+\begin{itemize}
+\item[]
+\item[]
+{\large \textbf{Section 18}}
+\vspace{0.3cm}
+
+% Begin here!
+\item[2.]
+Suppose that $f : X \rarr Y$ is continuous. If $x$ is
+a limit point of of the subset $A$ of $X$, is it necessarily
+true that $f(x)$ is a limit point of $f(A)$?
+\begin{quote}
+It is not. Consider the constant continuous function $f : \reals \rarr \reals : x \mapsto 0$.
+Then $0$ is the limit point of $A$, however, $f(0) = 0$ is not a limit point
+of $f(A) = \{0\}$ since there is no neighborhood of $0$ that intersects $\{0\}$ at point other than $0$.
+\end{quote}
+
+\item[]
+\item[]
+
+\item[5.]
+Show that the subspace $(a, b)$ of $\reals$ is homeomorphic with $(0, 1)$
+and the subspace $[a, b]$ of $\reals$ is homeomorphic with $[0, 1]$.
+\begin{quote}
+Recall that a homeomorphism is a bijective and continuous function whose inverse is also continuous.
+Therefore, all we have to do here is to find bijective and continuous function(s) which would map $(a, b)$ to $(0, 1)$
+in the first case and $[a, b]$ to $[0, 1]$ in the second case.
+\newline
+\newline
+Let's first show that the subspace $(a, b)$ of $\reals$ is homeomorphic with $(0, 1)$.\\
+\vspace{0.1cm}
+Consider the function $f : (a, b) \rarr (0, 1) : x \mapsto \dfrac{x - a}{b - a}$.\
+\vspace{0.1cm}
+Then notice that it is both injective and surjective hence is a bijection.
+Besides, it is also a continuous function (it can be verified using epsilon-delta definition of continuity).\
+The inverse of $f$ is a function $f^{-1} : (0, 1) \rarr x \mapsto (a, b) : (b - a)x + a$ which
+is obviously bijective and also continuous (once again, can be verified using epsilon-delta definition of continuity).
+Finally, we have that the subspace $(a, b)$ of $\reals$ is homeomorphic with $(0, 1)$.$\qed$
+\newline
+\newline
+Now, let's show that the subspace $[a, b]$ of $\reals$ is homeomorphic with $[0, 1]$.
+Let's take the exact same function $f$ but let's reconstruct it in the way that it maps $[a, b]$
+to $[0, 1]$. We have, $f : [a, b] \rarr [0, 1] : x \mapsto \dfrac{x - a}{b - a}$.
+Once again, this is a continuous bijective function whose inverse is also continuous
+and therefore the subspace $[a, b]$ of $\reals$ is homeomorphic with $[0, 1]$.$\qed$
+\end{quote}
+
+\item[]
+\item[]
+\item[]
+{\large \textbf{Section 19}}
+\vspace{0.3cm}
+
+\item[3.]
+Prove theorem 19.3.
+\begin{quote}
+\und{\textbf{Theorem 19.3}}
+\vspace{0.2cm}
+\newline
+"Let $A_\alpha$ be a subspace of $X_\alpha$, for each $\alpha \in J$.
+Then $\prod A_\alpha$ is a subspace of $\prod X_\alpha$ if both products are given the box topology,
+or if both products are given the product topology.``
+\newline
+\newline
+asdsad
+\end{quote}
+
+
+\end{itemize}
+\end{document}
