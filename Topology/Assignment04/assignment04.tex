@@ -1,0 +1,237 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[margin=0.7in]{geometry}
+
+\usepackage[none]{hyphenat}
+
+\usepackage{bookmark}
+\usepackage{adjustbox}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{algorithmic}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{graphicx}
+\usepackage{pst-solides3d}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage[cache=false]{minted}
+
+\usepackage{soul}
+\usepackage{cite}
+\usepackage{textcomp}
+
+\usepackage{wasysym}
+
+% Sets and related operations
+\newcommand{\nats}{\mathbb{N}}         % Natural numbers
+\newcommand{\pnats}{\mathbb{N}^+}      % Positive natural numbers
+
+\newcommand{\ints}{\mathbb{Z}}         % Integers
+\newcommand{\pints}{\mathbb{Z}^+}      % Positive integers
+\newcommand{\nints}{\mathbb{Z}^-}      % Negative integers
+
+\newcommand{\rats}{\mathbb{Q}}         % Rational numbers
+\newcommand{\prats}{\mathbb{Q}^+}      % Positive rational numbers
+\newcommand{\nrats}{\mathbb{Q}^-}      % Negative rational numbers
+
+\newcommand{\reals}{\mathbb{R}}        % Real numbers
+\newcommand{\preals}{\mathbb{R}^+}     % Positive real numbers
+\newcommand{\nreals}{\mathbb{R}^-}     % Negative real numbers
+
+\newcommand{\irrats}{\mathbb{I}}       % Irrational numbers
+
+
+\newcommand{\pset}{\mathcal{P}}        % Powerset
+\newcommand{\card}{\abs}               % Cardinality
+\newcommand{\topology}{\mathcal{T}}    % Topology
+\newcommand{\basis}{\mathcal{B}}       % Basis
+\newcommand{\oldemptyset}{\emptyset}   % Old empty set
+\renewcommand{\emptyset}{\varnothing}  % New and nice empty set
+
+% Calligraphy
+\newcommand\und[1]{\underline{\smash{#1}}}
+
+% Operators
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% Other
+\newcommand{\rarr}{\rightarrow}
+\newcommand{\larr}{\leftarrow}
+
+% Setting stuff
+\setlength{\parindent}{0pt}
+
+
+% Title
+\title{\rule{\paperwidth - 150pt}{1pt}\textbf{\\\textit{Topology}\\}\rule{\paperwidth - 150pt}{1pt}}
+
+\author
+{
+Author: David Oniani\\
+Instructor: Dr. Eric Westlund
+}
+
+\date{January 20, 2019}
+
+
+\begin{document}
+\maketitle
+
+\center{\Large Assignment \textnumero{4}}
+
+\begin{itemize}
+\item[]
+\item[]
+{\large \textbf{Section 23}}
+\vspace{0.3cm}
+
+% Begin here!
+\item[6.]
+Let $A \subset X$. Show that if $C$ is a connected subspace of $X$
+that intersects both $A$ and $X - A$, then $C$ intersects $\mbox{Bd} \ A$.
+\begin{quote}
+At first, recall that $\mbox{Bd} \ A = \overline{A} \cap \overline{X - A}$.
+Now, suppose, for the sake of contradiction, that $C$ is connected and $C \cap \mbox{Bd} \ A = \emptyset$.
+Consider two sets $U_1 = C \cap \overline{A}$ and $U_2 = C \cap \overline{X - A}$.
+Now, since $C \cap A \subset U_1$ and $C \cap \overline{X - A} \subset U_2$, it follows
+from our assumptions that $U_1$ and $U_2$ are two nonempty subsets of $C$.
+Notice that $C = U_1 \cup U_2$ with $U_1, U_2$ being both open and closed subsets of $C$.
+However, $U_1 \cap U_2 = C \cap \overline{A} \cap \overline{X - A} = C \cap \mbox{Bd} \ A = \emptyset$
+which means that $C$ is disconnected and contradicts the fact that $C$ is connected.\
+Finally, we have reached the contradiction and $C$ intersects $\mbox{Bd} \ A$.$\qed$
+\end{quote}
+
+\item[]
+\item[]
+\item[]
+{\large \textbf{Section 24}}
+\vspace{0.3cm}
+
+\item[1.]
+\begin{itemize}
+\item[(c)]
+Show that $\reals^n$ and $\reals$ are not homeomorphic if $n > 1$.
+\begin{quote}
+Suppose, for the sake of contradiction, that for $n > 1$, $\reals^n$ and $\reals$
+are homeomorphic. Then, by the definition of homeomorphism, there exists a function
+$f : \reals \to \reals^n$. Consider $\left.f \right|_{\reals^n-\{0\}} : \reals^n-\{0\} \to \reals - \{f(0)\}$,
+$\left.f \right|_{\reals^n-\{0\}}$ is a restriction of $f$ and hence is a homeomorphism.
+Now, notice that $\reals^n-\{0\}$ is a connected space, however, $\reals-\{f(0)\}$ is not a connected
+space and we have reached the contradiction since $\left.f \right|_{\reals^n-\{0\}}$ is a homeomorphism.
+Finally, we have that for $n > 1$, $\reals^n$ and $\reals$ are not homeomorphic.
+In short, by taking away $0$, we make $\reals$ disconnected, but taking away any point from $\reals^n$
+leaves it connected.$\qed$
+\end{quote}
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[3.]
+Let $f : X \to X$ be continuous. Show that if $X = [0, 1]$,
+there is a point $x$ such that $f(x) = x$. The point $x$
+is called a \textbf{\textit{fixed point}} of $f$. What happens if $X$
+equals $[0, 1)$ or $(0, 1)$?
+\begin{quote}
+In the order topology, $X$ is an ordered set and connected space.
+Let $a, b \in X$. Let's now pick a midpoint $x_1$ between $f(a)$ and $f(b)$.
+Then, according to \textbf{Theorem 24.3}, $\exists c_1 \in [a, b]$ such that
+$f(c_1) = x_1$. Now, if $c_1 = x_1$, we found the fixed point of $f$ and if $c_1 \neq x_1$, we pick the midpoint $x_2$ between $c_1$ and $x_1$.
+Then $\exists c_2 \in [c_1, x_1]$ or $c_2 \in [x_1, c_1]$ (depending on whether $x_1 > c_1$ or $c_1 > x_1$) such that 
+$f(c_2) = x_2$. Now, if $c_2 = x_2$ then we have found the point and if not we countinue
+this way. Thinking of computer science, this is a recursive approach to the problem (though, I think recursion comes from math anyway, right?).
+The simply outline of the algorithm would look something like this:
+\begin{algorithmic}
+    \IF{$x_n = c_n$}
+        \STATE hooray! we have found a point! we are done, return the point!
+    \ELSE
+        \STATE Consider the midpoint between $x_n$ and $c_n$
+    \ENDIF
+\end{algorithmic}
+
+After repeating this process, we will end up with two convergent series: $c_1, c_2, c_3, ...$ and $x_1, x_2, x_3, ...$ with the property that $\abs{c_n - x_n} \to 0$ as $n \to \infty$. In others words, we have $\displaystyle\lim_{n \to \infty}\abs{c_n - x_n} \to 0$. This is due to the continuity
+of $f$ on $X$. Therefore, we have $\abs{x_n - f(x_n)} = \abs{f(c_n) - f(x_n)} \to 0$ from which we get that $f(x_n) = (x_n)$.$\qed$
+\newline
+\newline
+This fact/theorem does not hold for intervals $[0, 1)$ and $(0, 1)$. This is due to\\
+\vspace{0.25cm}
+$f$ not being uniformly continuous on these intervals. For instance, a function\\
+\vspace{0.25cm}
+$f(x) = \dfrac{x + 2}{3}$ has a fixed point $x = 1$, but
+\vspace{0.25cm}
+it has no fixed points on intervals $[0, 1)$\\
+ or $(0, 1)$.
+\end{quote}
+
+\item[]
+\item[]
+
+\item[8.]
+\begin{itemize}
+\item[(a)]
+Is a product of path-connected spaces necessarily path-connected?
+\begin{quote}
+Yes.
+\end{quote}
+
+\item[]
+
+\item[(b)]
+If $A \subset X$ and $A$ is path-connected, is $\bar{A}$
+necessarily path-connected?
+\begin{quote}
+No. For instance, \textbf{\textit{topologist's sine curve}}.
+\end{quote}
+
+\item[]
+
+\item[(c)]
+If $f: X \to Y$ is continuous and $X$ is path-connected, is $f(X)$ necessarily path-connected?
+\begin{quote}
+Yes, this is due to the fact that the composition of continuous functions is always continuous.
+\end{quote}
+
+\item[]
+
+\item[(d)]
+If $\{A_\alpha\}$ is a collection of path-connected subspaces of $X$ and if $\bigcap A_\alpha \neq \emptyset$, is $\bigcup A_\alpha$ necessarily path-connected?
+\begin{quote}
+Yes
+\end{quote}
+\end{itemize}
+
+% If add another '\item[]' as the convention, section title has one blank line... Have to come up with better writing conventions!
+\item[]
+\item[]
+{\large \textbf{Section 26}}
+\vspace{0.3cm}
+
+\item[5.]
+Let $A$ and $B$ be disjoint compact subspaces of the Hausdorff space $X$. Show that there exist disjoint open sets $U$ and $V$ containing $A$ and $B$, respectively.
+\begin{quote}
+Suppose that $A$ and $B$ are disjoint compact subspaces
+of the Hausdorff space $X$. Now, let $p$ be some arbitrary
+points in $A$. Then the points of $p$ are not in $Y$
+\end{quote}
+
+\item[]
+\item[]
+\item[]
+{\large \textbf{Section 26}}
+\vspace{0.3cm}
+
+\item[2.]
+\begin{itemize}
+\item[(a)]
+\end{itemize}
+
+\end{itemize}
+\end{document}
