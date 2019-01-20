@@ -77,7 +77,7 @@ Author: David Oniani\\
 Instructor: Dr. Eric Westlund
 }
 
-\date{January 18, 2019}
+\date{January 16, 2019}
 
 
 \begin{document}
@@ -116,12 +116,12 @@ in the first case and $[a, b]$ to $[0, 1]$ in the second case.
 \newline
 Let's first show that the subspace $(a, b)$ of $\reals$ is homeomorphic with $(0, 1)$.\\
 \vspace{0.1cm}
-Consider the function $f : (a, b) \rarr (0, 1) : x \mapsto \dfrac{x - a}{b - a}$.\
+Consider the function $f : (a, b) \rarr (0, 1) : x \mapsto \dfrac{x - a}{b - a}$ (note that $a \neq b$; otherwise, $(a, b)$ would not be an interval).\
 \vspace{0.1cm}
 Then notice that it is both injective and surjective hence is a bijection.
-Besides, it is also a continuous function (it can be verified using epsilon-delta definition of continuity).\
+Besides, it is also a continuous function (it can be verified using the limit definition of continuity).\
 The inverse of $f$ is a function $f^{-1} : (0, 1) \rarr x \mapsto (a, b) : (b - a)x + a$ which
-is obviously bijective and also continuous (once again, can be verified using epsilon-delta definition of continuity).
+is obviously bijective and also continuous (once again, can be verified using the limit definition of continuity).
 Finally, we have that the subspace $(a, b)$ of $\reals$ is homeomorphic with $(0, 1)$.$\qed$
 \newline
 \newline
@@ -139,19 +139,225 @@ and therefore the subspace $[a, b]$ of $\reals$ is homeomorphic with $[0, 1]$.$\
 \vspace{0.3cm}
 
 \item[3.]
-Prove theorem 19.3.
+Prove theorem 19.4.
 \begin{quote}
-\und{\textbf{Theorem 19.3}}
+\und{\textbf{Theorem 19.4}}
 \vspace{0.2cm}
 \newline
-"Let $A_\alpha$ be a subspace of $X_\alpha$, for each $\alpha \in J$.
-Then $\prod A_\alpha$ is a subspace of $\prod X_\alpha$ if both products are given the box topology,
-or if both products are given the product topology.``
+"If each $X_\alpha$ is a Hausdorff space, then $\displaystyle\prod X_\alpha$ is a Hausdorff space in both the box and product topologies.``
 \newline
 \newline
-asdsad
+Since the box topology is finer than the product topology (follows from the \textbf{Theorem 19.1}), it is sufficient
+to prove that the theorem holds under the box topology. Let $x$ and $y$
+be two distinct elements in $\displaystyle\prod_{\alpha \in J}X_\alpha$
+\vspace{0.15cm}
+such that every $X_\alpha$ is Hausdorff. Now, since $x$ and $y$ are distinct,
+there exists at least one coordinate such that $x_i \neq y_i$. Therefore, for
+each $x_i \neq y_i$, there exist open neighborhoods $U_i$ and $V_i$ such that
+$x_i \in U_i$ and $y_i \in V_i$ with $U_i$ and $V_i$ being the subsets of $X$
+and $U_i \cap V_i = \emptyset$. Then define open neighborhoods $U$ and $V$ in $\displaystyle\prod_{\alpha \in J} X_\alpha$
+by $\displaystyle\prod_{\alpha \in J} U_\alpha$ and $\displaystyle\prod_{\alpha \in J} V_\alpha$
+respectively. Then we have:
+$$U \cap V = \displaystyle\prod_{\alpha \in J}(U_\alpha \cap V_\alpha ) = (U_1 \cap V_1) \times (U_2 \cap V_2) \times (U_3 \cap V_3) \times ... \times (\emptyset) \times ... = \emptyset$$
+Finally, since $U \cap V = \emptyset$, we got that $\displaystyle\prod_{\alpha \in J}X_\alpha$
+is Hausdorff. Hence, if each $X_\alpha$ is a Hausdorff space, then $\prod X_\alpha$ is a Hausdorff space
+in both the box and product topologies.$\qed$
 \end{quote}
 
+\item[]
+\item[]
+
+\item[7.]
+Let $\reals^\infty$ be the subset of $\reals^\omega$ consisting of all sequences that are "eventually zero``,
+that is, all sequences $(x_1, x_2, ...)$ such that $x_i \neq \emptyset$ for only finitely many values
+of $i$. What is the closure of $\reals^\infty$ in $\reals^\omega$ in the box and product topologies? Justify your answer.
+\begin{quote}
+In the box topology, the closure of $\reals^\infty$ is $\reals^\infty$. In other words,
+$\reals^\infty$ is closed. To prove this, it is sufficient to show that
+$\reals^\omega - \reals^\infty$ is open. Let $(x_n)_{n = 1}^\infty \in \reals^\omega - \reals^\infty$. Then
+we want to show that there exists an open set $U$ such that $(x_n)_{n = 1}^\infty \in U$
+and $U \subset \reals^\omega - \reals^\infty$. Now, lets define $U$ in the following way:
+if $x_n = 0$, then $U_n = \reals$ and if $x_n \neq 0$, then $U_n = \reals - \{0\}$ and $U = \displaystyle\prod_{n = 1}^{\infty}U_n$.
+Notice that all $U_n$ are open as we have defined them and hence $U$ is open in the box topology.
+Now also notice that $(x_n)_{n = 1}^\infty \in \reals^\omega - \reals^\infty$. Finally,
+we have that $(x_n)_{n = 1}^\infty \in U \subset \reals^\omega - \reals^\infty$ which means that
+$\reals^\omega - \reals^\infty$ is open and therefore $\reals^\infty$ is closed. Hence, $\overline{\reals^\infty} = \reals^\infty$.
+\newline
+\newline
+In the product topology, the closure of $\reals^\infty$ is $\reals^\omega$.
+Let $(x_n)_{n = 1}^\infty \in \reals^\omega$ and let $U$ be open in $\reals^\omega$
+with $(x_n)_{n = 1}^\infty \in U$. Now, because $U$ is open in the product topology,
+$U = \displaystyle\prod_{n = 1}^\infty U_n$ where $U_n = \reals$ for all but finitely
+many $n \in \pints$. For $n \in \pints$ where $U_n \neq \reals$, $U_n = (a_n, b_n)$
+where $a_n < b_n$. Now, let's define $(y_n)_{n = 1}^\infty \in U$ in the following way:
+\vspace{0.1cm}
+if $U_n = \reals$, then $y_n = 0$ and otherwise, $y_n \in U_n = (a_n, b_n)$. Notice that
+$(y_n)_{n = 1}^\infty \in \reals^\infty$. Thus, $\forall (x_n)_{n = 1}^\infty \in R^\omega$,
+\vspace{0.1cm}
+and $\forall U$ such that $(x_n)_{n = 1}^\infty \in U$, we have $U \cap R^\infty \neq \emptyset$
+since $(y_n)_{n = 1}^\infty \in U \cap \reals^\infty$. Finally, recall that
+$x \in \overline{A}$ if and only if $\forall U$ such that $x \in U$ and $U$ is open,
+we have $U \cap A \neq \emptyset$. Hence, by the definition, we have that $\overline{R^\infty} = R^\omega$.
+\end{quote}
+
+\item[]
+\item[]
+\item[]
+{\large \textbf{Section 20}}
+\vspace{0.3cm}
+
+\item[2.]
+Show that $\reals \times \reals$ in the dictionary order topology is metrizable.
+\begin{quote}
+Let us define the function $d : (\reals \times \reals) \times (\reals \times \reals)$
+in the following way:
+$$
+d(x_1 \times x_2, y_1 \times y_2) = 
+\begin{cases}
+1 \mbox{ if } x_1 \neq y_1\\
+\mbox{inf}\{\abs{x_2 - y_2}, 1\} \mbox{ if } x_1 = y_1
+\end{cases}
+$$
+Let's first show that $d$ is indeed a metric.
+\begin{itemize}
+\item[(1)]
+As $d(x_1 \times x_2, y_1 \times y_2)$ is either $1$ or $\mbox{inf}\{\abs{x_2 - y_2}, 1\}$,
+it is always greater than or equal to zero $\forall x_1, x_2, y_1, y_2 \in \reals$.
+Also, notice that the distance is $0$ if and only if we have the case $x_1 = y_1$ with
+$x_2 = y_2$. In other words, it happens if and only if $x_1 \times x_2 = y_1 \times y_2$.
+
+\item[(2)]
+Notice that $d(x_1 \times x_2, y_1 \times y_2) = d(y_1 \times y_2, x_1 \times x_2)$.
+If we have $d(x_1 \times x_2, y_1 \times y_2)$, we are comparing $x_1$ with $y_1$
+and if we have $d(y_1 \times y_2, x_1 \times x_2)$, we compare $y_1$ with $x_1$ and
+the values of the function are obviously the same. In other words, if we would describe
+a function as a relation, then it would be symmetric.
+
+\item[(3)]
+Notice that the triangle inequality holds since we can show that $\forall x_1, x_2, y_1, y_2$,\\
+$z_1, z_2 \in \reals$, $d(x_1 \times x_2, y_1 \times y_2) + d(y_1 \times y_2, z_1 \times z_2) \geq d(x_1 \times x_2, z_1 \times z_2)$.
+Without a loss of generality, the cases below will exhaust all the possibilities.
+\newline
+\newline
+If $x_1 \neq y_1 \neq z_1$, then we get $1 + 1 > 1$.\\
+If $x_1 = y_1 \neq z_1$, we get $1 + 1 - k > 1 - l$ where $0 < k, l < 1$.\\
+If $x_1 \neq y_1 = z_1$, we get $1 - k + 1 > 1 - l$ where $0 < k, l < 1$\\
+If $x_1 = y_1 = z_1$, we get $\mbox{inf}\{\abs{x_2 - y_2}, 1\} + \mbox{inf}\{\abs{y_2 - z_2}, 1\} \geq \mbox{inf}\{\abs{x_2 - y_2}, 1\}$
+\newline
+\newline
+Now, obviously all of the inequalities are true. The last one is true as well (it is similar to the inequality $\abs{x_1 - x_2} + \abs{x_2 - x_3} \geq \abs{x_1 - x_3}$
+which is true $\forall x_1, x_2, x_3 \in \reals$). Therefore, $d$ is indeed a metric.
+\end{itemize}
+
+\item[]
+\item[]
+
+The basis of the dictionary order topology on $\reals \times \reals$
+consists of all sets $(a \times b, a \times d)$ with $b < d$. Now, let $U$ be such a basis element and let $x \in U$.
+Then $\exists \epsilon \in (0, 1)$ such that $(x_2 - \epsilon, x_2 + \epsilon) \in (b, d)$.
+Let $x_1 = a$. Then set $(x_1 \times (x_2 - \epsilon), x_1 \times (x_2 + \epsilon))$ equals to the epsilon ball centered
+at $x$ that is contained in $U$. If $y \in B_d(x, \epsilon)$, then $y_1 = x_1$ since $\epsilon < 1$. Thus, $d(x, y) = \abs{x_2 - y_2} < \epsilon$
+and $y_1 \times y_2 \in U$ by the definition of $\epsilon$. Hence, we got that the metric topology induced by $d$ is finer than
+the dictionary order topology.
+\newline
+\newline
+Now, let $B = B_d(x, \epsilon)$. Then if $\epsilon \geq 1$, $B = \reals \times \reals$ which is open in the dictionary order topology.
+On the other hand, if $\epsilon \in (0, 1)$, $B = (x_1 \times x_2, x_1 \times y_2)$. However, $B$ is a basis element in the dictionary order
+topology which means that the dictionary order topology is finer than the metric topology induced by $d$.
+\newline
+\newline
+Finally, since we first showed that the metric topology induced by $d$ is finer than the dictionary order topology
+and then showed that the dictionary order topology is finer than the metric topology induced by $d$, we have effectively
+shown that the metric topology induced by $d$ and the dictionary order topology are equal. Therefore, the dictionary order topology is indeed metrizable.$\qed$ 
+\end{quote}
+
+\item[]
+\item[]
+
+\item[5.]
+Let $\reals^\infty$ be the subset of $\reals^\omega$ consisting of all sequences
+that are eventually zero. What is the closure of $\reals^\infty$ in $\reals^\omega$
+in the uniform topology? Justify your answer.
+\begin{quote}
+$\overline{R^\infty} = \{(x_i) \mid \displaystyle\lim_{i \rarr \infty}x_i = 0\}$.
+\newline
+\newline
+\und{Justification}
+\vspace{0.2cm}
+\newline
+If $(x_i) \in \overline{\reals^\infty}$, then $\forall \epsilon$ such that $0 < \epsilon < 1$,
+the intersection $R^\infty \cap B_{\bar{p}}((x_i), \epsilon) \neq 0$.
+Now, let $(y_i) \in R^\infty \cap B_{\bar{p}}((x_i), \epsilon)$. Then for some $N$,
+we have $y_n = 0 \ \forall n > N$. Since $\bar{p}((x_i), (y_i)) < \epsilon$,
+we have $\abs{x_n} < \epsilon \ \forall n > N$. From this, we get that $x_n \rarr 0$.
+Now, if $x_n \rarr 0$, then $\forall \epsilon > 0$, $\exists N$ such that $\abs{x_n} < \epsilon/2 \ \forall n > N$.
+Let $y_n = x_n$ for $n \leq N$ and $y_n = 0$ for $n > N$. Then notice that  $\bar{p}((x_i), (y_i)) < \epsilon$.
+Therefore, $R^\infty \cap B_{\bar{p}}((x_n), \epsilon) \neq 0$. Finally, since we picked arbitrary $\epsilon$,
+we have $(x_n) \in \overline{\reals^\infty}$.
+\end{quote}
+
+\item[]
+\item[]
+\item[]
+{\large \textbf{Section 21}}
+\vspace{0.3cm}
+
+\item[6.]
+Define $f_n : [0, 1] \rarr \reals$ by the equation $f_n(x) = x^n$.
+Show that the sequence $(f_n(x))$ converges for each $x \in [0, 1]$,
+but that the sequence $(f_n)$ does not converge uniformly.
+\begin{quote}
+Let's define the functions $f(x)$ in the following way:
+$$
+f(x) =
+\begin{cases}
+0 \mbox{ if } x \neq 1\\
+1 \mbox{ if } x = 1
+\end{cases}
+$$
+Now it is easy to see that $\forall x \ f_n(x) \rarr f(x)$. If $x = 1$,
+$f(1) = 1^n = 1$ for all $n$. And if $x \in [0, 1)$
+with $x$ being fixed, we have $f_n(x) = x^n$ which is a monotonically decreasing
+function of $n$ converging to $0$ as we can write it $e^{-\mbox{ln}(1/x) \times n}$
+for $1/x > 1$ (if $x = 0$, we, have $f(n) = 0^n = 0$).$\qed$
+\newline
+\newline 
+Let's now show that the sequence $(f_n)$ does not converge uniformly.
+Because $f_n$ is continuous $\forall n \in \pints$, if $f_n$ converges to $f$
+uniformly, then according to the \textbf{Theorem 21.6}, it follows that $f$
+is also continuous which is false since it is not continuous at the point $x = 1$.$\qed$
+\end{quote}
+
+\item[]
+\item[]
+
+\item[9.]
+Let $f_n : \reals \rarr \reals$ be the function
+$$f_n(x) = \dfrac{1}{n^3[x - (1/n)]^2 + 1}$$
+See Figure 21.1. Let $f : \reals \rarr \reals$ be the zero function.
+\begin{quote}
+\begin{itemize}
+\item[(a)]
+Show that $f_n(x) \rarr f(x)$ for each $x \in \reals$.
+\begin{quote}
+Let's fix $x$, then we have:
+$$\displaystyle\lim_{x \rarr \infty}f_n(x) = \lim_{x \rarr \infty}\dfrac{1}{n^3[x - (1/n)]^2 + 1} \rarr 0$$$\qed$
+\end{quote}
+
+\item[]
+
+\item[(b)]
+Show that $f_n$ does not converge uniformly to $f$. (This shows that the
+converse of Theorem 21.6 does not hold; the limit function $f$ may be continuous
+even though the convergence is not uniform).
+\begin{quote}
+The sequence $f_n(x)$ does not converge uniformly. If it did for $\epsilon = \frac{1}{2}$
+there would be an N so that for $n > N$ we would have $f_n(x) < \frac{1}{2}$
+for all $x$. However, if $x + n = 1/n$, then $f_n(x_n) = 1$ for all $n$, but when $n > N$,
+we face a contradiction.
+\end{quote}
+\end{itemize}
+\end{quote}
 
 \end{itemize}
 \end{document}
