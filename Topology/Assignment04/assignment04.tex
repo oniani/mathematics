@@ -179,9 +179,32 @@ it has no fixed points on intervals $[0, 1)$\\
 \item[(a)]
 Is a product of path-connected spaces necessarily path-connected?
 \begin{quote}
-Yes.
+Yes. Suppose that $X$ and $Y$ are path-connected.
+Let $x_1 \times x_2, y_1 \times y_2 \in X \times Y$.
+Notice that $X \times y_1$ is homeomorphic to $X$
+and thus, is path-connected. Therefore, there exists
+a continuous function $f : [0, 1] \to X \times y_1$
+with $f(0) = x_1 \times y_1$ and $f(1) = x_2 \times y_2$.
+Besides, $x_2 \times Y$ is homeomorphic to $Y$ and thus,
+is path-connected. Therefore, there exists a continuous
+function $g$ such that $g : [0, 1] \to x_2 \times Y$
+with $g(0) = x_2 \times y_1$ and $g(1) = x_2 \times y_2$.
+Let's now define a function $h$ in the following way:
+$$
+h(x) = 
+\begin{cases}
+f(\frac{x}{2}) \mbox{ if } 0 \leq x \leq \frac{1}{2}\\
+f(\frac{x}{2} + \frac{1}{2}) \mbox{ if } \frac{1}{2} \leq x \leq 1
+\end{cases}
+$$
+The according to the \textbf{Theorem 18.3 (The pasting lemma)}, $h$ is continuous. Besides,
+$h(0) = f(\frac{0}{2}) = f(0) = x_1 \times y_1$ and $h(1) = g(\frac{1}{2} + \frac{1}{2}) = g(1) = x_2 \times y_2$.
+Therefore, $h$ is a path from $x_1 \times y_1$ to $x_2 \times y_2$
+and because $x_1 \times y_1$ and $x_2 \times y_2$ are arbitrary, we have that
+$X \times Y$ is path-connected.$\qed$
 \end{quote}
 
+\item[]
 \item[]
 
 \item[(b)]
@@ -204,7 +227,12 @@ Yes, this is due to the fact that the composition of continuous functions is alw
 \item[(d)]
 If $\{A_\alpha\}$ is a collection of path-connected subspaces of $X$ and if $\bigcap A_\alpha \neq \emptyset$, is $\bigcup A_\alpha$ necessarily path-connected?
 \begin{quote}
-Yes
+Yes. Let $x, y \in \bigcup X_\alpha$ and let $z \in \bigcap A_\alpha$.
+Then for some $b$ and $c$, $x \in A_b$ and $y \in A_c$. Besides, $z \in A_b$
+and $z \in A_c$. Now, because $A_b$ is path-connected, there is a path $f$
+from $x$ to $z$. On the other hand, because $A_c$ is path-connected,
+there is a path $g$ from $z$ to $y$. Now, according to the \textbf{Theorem 18.3 (The pasting lemma)},
+we can glue these two paths together and make a path $h$ from $x$ to $y$.$\qed$
 \end{quote}
 \end{itemize}
 
@@ -217,20 +245,109 @@ Yes
 \item[5.]
 Let $A$ and $B$ be disjoint compact subspaces of the Hausdorff space $X$. Show that there exist disjoint open sets $U$ and $V$ containing $A$ and $B$, respectively.
 \begin{quote}
-Suppose that $A$ and $B$ are disjoint compact subspaces
-of the Hausdorff space $X$. Now, let $p$ be some arbitrary
-points in $A$. Then the points of $p$ are not in $Y$
+Note that since $A$ and $B$ are compact subspaces of a Hausdorff space, they are closed.
+Then $X - A$ and $X - B$ are open. Since $A$ and $B$ are disjoint, $U = X - B$ contains $A$ and $V = X - A$ contains $B$.$\qed$
 \end{quote}
 
 \item[]
 \item[]
 \item[]
-{\large \textbf{Section 26}}
+{\large \textbf{Section 27}}
 \vspace{0.3cm}
 
 \item[2.]
+Let $X$ be a metric space with metric $d$; let $A \subset X$ be nonempty.
 \begin{itemize}
 \item[(a)]
+Show that $d(x, A) = 0$ if and only if $x \in \bar{A}$.
+\begin{quote}
+The function of $x$ described in the problem is continuous, so its set of zeros is a closed set.
+This closed set contains $A$ therefore, it also contains $\bar{A}$. On the other hand, if $x \notin \bar{A}$ then $\exists \epsilon > 0$ with $U_\epsilon(x) \subset X - \bar{A}$, and in this case it follows that $d(x, A) \geq \epsilon > 0$.$\qed$
+\end{quote}
+
+\item[]
+
+\item[(b)]
+Show that if $A$ is compact, $d(x, A) = d(x, a)$ for some $a \in A$.
+\begin{quote}
+The function $f(a) = d(x, a)$ is continuous and $d(x, A)$ is the greatest lower bound for its set of
+values. Now, because of the compactness of $A$, this greatest lower bound is a minimum value that is realized at some
+point of $A$ (\textbf{Theorem 27.4 (Extreme value theorem)}).$\qed$
+\end{quote}
+
+\item[]
+
+\item[(c)]
+Define the $\epsilon$-neighborhood of $A$ in $X$ to be the set
+$$U(A, \epsilon) = \{x \mid d(x, A) < \epsilon\}.$$
+Show that $U(A, \epsilon)$ equals to the union of the open balls $B_d(a, \epsilon)$ for $a \in A$.
+\begin{quote}
+Note that the $\epsilon$-neighborhood of $A$ in $X$
+corresponds to all points in $X$ that are within a distance
+$\epsilon$ of some point in $A$. It includes all of $A$.
+Then $x \in U(A, k)$ if and only if $d(x, a) < k$ for some $a \in A$. It follows that $x \in \bigcup_{a \in A}B(a, k)$.$\qed$
+\end{quote}
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[6.]
+Let $A_0$ be the closed interval $[0, 1]$ in $\reals$.
+Let $A_1$ be the set obtained from $A_0$ by deleting its
+"middle third`` $(\frac{1}{3}, \frac{2}{3}$. Let $A_2$
+be the set obtained from $A_1$ by deleting "middle thirds``
+$(\frac{1}{9}, \frac{2}{9})$ and $(\frac{7}{9}, \frac{8}{9})$.
+In general, define $A_n$ by the equation
+$$A_n = A_{n - 1} - \displaystyle\bigcup_{k = 0}^{\infty}\Bigg(\dfrac{1 + 3k}{3^n}, \dfrac{2 + 3k}{3^n}\Bigg).$$
+The intersection
+$$C = \bigcap_{n \in \pints}A_n$$
+is called the \textbf{\textit{Cantor set}}; it is a subspace of $[0, 1]$.
+\begin{itemize}
+\item[(a)]
+Show that $C$ is totally disconnected.
+\begin{quote}
+Suppose, for the sake of contradiction, that $C$
+is not totally disconnected. Then $\exists [x, y] \subset C$.
+Let $K \in \pints$ with
+$$K > \log_3\Bigg(\dfrac{1}{y - x}\Bigg).$$
+Then for $k > K$, $\frac{1}{3^k} < y - x$. But now since $C = \bigcap A_j$, $C$ must contain intervals (if it contains any intervals at all) with length less  than $\dfrac{1}{3^k}$. Therefore, we have reached the contradiction and $C$ contains no intervals. Hence, $C$ it is totally disconnected.$\qed$
+\end{quote}
+
+\item[]
+
+\item[(b)]
+Show that $C$ is compact.
+\begin{quote}
+Notice that $C$ is closed and bounded. Therefore, according to the $\textbf{Theorem 27.3}$, $C$ is compact.$\qed$
+\end{quote}
+
+\item[]
+
+\item[(c)]
+Show that each set $A_n$ is a union of finitely many disjoint closed intervals of length $1/3^n$; and show that the end points of these intervals lie in $C$.
+\begin{quote}
+Notice that $A_n = \displaystyle\bigcup_{k = 0}^{\frac{3^n - 1}{2}}\bigg(\dfrac{2k}{3^n}, \dfrac{2k + 1}{3^n}\bigg)$.
+Then $\forall k$, $\dfrac{2k + 1}{3^n} - \dfrac{2k}{3^n} = \dfrac{1}{3^n}$. Therefore, each interval in the union
+has the length $1/3^n$.$\qed$
+\end{quote}
+
+\item[]
+\item[]
+
+\item[(d)]
+Show that $C$ has no isolated points.
+\begin{quote}
+Observe that every point of the Cantor set is a limit point of itself. Therefore, it has no isolated points.$\qed$
+\end{quote}
+
+\item[]
+
+\item[(e)]
+Conclude that $C$ is uncountable.
+\begin{quote}
+$C$ is nonempty since it is the intersection of a nested sequence of closed intervals. Besides, it is Hausdorff, has no isolated points as well as is compact. Now, according to the $\textbf{Theorem 27.7}$, $C$ is uncountable.$\qed$
+\end{quote}
 \end{itemize}
 
 \end{itemize}
