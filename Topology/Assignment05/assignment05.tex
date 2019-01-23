@@ -1,0 +1,171 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[margin=0.7in]{geometry}
+
+\usepackage[none]{hyphenat}
+
+\usepackage{bookmark}
+\usepackage{adjustbox}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{algorithmic}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{graphicx}
+\usepackage{pst-solides3d}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage[cache=false]{minted}
+
+\usepackage{soul}
+\usepackage{cite}
+\usepackage{textcomp}
+
+\usepackage{wasysym}
+
+% Sets and related operations
+\newcommand{\nats}{\mathbb{N}}         % Natural numbers
+\newcommand{\pnats}{\mathbb{N}^+}      % Positive natural numbers
+
+\newcommand{\ints}{\mathbb{Z}}         % Integers
+\newcommand{\pints}{\mathbb{Z}^+}      % Positive integers
+\newcommand{\nints}{\mathbb{Z}^-}      % Negative integers
+
+\newcommand{\rats}{\mathbb{Q}}         % Rational numbers
+\newcommand{\prats}{\mathbb{Q}^+}      % Positive rational numbers
+\newcommand{\nrats}{\mathbb{Q}^-}      % Negative rational numbers
+
+\newcommand{\reals}{\mathbb{R}}        % Real numbers
+\newcommand{\preals}{\mathbb{R}^+}     % Positive real numbers
+\newcommand{\nreals}{\mathbb{R}^-}     % Negative real numbers
+
+\newcommand{\irrats}{\mathbb{I}}       % Irrational numbers
+
+
+\newcommand{\pset}{\mathcal{P}}        % Powerset
+\newcommand{\card}{\abs}               % Cardinality
+\newcommand{\topology}{\mathcal{T}}    % Topology
+\newcommand{\basis}{\mathcal{B}}       % Basis
+\newcommand{\oldemptyset}{\emptyset}   % Old empty set
+\renewcommand{\emptyset}{\varnothing}  % New and nice empty set
+
+% Calligraphy
+\newcommand\und[1]{\underline{\smash{#1}}}
+
+% Operators
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% Other
+\newcommand{\rarr}{\rightarrow}
+\newcommand{\larr}{\leftarrow}
+
+% Setting stuff
+\setlength{\parindent}{0pt}
+
+
+% Title
+\title{\rule{\paperwidth - 150pt}{1pt}\textbf{\\\textit{Topology}\\}\rule{\paperwidth - 150pt}{1pt}}
+
+\author
+{
+Author: David Oniani\\
+Instructor: Dr. Eric Westlund
+}
+
+\date{January 22, 2019}
+
+
+\begin{document}
+\maketitle
+
+\center{\Large Assignment \textnumero{5}}
+
+\begin{itemize}
+\item[]
+\item[]
+{\large \textbf{Section 31}}
+\vspace{0.3cm}
+
+% Begin here!
+\item[1.]
+Show that if $X$ is regular, every pair of points of $X$ have neighborhoods whose
+closures are disjoint.
+\begin{quote}
+Since $X$ is regular, by the definition,
+$\forall x, y \in X \ \exists U, V \mbox{ with } x \in U, y \in V \mbox{ and } U \cap V = \emptyset \mbox{ (with $U$ and $V$ being open sets)}$.
+Now, recall that $X$ is regular if and only if given a point $x$ of $X$ and a neighborhood $U$ of $x$,
+there is a neighborhood $V$ of $x$ such that $\bar{V} \subset U$ (\textbf{Lemma 31.1 (a)}). Then, according
+to \textbf{Lemma 31.1 (a)}, $\exists U^\prime, V^\prime \mbox{ such that } U^\prime \subset U \mbox{ and } V^\prime \subset V$.
+Now, because $U \cap V = \emptyset$, it follows that $\bar{U} \cap \bar{V} = \emptyset$.$\qed$
+\end{quote}
+
+\item[]
+\item[]
+
+\item[2.]
+Show that if $X$ is normal, every pair of disjoint closed sets have neighborhoods whose
+closures are disjoint.
+\begin{quote}
+Let $A$ and $B$ be disjoint closed sets. Then by the definition of normality, $\exists U, V$\\
+$\mbox{such that } U \cap V = \emptyset, A \subset U, \mbox{ and } B \subset V \mbox{ (with $U$ and $V$ being open sets)}$.
+Now, recall that $X$ normal if and only if given a closed set $A$ and an open set $U$ containing
+$A$, there is an open set $V$ containing $A$ such that $\bar{V} \subset U$ (\textbf{Lemma 31.1 (b)}).
+Then it follows from \textbf{Lemma 31.1 (b)} that $\exists U^\prime, V^\prime \mbox{ with }
+A \subset U^\prime \mbox{ and } B \subset V^\prime \mbox{ such that }$
+$\bar{U^\prime} \subset U \mbox{ and } \bar{V^\prime} \subset V$. Now, since $U \cap V = \emptyset$,
+we get $\bar{U^\prime} \cap \bar{V^\prime} = \emptyset$.$\qed$
+\end{quote}
+
+\newpage
+
+\item[3.]
+Show that every order topology is regular.
+\begin{quote}
+Suppose that $X$ is an ordered set. Let $x \in X$ and let $U = (a, b)$
+be the neighborhood of $x$. Also, let $A = (a, x)$ and $B = (x, b)$.
+Now, according to the \textbf{Lemma 31.1 (a)}, $X$ is regular if and only if given a point $x$ of $X$ and a neighborhood
+$U$ of $x$, there is a neighborhood $V$ of $X$ such that $\bar{V} \subset U$.
+Then it follows that we have the following four cases:
+\begin{itemize}
+\item[1.]
+If $u \in A$ and $v \in B$, then $x \in (u, v) \subset \overline{(u, v)} \subset [u, v] \subset (a, b)$.
+\item[2.]
+If $A = B = \emptyset$, then $(a, b) = \{x\}$ is both open and closed (since every order topology is Hausdorff)
+\item[3.]
+If $A = \emptyset$ and $v \in B$, then $x \in (a, v) \subset [x, v) \subset \overline{[x, v)} \subset [x, v] \subset (a, b)$.
+\item[4.]
+If $B = \emptyset$ and $u \in A$, then $x \in (u, b) \subset (u, x] \subset \overline{(u, x]} \subset [u, x] \subset (a, b)$.
+\end{itemize}
+Finally, we have considered all the cases and have exhaustively shown that a closed subspace of a normal space is normal.$\qed$
+\end{quote}
+
+
+\item[]
+\item[]
+\item[]
+{\large \textbf{Section 31}}
+\vspace{0.3cm}
+
+\item[1.]
+Show that a closed subspace of a normal space is normal.
+\begin{quote}
+Suppose that $Y$ is a closed subspace of the normal space $X$.
+Now, recall that every simply ordered set is a Hausdorff space in the
+order topology; The product of two Hausdorff spaces is a Hausdorff space;
+A subspace of a Hausdorff space is a Hausdorff space. (\textbf{Theorem 17.11}).
+Then according to the \textbf{Theorem 17.11}, $Y$ is Hausdorff.
+Now let $A$ and $B$ be disjoint closed subspaces of $Y$. Since $A$ and $B$ are
+closed in $X$, they can be separated in $X$ by open sets $U$ and $V$ (with $U \cap V = \emptyset$).
+Then $U \cap Y$ and $V \cap Y$ are open sets in $Y$ separating $A$ and $B$.
+Therefore, $Y$ is normal.$\qed$
+\end{quote}
+
+\end{itemize}
+\end{document}
