@@ -1,0 +1,381 @@
+\documentclass[a4paper, twocolumn]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{multicol}
+\usepackage{bookmark}
+\usepackage{adjustbox}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{algorithmic}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+\usepackage{tikz}
+\usetikzlibrary{arrows, decorations.markings}
+\usepackage{graphicx}
+\usepackage{pst-solides3d}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage[cache=false]{minted}
+
+\usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage{soul}
+\usepackage{cite}
+\usepackage{textcomp}
+
+\usepackage{wasysym}
+
+% Sets and related operators
+\newcommand{\nats}{\mathbb{N}}                   % Natural numbers
+\newcommand{\pnats}{\mathbb{N}^+}                % Positive natural numbers (excluding 0)
+
+\newcommand{\ints}{\mathbb{Z}}                   % Integers
+\newcommand{\pints}{\mathbb{Z}^+}                % Positive integers
+\newcommand{\nints}{\mathbb{Z}^-}                % Negative integers
+
+\newcommand{\rats}{\mathbb{Q}}                   % Rational numbers
+\newcommand{\prats}{\mathbb{Q}^+}                % Positive rational numbers
+\newcommand{\nrats}{\mathbb{Q}^-}                % Negative rational numbers
+
+\newcommand{\reals}{\mathbb{R}}                  % Real numbers
+\newcommand{\preals}{\mathbb{R}^+}               % Positive real numbers
+\newcommand{\nreals}{\mathbb{R}^-}               % Negative real numbers
+
+\newcommand{\irrats}{\mathbb{I}}                 % Irrational numbers
+
+\newcommand{\pset}{\mathcal{P}}                  % Powerset
+\newcommand{\card}{\abs}                         % Cardinality
+\newcommand{\topology}{\mathcal{T}}              % Topology
+\newcommand{\basis}{\mathcal{B}}                 % Basis
+\newcommand{\oldemptyset}{\emptyset}             % Old empty set
+\renewcommand{\emptyset}{\varnothing}            % New and nice empty set
+
+% Operators
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}      % Absolute value
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}     % Ceiling
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}  % Floor
+
+% Other
+\newcommand{\rarr}{\rightarrow}                  % Leftarrow
+\newcommand{\larr}{\leftarrow}                   % Rightarrow (equivalent to \to)
+\newcommand\und[1]{\underline{\smash{#1}}}       % Nice-looking underline
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+% Setting stuff
+\setlength{\parindent}{0pt}
+\pagestyle{fancy}                                % This allows to do fancy headers and footers
+\fancyhf{}                                       % No additional page numbering (or other stuff)
+
+\lfoot{\thepage}
+\rfoot{
+   \smash{ % hide vertical stretch of the following content
+        \parbox[b]{\textwidth}{
+            \raggedleft\text{}\\[1.25ex]%
+                \footnotesize\MakeUppercase{The Topology of Robotic Configuration and Motion Planning}
+        }
+    }
+}
+
+% Definition
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+
+
+% Title
+\title{The Topology of Robotic Configuration and Motion Planning\\
+{\small \textsuperscript{*}The paper is written in the scope of the independent study course with Dr. Eric Westlund.}}
+
+\author{David Oniani\\Luther College\\\href{mailto:oniada01@luther.edu}{oniada01@luther.edu}}
+
+\date{January 30, 2019}
+
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{\centering Abstract}
+This paper explores the topological approach to the problem
+of robot motion planning. Particularly, we will discuss
+the safe way to coordinate automated guided vehicles or AGVs.
+AGVs are mobile robots which are used extensively in manufacturing
+facilities. One of the biggest challenges in designing such facility
+is setting up mobile robot routes to achieve the safe and efficient
+coordination of robots. The tools and concepts of topology
+are naturally employed in this planning process. This paper follows
+the bottom-up approach by first introducing concepts and then building
+up on these ideas. It is therefore accessible to most of math undegrads.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{\centering Configuration Spaces}
+We shall start by introducing the notion of configuration spaces.
+The idea of configuration spaces come from physics. In classical mechanics,
+the configuration space is the vector space defined by the generalized
+coordinates (coordinates that describe the configuration of the physical system).
+Put it simply, the configuration space is the set of all possible states that
+could exist in the physical system. For instance, the configuration space of some
+particle in the room is the set of all points/states of the type $(x, y, z)$ where
+$x, y$ and $z$ are the coordinates bounded by the room. If the room is a $3 \times 3 \times 3$
+cube then we define the configuration space of the particle by
+$$C^3(\text{room}) = \{(x, y, z) \mid 0 \leq x, y, z \leq 3\}.$$
+In other words, the configuration space of the particle, is all of $3 \times 3 \times 3$ cube
+(this example obviously assumes that the particle is allowed to move freely in the room).
+
+\medskip
+
+It appears that the physical notion of configuration spaces is very much connected to that of mathematics.
+In fact, the idea is the same but rather generalized. To better understand configuration spaces, let us
+first go through several \textit{classic} examples.
+
+\newpage
+\section*{}
+
+\cite{1} Consider a planar system where we have a rod with a fixed end that can rotate freely. Then it is easy to see that the set of all possible configurations
+of the rotating rod is a circle.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    % Circle
+    \draw[
+        black,
+        very thick,
+        dotted,
+        decoration={markings, mark=at position 0.05 with {\arrow[draw=black, line width=2.25pt]{<}}},
+        postaction={decorate}
+        ]
+        (2, 2) circle (1.5);
+
+    % Rotating rod
+    \draw[black, ultra thick] (2, 2) -- (3.2, 2.9);
+
+    % Fixed endpoint
+    \fill (2, 2) circle (0.1);
+\end{tikzpicture}
+\caption*{Circle obtained by the rotational motion of the rod.}
+\end{figure}
+
+In other words, as the rod rotates, it creates the circle around itself
+with the radius equal to the length of the rod. This configuration space
+is also referred to as $S^1$.
+
+\medskip
+
+\cite{2} On the other hand, the configuration space of the two-rod
+system in 3D space where one rod is fixed and the other one is attached to it is
+a torus.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5cm, height=5cm]{two-rod-system}
+\caption*{A two-rod system.}
+\end{figure}
+
+This space is also known as $S^1 \times S^1$ configuration space.
+We already know that a rod with fixed end generates a circle. In this case,
+we have two rods: one attached to the ground and the other one attached to the end
+of the first one. Then obviously both of the rods can go through a full circle
+of states and therefore, create a configuration space which geometrically represents a torus.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \useasboundingbox (-3, -1.5) rectangle (3, 1.5);
+        \draw[thick] (0, 0) ellipse (3 and 1.5);
+        
+        \begin{scope}
+          \clip (0, -1.8) ellipse (3 and 2.5);
+          \draw[thick] (0, 2.2) ellipse (3 and 2.5);
+        \end{scope}
+
+        \begin{scope}
+          \clip (0, 2.2) ellipse (3 and 2.5);
+          \draw[thick] (0, -2.2) ellipse (3 and 2.5);
+        \end{scope}
+    \end{tikzpicture}
+    \caption*{A torus obtained by the motion of two-rod system.}
+\end{figure}
+
+As of now, this is all we need to know about the configuration spaces.
+This idea will be very useful once we learn more about other topological concepts.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{\centering Topological Spaces}
+The fundamental idea in topology is that of a topological space.
+We will use this idea to then introduce and define other important concepts.
+
+\begin{definition}
+\cite{3} A \textit{\textbf{topology}} on a set $X$ is a collection $\topology$ of subsets of $X$ having
+the following properties:
+
+\begin{itemize}
+\item[(1)]
+$\emptyset$ and $X$ are in $\topology$.
+
+\item[(2)]
+The union of the elements of any subcollection of $\topology$ is in $\topology$.
+
+\item[(3)]
+The intersection of the elements of any finite subcollection of $\topology$ is in $\topology$.
+\end{itemize}
+
+A set $X$ for which a topology $\topology$ has been specified is called a \textit{\textbf{topological space}}.
+\end{definition}
+
+Let us first look at some examples. Consider a set $X = \{a, b, c\}$.
+Then we can define a topology on $X$ by $\topology = \{\emptyset, \{a, b, c\}, \{a, b\}, \{c\}\}$.
+Observe that $\emptyset, X \in \topology$ therefore the first criterion is satisfied.
+It is easy to see that arbitrary unions will be in $\topology$ since the only ``interesting''
+case is when we consider $\{a, b\}$ and $\{c\}$, but in this case $\{a, b\} \cup \{c\} = \{a, b, c\} \in \topology$.
+This satisfies the second requirement. Finally, any arbitrary intersection of the finite subcollections of $\topology$
+is also in $\topology$ and therefore, we conclude that $\topology$ is indeed a topology on $X$.
+Hence, $X$ is a topological space (note that, properly speaking, a topological space is an ordered pair $(X, \topology)$,
+but we often omit mentioning $\topology$ and say that $X$ is a topological space).
+
+\medskip
+
+At this point, you might have already noticed that one could always define more than one topology
+for a given set. In the previous example, sets $\pset{(x)}$ (powerset of $x$) and $\{\emptyset, X\}$
+are also topologies on $X$ called discrete and indiscrete topologies correspondigly. In fact, for any set $X$,
+$\pset{(x)}$ and $\{\emptyset, X\}$ will always be two distinct topologies on $X$.
+
+\medskip
+
+We will now get acquainted with the notion of the \textit{open set}.
+
+\begin{definition}
+If $X$ is a topological space with topology $\topology$, we say that a subset $U$ of $X$ is an
+\textbf{open set} of $X$ if $U$ belongs to the collection $\topology$.
+\end{definition}
+
+Consider our topology $\topology = \{\emptyset, \{a, b, c\}, \{a, b\}, \{c\}\}$ on the topological space $X = \{a, b, c\}$.
+Then notice that $\emptyset, \{a, b, c\}, \{a, b\}, \{c\} \in \topology$ and therefore, all are open sets.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{\centering Continuous functions and homeomorphisms}
+The notion of continuous functions is familiar to most high-school students.
+Most people associate them with a nice-looking monotonically increasing or decreasing
+functions with no leaps or jumps. There are several definitions for a function continuity.
+Here is the calculus definition.
+
+\begin{definition}
+A function $f(x)$ is said to be continuous at the point $x = a$ if
+$$\displaystyle\lim_{x \to a}f(x) = f(a).$$
+Furthermore, a function is said to be continuous on the interval $[a, b]$ if it is continuous
+at each point in the interval.
+\end{definition}
+
+In topology we cannot really use this definition since the definition assumes
+that one could take a limit of the function. This, however, is sometimes very difficult or nearly impossible
+when considering functions defined over more abstract sets such as the configuration space
+of AGV. Now, we shall introduce more general notion of continuity.
+
+\begin{definition}
+\cite{5} Let $X$ and $Y$ be topological spaces. A function $f : X \to Y$ is said to be \textbf{continuous} if
+for each open subset $V$ of $Y$, the set $f^{-1}(V)$ is an open subset of $X$.
+\end{definition}
+
+It is important to note that in this definition $f^{-1}(V)$ does not refer to the inverse of the function.
+Therefore, we are not assuming that $f : X \rarr Y$ is a bijection. $f^{-1}(V)$ refers to the preimage of the function.
+In other words, the function $f : X \to Y$ over two topological spaces $X$ and $Y$ is continuous if and only if the open
+sets in the preimage map to the open sets in the image.
+
+\medskip
+
+This is the case where the visualization might be useful to see how the definition of continuous functions really works.
+Consider a continuous function $f : X \to Y$ where $X$ and $Y$ are topological spaces with topologies $\topology_X$ and $\topology_Y$.
+Therefore, by the definition, open sets in $X$ map to the open sets in $Y$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7.5cm, height=4cm]{continuous-function}
+    \caption*{A continuous function $f : X \to Y$.}
+\end{figure}
+
+Notice that the function shown above is continuous. $\topology_X$ and $\topology_Y$ are the topologies in $X$ and $Y$ correspondigly
+and the points from $\topology_X$ map to the points in $\topology_Y$. Therefore, every open set in $Y$ has
+a preimage which is also open. In other words, the open sets in $Y$ have the preimages
+that are also open.
+
+\medskip
+
+The function below, however, is not continuous as there is one point that is not in $\topology_X$
+but maps to a point in $\topology_Y$ (it is highlighted with the red arrow).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7.5cm, height=4cm]{discontinuous-function}
+    \caption*{A discontinuous function $f : X \to Y$.}
+\end{figure}
+
+\medskip
+
+Now that we are familiar with the notion of continuous functions, we shall introduce a new idea, that of homeomorphisms.
+
+\begin{definition}
+\cite{6} Let $X$ and $Y$ be topological spaces; let $f : X \to Y$ be a bijection. If both the function $f$
+and the inverse function
+$$f^{-1} : Y \to X$$
+are continuous, then $f$ is called a homeomorphisms.
+\end{definition}
+
+As one delves deeper in topology, this definition is then taken further and two objects are said to be homeomorphic if
+one could be obtained by the continuous deformation of the other. We may not use this notion further in the paper yet,
+it is a helpful way to think about homeomorphisms.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{\centering Connectedness and Path Connectedness}
+One of the important ideas in topology is that of connectedness.
+This idea is used extensively in various other fields of mathematics such as graph theory and knot theory.
+Let us first define connectedness.
+
+\begin{definition}
+\cite{7} Let $X$ be a topological space. A \textbf{separation} of $X$ is a pair $U, V$ of disjoint
+nonempty open subsets of $X$ whose union is $X$. The space $X$ is said to be \textbf{connected}
+if there does not exist a separation of $X$.
+\end{definition}
+
+Consider a topological space $X = \{a, b, c\}$ with a topology $\topology = \{\emptyset, \{a, b, c\}, \{a, b\}, \{c\}\}$.
+Then it is easy to see that $X$ is a disconnected space. Sets $\{a, b\}$ and $\{c\}$ are open since $\{a, b\}, \{c\} \in \topology$.
+Besides, $\{a, b\} \cap \{c\} = \emptyset$ and $\{a, b\} \cup \{c\} = \{a, b, c\} = X$.
+Hence, $U = \{a, b\}$ and $V = \{c\}$ is a pair of disjoint open subsets of $X$ whose union is $X$
+and therefore $U, V$ is a separation of $X$. This means that $X$ is a disconnected space.
+
+\medskip
+
+On the other hand, a topological space $Y = \{a, b\}$ with a topology $\topology = \{\emptyset, \{a, b\}, \{a\}\}$
+is connected as there is no pair of disjoint nonempty open subsets of $Y$ such that their union is $Y$.
+In other words $Y$ has no separation. Note that $\emptyset \cup \{a, b\} = \{a, b\} = Y$, but it must be \und{nonempty}
+sets whose union is $Y$. Therefore, $\emptyset, \{a, b\}$ is not a separation of $Y$.
+
+\medskip
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+\begin{thebibliography}{00}
+    \bibitem{1} C. Adams and R. Fransoza, ``Introduction to Topology'', p. 105.
+    \bibitem{2} C. Adams and R. Fransoza, ``Introduction to Topology'', pp. 105 -- 106.
+    \bibitem{3} J. R. Munkres, ``Topology'', Second Edition, p. 76
+    \bibitem{4} J. R. Munkres, ``Topology'', Second Edition, p. 76
+    \bibitem{5} J. R. Munkres, ``Topology'', Second Edition, p. 102
+    \bibitem{6} J. R. Munkres, ``Topology'', Second Edition, p. 105
+    \bibitem{7} J. R. Munkres, ``Topology'', Second Edition, p. 148
+\end{thebibliography}
+\end{center}
+
+\end{document}
