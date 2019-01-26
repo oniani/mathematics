@@ -99,12 +99,14 @@ This paper explores the topological approach to the problem
 of robot motion planning. Particularly, we will discuss
 the safe way to coordinate automated guided vehicles or AGVs.
 AGVs are mobile robots which are used extensively in manufacturing
-facilities. One of the biggest challenges in designing such facility
-is setting up mobile robot routes to achieve the safe and efficient
-coordination of robots. The tools and concepts of topology
-are naturally employed in this planning process. This paper follows
-the bottom-up approach by first introducing concepts and then building
-up on these ideas. It is therefore accessible to most of math undegrads.
+facilities. Since these robots are costly and cannot tolerate collisions,
+one of the biggest challenges in designing such facility is setting up
+mobile robot routes to achieve the safe and efficient coordination of robots.
+The tools and concepts of topology are naturally employed in this planning
+process. This paper follows the bottom-up approach by first introducing
+concepts and then building up on these ideas. It does not assume any background
+in topology nor in robotics. It is therefore accessible to most undergraduate
+mathematics students with the knowledge of set theory.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -121,18 +123,26 @@ cube then we define the configuration space of the particle by
 $$C^3(\text{room}) = \{(x, y, z) \mid 0 \leq x, y, z \leq 3\}.$$
 In other words, the configuration space of the particle, is all of $3 \times 3 \times 3$ cube
 (this example obviously assumes that the particle is allowed to move freely in the room).
+The configuration space of the same particle in a spherical room, however, would be the set of all
+points that are in a sphere.
 
-\medskip
+\section*{}      % This is needed not to mingle the spacing of the section header with the text.
+\vspace{-0.3cm}  % Have to deal with this for the next paper.
+
+More formally, we call the the states of the particle configurations
+and the space of all configurations - a configuration space.
+
+\textbf{Definition.} REMOVE THIS!!! A \textit{\textbf{configuration}} of an object is a specification of the position of all points of an object.
+The \textit{\textbf{configuration space}} of an object is the space of all configurations.
 
 It appears that the physical notion of configuration spaces is very much connected to that of mathematics.
 In fact, the idea is the same but rather generalized. To better understand configuration spaces, let us
 first go through several \textit{classic} examples.
 
-\newpage
-\section*{}
+\medskip
 
-\cite{1} Consider a planar system where we have a rod with a fixed end that can rotate freely. Then it is easy to see that the set of all possible configurations
-of the rotating rod is a circle.
+\cite{1} Consider a planar system where we have a rod with a fixed end that can rotate freely. Then it is
+easy to see that the space of all possible configurations of the rotating rod is a circle.
 
 \begin{figure}[H]
 \centering
@@ -163,8 +173,8 @@ is also referred to as $S^1$.
 \medskip
 
 \cite{2} On the other hand, the configuration space of the two-rod
-system in 3D space where one rod is fixed and the other one is attached to it is
-a torus.
+system in 3D space where one rod is fixed and the other one is attached to it (also known as a 2R robot)
+is a torus. This space is also known as $S^1 \times S^1$ configuration space.
 
 \begin{figure}[H]
 \centering
@@ -172,7 +182,6 @@ a torus.
 \caption*{A two-rod system.}
 \end{figure}
 
-This space is also known as $S^1 \times S^1$ configuration space.
 We already know that a rod with fixed end generates a circle. In this case,
 we have two rods: one attached to the ground and the other one attached to the end
 of the first one. Then obviously both of the rods can go through a full circle
@@ -181,14 +190,17 @@ of states and therefore, create a configuration space which geometrically repres
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
+        % Elipse and cut
         \useasboundingbox (-3, -1.5) rectangle (3, 1.5);
         \draw[thick] (0, 0) ellipse (3 and 1.5);
-        
+
+        % Elipse and cut
         \begin{scope}
           \clip (0, -1.8) ellipse (3 and 2.5);
           \draw[thick] (0, 2.2) ellipse (3 and 2.5);
         \end{scope}
 
+        % Elipse and cut
         \begin{scope}
           \clip (0, 2.2) ellipse (3 and 2.5);
           \draw[thick] (0, -2.2) ellipse (3 and 2.5);
@@ -238,7 +250,7 @@ but we often omit mentioning $\topology$ and say that $X$ is a topological space
 
 At this point, you might have already noticed that one could always define more than one topology
 for a given set. In the previous example, sets $\pset{(x)}$ (powerset of $x$) and $\{\emptyset, X\}$
-are also topologies on $X$ called discrete and indiscrete topologies correspondigly. In fact, for any set $X$,
+are also topologies on $X$ called discrete and indiscrete topologies. In fact, for any set $X$,
 $\pset{(x)}$ and $\{\emptyset, X\}$ will always be two distinct topologies on $X$.
 
 \medskip
@@ -246,7 +258,7 @@ $\pset{(x)}$ and $\{\emptyset, X\}$ will always be two distinct topologies on $X
 We will now get acquainted with the notion of the \textit{open set}.
 
 \begin{definition}
-If $X$ is a topological space with topology $\topology$, we say that a subset $U$ of $X$ is an
+\cite{4}  If $X$ is a topological space with topology $\topology$, we say that a subset $U$ of $X$ is an
 \textbf{open set} of $X$ if $U$ belongs to the collection $\topology$.
 \end{definition}
 
@@ -262,10 +274,11 @@ functions with no leaps or jumps. There are several definitions for a function c
 Here is the calculus definition.
 
 \begin{definition}
-A function $f(x)$ is said to be continuous at the point $x = a$ if
-$$\displaystyle\lim_{x \to a}f(x) = f(a).$$
-Furthermore, a function is said to be continuous on the interval $[a, b]$ if it is continuous
-at each point in the interval.
+\cite{5} A function $f(x)$ is continuous at a point $x = c$ if and only if it meets the following
+three conditions:\\
+1. $f(c)$ exists ($c$ lies in the domain of $f$).\\
+2. $\lim_{x \to c}f(x)$ exists ($f$ has a limit as $x \to c$).\\
+3. $\lim_{x \to c}f(x) = f(c)$ (the limit equals to the function value).
 \end{definition}
 
 In topology we cannot really use this definition since the definition assumes
@@ -274,20 +287,19 @@ when considering functions defined over more abstract sets such as the configura
 of AGV. Now, we shall introduce more general notion of continuity.
 
 \begin{definition}
-\cite{5} Let $X$ and $Y$ be topological spaces. A function $f : X \to Y$ is said to be \textbf{continuous} if
+\cite{6} Let $X$ and $Y$ be topological spaces. A function $f : X \to Y$ is said to be \textbf{continuous} if
 for each open subset $V$ of $Y$, the set $f^{-1}(V)$ is an open subset of $X$.
 \end{definition}
 
 It is important to note that in this definition $f^{-1}(V)$ does not refer to the inverse of the function.
 Therefore, we are not assuming that $f : X \rarr Y$ is a bijection. $f^{-1}(V)$ refers to the preimage of the function.
-In other words, the function $f : X \to Y$ over two topological spaces $X$ and $Y$ is continuous if and only if the open
-sets in the preimage map to the open sets in the image.
+In other words, the function $f : X \to Y$ over two topological spaces $X$ and $Y$ is continuous if and only if every open
+set in the image is mapped by an open set from a preimage.
 
 \medskip
 
 This is the case where the visualization might be useful to see how the definition of continuous functions really works.
 Consider a continuous function $f : X \to Y$ where $X$ and $Y$ are topological spaces with topologies $\topology_X$ and $\topology_Y$.
-Therefore, by the definition, open sets in $X$ map to the open sets in $Y$.
 
 \begin{figure}[H]
     \centering
@@ -295,10 +307,12 @@ Therefore, by the definition, open sets in $X$ map to the open sets in $Y$.
     \caption*{A continuous function $f : X \to Y$.}
 \end{figure}
 
-Notice that the function shown above is continuous. $\topology_X$ and $\topology_Y$ are the topologies in $X$ and $Y$ correspondigly
-and the points from $\topology_X$ map to the points in $\topology_Y$. Therefore, every open set in $Y$ has
-a preimage which is also open. In other words, the open sets in $Y$ have the preimages
-that are also open.
+In the figure above, the big blobs $X$ and $Y$ are topological spaces and smaller blobs $\topology_X$
+and $\topology_Y$ are the topologies on $X$ and $Y$ correspondigly. By the definition, the elements in $\topology_X$
+or $\topology_Y$ are open sets. Then notice that the function $f : X \to Y$ shown above is continuous. All the points
+which are in $\topology_Y$ have a preimage in $\topology_X$. Note that there are points in $Y$ that do not have a preimage
+in $\topology_X$, but it has no importance to continuity of $f$ since it must be open sets in $Y$ (not just any set) that must
+have an open preimage.
 
 \medskip
 
@@ -316,7 +330,7 @@ but maps to a point in $\topology_Y$ (it is highlighted with the red arrow).
 Now that we are familiar with the notion of continuous functions, we shall introduce a new idea, that of homeomorphisms.
 
 \begin{definition}
-\cite{6} Let $X$ and $Y$ be topological spaces; let $f : X \to Y$ be a bijection. If both the function $f$
+\cite{7} Let $X$ and $Y$ be topological spaces; let $f : X \to Y$ be a bijection. If both the function $f$
 and the inverse function
 $$f^{-1} : Y \to X$$
 are continuous, then $f$ is called a homeomorphism.
@@ -326,8 +340,6 @@ As one delves deeper in topology, this definition is then taken further and two 
 one could be obtained by the continuous deformation of the other. We may not use this notion further in the paper yet,
 it is a helpful way to think about homeomorphisms.
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{\centering Connectedness and Path Connectedness}
@@ -336,7 +348,7 @@ This idea is used extensively in various other fields of mathematics such as gra
 Let us first define connectedness.
 
 \begin{definition}
-\cite{7} Let $X$ be a topological space. A \textbf{separation} of $X$ is a pair $U, V$ of disjoint
+\cite{8} Let $X$ be a topological space. A \textbf{separation} of $X$ is a pair $U, V$ of disjoint
 nonempty open subsets of $X$ whose union is $X$. The space $X$ is said to be \textbf{connected}
 if there does not exist a separation of $X$.
 \end{definition}
@@ -360,26 +372,51 @@ Knowing what it means for a topological space to be connected, we can now introd
 of path connectedness.
 
 \begin{definition}
-\cite{8} Given points $x$ and $y$ of the space $X$, a \textbf{path} in $X$ from $x$ to $y$ is a 
+\cite{9} Given points $x$ and $y$ of the space $X$, a \textbf{path} in $X$ from $x$ to $y$ is a 
 continuous map $f : [a, b] \to X$ of some closed interval in the real line into $X$, such
 that $f(a) = x$ and $f(b) = y$. A space $X$ is said to be \textit{\textbf{path connected}} if every pair of
 points of $X$ can be joined by a path in $X$.
 \end{definition}
 
+Path connected spaces are certainly related to the connected spaces.
+In fact, one could easily verify that path connectedness implies connectedness.
+Therefore, every path-connected space is connected.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Configuration Spaces Revisited - Robotic Configurations}
+In previous sections, we went through what is called a configuration space.
+Yet, we did not have a precise definition of it since it varies from field to field.
+Let us now define what a configuration space means in the robotics context.
+
+\begin{definition}
+\cite{10} A \textit{\textbf{configuration}} of a robot is a specification of the position of all points of a robot.
+The \textit{\textbf{configuration space}} of a robot is the space of all configurations of a robot.
+\end{definition}
+
+Suppose that we have a robot that can move freely in a square 2D room. Then we can model a robot as
+a point with a configuration space
+
+$$C^2(\text{room}) = \{\text{point} \mid \text{point} \in \text{room}\}.$$
+
+with every point in the room being a unique configuration of the robot.
+The dimension of $C$ (in this case 2), is also called \textit{\textbf{degrees of freedom}}.
+In this case, the configuration space $C$ has 2 degrees of freedom.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{center}
 \begin{thebibliography}{00}
-    \bibitem{1} C. Adams and R. Fransoza, ``Introduction to Topology'', p. 105.
-    \bibitem{2} C. Adams and R. Fransoza, ``Introduction to Topology'', pp. 105 -- 106.
-    \bibitem{3} J. R. Munkres, ``Topology'', Second Edition, p. 76
-    \bibitem{4} J. R. Munkres, ``Topology'', Second Edition, p. 76
-    \bibitem{5} J. R. Munkres, ``Topology'', Second Edition, p. 102
-    \bibitem{6} J. R. Munkres, ``Topology'', Second Edition, p. 105
-    \bibitem{7} J. R. Munkres, ``Topology'', Second Edition, p. 148
-    \bibitem{8} J. R. Munkres, ``Topology'', Second Edition, p. 155
+    \bibitem{1} Adams C. and Fransoza R., ``Introduction to Topology'' (2008), p. 105.
+    \bibitem{2} Adams C. and Fransoza R., ``Introduction to Topology'' (2008), pp. 105 -- 106.
+    \bibitem{3} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 76
+    \bibitem{4} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 76
+    \bibitem{5} Thomas G. B., ``Thomas' Calculus" (2010), Thirteenth Edition, p. 77
+    \bibitem{6} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 102
+    \bibitem{7} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 105
+    \bibitem{8} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 148
+    \bibitem{9} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 155
+    \bibitem{10} Lynch K. and Park F., ``Modern Robotics: Mechanics, Planning, and Control'', Chap. 2.1, \\\href{https://youtube.com/watch?v=z29hYlagOYM}{https://youtube.com/watch?v=z29hYlagOYM}.
 \end{thebibliography}
 \end{center}
 
