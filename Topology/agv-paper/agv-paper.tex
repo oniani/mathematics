@@ -63,23 +63,17 @@
 \newcommand{\rarr}{\rightarrow}                  % Leftarrow
 \newcommand{\larr}{\leftarrow}                   % Rightarrow (equivalent to \to)
 \newcommand\und[1]{\underline{\smash{#1}}}       % Nice-looking underline
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0.5pt}
+\renewcommand{\headrulewidth}{0.5pt}             % Header rule width
+\renewcommand{\footrulewidth}{0pt}               % Footer rule width
 
 % Setting stuff
 \setlength{\parindent}{0pt}
 \pagestyle{fancy}                                % This allows to do fancy headers and footers
-\fancyhf{}                                       % No additional page numbering (or other stuff)
+\fancyhf{}                                       % No additional page numbering (or other stuff such as references)
+\cfoot{\thepage}                                 % Display page number at the bottom in the center
 
-\lfoot{\thepage}
-\rfoot{
-   \smash{ % hide vertical stretch of the following content
-        \parbox[b]{\textwidth}{
-            \raggedleft\text{}\\[1.25ex]%
-                \footnotesize\MakeUppercase{The Topology of Robotic Configuration and Motion Planning}
-        }
-    }
-}
+\rhead{\footnotesize{\MakeUppercase{The Topology of Robotic Configuration and Motion Planning}}}
+
 
 % Definition
 \theoremstyle{definition}
@@ -261,7 +255,7 @@ Then notice that $\emptyset, \{a, b, c\}, \{a, b\}, \{c\} \in \topology$ and the
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section*{\centering Continuous functions and homeomorphisms}
+\section*{\centering Continuous Functions and Homeomorphisms}
 The notion of continuous functions is familiar to most high-school students.
 Most people associate them with a nice-looking monotonically increasing or decreasing
 functions with no leaps or jumps. There are several definitions for a function continuity.
@@ -325,7 +319,7 @@ Now that we are familiar with the notion of continuous functions, we shall intro
 \cite{6} Let $X$ and $Y$ be topological spaces; let $f : X \to Y$ be a bijection. If both the function $f$
 and the inverse function
 $$f^{-1} : Y \to X$$
-are continuous, then $f$ is called a homeomorphisms.
+are continuous, then $f$ is called a homeomorphism.
 \end{definition}
 
 As one delves deeper in topology, this definition is then taken further and two objects are said to be homeomorphic if
@@ -362,6 +356,16 @@ sets whose union is $Y$. Therefore, $\emptyset, \{a, b\}$ is not a separation of
 
 \medskip
 
+Knowing what it means for a topological space to be connected, we can now introduce the notion
+of path connectedness.
+
+\begin{definition}
+\cite{8} Given points $x$ and $y$ of the space $X$, a \textbf{path} in $X$ from $x$ to $y$ is a 
+continuous map $f : [a, b] \to X$ of some closed interval in the real line into $X$, such
+that $f(a) = x$ and $f(b) = y$. A space $X$ is said to be \textit{\textbf{path connected}} if every pair of
+points of $X$ can be joined by a path in $X$.
+\end{definition}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -375,6 +379,7 @@ sets whose union is $Y$. Therefore, $\emptyset, \{a, b\}$ is not a separation of
     \bibitem{5} J. R. Munkres, ``Topology'', Second Edition, p. 102
     \bibitem{6} J. R. Munkres, ``Topology'', Second Edition, p. 105
     \bibitem{7} J. R. Munkres, ``Topology'', Second Edition, p. 148
+    \bibitem{8} J. R. Munkres, ``Topology'', Second Edition, p. 155
 \end{thebibliography}
 \end{center}
 
