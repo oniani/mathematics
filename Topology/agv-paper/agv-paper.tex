@@ -394,14 +394,132 @@ Let us now define what a configuration space means in the robotics context.
 The \textit{\textbf{configuration space}} of a robot is the space of all configurations of a robot.
 \end{definition}
 
-Suppose that we have a robot that can move freely in a square 2D room. Then we can model a robot as
-a point with a configuration space
+Suppose that we have a robot $R_1$ that can move freely on a line $L$. Then we can model the robot as
+a point with a coordinate $x_R$. The configuration space for this robot is
 
-$$C^2(\text{room}) = \{\text{point} \mid \text{point} \in \text{room}\}.$$
+$$C^1(L) = \{R_1 \mid R_1 \in L\} = L = L^1.$$
 
 with every point in the room being a unique configuration of the robot.
-The dimension of $C$ (in this case 2), is also called \textit{\textbf{degrees of freedom}}.
-In this case, the configuration space $C$ has 2 degrees of freedom.
+The dimension of $C$ (in this case 1), is also called \textit{\textbf{degree(s) of freedom}}.
+In this case, the configuration space $C$ has 1 degree of freedom.
+
+\medskip
+
+What if we had 2 robots (say $R_1$ and $R_2$) that can move freely?
+Then the configuration space would be $C^2$ which can be represented as a set
+$$C^2(L) = \{(x_{R_1}, x_{R_2}) \mid x_{R_1}, x_{R_2} \in L\} = L \times L = L^2.$$
+
+In general, the configuration space for $N$ robots $R_1, R_2, \dots, R_N$ that can move freely on a line $L$ is
+
+\begin{align*}
+&C^N(L)
+= \{(R_1, R_2, \dots, R_N) \mid R_1, R_2, \dots, R_N \in L\}\\
+&= \underbrace{L \times L \times \dots \dots L}_{N \ \text{times}} = L^N.
+\end{align*}
+
+In fact, we could generalize this notion even further. Instead of considering
+$N$ robots moving on a line $L$, suppose that we have $N$ robots moving on some
+$K$-dimensional space $L^K$. Then the configuration for each of the robots will
+be a $K$-tuple and the configuration space of all $N$ robots will be a set consisting
+of $N$ number of $K$-tuples. Therefore, we have
+
+\begin{align*}
+&C(L^K) = \{(x_{R_{1,1}}, x_{R_{1,2}}, \dots, x_{R_{1,K}}),\\
+&(x_{R_{2,1}}, x_{R_{2,2}}, \dots, x_{R_{2,K}}),\\
+&(x_{R_{3,1}}, x_{R_{3,2}}, \dots, x_{R_{3,K}}),\\
+&\dots,\\
+&(x_{R_{N,1}}, x_{R_{N,2}}, \dots, x_{R_{N,K}}),\\
+&\mid R_1, R_2, \dots, R_N \in L^K\}
+\end{align*}
+
+where $(x_{R_{1,1}}, x_{R_{1,2}}, \dots, x_{R_{1,K}})$ is the configuration of the robot $R_1$,
+$(x_{R_{2,1}}, x_{R_{2,2}}, \dots, x_{R_{2,K}})$ is the configuration of the robot $R_2$ etc.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Safe Robotic Configurations}
+At this point, we have enough machinery to understand safe robotic configurations.
+Let us model each robot with a point that moves through a topological space represeting
+the robot routes in the factory.
+
+\medskip
+
+Consider two robots $R_1$ and $R_2$ moving through the line represented by $L$.
+Then the configuration space for these robots is
+$$C = \{(x_{R_1}, x_{R_2}\} \mid x_{R_1}, x_{R_2} \in L\} = L \times L = L^2.$$
+The result here is somewhat natural. If we have one robot moving on a line, we have a configuration
+space $L$. If there are two robots, the configuration changes from a single point to a 2-tuple ($(x_A, x_B)$ in the case)
+which yields a configuration space equal to that of $L^2$.
+
+\medskip
+
+Now, since $x_{R_1}$ and $x_{R_2}$ represent the coordinates of the robots, we cannot allow them to be the same.
+In other words, if $x_{R_1} = x_{R_2}$, we have a collision. We therefore modify our configuration space $C$
+to eliminate all the configurations where $x_{R_1} = x_{R_2}$. Let us call this new configuration space $SC$
+(safe configuration) with
+$$SC = \{(x_{R_1}, x_{R_2}) \mid x_{R_1}, x_{R_2} \in \reals, x_{R_1} \neq x_{R_2}\}.$$
+
+\medskip
+
+It is really helpful to think about this configuration space geometrically.
+Particularly, let's think about this space as a small chunk of the $XOY$ coordinate system.
+To do this, we will need to do some transformations. Since $L$ is a line we might as well
+represent it a closed interval $L = [0, a]$ where $a \in \reals$. Now we can say that both
+robots $R_1$ and $R_2$ are moving through the interval $[0, a]$.
+Let us consider the motion of $R_1$ and $R_2$ independently. To do this, we make a copy
+of the interval $[0, a]$, put one interval as an $X$ axis and the other one as the $Y$ axis.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=1.5]
+    % Draw the square
+    \draw (0, 0) -- (2, 0) -- (2, 2) -- (0, 2) -- (0, 0);
+    % Points
+    \node [left] at (0, 2) {$a$};
+    \node [right] at (2, 0) {$a$};
+    \node [left] at (0, 0) {$0$};
+    % 0.4, 0.4
+    \node [left] at (0, 0.4) {$x_{R_1}$};
+    \node [below] at (0.4, 0) {$x_{R_2}$};
+    % 0.9, 0.9
+    \node [left] at (0, 0.9) {$x_{R_1}$};
+    \node [below] at (0.9, 0) {$x_{R_2}$};
+    % 1.6, 1.6
+    \node [left] at (0, 1.6) {$x_{R_1}$};
+    \node [below] at (1.6, 0) {$x_{R_2}$};
+    % Lines
+    \draw (0, 0) -- (2, 2);
+    % 0.4, 0.4
+    \draw [dotted, very thick] (0, 0.4) -- (0.4, 0.4);
+    \draw [dotted, very thick] (0.4, 0) -- (0.4, 0.4);
+    % 0.9, 0.9
+    \draw [dotted, very thick] (0, 0.9) -- (0.9, 0.9);
+    \draw [dotted, very thick] (0.9, 0) -- (0.9, 0.9);
+    % 1.6, 1.6
+    \draw [dotted, very thick] (0, 1.6) -- (1.6, 1.6);
+    \draw [dotted, very thick] (1.6, 0) -- (1.6, 1.6);
+\end{tikzpicture}
+\end{figure}
+
+From the picture above, it is easy to see that the points where $x_{R_1} = x_{R_2}$
+are the points on the \textbf{diagonal} of the square bounded by interval $[0, a]$ on $X$ axis
+and its copy on the $Y$ axis. This diagonal is denoted by $\Delta$. Then we can simply
+say that
+
+$$SC = C - \Delta.$$
+
+In the general case with $N$ robots, it is easy to see that
+\begin{align*}
+&SC^N = \underbrace{L \times L \times \dots \times L}_{N \ \text{times}} - \Delta\\
+&\text{where}\\
+&\Delta = \{x_1, x_2, \dots, x_N \mid x_i = x_j \ \text{for some} \ i \neq j\}
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Freely Transportable Robots}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
