@@ -1,4 +1,4 @@
-\documentclass[a4paper, twocolumn]{article}
+\documentclass{article}
 
 \usepackage[margin=1in]{geometry}
 \usepackage{multicol}
@@ -65,9 +65,11 @@
 \newcommand\und[1]{\underline{\smash{#1}}}       % Nice-looking underline
 \renewcommand{\headrulewidth}{0.5pt}             % Header rule width
 \renewcommand{\footrulewidth}{0pt}               % Footer rule width
+\renewcommand{\baselinestretch}{1.5}             % Make the line spacing equal to 1.5
 
 % Setting stuff
-\setlength{\parindent}{0pt}
+\setlength{\parindent}{0pt}                      % Remove indentations from paragraphs
+\frenchspacing                                   % Sometimes latex creates unnecessarily large spaces after dots, this helps to avoid it (puts single spaces at the end of sentences)
 \pagestyle{fancy}                                % This allows to do fancy headers and footers
 \fancyhf{}                                       % No additional page numbering (or other stuff such as references)
 \cfoot{\thepage}                                 % Display page number at the bottom in the center
@@ -94,8 +96,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section*{\centering Abstract}
-This paper explores the topological approach to the problem
+\begin{abstract}
+\noindent This paper explores the topological approach to the problem
 of robot motion planning. Particularly, we will discuss
 the safe way to coordinate automated guided vehicles or AGVs.
 AGVs are mobile robots which are used extensively in manufacturing
@@ -107,6 +109,7 @@ process. This paper follows the bottom-up approach by first introducing
 concepts and then building up on these ideas. It does not assume any background
 in topology nor in robotics. It is therefore accessible to most undergraduate
 mathematics students with the knowledge of set theory.
+\end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -124,22 +127,16 @@ $$C^3(\text{room}) = \{(x, y, z) \mid 0 \leq x, y, z \leq 3\}.$$
 In other words, the configuration space of the particle, is all of $3 \times 3 \times 3$ cube
 (this example obviously assumes that the particle is allowed to move freely in the room).
 The configuration space of the same particle in a spherical room, however, would be the set of all
-points that are in a sphere.
-
-\section*{}      % This is needed not to mingle the spacing of the section header with the text.
-\vspace{-0.3cm}  % Have to deal with this for the next paper.
-
-More formally, we call the the states of the particle configurations
+points that are in a sphere. More formally, we call the the states of the particle configurations
 and the space of all configurations - a configuration space.
 
-\textbf{Definition.} REMOVE THIS!!! A \textit{\textbf{configuration}} of an object is a specification of the position of all points of an object.
-The \textit{\textbf{configuration space}} of an object is the space of all configurations.
+\bigskip
 
 It appears that the physical notion of configuration spaces is very much connected to that of mathematics.
 In fact, the idea is the same but rather generalized. To better understand configuration spaces, let us
 first go through several \textit{classic} examples.
 
-\medskip
+\bigskip
 
 \cite{1} Consider a planar system where we have a rod with a fixed end that can rotate freely. Then it is
 easy to see that the space of all possible configurations of the rotating rod is a circle.
@@ -170,7 +167,7 @@ In other words, as the rod rotates, it creates the circle around itself
 with the radius equal to the length of the rod. This configuration space
 is also referred to as $S^1$.
 
-\medskip
+\bigskip
 
 \cite{2} On the other hand, the configuration space of the two-rod
 system in 3D space where one rod is fixed and the other one is attached to it (also known as a 2R robot)
@@ -178,7 +175,7 @@ is a torus. This space is also known as $S^1 \times S^1$ configuration space.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=5cm, height=5cm]{two-rod-system}
+\includegraphics[width=4cm, height=4cm]{two-rod-system}
 \caption*{A two-rod system.}
 \end{figure}
 
@@ -190,22 +187,21 @@ of states and therefore, create a configuration space which geometrically repres
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
-        % Elipse and cut
-        \useasboundingbox (-3, -1.5) rectangle (3, 1.5);
-        \draw[thick] (0, 0) ellipse (3 and 1.5);
-
-        % Elipse and cut
-        \begin{scope}
-          \clip (0, -1.8) ellipse (3 and 2.5);
-          \draw[thick] (0, 2.2) ellipse (3 and 2.5);
-        \end{scope}
-
-        % Elipse and cut
-        \begin{scope}
-          \clip (0, 2.2) ellipse (3 and 2.5);
-          \draw[thick] (0, -2.2) ellipse (3 and 2.5);
-        \end{scope}
-    \end{tikzpicture}
+        \begin{axis}[hide axis]
+           \addplot3[
+               surf,
+               colormap/blackwhite,
+               samples=20,
+               domain=0:2*pi,
+               y domain=0:2*pi,
+               z buffer=sort
+             ]
+             ( {(2 + cos(deg(x))) * cos(deg(y + pi/2))}, 
+               {(2 + cos(deg(x))) * sin(deg(y + pi/2))}, 
+               {sin(deg(x))}
+             );
+        \end{axis}
+      \end{tikzpicture}
     \caption*{A torus obtained by the motion of two-rod system.}
 \end{figure}
 
@@ -246,14 +242,14 @@ is also in $\topology$ and therefore, we conclude that $\topology$ is indeed a t
 Hence, $X$ is a topological space (note that, properly speaking, a topological space is an ordered pair $(X, \topology)$,
 but we often omit mentioning $\topology$ and say that $X$ is a topological space).
 
-\medskip
+\bigskip
 
 At this point, you might have already noticed that one could always define more than one topology
 for a given set. In the previous example, sets $\pset{(x)}$ (powerset of $x$) and $\{\emptyset, X\}$
 are also topologies on $X$ called discrete and indiscrete topologies. In fact, for any set $X$,
 $\pset{(x)}$ and $\{\emptyset, X\}$ will always be two distinct topologies on $X$.
 
-\medskip
+\bigskip
 
 We will now get acquainted with the notion of the \textit{open set}.
 
@@ -296,7 +292,7 @@ Therefore, we are not assuming that $f : X \rarr Y$ is a bijection. $f^{-1}(V)$ 
 In other words, the function $f : X \to Y$ over two topological spaces $X$ and $Y$ is continuous if and only if every open
 set in the image is mapped by an open set from a preimage.
 
-\medskip
+\bigskip
 
 This is the case where the visualization might be useful to see how the definition of continuous functions really works.
 Consider a continuous function $f : X \to Y$ where $X$ and $Y$ are topological spaces with topologies $\topology_X$ and $\topology_Y$.
@@ -314,7 +310,7 @@ which are in $\topology_Y$ have a preimage in $\topology_X$. Note that there are
 in $\topology_X$, but it has no importance to continuity of $f$ since it must be open sets in $Y$ (not just any set) that must
 have an open preimage.
 
-\medskip
+\bigskip
 
 The function below, however, is not continuous as there is one point that is not in $\topology_X$
 but maps to a point in $\topology_Y$ (it is highlighted with the red arrow).
@@ -325,7 +321,7 @@ but maps to a point in $\topology_Y$ (it is highlighted with the red arrow).
     \caption*{A discontinuous function $f : X \to Y$.}
 \end{figure}
 
-\medskip
+\bigskip
 
 Now that we are familiar with the notion of continuous functions, we shall introduce a new idea, that of homeomorphisms.
 
@@ -359,14 +355,14 @@ Besides, $\{a, b\} \cap \{c\} = \emptyset$ and $\{a, b\} \cup \{c\} = \{a, b, c\
 Hence, $U = \{a, b\}$ and $V = \{c\}$ is a pair of disjoint open subsets of $X$ whose union is $X$
 and therefore $U, V$ is a separation of $X$. This means that $X$ is a disconnected space.
 
-\medskip
+\bigskip
 
 On the other hand, a topological space $Y = \{a, b\}$ with a topology $\topology = \{\emptyset, \{a, b\}, \{a\}\}$
 is connected as there is no pair of disjoint nonempty open subsets of $Y$ such that their union is $Y$.
 In other words $Y$ has no separation. Note that $\emptyset \cup \{a, b\} = \{a, b\} = Y$, but it must be \und{nonempty}
 sets whose union is $Y$. Therefore, $\emptyset, \{a, b\}$ is not a separation of $Y$.
 
-\medskip
+\bigskip
 
 Knowing what it means for a topological space to be connected, we can now introduce the notion
 of path connectedness.
@@ -384,9 +380,9 @@ Therefore, every path-connected space is connected.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section*{Configuration Spaces Revisited - Robotic Configurations}
+\section*{\centering Configuration Spaces Revisited - Robotic Configurations}
 In previous sections, we went through what is called a configuration space.
-Yet, we did not have a precise definition of it since it varies from field to field.
+Yet, we did not have a precise definition for it since it varies from field to field.
 Let us now define what a configuration space means in the robotics context.
 
 \begin{definition}
@@ -394,16 +390,16 @@ Let us now define what a configuration space means in the robotics context.
 The \textit{\textbf{configuration space}} of a robot is the space of all configurations of a robot.
 \end{definition}
 
-Suppose that we have a robot $R_1$ that can move freely on a line $L$. Then we can model the robot as
+Suppose that we have a robot $R$ that can move freely on a line $L$. Then we can model the robot as
 a point with a coordinate $x_R$. The configuration space for this robot is
 
-$$C^1(L) = \{R_1 \mid R_1 \in L\} = L = L^1.$$
+$$C^1(L) = \{x_R \mid x_R \in L\} = L = L^1.$$
 
 with every point in the room being a unique configuration of the robot.
 The dimension of $C$ (in this case 1), is also called \textit{\textbf{degree(s) of freedom}}.
 In this case, the configuration space $C$ has 1 degree of freedom.
 
-\medskip
+\bigskip
 
 What if we had 2 robots (say $R_1$ and $R_2$) that can move freely?
 Then the configuration space would be $C^2$ which can be represented as a set
@@ -411,11 +407,7 @@ $$C^2(L) = \{(x_{R_1}, x_{R_2}) \mid x_{R_1}, x_{R_2} \in L\} = L \times L = L^2
 
 In general, the configuration space for $N$ robots $R_1, R_2, \dots, R_N$ that can move freely on a line $L$ is
 
-\begin{align*}
-&C^N(L)
-= \{(R_1, R_2, \dots, R_N) \mid R_1, R_2, \dots, R_N \in L\}\\
-&= \underbrace{L \times L \times \dots \dots L}_{N \ \text{times}} = L^N.
-\end{align*}
+$$C^N(L) = \{(x_{R_1}, x_{R_2}, \dots, x_{R_N}) \mid x_{R_1}, x_{R_2}, \dots, x_{R_N} \in L\} = \underbrace{L \times L \times \dots \dots L}_{N \ \text{times}} = L^N$$
 
 In fact, we could generalize this notion even further. Instead of considering
 $N$ robots moving on a line $L$, suppose that we have $N$ robots moving on some
@@ -423,37 +415,28 @@ $K$-dimensional space $L^K$. Then the configuration for each of the robots will
 be a $K$-tuple and the configuration space of all $N$ robots will be a set consisting
 of $N$ number of $K$-tuples. Therefore, we have
 
-\begin{align*}
-&C(L^K) = \{(x_{R_{1,1}}, x_{R_{1,2}}, \dots, x_{R_{1,K}}),\\
-&(x_{R_{2,1}}, x_{R_{2,2}}, \dots, x_{R_{2,K}}),\\
-&(x_{R_{3,1}}, x_{R_{3,2}}, \dots, x_{R_{3,K}}),\\
-&\dots,\\
-&(x_{R_{N,1}}, x_{R_{N,2}}, \dots, x_{R_{N,K}}),\\
-&\mid R_1, R_2, \dots, R_N \in L^K\}
-\end{align*}
+$$C(L^K) = \{(x_{R_{1, 1}}, x_{R_{2, 1}}, \dots, x_{R_{N, 1}}), \dots, (x_{R_{2, K}}, \dots, x_{R_{N, K}}) \mid x_{R_{1, 1}}, \dots, x_{R_{N, 1}}, \dots, x_{R_{1, K}}, \dots, x_{R_{N, K}} \in L^K\}.$$
 
-where $(x_{R_{1,1}}, x_{R_{1,2}}, \dots, x_{R_{1,K}})$ is the configuration of the robot $R_1$,
-$(x_{R_{2,1}}, x_{R_{2,2}}, \dots, x_{R_{2,K}})$ is the configuration of the robot $R_2$ etc.
-
-
+where $(x_{R_{1, 1}}, x_{R_{2, 1}}, \dots, x_{R_{N, 1}})$ one configuration (with $x_{R_{1, 1}}$ being the configuration of the first robot, $x_{R_{2, 1}}$ of the second robot etc.), $(x_{R_{1, 2}}, x_{R_{2, 2}}, \dots, x_{R_{N, 2}})$ is the other, and it goes all
+the way up until $(x_{R_{1, K}}, x_{R_{2, K}}, \dots, x_{R_{N, K}})$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section*{Safe Robotic Configurations}
+\section*{\centering Safe Robotic Configurations}
 At this point, we have enough machinery to understand safe robotic configurations.
 Let us model each robot with a point that moves through a topological space represeting
 the robot routes in the factory.
 
-\medskip
+\bigskip
 
-Consider two robots $R_1$ and $R_2$ moving through the line represented by $L$.
+Consider two robots $R_1$ and $R_2$ moving through the line represented by $L$ ($L$ is obviously a topological space).
 Then the configuration space for these robots is
 $$C = \{(x_{R_1}, x_{R_2}\} \mid x_{R_1}, x_{R_2} \in L\} = L \times L = L^2.$$
 The result here is somewhat natural. If we have one robot moving on a line, we have a configuration
 space $L$. If there are two robots, the configuration changes from a single point to a 2-tuple ($(x_A, x_B)$ in the case)
 which yields a configuration space equal to that of $L^2$.
 
-\medskip
+\bigskip
 
 Now, since $x_{R_1}$ and $x_{R_2}$ represent the coordinates of the robots, we cannot allow them to be the same.
 In other words, if $x_{R_1} = x_{R_2}$, we have a collision. We therefore modify our configuration space $C$
@@ -461,7 +444,7 @@ to eliminate all the configurations where $x_{R_1} = x_{R_2}$. Let us call this 
 (safe configuration) with
 $$SC = \{(x_{R_1}, x_{R_2}) \mid x_{R_1}, x_{R_2} \in \reals, x_{R_1} \neq x_{R_2}\}.$$
 
-\medskip
+\bigskip
 
 It is really helpful to think about this configuration space geometrically.
 Particularly, let's think about this space as a small chunk of the $XOY$ coordinate system.
@@ -483,12 +466,15 @@ of the interval $[0, a]$, put one interval as an $X$ axis and the other one as t
     % 0.4, 0.4
     \node [left] at (0, 0.4) {$x_{R_1}$};
     \node [below] at (0.4, 0) {$x_{R_2}$};
+    \node at (0.4, 0.4) [circle, fill, inner sep=1.5pt]{};
     % 0.9, 0.9
     \node [left] at (0, 0.9) {$x_{R_1}$};
     \node [below] at (0.9, 0) {$x_{R_2}$};
+    \node at (0.9, 0.9) [circle, fill, inner sep=1.5pt]{};
     % 1.6, 1.6
     \node [left] at (0, 1.6) {$x_{R_1}$};
     \node [below] at (1.6, 0) {$x_{R_2}$};
+    \node at (1.6, 1.6) [circle, fill, inner sep=1.5pt]{};
     % Lines
     \draw (0, 0) -- (2, 2);
     % 0.4, 0.4
@@ -510,16 +496,95 @@ say that
 
 $$SC = C - \Delta.$$
 
-In the general case with $N$ robots, it is easy to see that
-\begin{align*}
-&SC^N = \underbrace{L \times L \times \dots \times L}_{N \ \text{times}} - \Delta\\
-&\text{where}\\
-&\Delta = \{x_1, x_2, \dots, x_N \mid x_i = x_j \ \text{for some} \ i \neq j\}
-\end{align*}
+In the general case with $N$ robots and the topological space $X$, it is easy to see that
+$$SC^N = \underbrace{X \times X \times \dots \times X}_{N \ \text{times}} - \Delta \ \text{where} \ \Delta = \{(x_1, x_2, \dots, x_N) \mid x_i = x_j \ \text{for some} \ i \neq j\}$$
+
+We are basically taking the product of $N$ copies of $X$ because we have $N$ robots
+and we have to account for the position of each robot independent. Every configuration
+in this configuration space will look like $(x_1, x_2, \dots x_N)$ and we eliminate each
+configuration for which there exists $x_i$ and $x_j$ such that $x_i = x_j$ with $i \neq j$.
+This means that we do not allow any two robots to have the same coordinates in any configuration.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section*{Freely Transportable Robots}
+\section*{\centering Safe Robotic Relocations}
+Now that we know about safe robotic configurations, let us model the relocation
+of $n$ robots in the space $X$. To do this, we need to use a path in $SC^n(X)$.
+Suppose that initially the robots had the configuration $(I_1, I_2, \dots, I_n)$
+where $I_K$ is the initial position of the $K$-th robot. Then we define what is
+called the \textbf{relocation} of these $n$ robots.
+
+\begin{definition}
+\cite{11} We define a \textit{\textbf{relocation}} of the $n$ robots from the initial configuration
+$I = (I_1, \dots, I_n)$ to the finial configuration $F = (F_1, \dots, F_n)$ to be a path
+$p : [0, 1] \to SC^n(X)$ such that $p(0) = I$ and $P(1) = F$.
+\end{definition}
+
+Since the robots are mapped to the configuration in $SC^n(X)$, by the definition of $SC$,
+there is no way that any two robots will occupy the same coordinate and therefore, the map
+will ensure that there are no collisions.
+
+\bigskip
+
+We can now define \textbf{attainability} of configurations.
+
+\begin{definition}
+\cite{12} Given two configurations of the robots, $M = (M_1, \dots, M_n)$ and $N = (N_1, \dots, N_n)$,
+we say that $N$ is \textit{\textbf{attainable}} from $M$ if there is a relocation of the robots
+from $M$ to $N$.
+\end{definition}
+
+Now let's apply the definition of path connectedness that we covered a few chapter ago.
+Notice that if the safe configuration space $SC^n(X)$ is path connected, then every configuration
+is attainable from every other one and therefore, robots can move freely in the space.
+In this case, we say that the robots are \textbf{freely transportable in} $X$.
+
+\bigskip
+
+Let's look at some examples. Consider two robots $R_1$ and $R_2$ on the line $L$ that we discussed previously.
+We know that the safe configuration space for two robots is the square without the diagonal.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Draw the square
+        \draw (0, 0) -- (2, 0) -- (2, 2) -- (0, 2) -- (0, 0);
+        % Points
+        \node [left] at (0, 2) {$a$};
+        \node [right] at (2, 0) {$a$};
+        \node [left] at (0, 0) {$0$};
+        % Lines
+        \draw [dotted, very thick] (0, 0) -- (2, 2);
+    \end{tikzpicture}
+    \caption*{A safe configuration space for two robots moving on the line $L$.}
+\end{figure}
+
+Then notice that this safe configuration space is not path connected (recall that path connectedness
+means that every pair of points of $SC$ can be joined by a path in $SC$). It is easy to show by taking
+one point on the one side of the diagonal and the other one on the other side (note that these points
+are really the configurations for the space). If one would connect these points, there would not be a
+way to avoid intersection of the diagonal (a collision).
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Draw the square
+        \draw (0, 0) -- (2, 0) -- (2, 2) -- (0, 2) -- (0, 0);
+        % Points
+        \node [left] at (0, 2) {$a$};
+        \node [right] at (2, 0) {$a$};
+        \node [left] at (0, 0) {$0$};
+        \node at (0.5, 1.6) [circle, fill, inner sep=1.5pt]{};
+        \node at (1.5, 0.3) [circle, fill, inner sep=1.5pt]{};
+        % Lines
+        \draw [dotted, very thick] (0, 0) -- (2, 2);
+        \draw [dotted, thick] (0.5, 1.6) -- (1.5, 0.3);
+    \end{tikzpicture}
+    \caption*{Attempt to connect two points from one side of diagonal to the other.}
+\end{figure}
+
+Then, by the definition of free transportability, $R_1$ and $R_2$ are not freely
+transportable in $L$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -534,7 +599,9 @@ In the general case with $N$ robots, it is easy to see that
     \bibitem{7} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 105
     \bibitem{8} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 148
     \bibitem{9} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 155
-    \bibitem{10} Lynch K. and Park F., ``Modern Robotics: Mechanics, Planning, and Control'', Chap. 2.1, \\\href{https://youtube.com/watch?v=z29hYlagOYM}{https://youtube.com/watch?v=z29hYlagOYM}.
+    \bibitem{10} Lynch K. and Park F., ``Modern Robotics: Mechanics, Planning, and Control'', Chapter 2.1,\\\href{https://youtube.com/watch?v=z29hYlagOYM}{https://youtube.com/watch?v=z29hYlagOYM}.
+    \bibitem{11} Adams C. and Fransoza R., ``Introduction to Topology'' (2008), p. 199
+    \bibitem{12} Adams C. and Fransoza R., ``Introduction to Topology'' (2008), p. 199
 \end{thebibliography}
 \end{center}
 
