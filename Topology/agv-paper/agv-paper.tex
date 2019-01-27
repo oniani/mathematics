@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[12pt]{article}
 
 \usepackage[margin=1in]{geometry}
 \usepackage{multicol}
@@ -464,16 +464,16 @@ of the interval $[0, a]$, put one interval as an $X$ axis and the other one as t
     \node [right] at (2, 0) {$a$};
     \node [left] at (0, 0) {$0$};
     % 0.4, 0.4
-    \node [left] at (0, 0.4) {$x_{R_1}$};
-    \node [below] at (0.4, 0) {$x_{R_2}$};
+    \node [below] at (0.4, 0) {$x_{R_1}$};
+    \node [left] at (0, 0.4) {$x_{R_2}$};
     \node at (0.4, 0.4) [circle, fill, inner sep=1.5pt]{};
     % 0.9, 0.9
-    \node [left] at (0, 0.9) {$x_{R_1}$};
-    \node [below] at (0.9, 0) {$x_{R_2}$};
+    \node [below] at (0.9, 0) {$x_{R_1}$};
+    \node [left] at (0, 0.9) {$x_{R_2}$};
     \node at (0.9, 0.9) [circle, fill, inner sep=1.5pt]{};
     % 1.6, 1.6
-    \node [left] at (0, 1.6) {$x_{R_1}$};
-    \node [below] at (1.6, 0) {$x_{R_2}$};
+    \node [below] at (1.6, 0) {$x_{R_1}$};
+    \node [left] at (0, 1.6) {$x_{R_2}$};
     \node at (1.6, 1.6) [circle, fill, inner sep=1.5pt]{};
     % Lines
     \draw (0, 0) -- (2, 2);
@@ -560,10 +560,13 @@ We know that the safe configuration space for two robots is the square without t
 \end{figure}
 
 Then notice that this safe configuration space is not path connected (recall that path connectedness
-means that every pair of points of $SC$ can be joined by a path in $SC$). It is easy to show by taking
-one point on the one side of the diagonal and the other one on the other side (note that these points
-are really the configurations for the space). If one would connect these points, there would not be a
-way to avoid intersection of the diagonal (a collision).
+means that every pair of points of $SC$ can be joined by a path in $SC$). Observe that the safe configuration
+space $SC$ is the union of two sets $U_1 = \{(x_{R_1}, x_{R_2} \mid x_{R_1}, x_{R_2} \in L, x_{R_1} > x_{R_2}\}$
+and $U_2 = \{(x_{R_1}, x_{R_2} \mid x_{R_1}, x_{R_2} \in L, x_{R_2} > x_{R_1}\}$. Notice that one of the sets
+has all the configurations which lie above diagonal and the other one has all the configurations that lie below
+diagonal. Then it is easy to show that the safe configuration space is not path connected. Take one point on the
+one side of the diagonal and the other one on the other side. If one would connect these points, there would not be a
+way to avoid intersection of the diagonal.
 
 \begin{figure}[H]
     \centering
@@ -580,11 +583,42 @@ way to avoid intersection of the diagonal (a collision).
         \draw [dotted, very thick] (0, 0) -- (2, 2);
         \draw [dotted, thick] (0.5, 1.6) -- (1.5, 0.3);
     \end{tikzpicture}
-    \caption*{Attempt to connect two points from one side of diagonal to the other.}
+    \caption*{An attempt to connect two points from one side of diagonal to the other.}
 \end{figure}
 
-Then, by the definition of free transportability, $R_1$ and $R_2$ are not freely
-transportable in $L$.
+Thus, since the safe configuration space $SC$ is not path connected, by the definition of free transportability,
+$R_1$ and $R_2$ are not freely transportable in $L$.
+
+\bigskip
+
+Now, consider two robots $R_1$ and $R_2$ on the configuration space $S^1$ from the first section.
+It is interesting to know what would the configuration space look like in this case.
+We know that the configuration space $S^1$ is a circle. Then we consider the motion of $R_1$ and $R_2$ independently.
+Let us now apply the same trick as we did with two robots on the line $L$. But now, since a circle is a 2D object,
+we need to do it in the 3D space. Therefore, it is helpful to think about $XOYZ$ coordinate system.
+We put a circle for $R_1$ on the $XOY$ plane and the circle for $R_2$ on the $R1$ circle in the way that
+that these two circles share only one point.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7cm, height=4cm]{two-circles}
+    \caption*{Figure A shows the first position of the circle and picture B the other one after sliding.}
+\end{figure}
+
+The picture above is the visualization of our approach. Recall that each configuration looks like $(x_{R_1}, x_{R_2})$.
+Then to get all the configurations we keep the circle on the bottom (on the $XOY$ plane) fixed and slide the circle
+on the $XOZ$ plane one point at a time. Each of these slides will generate a set of configurations which would be a set
+of all points of upper circle paired with a single point on the bottom circle. We will continue this motion until exhaustively,
+until there are no points on the bottom circle. Figure B shows the picture when we are halfway through. Geometrically,
+however, it is easy to see that the shape we get is a torus.
+
+\bigskip
+
+Obviously, we also want to know what is the safe configuration space for these two robots.
+Here we will use another trick. Notice that we can glue the edges of a square to obtain a torus.
+Therefore, we can ``unfold" the torus to get the square.
+
+That multi-directional square thingy here...
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -599,7 +633,7 @@ transportable in $L$.
     \bibitem{7} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 105
     \bibitem{8} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 148
     \bibitem{9} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 155
-    \bibitem{10} Lynch K. and Park F., ``Modern Robotics: Mechanics, Planning, and Control'', Chapter 2.1,\\\href{https://youtube.com/watch?v=z29hYlagOYM}{https://youtube.com/watch?v=z29hYlagOYM}.
+    \bibitem{10} Lynch K. and Park F., ``Modern Robotics: Mechanics, Planning, and Control'', Chapter 2.1, \href{https://youtube.com/watch?v=z29hYlagOYM}{https://youtube.com/watch?v=z29hYlagOYM}.
     \bibitem{11} Adams C. and Fransoza R., ``Introduction to Topology'' (2008), p. 199
     \bibitem{12} Adams C. and Fransoza R., ``Introduction to Topology'' (2008), p. 199
 \end{thebibliography}
