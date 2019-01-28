@@ -22,6 +22,7 @@
 \usepackage[cache=false]{minted}
 
 \usepackage{fancyhdr}
+\usepackage{tocloft}
 \usepackage{caption}
 \usepackage{soul}
 \usepackage{cite}
@@ -30,54 +31,55 @@
 \usepackage{wasysym}
 
 % Sets and related operators
-\newcommand{\nats}{\mathbb{N}}                   % Natural numbers
-\newcommand{\pnats}{\mathbb{N}^+}                % Positive natural numbers (excluding 0)
+\newcommand{\nats}{\mathbb{N}}                         % Natural numbers
+\newcommand{\pnats}{\mathbb{N}^+}                      % Positive natural numbers (excluding 0)
 
-\newcommand{\ints}{\mathbb{Z}}                   % Integers
-\newcommand{\pints}{\mathbb{Z}^+}                % Positive integers
-\newcommand{\nints}{\mathbb{Z}^-}                % Negative integers
+\newcommand{\ints}{\mathbb{Z}}                         % Integers
+\newcommand{\pints}{\mathbb{Z}^+}                      % Positive integers
+\newcommand{\nints}{\mathbb{Z}^-}                      % Negative integers
 
-\newcommand{\rats}{\mathbb{Q}}                   % Rational numbers
-\newcommand{\prats}{\mathbb{Q}^+}                % Positive rational numbers
-\newcommand{\nrats}{\mathbb{Q}^-}                % Negative rational numbers
+\newcommand{\rats}{\mathbb{Q}}                         % Rational numbers
+\newcommand{\prats}{\mathbb{Q}^+}                      % Positive rational numbers
+\newcommand{\nrats}{\mathbb{Q}^-}                      % Negative rational numbers
 
-\newcommand{\reals}{\mathbb{R}}                  % Real numbers
-\newcommand{\preals}{\mathbb{R}^+}               % Positive real numbers
-\newcommand{\nreals}{\mathbb{R}^-}               % Negative real numbers
+\newcommand{\reals}{\mathbb{R}}                        % Real numbers
+\newcommand{\preals}{\mathbb{R}^+}                     % Positive real numbers
+\newcommand{\nreals}{\mathbb{R}^-}                     % Negative real numbers
 
-\newcommand{\irrats}{\mathbb{I}}                 % Irrational numbers
+\newcommand{\irrats}{\mathbb{I}}                       % Irrational numbers
 
-\newcommand{\pset}{\mathcal{P}}                  % Powerset
-\newcommand{\card}{\abs}                         % Cardinality
-\newcommand{\topology}{\mathcal{T}}              % Topology
-\newcommand{\basis}{\mathcal{B}}                 % Basis
-\newcommand{\oldemptyset}{\emptyset}             % Old empty set
-\renewcommand{\emptyset}{\varnothing}            % New and nice empty set
+\newcommand{\pset}{\mathcal{P}}                        % Powerset
+\newcommand{\card}{\abs}                               % Cardinality
+\newcommand{\topology}{\mathcal{T}}                    % Topology
+\newcommand{\basis}{\mathcal{B}}                       % Basis
+\newcommand{\oldemptyset}{\emptyset}                   % Old empty set
+\renewcommand{\emptyset}{\varnothing}                  % New and nice empty set
 
 % Operators
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}      % Absolute value
-\DeclarePairedDelimiter\ceil{\lceil}{\rceil}     % Ceiling
-\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}  % Floor
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}            % Absolute value
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}           % Ceiling
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}        % Floor
 
 % Other
-\newcommand{\rarr}{\rightarrow}                  % Leftarrow
-\newcommand{\larr}{\leftarrow}                   % Rightarrow (equivalent to \to)
-\newcommand\und[1]{\underline{\smash{#1}}}       % Nice-looking underline
-\renewcommand{\headrulewidth}{0.5pt}             % Header rule width
-\renewcommand{\footrulewidth}{0pt}               % Footer rule width
-\renewcommand{\baselinestretch}{1.5}             % Make the line spacing equal to 1.5
+\newcommand{\rarr}{\rightarrow}                        % Leftarrow
+\newcommand{\larr}{\leftarrow}                         % Rightarrow (equivalent to \to)
+\newcommand\und[1]{\underline{\smash{#1}}}             % Nice-looking underline
+\renewcommand{\headrulewidth}{0.5pt}                   % Header rule width
+\renewcommand{\footrulewidth}{0pt}                     % Footer rule width
+\renewcommand{\baselinestretch}{1.5}                   % Make the line spacing equal to 1.5
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}  % Add dots to the sections in the table of contents
 
 % Setting stuff
-\setlength{\parindent}{0pt}                      % Remove indentations from paragraphs
-\frenchspacing                                   % Sometimes latex creates unnecessarily large spaces after dots, this helps to avoid it (puts single spaces at the end of sentences)
-\pagestyle{fancy}                                % This allows to do fancy headers and footers
-\fancyhf{}                                       % No additional page numbering (or other stuff such as references)
-\cfoot{\thepage}                                 % Display page number at the bottom in the center
+\setlength{\parindent}{0pt}                            % Remove indentations from paragraphs
+\frenchspacing                                         % Sometimes latex creates unnecessarily large spaces after dots, this helps to avoid it (puts single spaces at the end of sentences)
+\pagestyle{fancy}                                      % This allows to do fancy headers and footers
+\fancyhf{}                                             % No additional page numbering (or other stuff such as references)
+\cfoot{\thepage}                                       % Display page number at the bottom in the center
 
 \rhead{\footnotesize{\MakeUppercase{The Topology of Robotic Configuration and Motion Planning}}}
 
 
-% Definition
+% Definition environment
 \theoremstyle{definition}
 \newtheorem*{definition}{Definition}
 
@@ -86,8 +88,10 @@
 \title{The Topology of Robotic Configuration and Motion Planning\\
 {\small \textsuperscript{*}The paper is written in scope of the independent study course with Dr. Eric Westlund.}}
 
+% Author
 \author{David Oniani\\Luther College\\\href{mailto:oniada01@luther.edu}{oniada01@luther.edu}}
 
+% Date
 \date{January 30, 2019}
 
 
@@ -113,7 +117,15 @@ mathematics students with the knowledge of set theory.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newpage
+\tableofcontents
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section*{\centering Configuration Spaces}
+\addcontentsline{toc}{section}{Configuration Spaces}
+
 We shall start by introducing the notion of configuration spaces.
 The idea of configuration spaces come from physics. In classical mechanics,
 the configuration space is the vector space defined by the generalized
@@ -210,6 +222,8 @@ This idea will be very useful once we learn more about other topological concept
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{\centering Topological Spaces}
+\addcontentsline{toc}{section}{Topological Spaces}
+
 The fundamental idea in topology is that of a topological space.
 We will use this idea to then introduce and define other important concepts.
 
@@ -263,6 +277,8 @@ Then notice that $\emptyset, \{a, b, c\}, \{a, b\}, \{c\} \in \topology$ and the
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{\centering Continuous Functions and Homeomorphisms}
+\addcontentsline{toc}{section}{Continuous Functions and Homeomorphisms}
+
 The notion of continuous functions is familiar to most high-school students.
 Most people associate them with a nice-looking monotonically increasing or decreasing
 functions with no leaps or jumps. There are several definitions for a function continuity.
@@ -341,6 +357,8 @@ to each other.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{\centering Connectedness and Path Connectedness}
+\addcontentsline{toc}{section}{Connectedness and Path Connectedness}
+
 One of the important ideas in topology is that of connectedness.
 This idea is used extensively in various other fields of mathematics such as graph theory and knot theory.
 Let us first define connectedness.
@@ -420,6 +438,8 @@ using induction is almost trivial so we will not go through it in this paper.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{\centering Configuration Spaces Revisited - Robotic Configurations}
+\addcontentsline{toc}{section}{Configuration Spaces Revisited - Robotic Configurations}
+
 In previous sections, we went through what is called a configuration space.
 Yet, we did not have a precise definition for it since it varies from field to field.
 Let us now define what a configuration space means in the robotics context.
@@ -472,6 +492,8 @@ where $(x_{R_{1, 1}}, x_{R_{1, 1}}, \dots, x_{R_{1, k}})$ is the coordinate of $
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{\centering Safe Robotic Configurations}
+\addcontentsline{toc}{section}{Safe Robotic Configurations}
+
 At this point, we have enough machinery to understand safe robotic configurations.
 Let us model each robot with a point that moves through a topological space represeting
 the robot routes in the factory.
@@ -556,6 +578,8 @@ ensures that there are no collisions.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{\centering Safe Robotic Relocations}
+\addcontentsline{toc}{section}{Safe Robotic Relocations}
+
 Now that we know about safe robotic configurations, let us model the relocation
 of $n$ robots in the space $X$. To do this, we need to use a path in $SC^n(X)$.
 Suppose that initially the robots had the configuration $(I_1, I_2, \dots, I_n)$
@@ -596,8 +620,10 @@ rest of the paper exploring the free transportability under various robotic conf
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{\centering Examples}
+\addcontentsline{toc}{section}{Examples}
 
-\subsection*{\centering 1}
+\subsection*{\centering Motion on Line $L$}
+\addcontentsline{toc}{subsection}{Motion on Line $L$}
 
 Consider two robots $R_1$ and $R_2$ on the line $L$ that we have discussed previously.
 We know that the safe configuration space for two robots is the square without the diagonal.
@@ -651,7 +677,8 @@ intersection of the diagonal.
 Thus, since the safe configuration space $SC$ is not path connected and by the definition of
 free transportability, $R_1$ and $R_2$ are not freely transportable in $L$.
 
-\subsection*{\centering 2}
+\subsection*{\centering Motion on Circle $S^1$}
+\addcontentsline{toc}{subsection}{Motion on Circle $S^1$}
 
 Consider two robots $R_1$ and $R_2$ on the configuration space $S^1$ from the first section.
 It is interesting to know what would the configuration space look like in this case.
@@ -734,6 +761,9 @@ to get an open annulus).
     \begin{tikzpicture}
         \draw [very thick, fill=gray, dash pattern=on 2pt off 3pt] (0, 0) circle (1.85cm);
         \draw [very thick, fill=white, dash pattern=on 2pt off 3pt] (0, 0) circle (0.8cm);
+        \draw [very thick] (0.8, 0) -- (1.85, 0);
+        \tikzset{arrows={-Triangle[angle=45:12pt, black, fill=black]}}
+        \draw [thick] (1.4, 0) -- (1.6, 0);
     \end{tikzpicture}
     \caption*{An open annulus.}
 \end{figure}
@@ -762,7 +792,7 @@ $R_2$ are freely transportable in the space $S^1$.
     \bibitem{12} Lynch K. and Park F., ``Modern Robotics: Mechanics, Planning, and Control'', Chapter 2.1, \href{https://youtube.com/watch?v=z29hYlagOYM}{https://youtube.com/watch?v=z29hYlagOYM}.
     \bibitem{13} Adams C. and Fransoza R., ``Introduction to Topology'' (2008), p. 199.
     \bibitem{14} Adams C. and Fransoza R., ``Introduction to Topology'' (2008), p. 199.
-    \bibitem{15} Mackevicius E., ``Configuration Spaces'' (2008), p. 9,\\\href{https://math.uchicago.edu/~may/VIGRE/VIGRE2009/REUPapers/Mackevicius.pdf}{http://www.math.uchicago.edu/~may/VIGRE/VIGRE2009/REUPapers/Mackevicius.pdf}.
+    \bibitem{15} Mackevicius E., ``Configuration Spaces'' (2008), p. 9,\\\href{https://math.uchicago.edu/~may/VIGRE/VIGRE2009/REUPapers/Mackevicius.pdf}{https://math.uchicago.edu/~may/VIGRE/VIGRE2009/REUPapers/Mackevicius.pdf}.
 \end{thebibliography}
 \end{center}
 
