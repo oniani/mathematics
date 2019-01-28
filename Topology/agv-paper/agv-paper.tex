@@ -14,7 +14,7 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.16}
 \usepackage{tikz}
-\usetikzlibrary{arrows, decorations.markings}
+\usetikzlibrary{cd, arrows, decorations.markings}
 \usepackage{graphicx}
 \usepackage{pst-solides3d}
 \usepackage{xcolor}
@@ -375,8 +375,45 @@ points of $X$ can be joined by a path in $X$.
 \end{definition}
 
 Path connected spaces are certainly related to the connected spaces.
-In fact, one could easily verify that path connectedness implies connectedness.
+\cite{10} In fact, one could easily verify that path connectedness implies connectedness.
 Therefore, every path-connected space is connected.
+
+\bigskip
+
+One important theorem we will need is that a product of two path connected spaces is path connected.
+Let us prove this theorem.
+
+\begin{proof}
+Suppose that $X$ and $Y$ are path-connected spaces.
+Let $x_1 \times x_2, y_1 \times y_2 \in X \times Y$.
+Notice that $X \times y_1$ is homeomorphic to $X$
+and thus, is path-connected. Therefore, there exists
+a continuous function $f : [0, 1] \to X \times y_1$
+with $f(0) = x_1 \times y_1$ and $f(1) = x_2 \times y_2$.
+Besides, $x_2 \times Y$ is homeomorphic to $Y$ and thus,
+is path-connected. Therefore, there exists a continuous
+function $g$ such that $g : [0, 1] \to x_2 \times Y$
+with $g(0) = x_2 \times y_1$ and $g(1) = x_2 \times y_2$.
+Let's now define a function $h$ in the following way:
+$$
+h(x) = 
+\begin{cases}
+f(\frac{x}{2}) \mbox{ if } 0 \leq x \leq \frac{1}{2}\\
+f(\frac{x}{2} + \frac{1}{2}) \mbox{ if } \frac{1}{2} \leq x \leq 1
+\end{cases}
+$$
+The according to the \cite{11} \textbf{the pasting lemma},
+$h$ is continuous. Besides, $h(0) = f(\frac{0}{2}) = f(0) = x_1 \times y_1$
+and $h(1) = g(\frac{1}{2} + \frac{1}{2}) = g(1) = x_2 \times y_2$.
+Therefore, $h$ is a path from $x_1 \times y_1$ to $x_2 \times y_2$
+and because $x_1 \times y_1$ and $x_2 \times y_2$ are arbitrary, we have that
+$X \times Y$ is path-connected.
+\end{proof}
+
+Now, because the product of two spaces is path connected, we can generalize this
+notion to $n$ path connected spaces $X_1, X_2, \dots, X_N$ and say that the product
+$X_1 \times X_2 \times \dots \times X_N$ is also path connected. The proof of this
+using induction is almost trivial so we will not go through it in this paper.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -386,7 +423,7 @@ Yet, we did not have a precise definition for it since it varies from field to f
 Let us now define what a configuration space means in the robotics context.
 
 \begin{definition}
-\cite{10} A \textit{\textbf{configuration}} of a robot is a specification of the position of all points of a robot.
+\cite{12} A \textit{\textbf{configuration}} of a robot is a specification of the position of all points of a robot.
 The \textit{\textbf{configuration space}} of a robot is the space of all configurations of a robot.
 \end{definition}
 
@@ -515,7 +552,7 @@ where $I_K$ is the initial position of the $K$-th robot. Then we define what is
 called the \textbf{relocation} of these $n$ robots.
 
 \begin{definition}
-\cite{11} We define a \textit{\textbf{relocation}} of the $n$ robots from the initial configuration
+\cite{13} We define a \textit{\textbf{relocation}} of the $n$ robots from the initial configuration
 $I = (I_1, \dots, I_n)$ to the finial configuration $F = (F_1, \dots, F_n)$ to be a path
 $p : [0, 1] \to SC^n(X)$ such that $p(0) = I$ and $P(1) = F$.
 \end{definition}
@@ -529,7 +566,7 @@ will ensure that there are no collisions.
 We can now define \textbf{attainability} of configurations.
 
 \begin{definition}
-\cite{12} Given two configurations of the robots, $M = (M_1, \dots, M_n)$ and $N = (N_1, \dots, N_n)$,
+\cite{14} Given two configurations of the robots, $M = (M_1, \dots, M_n)$ and $N = (N_1, \dots, N_n)$,
 we say that $N$ is \textit{\textbf{attainable}} from $M$ if there is a relocation of the robots
 from $M$ to $N$.
 \end{definition}
@@ -608,17 +645,64 @@ that these two circles share only one point.
 The picture above is the visualization of our approach. Recall that each configuration looks like $(x_{R_1}, x_{R_2})$.
 Then to get all the configurations we keep the circle on the bottom (on the $XOY$ plane) fixed and slide the circle
 on the $XOZ$ plane one point at a time. Each of these slides will generate a set of configurations which would be a set
-of all points of upper circle paired with a single point on the bottom circle. We will continue this motion until exhaustively,
+of all points of upper circle paired with a single point on the bottom circle. We will continue this motion exhaustively,
 until there are no points on the bottom circle. Figure B shows the picture when we are halfway through. Geometrically,
-however, it is easy to see that the shape we get is a torus.
+however, it is easy to see that the shape we get is a torus (\cite{15} in fact, the configuration space for $n$ robots on
+the circle is the $n$-tori).
 
 \bigskip
 
 Obviously, we also want to know what is the safe configuration space for these two robots.
 Here we will use another trick. Notice that we can glue the edges of a square to obtain a torus.
-Therefore, we can ``unfold" the torus to get the square.
+Therefore, we can ``unfold" the torus to get the square. We can represent the torus as a square
+with opposite sides identified.
 
-That multi-directional square thingy here...
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        \draw [thick] (0, 0) rectangle (2, 2);
+        \draw [black, very thick, dotted] (0, 0) -- (2, 2);
+        \tikzset{arrows={-Triangle[angle=45:12pt, black, fill=black]}}
+        \draw [thick] (0, 0) -- (1.2, 0);
+        \draw [thick] (0, 2) -- (1.2, 2);
+        \tikzset{arrows={-Triangle[angle=45:14pt, black, fill=white]}}
+        \draw [thick] (0, 0) -- (0, 1.25);
+        \draw [thick] (2, 0) -- (2, 1.25);
+    \end{tikzpicture}
+    \caption*{Torus as a square with opposite sides identified.}
+\end{figure}
+
+The picture above shows the \textit{safe configuration space} which
+is the square minus the diagonal line. We can decompose this square into
+two ``semi-open" triangles and put them together to get a parallelogram.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+    % Sides
+    \draw [very thick, dotted] (0, 0) -- (3, 3);
+    \draw [thick] (3, 3) -- (6, 3);
+    \draw [very thick, dotted] (6, 3) -- (3, 0);
+    \draw [thick] (0, 0) -- (3, 0);
+    % Diagonal
+    \draw [thick] (3, 0) -- (3, 3);
+    % Triangluar black arrows
+    \tikzset{arrows={-Triangle[angle=45:12pt, black, fill=black]}};
+    \draw [thick] (4.5, 3) -- (4.6, 3);
+    \draw [thick] (1.5, 0) -- (1.6, 0);
+    % Triangluar white arrow
+    \tikzset{arrows={-Triangle[angle=45:14pt, black, fill=white]}};
+    \draw [thick] (3, 1.6) -- (3, 1.7);
+    \end{tikzpicture}
+    \caption*{Parallelogram constructed from the square without diagonal.}
+\end{figure}
+
+Then it is easy to see that the space shown above is homeomorphic to the space
+$(0, 1) \times S^1$ which is an open annulus. Notice $(0, 1)$ and $S^1$ are both path
+connected and therefore, as we have proven in the previous section, product
+of two path connected spaces is connected and $(0, 1) \times S^1$ is path connected.
+Due to the nature of homeomorphism, we conclude that the safe configuration space $SC^2(S^1)$
+is also path connected and therefore, robots $R_1$ and $R_2$ are freely transportable in this space.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -626,16 +710,19 @@ That multi-directional square thingy here...
 \begin{thebibliography}{00}
     \bibitem{1} Adams C. and Fransoza R., ``Introduction to Topology'' (2008), p. 105.
     \bibitem{2} Adams C. and Fransoza R., ``Introduction to Topology'' (2008), pp. 105 -- 106.
-    \bibitem{3} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 76
-    \bibitem{4} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 76
-    \bibitem{5} Thomas G. B., ``Thomas' Calculus" (2010), Thirteenth Edition, p. 77
-    \bibitem{6} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 102
-    \bibitem{7} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 105
-    \bibitem{8} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 148
-    \bibitem{9} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 155
-    \bibitem{10} Lynch K. and Park F., ``Modern Robotics: Mechanics, Planning, and Control'', Chapter 2.1, \href{https://youtube.com/watch?v=z29hYlagOYM}{https://youtube.com/watch?v=z29hYlagOYM}.
-    \bibitem{11} Adams C. and Fransoza R., ``Introduction to Topology'' (2008), p. 199
-    \bibitem{12} Adams C. and Fransoza R., ``Introduction to Topology'' (2008), p. 199
+    \bibitem{3} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 76.
+    \bibitem{4} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 76.
+    \bibitem{5} Thomas G. B., ``Thomas' Calculus" (2010), Thirteenth Edition, p. 77.
+    \bibitem{6} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 102.
+    \bibitem{7} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 105.
+    \bibitem{8} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 148.
+    \bibitem{9} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 155.
+    \bibitem{10} Basener W. F., ``Topology and Its Applications'' (2006), p. 65.
+    \bibitem{11} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 108.
+    \bibitem{12} Lynch K. and Park F., ``Modern Robotics: Mechanics, Planning, and Control'', Chapter 2.1, \href{https://youtube.com/watch?v=z29hYlagOYM}{https://youtube.com/watch?v=z29hYlagOYM}.
+    \bibitem{13} Adams C. and Fransoza R., ``Introduction to Topology'' (2008), p. 199.
+    \bibitem{14} Adams C. and Fransoza R., ``Introduction to Topology'' (2008), p. 199.
+    \bibitem{15} Mackevicius E., ``Configuration Spaces'' (2008), p. 9,\\\href{https://math.uchicago.edu/~may/VIGRE/VIGRE2009/REUPapers/Mackevicius.pdf}{http://www.math.uchicago.edu/~may/VIGRE/VIGRE2009/REUPapers/Mackevicius.pdf}.
 \end{thebibliography}
 \end{center}
 
