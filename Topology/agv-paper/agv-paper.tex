@@ -31,53 +31,55 @@
 \usepackage{wasysym}
 
 % Sets and related operators
-\newcommand{\nats}{\mathbb{N}}                         % Natural numbers
-\newcommand{\pnats}{\mathbb{N}^+}                      % Positive natural numbers (excluding 0)
+\newcommand{\nats}{\mathbb{N}}                            % Natural numbers
+\newcommand{\pnats}{\mathbb{N}^+}                         % Positive natural numbers (excluding 0)
 
-\newcommand{\ints}{\mathbb{Z}}                         % Integers
-\newcommand{\pints}{\mathbb{Z}^+}                      % Positive integers
-\newcommand{\nints}{\mathbb{Z}^-}                      % Negative integers
+\newcommand{\ints}{\mathbb{Z}}                            % Integers
+\newcommand{\pints}{\mathbb{Z}^+}                         % Positive integers
+\newcommand{\nints}{\mathbb{Z}^-}                         % Negative integers
 
-\newcommand{\rats}{\mathbb{Q}}                         % Rational numbers
-\newcommand{\prats}{\mathbb{Q}^+}                      % Positive rational numbers
-\newcommand{\nrats}{\mathbb{Q}^-}                      % Negative rational numbers
+\newcommand{\rats}{\mathbb{Q}}                            % Rational numbers
+\newcommand{\prats}{\mathbb{Q}^+}                         % Positive rational numbers
+\newcommand{\nrats}{\mathbb{Q}^-}                         % Negative rational numbers
 
-\newcommand{\reals}{\mathbb{R}}                        % Real numbers
-\newcommand{\preals}{\mathbb{R}^+}                     % Positive real numbers
-\newcommand{\nreals}{\mathbb{R}^-}                     % Negative real numbers
+\newcommand{\reals}{\mathbb{R}}                           % Real numbers
+\newcommand{\preals}{\mathbb{R}^+}                        % Positive real numbers
+\newcommand{\nreals}{\mathbb{R}^-}                        % Negative real numbers
 
-\newcommand{\irrats}{\mathbb{I}}                       % Irrational numbers
+\newcommand{\irrats}{\mathbb{I}}                          % Irrational numbers
 
-\newcommand{\pset}{\mathcal{P}}                        % Powerset
-\newcommand{\card}{\abs}                               % Cardinality
-\newcommand{\topology}{\mathcal{T}}                    % Topology
-\newcommand{\basis}{\mathcal{B}}                       % Basis
-\newcommand{\oldemptyset}{\emptyset}                   % Old empty set
-\renewcommand{\emptyset}{\varnothing}                  % New and nice empty set
+\newcommand{\pset}{\mathcal{P}}                           % Powerset
+\newcommand{\card}{\abs}                                  % Cardinality
+\newcommand{\topology}{\mathcal{T}}                       % Topology
+\newcommand{\basis}{\mathcal{B}}                          % Basis
+\newcommand{\oldemptyset}{\emptyset}                      % Old empty set
+\renewcommand{\emptyset}{\varnothing}                     % New and nice empty set
 
 % Operators
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}            % Absolute value
-\DeclarePairedDelimiter\ceil{\lceil}{\rceil}           % Ceiling
-\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}        % Floor
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}               % Absolute value
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}              % Ceiling
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}           % Floor
 
 % Other
-\newcommand{\rarr}{\rightarrow}                        % Leftarrow
-\newcommand{\larr}{\leftarrow}                         % Rightarrow (equivalent to \to)
-\newcommand\und[1]{\underline{\smash{#1}}}             % Nice-looking underline
-\renewcommand{\headrulewidth}{0.5pt}                   % Header rule width
-\renewcommand{\footrulewidth}{0pt}                     % Footer rule width
-\renewcommand{\baselinestretch}{1.5}                   % Make the line spacing equal to 1.5
-\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}  % Add dots to the sections in the table of contents
+\newcommand{\rarr}{\rightarrow}                           % Leftarrow
+\newcommand{\larr}{\leftarrow}                            % Rightarrow (equivalent to \to)
+\newcommand\und[1]{\underline{\smash{#1}}}                % Nice-looking underline
+\renewcommand{\headrulewidth}{0.5pt}                      % Header rule width
+\renewcommand{\footrulewidth}{0pt}                        % Footer rule width
+\renewcommand{\baselinestretch}{1.5}                      % Make the line spacing equal to 1.5
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}     % Add dots to the sections in the table of contents
+\renewcommand{\contentsname}{\textbf{TABLE OF CONTENTS}}  % Change the name from "Contents" to the "Table of Contents"
+\renewcommand{\cfttoctitlefont}{\hspace*{\fill}\Large}    % Filling the space for centering the table of contents' title
+\renewcommand{\cftaftertoctitle}{\hspace*{\fill}}         % Filling the space for centering the table of contents' title
 
 % Setting stuff
-\setlength{\parindent}{0pt}                            % Remove indentations from paragraphs
-\frenchspacing                                         % Sometimes latex creates unnecessarily large spaces after dots, this helps to avoid it (puts single spaces at the end of sentences)
-\pagestyle{fancy}                                      % This allows to do fancy headers and footers
-\fancyhf{}                                             % No additional page numbering (or other stuff such as references)
-\cfoot{\thepage}                                       % Display page number at the bottom in the center
+\setlength{\parindent}{0pt}                               % Remove indentations from paragraphs
+\frenchspacing                                            % Sometimes latex creates unnecessarily large spaces after dots, this helps to avoid it (puts single spaces at the end of sentences)
+\pagestyle{fancy}                                         % This allows to do fancy headers and footers
+\fancyhf{}                                                % No additional page numbering (or other stuff such as references)
+\cfoot{\thepage}                                          % Display page number at the bottom in the center
 
 \rhead{\footnotesize{\MakeUppercase{The Topology of Robotic Configuration and Motion Planning}}}
-
 
 % Definition environment
 \theoremstyle{definition}
@@ -85,7 +87,7 @@
 
 
 % Title
-\title{The Topology of Robotic Configuration and Motion Planning\\
+\title{\textbf{The Topology of Robotic Configuration and Motion Planning}\\
 {\small \textsuperscript{*}The paper is written in scope of the independent study course with Dr. Eric Westlund.}}
 
 % Author
@@ -101,6 +103,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{abstract}
+\addcontentsline{toc}{section}{Abstract}
+
 \noindent This paper explores the topological approach to the problem
 of robot motion planning. Particularly, we will discuss
 the safe way to coordinate automated guided vehicles or AGVs.
@@ -725,9 +729,9 @@ with opposite sides identified.
     \caption*{Torus as a square with opposite sides identified.}
 \end{figure}
 
-The picture above shows the \textit{safe configuration space} which
-is the square minus the diagonal line. We can decompose this square into
-two ``semi-open" triangles and put them together to get a parallelogram.
+The picture above shows the safe configuration space which is the square
+minus the diagonal line. We can decompose this square into two ``semi-open"
+triangles and put them together to get a parallelogram.
 
 \begin{figure}[H]
     \centering
@@ -776,6 +780,13 @@ $R_2$ are freely transportable in the space $S^1$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\subsection*{\centering Motion on $Y$-shaped topological graph}
+\addcontentsline{toc}{subsection}{Motion on $Y$-shaped topological graph}
+
+Consider two robots $R_1$ and $R_2$ moving through the $Y$-shaped topological graph.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{center}
 \begin{thebibliography}{00}
     \bibitem{1} Adams C. and Fransoza R., ``Introduction to Topology'' (2008), p. 105.
@@ -794,6 +805,7 @@ $R_2$ are freely transportable in the space $S^1$.
     \bibitem{14} Adams C. and Fransoza R., ``Introduction to Topology'' (2008), p. 199.
     \bibitem{15} Mackevicius E., ``Configuration Spaces'' (2008), p. 9,\\\href{https://math.uchicago.edu/~may/VIGRE/VIGRE2009/REUPapers/Mackevicius.pdf}{https://math.uchicago.edu/~may/VIGRE/VIGRE2009/REUPapers/Mackevicius.pdf}.
 \end{thebibliography}
+\addcontentsline{toc}{section}{References}
 \end{center}
 
 \end{document}
