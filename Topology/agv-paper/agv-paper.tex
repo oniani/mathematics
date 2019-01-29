@@ -78,6 +78,12 @@
 \pagestyle{fancy}                                         % This allows to do fancy headers and footers
 \fancyhf{}                                                % No additional page numbering (or other stuff such as references)
 \cfoot{\thepage}                                          % Display page number at the bottom in the center
+\hypersetup{                                              % Nice-looking urls
+    colorlinks,
+    linkcolor={blue!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!50!black}
+}
 
 \rhead{\footnotesize{\MakeUppercase{The Topology of Robotic Configuration and Motion Planning}}}
 
@@ -678,7 +684,7 @@ intersection of the diagonal.
     \caption*{An attempt to connect two points from one side of the excluded diagonal to the other.}
 \end{figure}
 
-Thus, since the safe configuration space $SC$ is not path connected and by the definition of
+Thus, the safe configuration space $SC$ is not path connected and by the definition of
 free transportability, $R_1$ and $R_2$ are not freely transportable in $L$.
 
 \subsection*{\centering Motion on Circle $S^1$}
@@ -695,7 +701,7 @@ in all further correspondence. The picture below is the visualization of our app
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=8cm, height=5cm]{two-circles}
+    \includegraphics[width=10cm, height=5cm]{two-circles}
     \caption*{Figure A shows the first position of the circle and picture B the other one after sliding.}
 \end{figure}
 
@@ -717,8 +723,8 @@ with opposite sides identified.
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}[scale=1.5]
-        \draw [fill=gray] (0, 0) rectangle (2, 2);
-        \draw [black, very thick, dash pattern=on 2pt off 3pt] (0, 0) -- (2, 2);
+        \draw [thick, fill=gray] (0, 0) -- (2, 0) -- (2, 2) -- (0, 2) -- (0, 0);
+        \draw [black, thick, dash pattern=on 2pt off 3pt] (0, 0) -- (2, 2);
         \tikzset{arrows={-Triangle[angle=45:12pt, black, fill=black]}}
         \draw [thick] (0, 0) -- (1.2, 0);
         \draw [thick] (0, 2) -- (1.2, 2);
@@ -731,13 +737,15 @@ with opposite sides identified.
 
 The picture above shows the safe configuration space which is the square
 minus the diagonal line. We can decompose this square into two ``semi-open"
-triangles and put them together to get a parallelogram.
+(openness in the geometric context means exclusion, in this case we call
+the parallelogram ``semi-open" since two sides are excluded) triangles
+and put them together to get a parallelogram.
 
 \begin{figure}[H]
     \centering
-    \begin{tikzpicture}[scale=0.8]
+    \begin{tikzpicture}[scale=0.9]
     % Grey Filling
-    \draw [fill=gray] (0, 0) -- (3, 3) -- (6, 3) -- (3, 0);
+    \draw [draw=none, fill=gray] (0, 0) -- (3, 3) -- (6, 3) -- (3, 0);
     % Sides
     \draw [very thick, dash pattern=on 2pt off 3pt] (0, 0) -- (3, 3);
     \draw [thick] (3, 3) -- (6, 3);
@@ -766,7 +774,7 @@ to get an open annulus).
         \draw [very thick, fill=gray, dash pattern=on 2pt off 3pt] (0, 0) circle (1.85cm);
         \draw [very thick, fill=white, dash pattern=on 2pt off 3pt] (0, 0) circle (0.8cm);
         \draw [very thick] (0.8, 0) -- (1.85, 0);
-        \tikzset{arrows={-Triangle[angle=45:12pt, black, fill=black]}}
+        \tikzset{arrows={-Triangle[angle=45:12pt, black, fill=black]}};
         \draw [thick] (1.4, 0) -- (1.6, 0);
     \end{tikzpicture}
     \caption*{An open annulus.}
