@@ -16,6 +16,7 @@
 \usepackage{tikz}
 \usetikzlibrary{cd, arrows, decorations.markings}
 \usepackage{graphicx}
+\usepackage{rotating}
 \usepackage{pst-solides3d}
 \usepackage{xcolor}
 \usepackage{hyperref}
@@ -186,7 +187,7 @@ easy to see that the space of all possible configurations of the rotating rod is
 
 In other words, as the rod rotates, it creates the circle around itself
 with the radius equal to the length of the rod. This configuration space
-is also known to as $S^1$.
+is also known as $S^1$.
 
 \bigskip
 
@@ -465,8 +466,6 @@ a point with a coordinate $x_R$. The configuration space for this robot is
 $$C^1(L) = \{x_R \mid x_R \in L\} = L = L^1.$$
 
 with every point in the room being a unique configuration of the robot.
-The dimension of $C$ (in this case 1), is also called \textit{\textbf{degree(s) of freedom}}.
-In this case, the configuration space $C$ has 1 degree of freedom.
 
 \bigskip
 
@@ -538,7 +537,7 @@ of the interval $[0, l]$, put one interval as an $X$ axis and the other one as t
         % Square
         \draw (0, 0) -- (2, 0) -- (2, 2) -- (0, 2) -- (0, 0);
         % Diagonal
-        \draw [very thick, dotted] (0, 0) -- (2, 2);
+        \draw [very thick, dash pattern=on 2pt off 3pt] (0, 0) -- (2, 2);
         % Points
         \node [left] at (0, 2) {$l$};
         \node [right] at (2, 0) {$l$};
@@ -556,14 +555,14 @@ of the interval $[0, l]$, put one interval as an $X$ axis and the other one as t
         \node [left] at (0, 1.6) {$x_{R_2}$};
         \node at (1.6, 1.6) [circle, fill, inner sep=1.5pt]{};
         % 0.4, 0.4
-        \draw [very thick, dotted] (0, 0.4) -- (0.4, 0.4);
-        \draw [very thick, dotted] (0.4, 0) -- (0.4, 0.4);
+        \draw [very thick, dash pattern=on 2pt off 3pt] (0, 0.4) -- (0.4, 0.4);
+        \draw [very thick, dash pattern=on 2pt off 3pt] (0.4, 0) -- (0.4, 0.4);
         % 0.9, 0.9
-        \draw [very thick, dotted] (0, 0.9) -- (0.9, 0.9);
-        \draw [very thick, dotted] (0.9, 0) -- (0.9, 0.9);
+        \draw [very thick, dash pattern=on 2pt off 3pt] (0, 0.9) -- (0.9, 0.9);
+        \draw [very thick, dash pattern=on 2pt off 3pt] (0.9, 0) -- (0.9, 0.9);
         % 1.6, 1.6
-        \draw [very thick, dotted] (0, 1.6) -- (1.6, 1.6);
-        \draw [very thick, dotted] (1.6, 0) -- (1.6, 1.6);
+        \draw [very thick, dash pattern=on 2pt off 3pt] (0, 1.6) -- (1.6, 1.6);
+        \draw [very thick, dash pattern=on 2pt off 3pt] (1.6, 0) -- (1.6, 1.6);
     \end{tikzpicture}
     \caption*{The configuration space $C$ as a chunk of $XOY$ coordinate system.}
 \end{figure}
@@ -629,8 +628,8 @@ rest of the paper exploring the free transportability under various robotic conf
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section*{\centering Examples}
-\addcontentsline{toc}{section}{Examples}
+\section*{\centering Determining Free Transportability}
+\addcontentsline{toc}{section}{Determining Free Transportability}
 
 \subsection*{\centering Motion on Line $L$}
 \addcontentsline{toc}{subsection}{Motion on Line $L$}
@@ -790,8 +789,226 @@ $R_2$ are freely transportable in the space $S^1$.
 
 \subsection*{\centering Motion on $Y$-shaped topological graph}
 \addcontentsline{toc}{subsection}{Motion on $Y$-shaped topological graph}
-
 Consider two robots $R_1$ and $R_2$ moving through the $Y$-shaped topological graph.
+We, once again, model these AVGs as points moving through this space and denote the space by $Y$.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.5]
+        % Branches
+        \draw [very thick] (0, 0) -- (-5, 0);
+        \draw [very thick] (0, 0) -- (3, 4);
+        \draw [very thick] (0, 0) -- (3, -4);
+    \end{tikzpicture}
+    \caption*{$Y$-shaped topological graph.}
+\end{figure}
+
+The safe configuration space for this graph is $SC^2(Y) = Y \times Y - \Delta$ where $\Delta$ is the set
+of all points where the coordinate of $R_1$ is the same as that of $R_2$. Thus, $\Delta$ is the set of all
+points where we have a collision. With the picture we have now, it is very difficult to determine the free
+transportability of the robots in this space. Therefore, we first need to simplify this problem and deal
+with smaller sub-problems.
+
+\bigskip
+
+Notice that letter $Y$ is composed by putting three branches together. Let us use this fact and consider
+each of these three branches independently. For simplicity, we call these branches $\alpha$, $\beta$, and $\gamma$.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.5]
+        % Branches
+        \draw [very thick] (0, 0) -- (-5, 0);
+        \draw [very thick] (0, 0) -- (3, 4);
+        \draw [very thick] (0, 0) -- (3, -4);
+        % % Points
+        \node [above] at (-3, 0.25) {$\alpha$};
+        \node [below] at (2.75, 3) {$\beta$};
+        \node [below] at (1.25, -2.5) {$\gamma$};
+    \end{tikzpicture}
+    \caption*{$Y$-shaped topological graph with branches $\alpha$, $\beta$, and $\gamma$.}
+\end{figure}
+
+Then we can rewrite the safe configuration space $SC^2(Y)$ in terms of $\alpha$, $\beta$, and $\gamma$.
+
+$$SC^2(Y) = ((Y \times \alpha) - \Delta)) \cup ((Y \times \beta) - \Delta)) \cup ((Y \times \gamma) - \Delta)).$$
+
+We can now explore each of the subsets of $SC^2$ and then find the way to glue them together to obtain $SC^2(Y)$.
+
+\bigskip
+
+Without a loss of generality, let us consider the configuration space $(Y \times \alpha) - \Delta$.
+Notice that $Y$ is already a two-dimensional space. If we multiply it by $\alpha$ we are basically
+replicating $Y$ and putting the copies on top of it (think of how one calculates the volume of a cylinder).
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.5]
+        % Branches
+        \draw [very thick, fill=gray] (0, 0) -- (-5, 1) -- (-5, 6) -- (0, 5) -- (0, 0);
+        \draw [very thick, fill=gray] (0, 0) -- (0, 5) -- (4, 6) -- (4, 1) -- (0, 0);
+        \draw [very thick, fill=gray] (0, 0) -- (0, 5) -- (2, 3) -- (2, -2) -- (0, 0);
+        % Points
+        \node [above] at (-3, -0.5) {$\alpha$};
+        \node [below] at (3.25, 0.75) {$\beta$};
+        \node [below] at (0.5, -1) {$\gamma$};
+        \node [left] at (-5, 4) {$\alpha$};
+    \end{tikzpicture}
+    \caption*{$C^2(Y \times \alpha)$ configuration space.}
+\end{figure}
+
+Now, let us see how the safe configuration space $SC^2(Y \times \alpha)$ would look like.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.5]
+        % Branches
+        \draw [very thick, fill=gray] (0, 0) -- (-5, 1) -- (-5, 6) -- (0, 5) -- (0, 0);
+        \draw [very thick, fill=gray] (0, 0) -- (0, 5) -- (4, 6) -- (4, 1) -- (0, 0);
+        \draw [very thick, fill=gray] (0, 0) -- (0, 5) -- (2, 3) -- (2, -2) -- (0, 0);
+        % Points
+        \node [above] at (-3, -0.5) {$\alpha$};
+        \node [below] at (3.25, 0.75) {$\beta$};
+        \node [below] at (0.5, -1) {$\gamma$};
+        \node [left] at (-5, 4) {$\alpha$};
+        % Arrows
+        \draw [draw=none, decoration={markings, mark=at position 1 with
+            {\arrow[scale=2.25, >=stealth]{>}}}, postaction={decorate}] (0, 0) -- (-2.5, 0.5);
+        \draw [draw=none, decoration={markings, mark=at position 1 with
+            {\arrow[scale=2.25, >=stealth]{<<}}}, postaction={decorate}] (2, -2) -- (0.5, -0.5);
+        \draw [draw=none, decoration={markings, mark=at position 1 with
+            {\arrow[scale=2.25, >=stealth]{<<<}}}, postaction={decorate}] (4, 1) -- (2.4, 0.6);
+        % Diagonal
+        \draw [very thick, dash pattern=on 2pt off 3pt] (0, 0) -- (-5, 6);
+    \end{tikzpicture}
+    \caption*{$SC^2(Y \times \alpha)$ safe configuration space.}
+\end{figure}
+
+The picture above shows the safe configuration space for $C^2(Y \times \alpha)$.
+Notice that the square $\alpha \times \alpha$ is the case we already covered when
+we had a motion on the line $L$. The diagonal is the set of all points where robot
+$R_1$ and $R_2$ have the same coordinates and therefore we exclude it.
+Thus, the safe configuration space is really everything of $C^2(Y \times \alpha)$
+but the diagonal. The safe configuration space is therefore split into the isosceles
+right triangle formed by sides $\alpha$ and $\alpha$, and the rest which is shown on
+the picture.
+
+\bigskip
+
+It is easy to see that the rest of the cases are very similar to this.
+Here are safe configuration spaces for $C^2(Y \times \beta)$ and $C^2(Y \times \gamma)$.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.5]
+        % Branches
+        \draw [very thick, fill=gray] (0, 0) -- (-5, 1) -- (-5, 6) -- (0, 5) -- (0, 0);
+        \draw [very thick, fill=gray] (0, 0) -- (0, 5) -- (4, 6) -- (4, 1) -- (0, 0);
+        \draw [very thick, fill=gray] (0, 0) -- (0, 5) -- (2, 3) -- (2, -2) -- (0, 0);
+        % Points
+        \node [above] at (-3, -0.5) {$\alpha$};
+        \node [below] at (3.25, 0.75) {$\beta$};
+        \node [below] at (0.5, -1) {$\gamma$};
+        \node [left] at (-5, 4) {$\beta$};
+        % Arrows
+        \draw [draw=none, decoration={markings, mark=at position 1 with
+            {\arrow[scale=2.25, >=stealth]{>}}}, postaction={decorate}] (0, 0) -- (-2.5, 0.5);
+        \draw [draw=none, decoration={markings, mark=at position 1 with
+            {\arrow[scale=2.25, >=stealth]{<<}}}, postaction={decorate}] (2, -2) -- (0.5, -0.5);
+        \draw [draw=none, decoration={markings, mark=at position 1 with
+            {\arrow[scale=2.25, >=stealth]{<<<}}}, postaction={decorate}] (4, 1) -- (2.4, 0.6);
+        % Diagonal
+        \draw [very thick, dash pattern=on 2pt off 3pt] (0, 0) -- (2, 3);
+    \end{tikzpicture}
+    \qquad
+    \begin{tikzpicture}[scale=0.5]
+        % Branches
+        \draw [very thick, fill=gray] (0, 0) -- (-5, 1) -- (-5, 6) -- (0, 5) -- (0, 0);
+        \draw [very thick, fill=gray] (0, 0) -- (0, 5) -- (4, 6) -- (4, 1) -- (0, 0);
+        \draw [very thick, fill=gray] (0, 0) -- (0, 5) -- (2, 3) -- (2, -2) -- (0, 0);
+        % Points
+        \node [above] at (-3, -0.5) {$\alpha$};
+        \node [below] at (3.25, 0.75) {$\beta$};
+        \node [below] at (0.5, -1) {$\gamma$};
+        \node [left] at (-5, 4) {$\gamma$};
+        % Arrows
+        \draw [draw=none, decoration={markings, mark=at position 1 with
+            {\arrow[scale=2.25, >=stealth]{>}}}, postaction={decorate}] (0, 0) -- (-2.5, 0.5);
+        \draw [draw=none, decoration={markings, mark=at position 1 with
+            {\arrow[scale=2.25, >=stealth]{<<}}}, postaction={decorate}] (2, -2) -- (0.5, -0.5);
+        \draw [draw=none, decoration={markings, mark=at position 1 with
+            {\arrow[scale=2.25, >=stealth]{<<<}}}, postaction={decorate}] (4, 1) -- (2.4, 0.6);
+        % Diagonal
+        \draw [very thick, dash pattern=on 2pt off 3pt] (2, 3) -- (4, 6);
+    \end{tikzpicture}
+    \caption*{$SC^2(Y \times \beta)$ (to the left) and $SC^2(Y \times \gamma)$ (to the right) safe configuration spaces.}
+\end{figure}
+
+Notice that all three safe configuration spaces have arrows. Now, to get a safe configuration space for $C^2(Y \times Y)$,
+we take safe configuration spaces for $C^2(Y \times \alpha)$, $C^2(Y \times \beta)$, and $C^2(Y \times \gamma)$ and glue them
+together in the way that the arrows match (singles arrows match single arrows, double arrows match double arrows, and triple
+arrows match triple arrows). The picture below represents a safe configuration space $SC^2(Y \times Y)$ after the gluing is complete.
+
+\begin{figure}[H]
+    \centering
+    \begin{turn}{1}
+    \begin{tikzpicture}[scale=0.5]
+        % Petals
+        \draw [very thick, fill=gray] (0.5, 0) -- (6, 0) -- (8.5, -3) -- (3, -3) -- (0.5, 0);
+        \draw [very thick, fill=gray] (-0.5, 0) -- (-6, 0) -- (-8.5, -3) -- (-2, -3) -- (-0.5, 0);
+        \draw [very thick, fill=gray] (-0.5, 0) -- (-2, -3) -- (2, -6) -- (3, -3) -- (0.5, 0) -- (-0.5, 0);
+        \draw [very thick, fill=gray] (-6, 0) -- (-8, 3) -- (-2.5, 3) -- (-0.5, 0) -- (-6, 0);
+        \draw [very thick, fill=gray] (6, 0) -- (8, 3) -- (2.5, 3) -- (0.5, 0) -- (6, 0);
+        \draw [very thick, fill=gray] (-0.5, 0) -- (-2.5, 3) -- (-1.5, 6.5) -- (2.5, 3) -- (0.5, 0) -- (0.5, 0);
+        % Triangles
+        % 1
+        \draw [draw=none, very thick, fill=darkgray] (0.5, 0) -- (6, 0) -- (6, 2) -- (0.5, 0);
+        \draw [very thick, dash pattern=on 2pt off 3pt] (0.5, 0) -- (6, 2);
+        \draw [very thick] (6, 0) -- (6, 2);
+        \draw [very thick] (6, 2) -- (6, 0);
+        % 2
+        \draw [draw=none, very thick, fill=darkgray] (-0.5, 0) -- (-6, 0) -- (-6, 2) -- (-0.5, 0);
+        \draw [very thick, dash pattern=on 2pt off 3pt] (-0.5, 0) -- (-6, 2);
+        \draw [very thick] (-6, 0) -- (-6, 2);
+        \draw [very thick] (-6, 2) -- (-6, 0);
+        % 3
+        \draw [draw=none, very thick, fill=darkgray] (0.5, 0) -- (3, -3) -- (3, -1) -- (0.5, 0);
+        \draw [very thick, dash pattern=on 2pt off 3pt] (0.5, 0) -- (3, -1);
+        \draw [very thick] (3, -3) -- (3, -1);
+        \draw [very thick] (3, -3) -- (0.5, 0);
+        % 4
+        \draw [draw=none, very thick, fill=darkgray] (-0.5, 0) -- (-2, -3) -- (-2, -1) -- (-0.5, 0);
+        \draw [very thick, dash pattern=on 2pt off 3pt] (-0.5, 0) -- (-2, -1);
+        \draw [very thick] (-0.5, 0) -- (-2, -3);
+        \draw [very thick] (-2, -3) -- (-2, -1);
+        % 5
+        \draw [draw=none, very thick, fill=darkgray] (-0.5, 0) -- (-2.5, 3) -- (-2.5, 5) -- (-0.5, 0);
+        \draw [very thick, dash pattern=on 2pt off 3pt] (-2.5, 5) -- (-0.5, 0);
+        \draw [very thick] (-2.5, 3) -- (-2.5, 5);
+        \draw [very thick] (-0.5, 0) -- (-2.5, 3);
+        % 6
+        \draw [draw=none, very thick, fill=darkgray] (0.5, 0) -- (2.5, 3) -- (2.5, 5) -- (0.5, 0);
+        \draw [very thick, dash pattern=on 2pt off 3pt] (2.5, 5) -- (0.5, 0);
+        \draw [very thick] (2.5, 3) -- (0.5, 0);
+        \draw [very thick] (2.5, 5) -- (2.5, 3);
+        % The dot
+        \draw [white, fill=white] (0, 0) circle (9pt);
+        % Arrows
+        \draw [draw=none, decoration={markings, mark=at position 1 with
+            {\arrow[scale=2.25, >=stealth]{>}}}, postaction={decorate}] (-0.5, 0) -- (-3.75, 0);
+        \draw [draw=none, decoration={markings, mark=at position 1 with
+            {\arrow[scale=2.25, >=stealth]{<<}}}, postaction={decorate}] (2.5, 3) -- (1.5, 1.5);
+        \draw [draw=none, decoration={markings, mark=at position 1 with
+            {\arrow[scale=2.25, >=stealth]{>>>}}}, postaction={decorate}] (0.5, 0) -- (2.625, -2.5);
+    \end{tikzpicture}
+    \end{turn}
+    \caption*{$SC^2(Y \times Y)$ safe configuration space.}
+\end{figure}
+
+The empty hole in the middle corresponds to both robots being in the intersection of $\alpha$, $\beta$, and $\gamma$.
+Now, notice that this configuration space is path connected since every pair of points in $SC^2(Y \times Y)$ can be joined
+by a path in $SC^2(Y \times Y)$. Therefore, every configuration is attainable from every other one and thus, the AVGs
+$R_1$ and $R_2$ are freely transportable in $SC^2(Y \times Y)$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -799,19 +1016,19 @@ Consider two robots $R_1$ and $R_2$ moving through the $Y$-shaped topological gr
 \begin{thebibliography}{00}
     \bibitem{1} Adams C. and Fransoza R., ``Introduction to Topology'' (2008), p. 105.
     \bibitem{2} Adams C. and Fransoza R., ``Introduction to Topology'' (2008), pp. 105 -- 106.
-    \bibitem{3} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 76.
-    \bibitem{4} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 76.
+    \bibitem{3} Munkres J. R., ``Topology'', 2000, Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 76.
+    \bibitem{4} Munkres J. R., ``Topology'', 2000, Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 76.
     \bibitem{5} Thomas G. B., ``Thomas' Calculus" (2010), Thirteenth Edition, p. 77.
-    \bibitem{6} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 102.
-    \bibitem{7} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 105.
-    \bibitem{8} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 148.
-    \bibitem{9} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 155.
-    \bibitem{10} Basener W. F., ``Topology and Its Applications'' (2006), p. 65.
-    \bibitem{11} Munkres J. R., ``Topology'' (2000), Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 108.
+    \bibitem{6} Munkres J. R., ``Topology'', 2000, Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 102.
+    \bibitem{7} Munkres J. R., ``Topology'', 2000, Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 105.
+    \bibitem{8} Munkres J. R., ``Topology'', 2000, Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 148.
+    \bibitem{9} Munkres J. R., ``Topology'', 2000, Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 155.
+    \bibitem{10} Basener W. F., ``Topology and Its Applications'', 2006, p. 65.
+    \bibitem{11} Munkres J. R., ``Topology'', 2000, Second Edition, Upper Saddle River, NJ: Prentice Hall., p. 108.
     \bibitem{12} Lynch K. and Park F., ``Modern Robotics: Mechanics, Planning, and Control'', Chapter 2.1, \href{https://youtube.com/watch?v=z29hYlagOYM}{https://youtube.com/watch?v=z29hYlagOYM}.
-    \bibitem{13} Adams C. and Fransoza R., ``Introduction to Topology'' (2008), p. 199.
-    \bibitem{14} Adams C. and Fransoza R., ``Introduction to Topology'' (2008), p. 199.
-    \bibitem{15} Mackevicius E., ``Configuration Spaces'' (2008), p. 9,\\\href{https://math.uchicago.edu/~may/VIGRE/VIGRE2009/REUPapers/Mackevicius.pdf}{https://math.uchicago.edu/~may/VIGRE/VIGRE2009/REUPapers/Mackevicius.pdf}.
+    \bibitem{13} Adams C. and Fransoza R., ``Introduction to Topology'', 2008, p. 199.
+    \bibitem{14} Adams C. and Fransoza R., ``Introduction to Topology'', 2008, p. 199.
+    \bibitem{15} Mackevicius E., ``Configuration Spaces'', 2008, p. 9,\\\href{https://math.uchicago.edu/~may/VIGRE/VIGRE2009/REUPapers/Mackevicius.pdf}{https://math.uchicago.edu/~may/VIGRE/VIGRE2009/REUPapers/Mackevicius.pdf}.
 \end{thebibliography}
 \addcontentsline{toc}{section}{References}
 \end{center}
