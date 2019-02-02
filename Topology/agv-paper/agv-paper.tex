@@ -113,16 +113,16 @@
 \addcontentsline{toc}{section}{Abstract}
 
 \noindent This paper explores the topological approach to the problem
-of robot motion planning. Particularly, we will discuss
-the safe way to coordinate automated guided vehicles or AGVs.
-AGVs are mobile robots which are used extensively in manufacturing
-facilities. Since these robots are costly and cannot tolerate collisions,
-one of the biggest challenges in designing such facility is setting up
-mobile robot routes to achieve the safe and efficient coordination of robots.
-The tools and concepts of topology are naturally employed in this planning
-process. This paper follows the bottom-up approach by first introducing
-concepts and then building up on these ideas. It does not assume any background
-neither in topology nor in robotics and is therefore accessible to most undergraduate
+of robot motion planning. Particularly, we will discuss the safe way
+to coordinate automated guided vehicles or AGVs. AGVs are mobile robots
+which are used extensively in manufacturing facilities. Since these robots
+are costly and cannot tolerate collisions, one of the biggest challenges
+in designing such facility is setting up mobile robot routes to achieve
+the safe and efficient coordination of robots. The tools and concepts of
+topology are naturally employed in this planning process. This paper
+follows the bottom-up approach by first introducing concepts and then
+building upon these ideas. It does not assume any background neither in
+topology nor in robotics and is therefore accessible to most undergraduate
 mathematics students with the knowledge of set theory.
 \end{abstract}
 
@@ -138,25 +138,28 @@ mathematics students with the knowledge of set theory.
 \addcontentsline{toc}{section}{Configuration Spaces}
 
 We shall start by introducing the notion of configuration spaces.
-The idea of configuration spaces come from physics. In classical mechanics,
-the configuration space is the vector space defined by the generalized
-coordinates (coordinates that describe the configuration of the physical system).
-Put it simply, the configuration space is the set of all possible states that
-could exist in the physical system. For instance, the configuration space of some
-particle in the room is the set of all points/states of the type $(x, y, z)$ where
-$x, y$ and $z$ are the coordinates bounded by the room. If the room is a $3 \times 3 \times 3$
+The idea of configuration spaces comes from physics. In classical
+mechanics, the configuration space is the vector space defined by
+the generalized coordinates (coordinates that describe the configuration
+of the physical system). Put it simply, the configuration space is
+the set of all possible states that could exist in the physical system.
+For instance, the configuration space of some particle in the room is
+the set of all points/states of the type $(x, y, z)$ where $x, y$ and $z$
+are the coordinates bounded by the room. If the room is a $3 \times 3 \times 3$
 cube then we define the configuration space of the particle by
 $$C^3(\text{room}) = \{(x, y, z) \mid 0 \leq x, y, z \leq 3\}.$$
-In other words, the configuration space of the particle, is all of $3 \times 3 \times 3$ cube
-(this example obviously assumes that the particle is allowed to move freely in the room).
-The configuration space of the same particle in a spherical room, however, would be the set of all
+In other words, the configuration space of the particle, is all of
+$3 \times 3 \times 3$ cube (this example obviously assumes that the
+particle is allowed to move freely in the room). The configuration space
+of the same particle in a spherical room, however, would be the set of all
 points that are in a sphere.
 
 \bigskip
 
-It appears that the physical notion of configuration spaces is very much connected to that of mathematics.
-In fact, the idea is the same but rather generalized. To better understand configuration spaces, let us
-first go through several \textit{classic} examples.
+It appears that the physical notion of configuration spaces is very much
+connected to that of mathematics. In fact, the idea is the same but rather
+generalized. To better understand configuration spaces, let us first go
+through several \textit{classic} examples.
 
 \bigskip
 
@@ -430,7 +433,7 @@ $$
 h(x) = 
 \begin{cases}
 f(\frac{x}{2}) \mbox{ if } 0 \leq x \leq \frac{1}{2}\\
-f(\frac{x}{2} + \frac{1}{2}) \mbox{ if } \frac{1}{2} \leq x \leq 1.
+f(\frac{x}{2} + \frac{1}{2}) \mbox{ if } \frac{1}{2} < x \leq 1.
 \end{cases}
 $$
 The according to the \cite{11} \textbf{the pasting lemma},
@@ -504,7 +507,7 @@ where $(x_{R_{1, 1}}, x_{R_{1, 1}}, \dots, x_{R_{1, k}})$ is the coordinate of $
 \addcontentsline{toc}{section}{Safe Robotic Configurations}
 
 At this point, we have enough machinery to understand safe robotic configurations.
-Let us model each robot with a point that moves through a topological space represeting
+Let us model each robot with a point that moves through a topological space representing
 the robot routes in the factory.
 
 \bigskip
