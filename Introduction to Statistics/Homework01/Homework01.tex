@@ -255,7 +255,7 @@ The percent increase would be better. Because it would also show us the how the 
 \item[1.27]
 \begin{itemize}
 \item[(a)]
-The bar chart will like this:
+The bar chart will look like this:
 
 \begin{center}
     \begin{tikzpicture}
@@ -278,11 +278,13 @@ The bar chart will like this:
     \end{tikzpicture}
 \end{center}
 
+Notice that $0, 0.2, 0.4, 0.6, 0.8, 1, 1.2$ are all times $10^4$.
+
 \item[]
 
 \item[(b)]
 We would need to know how many people died from other causes since one cannot
-construct a pie chart without knowing what is the ``whole picture''.
+construct a pie chart without knowing what is the ``whole picture.''
 \end{itemize}
 
 \item[]
@@ -365,34 +367,43 @@ The center will be at $2$ (there are $37$ datapoints in total and the $18^{\text
 Variability is from $0.1$ to $17.6$. The US ($17.6$) and Canada ($14.6$) are the outliers.
 \end{itemize}
 
-\item[]
-\item[]
+\newpage
 
 \item[1.38]
 \begin{itemize}
 \item[(a)]
 They mean that there were no improvements at all and that the task completion time worsened.
+
 \item[]
 
 \item[(b)]
-The stemplot looks like:
+The back-to-back stemplot looks like this:
 \item[]
 \item[]
 \begin{tabular}{r | *{1}{c} | *{1}{c}}
-    Control & Stem & Treatment\\
-    821 & -0 & 111\\
-    998876665444322 & 0 & 577778\\
-    41 & 1 & 223348\\
-    2 & 2 & 12448\\
-      & 3 & 3
+    Treatment & & Control\\
+     & -0 & 8\\
+    1 2 2 & -0 & 3 1\\
+     & 0 & 5 5 6 7 7 8 9 9 9 9\\
+    8 8 8 7 7 6 & 0 & 2 3 3 4 4\\
+    4 3 3 3 2 & 1 & 5\\
+    8 & 1 & 1\\
+    4 4 2 1 & 2 & 3\\
+    8 & 2 & 3\\
+    3 & 3 &\\
 \end{tabular}
+\item[]
+\item[]
+Note that numbers like 85 are rounded to 90. In other words, anything that ends with 0, 1, 2, 3, 4
+gets rounded DOWN  to 0 and anything that ends with 5, 6, 7, 8, 9 is rounded UP to 0.
 \item[]
 \item[]
 
 \item[(c)]
-The midpoint for treatment is $60$ and the midpoint for control is $120$.
-Yes. The treatment has the median of $21$ while the control has the median of $60$.
-
+The midpoint for treatment is $130$ and the midpoint for control is $90$.
+No, it does not seem so. This since $130 > 90$. Hence, control group did better.
+This is still somewhat inaccurate estimate since the problem gives us a median
+without saying whether the previous distribution was skewed or symmetric.
 \end{itemize}
 \item[]
 \item[]
