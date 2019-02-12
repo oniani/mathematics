@@ -1,0 +1,153 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+
+
+\usepackage{adjustbox}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{tikz}
+
+\usepackage{textcomp}
+\usepackage{soul}
+
+\usepackage[hidelinks]{hyperref}
+\pgfplotsset{width=7.5cm,compat=1.12}
+\usepgfplotslibrary{fillbetween}
+\usepackage[makeroom]{cancel}
+\title{\bf{Homework \textnumero 1}}
+\author{Author: David Oniani
+\\
+\ \ \ Instructor: Dr. Eric Westlund}
+\date{February 12, 2019}
+
+\usepackage{listings}
+\usepackage{color}
+
+%%%%%%%%%%%%%%% S E T S %%%%%%%%%%%%%%%
+\newcommand{\nats}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\irrats}{\mathbb{I}}
+
+\newcommand{\pnats}{\mathbb{N}^+}
+\newcommand{\pints}{\mathbb{Z}^+}
+\newcommand{\prats}{\mathbb{Q}^+}
+\newcommand{\preals}{\mathbb{R}^+}
+\newcommand{\nreals}{\mathbb{R}^-}
+
+\newcommand{\nints}{\mathbb{Z}^-}
+\newcommand{\nrats}{\mathbb{Q}^-}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Calligraphy
+\newcommand\und[1]{\underline{\smash{#1}}}
+
+% Operators
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% Other
+\newcommand{\rarr}{\rightarrow}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+backgroundcolor=\color{backcolour},
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=left,
+numberstyle=\normalsize\color{gray},
+keywordstyle=\color{blue},
+commentstyle=\color{dkgreen},
+stringstyle=\color{mauve},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=4
+}
+
+
+\begin{document}
+\maketitle
+
+\begin{itemize}
+\item[3.4]
+\begin{itemize}
+\item[(a)]
+$C$ is the mean and $B$ is the median (since the distribution is right-skewed).
+
+\item[]
+
+\item[(b)]
+$B$ is both the mean and the median (since the distribution is symmetric).
+
+\item[]
+
+\item[(c)]
+$A$ is the mean and $B$ is the median (since the distribution is left-skewed).
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[3.6]
+\begin{itemize}
+\item[(a)]
+The area for $99.7\%$ corresponds to the three standard deviations and therefore, the range for lengths
+that cover almost all $(99.7\%)$ of this distribution is from $35.8 - 3 \times 2.1$
+to $35.8 + 3 \times 2.1$. That is the range from $29.5$ to $42.1$.
+
+\item[]
+
+\item[(b)]
+Notice that $33.7 = 35.8 - 2.1$. Therefore, the datapoint is located one deviation to the left from the center.
+Hence, we got that $\dfrac{32}{2}\% = 16\%$ of women over $20$ have the arm length less than $33.7$cm.
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[3.7]
+\begin{itemize}
+\item[(a)]
+According to the $68 - 95 - 99.7$ rule, it will be between
+$852 - 2 \times 82$ and $852 + 2 \times 82$. That is,
+between $688$ and $1016$.
+
+\item[]
+
+\item[(b)]
+According to the $68 - 95 - 99.7$ rule, it will be
+$852 - 2 \times 82 = 688$ (this is since $95\%$ leaves
+us with $2.5\%$ on both sides and we need the left one).
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[3.8]
+$z_{\text{Idonna}} = \dfrac{x - \mu}{\sigma} = \dfrac{670 - 514}{118} = 1.32$\\\\
+$z_{\text{Jonathan}} = \dfrac{x - \mu}{\sigma} = \dfrac{26 - 20.9}{5.3} = 0.96$\\\\
+Since $z_{\text{Idonna}} > z_{\text{Jonathan}} (1.32 > 0.96)$, it appears that Idonna did better.
+
+\newpage
+
+\item[3.10]
+
+
+\end{itemize}
+
+\end{document}
