@@ -9,6 +9,7 @@
 \usepackage{amsthm}
 
 \usepackage{pgfplots}
+\usepackage{pst-func, pstricks-add}
 \usepackage{listings}
 \usepackage{color}
 \usepackage{tikz}
@@ -20,7 +21,7 @@
 \pgfplotsset{width=7.5cm,compat=1.12}
 \usepgfplotslibrary{fillbetween}
 \usepackage[makeroom]{cancel}
-\title{\bf{Homework \textnumero 1}}
+\title{\bf{Homework \textnumero 3}}
 \author{Author: David Oniani
 \\
 \ \ \ Instructor: Dr. Eric Westlund}
@@ -146,7 +147,297 @@ Since $z_{\text{Idonna}} > z_{\text{Jonathan}} (1.32 > 0.96)$, it appears that I
 \newpage
 
 \item[3.10]
+\begin{itemize}
+\pgfmathdeclarefunction{gauss}{2}{%
+    \pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
+}
 
+\item[(a)]
+From the Table A, we get that the value for for $z = -0.76$ is $0.2236$.
+This means that $22.36\%$ area will be covered to the left of the
+point $-0.76$.
+\item[]
+\item[]
+\item[]
+\begin{tikzpicture}
+\begin{axis}[
+  no markers, domain=-5:5, samples=1000,
+  axis lines*=left,
+  every axis y label/.style={at=(current axis.above origin),anchor=south},
+  every axis x label/.style={at=(current axis.right of origin),anchor=west},
+  height=5cm, width=12cm,
+  xtick={-0.76}, ytick=\empty,
+  enlargelimits=false, clip=false, axis on top,
+  grid = major
+  ]
+  \addplot [fill=blue!20, draw=none, domain=-5:-0.76] {gauss(0,1)} \closedcycle;
+  \addplot [very thick,blue!50!black] {gauss(0,1)};
+\end{axis}
+\end{tikzpicture}
+
+\item[]
+
+\item[(b)]
+From the Table A, we get that the value for for $z = -0.76$ is $0.2236$.
+This means that $22.36\%$ area will be covered to the left of the
+point $-0.76$ leaving $100\% - 22.36\% = 77.64\%$ to the right.
+\item[]
+\item[]
+\item[]
+\begin{tikzpicture}
+\begin{axis}[
+  no markers, domain=-5:5, samples=1000,
+  axis lines*=left,
+  every axis y label/.style={at=(current axis.above origin),anchor=south},
+  every axis x label/.style={at=(current axis.right of origin),anchor=west},
+  height=5cm, width=12cm,
+  xtick={-0.76}, ytick=\empty,
+  enlargelimits=false, clip=false, axis on top,
+  grid = major
+  ]
+  \addplot [fill=blue!20, draw=none, domain=-0.76:5] {gauss(0,1)} \closedcycle;
+  \addplot [very thick,blue!50!black] {gauss(0,1)};
+\end{axis}
+\end{tikzpicture}
+
+\item[]
+
+\item[(c)]
+From the Table A, we get that the value for for $z = 1.45$ is $0.9265$.
+This means that $92.65\%$ area will be covered to the left of the
+point $1.45$.
+\item[]
+\item[]
+\item[]
+\begin{tikzpicture}
+    \begin{axis}[
+      no markers, domain=-5:5, samples=1000,
+      axis lines*=left,
+      every axis y label/.style={at=(current axis.above origin),anchor=south},
+      every axis x label/.style={at=(current axis.right of origin),anchor=west},
+      height=5cm, width=12cm,
+      xtick={1.45}, ytick=\empty,
+      enlargelimits=false, clip=false, axis on top,
+      grid = major
+      ]
+      \addplot [fill=blue!20, draw=none, domain=-5:1.45] {gauss(0,1)} \closedcycle;
+      \addplot [very thick,blue!50!black] {gauss(0,1)};
+    \end{axis}
+\end{tikzpicture}
+
+\newpage
+
+\item[(d)]
+From the Table A, we get that the value for for $z = -0.76$ is $0.2236$
+and for $z = 1.45$ is $0.9265$. Therefore, we shade the region in-between
+$-0.76$ and $1.45$ and get the total area in percentages
+equal to $(0.9265 - 0.2236) \times 100\% = 70.30\%$.
+\item[]
+\item[]
+\item[]
+\begin{tikzpicture}
+    \begin{axis}[
+      no markers, domain=-5:5, samples=1000,
+      axis lines*=left,
+      every axis y label/.style={at=(current axis.above origin),anchor=south},
+      every axis x label/.style={at=(current axis.right of origin),anchor=west},
+      height=5cm, width=12cm,
+      xtick={-0.76, 1.45}, ytick=\empty,
+      enlargelimits=false, clip=false, axis on top,
+      grid = major
+      ]
+      \addplot [fill=blue!20, draw=none, domain=-0.76:1.45] {gauss(0,1)} \closedcycle;
+      \addplot [very thick,blue!50!black] {gauss(0,1)};
+    \end{axis}
+\end{tikzpicture}
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[3.11]
+\begin{itemize}
+\item[(a)]
+$z = \dfrac{x - \mu}{\sigma} = \dfrac{697 - 852}{82} = -1.89$.
+From the Table A, we have that the standard normal cumulative
+proportion is $0.0294$ which in percentages, is $0.0294 \times 100 \% = 2.94 \%$.
+Therefore, we have that in $2.94 \%$ of all years, India will have 697 mm or less monsoon rain.
+\item[]
+
+\item[(b)]
+$z$ for $683$ is $\dfrac{683 - 852}{82} = -2.06$.\\\\
+$z$ for $1022$ is $\dfrac{1022 - 852}{82} = 2.07$\\\\
+We now look at the Table $A$ and find that for $z = -2.06$,
+the standard normal cumulative proportion value is $0.0197$
+and for $z = 2.07$, $0.9808$. Finally, we get that
+$(0.9808 - 0.0197) \times 100 \% = 96.11 \%$ of all years,
+the rainfall is ``normall,'' or between $683$mm and $1022$mm.
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[3.14]
+\begin{itemize}
+\item[(a)]
+Since the distribution is normal, its mean and median are equal.
+Therefore, $M = \overline{x} = 25.3$. To calculate the IQR,
+we need $Q_1$ and $Q_3$. To calculate $Q_1$, we look at
+the Table A to find the value closest to $0.25$. It
+appears to be $0.2514$ which corresponds to $z = -0.67$.
+For $Q_3$, we find the value closest to $0.75$ which
+turns out to be $z = 0.67$ (it makes sense since
+these two points must match if we fold the graph
+across the $y - \text{axis}$). Finally, we have
+that $Q_1 = -0.67\sigma = -0.67 \times 6.5 = -4.355$,
+$Q_2 = 0.67\sigma = 0.67 \times 6.5 = 4.355$, and $\text{IQR} = 0.67\sigma - (-0.67\sigma) = 1.34\sigma = 1.34 \times 6.5 = 8.71$
+
+\item[]
+
+\item[(b)]
+We will first need to find a values close to $0.10$. It appears
+to be $0.1003$ for $z = -1.28$. Since the normal distribution
+is \und{perfectly} symmetric, value close to $0.90$ will be
+$z = 1.28$ (one can verify this by looking up the value in the Table A). Therefore, we have that the interval is $(-1.28, 1.28)$.
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[3.28]
+\begin{itemize}
+\pgfmathdeclarefunction{gauss}{2}{%
+    \pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
+}
+
+\item[(a)]
+From the Table A, we get that the value for for $z = -2.15$ is $0.0158$.
+This means that $1.58\%$ area will be covered to the left of the
+point $-2.15$.
+\item[]
+\item[]
+\item[]
+\begin{tikzpicture}
+\begin{axis}[
+  no markers, domain=-5:5, samples=1000,
+  axis lines*=left,
+  every axis y label/.style={at=(current axis.above origin),anchor=south},
+  every axis x label/.style={at=(current axis.right of origin),anchor=west},
+  height=5cm, width=12cm,
+  xtick={-2.15}, ytick=\empty,
+  enlargelimits=false, clip=false, axis on top,
+  grid = major
+  ]
+  \addplot [fill=blue!20, draw=none, domain=-5:-2.15] {gauss(0,1)} \closedcycle;
+  \addplot [very thick,blue!50!black] {gauss(0,1)};
+\end{axis}
+\end{tikzpicture}
+
+\item[]
+
+\item[(b)]
+From the Table A, we get that the value for for $z = -2.15$ is $0.0158$.
+This means that $1.58\%$ area will be covered to the left of the
+point $-2.15$ leaving $100\% - 1.58\% = 98.42\%$ to the right.
+\item[]
+\item[]
+\item[]
+\begin{tikzpicture}
+\begin{axis}[
+  no markers, domain=-5:5, samples=1000,
+  axis lines*=left,
+  every axis y label/.style={at=(current axis.above origin),anchor=south},
+  every axis x label/.style={at=(current axis.right of origin),anchor=west},
+  height=5cm, width=12cm,
+  xtick={-2.15}, ytick=\empty,
+  enlargelimits=false, clip=false, axis on top,
+  grid = major
+  ]
+  \addplot [fill=blue!20, draw=none, domain=-2.15:5] {gauss(0,1)} \closedcycle;
+  \addplot [very thick,blue!50!black] {gauss(0,1)};
+\end{axis}
+\end{tikzpicture}
+
+\item[]
+
+\item[(c)]
+From the Table A, we get that the value for for $z = 1.57$ is $0.9418$.
+This means that $94.18\%$ area will be covered to the left of the
+point $1.45$ leaving $100 - 94.18 = 5.82\%$ to the left.
+\item[]
+\item[]
+\item[]
+\begin{tikzpicture}
+    \begin{axis}[
+      no markers, domain=-5:5, samples=1000,
+      axis lines*=left,
+      every axis y label/.style={at=(current axis.above origin),anchor=south},
+      every axis x label/.style={at=(current axis.right of origin),anchor=west},
+      height=5cm, width=12cm,
+      xtick={1.57}, ytick=\empty,
+      enlargelimits=false, clip=false, axis on top,
+      grid = major
+      ]
+      \addplot [fill=blue!20, draw=none, domain=1.57:5] {gauss(0,1)} \closedcycle;
+      \addplot [very thick,blue!50!black] {gauss(0,1)};
+    \end{axis}
+\end{tikzpicture}
+
+\newpage
+
+\item[(d)]
+From the Table A, we get that the value for for $z = -2.15$ is $0.0158$
+and for $z = 1.57$ is $0.9418$. Therefore, we shade the region in-between
+$-2.15$ and $1.57$ and get the total area in percentages
+equal to $(0.9418 - 0.0158) \times 100\% = 92.6\%$.
+\item[]
+\item[]
+\item[]
+\begin{tikzpicture}
+    \begin{axis}[
+      no markers, domain=-5:5, samples=1000,
+      axis lines*=left,
+      every axis y label/.style={at=(current axis.above origin),anchor=south},
+      every axis x label/.style={at=(current axis.right of origin),anchor=west},
+      height=5cm, width=12cm,
+      xtick={-2.15, 1.57}, ytick=\empty,
+      enlargelimits=false, clip=false, axis on top,
+      grid = major
+      ]
+      \addplot [fill=blue!20, draw=none, domain=-2.15:1.57] {gauss(0,1)} \closedcycle;
+      \addplot [very thick,blue!50!black] {gauss(0,1)};
+    \end{axis}
+\end{tikzpicture}
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[3.30]
+\begin{itemize}
+\item[(a)]
+First, let's find the $z$-value. We have, $z = \dfrac{0.6 - 0.8}{0.078} \approx -2.56$. From the Table A,\\
+\vspace{0.05cm}
+\\
+we get that this value corresponding to $z = -2.56$ is $0.0052$. Then since this value shows us proportion to the left of the normal distribution, we got that $0.0052$ is the proportion of flies that have thorax length less than 0.6mm.
+
+\item[]
+
+\item[(b)]
+First, let's find the $z$-value. We have, $z = \dfrac{0.9 - 0.8}{0.078} \approx 1.28$. From the Table A, we\\
+\vspace{0.05cm}
+\\
+get that this value corresponding to $z = 1.28$ is $0.8997$. Then since this value shows us proportion to the left of the normal distribution,
+we got that $1 - 0.8997 = 0.1003$ is the proportion of flies that have thorax length greater than 0.9mm.
+
+\item[]
+
+\item[(c)]
+The $z$-value for $0.6$ is $2.56$ and for $0.9$ is $1.28$.
+From the Table A, we get that the proportion for $z = 0.6$ is $0.0052$
+and for $z = 0.9$ is $0.8997$. The proportion in-between is
+$0.8997 - 0.0052 = 0.8945$.
+\end{itemize}
 
 \end{itemize}
 
