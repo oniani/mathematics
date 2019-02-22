@@ -1,0 +1,247 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+
+
+\usepackage{adjustbox}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage{multirow}
+
+\usepackage{textcomp}
+\usepackage{soul}
+
+\usepackage[hidelinks]{hyperref}
+\pgfplotsset{width=7.5cm,compat=1.12}
+\usepgfplotslibrary{fillbetween}
+\usepackage[makeroom]{cancel}
+\title{\bf{Homework \textnumero 6}}
+\author{Author: David Oniani
+\\
+\ \ \ Instructor: Dr. Eric Westlund}
+\date{February 24, 2019}
+
+\usepackage{listings}
+\usepackage{color}
+
+%%%%%%%%%%%%%%% S E T S %%%%%%%%%%%%%%%
+\newcommand{\nats}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\irrats}{\mathbb{I}}
+
+\newcommand{\pnats}{\mathbb{N}^+}
+\newcommand{\pints}{\mathbb{Z}^+}
+\newcommand{\prats}{\mathbb{Q}^+}
+\newcommand{\preals}{\mathbb{R}^+}
+\newcommand{\nreals}{\mathbb{R}^-}
+
+\newcommand{\nints}{\mathbb{Z}^-}
+\newcommand{\nrats}{\mathbb{Q}^-}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Calligraphy
+\newcommand\und[1]{\underline{\smash{#1}}}
+
+% Operators
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% Other
+\newcommand{\rarr}{\rightarrow}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+backgroundcolor=\color{backcolour},
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=left,
+numberstyle=\normalsize\color{gray},
+keywordstyle=\color{blue},
+commentstyle=\color{dkgreen},
+stringstyle=\color{mauve},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=4
+}
+
+
+\begin{document}
+\maketitle
+
+\begin{itemize}
+\item[6.1]
+\begin{itemize}
+\item[(a)]
+It describes $736 + 450 + 193 + 205 + 144 + 80 = 1808$ people.\\
+Of 1808 people, $736 + 450 + 193 = 1379$ played video games.
+
+\item[]
+
+\item[(b)]
+As and Bs would be $\dfrac{736 + 205}{1808} \approx 0.5204$ which is $52.04\%$.\\\\
+Cs would be $\dfrac{450 + 144}{1808} \approx 0.3285$ which is $32.85\%$.\\\\
+Ds and Fs would be $\dfrac{193 + 80}{1808} \approx 0.1509$ which is $15.09\%$.
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[6.3]
+From the exercise 6.1, we know that there are 1379 players in total.
+Then we have:\\\\
+$\dfrac{736}{1379} \approx 0.5337 \text{ which is } 53.37\% \text{ got As or Bs}.$\\\\
+$\dfrac{450}{1379} \approx 0.3263 \text{ which is } 32.63\% \text{ got Cs}.$\\\\
+$\dfrac{193}{1379} \approx 0.1399 \text{ which is } 13.99\% \text{got Ds and Fs}$.
+
+\item[]
+\item[]
+
+\item[6.5]
+We just have to solve a system of linear equations shown below.
+$$
+\begin{cases}
+a + b = 50\\
+c + d = 50\\
+a + c = 60\\
+b + d = 40\\
+\end{cases}
+$$
+Let's pick $a = 20$. Then from the first equation, we get $b = 50 - 20 = 30$.
+From the third equation, we get $c = 60 - a = 60 - 20 = 40$. And from the fourth equation,
+we get $d = 40 - b = 40 - 30 = 10$. At last, we got the solution which is a four-tuple
+$(a = 20, b = 30, c = 40, d = 10)$.\\\\
+We can now pick a different value for $a$. Say $a = 50$. Then From the first equation,
+we get $b = 50 - 50 = 0$. From the third equation, we get $c = 60 - a = 60 - 50 = 10$.
+And from the fourth equation we get $d = 40 - b = 40 - 0 = 40$. In this case, our solution
+is a different four-tuple which is $(a = 50, b = 0, c = 10, d = 40)$\\\\
+At last, we indeed have gotten two different sets which are $a = 20, b = 30, c = 40, d = 10$
+and $a = 50, b = 0, c = 10, d = 40$.
+
+\item[]
+\item[]
+
+\item[6.6]
+\begin{itemize}
+\item[(a)]
+Alex Brailsford made $\dfrac{15 + 5}{15 + 15 + 5 + 15} \times 100\%= \dfrac{20}{50} \times 100\% = 40\%$ of all field goals.\\\\
+Rickie Jackson made $\dfrac{30 + 65}{30 + 29 + 65 + 130} \times 100\%= \dfrac{95}{254} \times 100\% \approx 37.4\%$ of all field goals.
+
+\item[]
+
+\item[(b)]
+Alex Brailsford made $\dfrac{15}{15 + 15} \times 100\%= \dfrac{15}{30} \times 100\% = 50\%$ of all two-point field goals.\\\\
+Alex Brailsford made $\dfrac{5}{5 + 15} \times 100\%= \dfrac{5}{20} \times 100\% = 25\%$ of all two-point field goals.\\\\\\
+Rickie Jackson made $\dfrac{30}{30 + 29} \times 100\%= \dfrac{30}{59} \times 100\% \approx 50.8\%$ of all two-point field goals.\\\\
+Rickie Jackson made $\dfrac{65}{65 + 130} \times 100\%= \dfrac{65}{195} \times 100\% \approx 33.3\%$ of all two-point field goals.
+
+\item[]
+
+\item[(c)]
+This is due to Simpson's paradox which implies that am association or comparison
+that holds for all several groups can \und{reverse} direction when the data are
+combined to form a single group.
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[20.]
+\textbf{\und{Marital Status}}\\
+There would be $\dfrac{4938}{39648} \times 100\% \approx 12.45\%$ for singles.\\\\
+There would be $\dfrac{28132}{39648} \times 100\% \approx 70.95\%$ for married.\\\\
+There would be $\dfrac{5923}{39648} \times 100\% \approx 14.93\%$ for divorced.\\\\
+There would be $\dfrac{655}{39648} \times 100\% \approx 1.65\%$ for widowed.\\\\
+The percentages add up to $99.98\%$ and not to $100\%$ due to the roundoff errors.
+\\\\
+\textbf{\und{Income}}\\
+There would be $\dfrac{1918}{39648} \times 100\% \approx 4.83\%$ for singles.\\\\
+There would be $\dfrac{20932}{39648} \times 100\% \approx 52.79\%$ for married.\\\\
+There would be $\dfrac{10750}{39648} \times 100\% \approx 27.11\%$ for divorced.\\\\
+There would be $\dfrac{6048}{39648} \times 100\% \approx 15.25\%$ for widowed.\\\\
+The percentages add up to $99.98\%$ and not to $100\%$ due to the roundoff errors.
+
+\item[]
+\item[]
+
+\item[6.21]
+Percent of single men with no income is $\dfrac{513}{4938} \times 100\% \approx 10.39\%$.\\
+Percent of men with no income that are single is $\dfrac{513}{1918} \times 100\% \approx 26.75\%$.
+
+\item[]
+\item[]
+
+\item[6.22]
+$\dfrac{513}{4938} \times 100\% \approx 10.39\%$ for men with no income.\\\\
+$\dfrac{3323}{4938} \times 100\% \approx 67.29\%$ for men with income in range $\$1 - \$49, 999$.\\\\
+$\dfrac{814}{4938} \times 100\% \approx 16.48\%$ for men with income in range $\$50, 000 - \%99, 999$.\\\\
+$\dfrac{288}{4938} \times 100\% \approx 5.83\%$ for men with income $\%100, 000$ and over.\\\\
+$10.39 + 67.29 + 16.48 + 5.83 = 99.9\%$ and therefore, the percents do
+add up to $100\%$ (up to roundoff error).
+
+\item[]
+\item[]
+
+\item[6.26]
+We must come up with two two-way tables of obese by early death
+for smokers and non-smokers.
+\begin{center}
+        \begin{tabular}{ |c|c|c|c| }
+        \hline
+         & Obese & Non-obese\\
+        \hline
+        Early death & 134 & 274\\
+        Non-early-death & 35 & 47\\
+        & & \\
+        \hline
+        Smokers & Obese & Non-obese\\
+        \hline
+        Early death & 112 & 162\\
+        Non-early-death & 22 & 26\\
+        & & \\
+        \hline
+        Non-smokers & Obese & Non-obese\\
+        \hline
+        Early death & 22 & 112\\
+        Non-early-death & 13 & 21\\
+        \hline
+    \end{tabular}
+\end{center}
+
+\newpage
+
+\item[6.30]
+We have to calculate the percent of each type of complication for each disease.\\\\
+\textbf{\und{Gastric banding}}\\\\
+$\dfrac{81}{5380} \times 100\% \approx 1.51\%$ is non-life-threatening.\\\\
+$\dfrac{46}{5380} \times 100\% \approx 0.86\%$ is serious.\\\\
+$\dfrac{5253}{5380} \times 100\% \approx 97.64\%$ is none.\\\\\\
+\textbf{\und{Sleeve gastrectomy}}\\\\
+$\dfrac{31}{854} \times 100\% \approx 3.63\%$ is non-life-threatening.\\\\
+$\dfrac{19}{854} \times 100\% \approx 2.22\%$ is serious.\\\\
+$\dfrac{804}{854} \times 100\% \approx 94.15\%$ is none.\\\\\\
+\textbf{\und{Gastric bypass}}\\\\
+$\dfrac{606}{9041} \times 100\% \approx 6.70\%$ is non-life-threatening.\\\\
+$\dfrac{325}{854} \times 100\% \approx 3.59\%$ is serious.\\\\
+$\dfrac{8110}{854} \times 100\% \approx 89.70\%$ is none.\\\\\\
+Then from this data, it is easy to see that \textbf{\und{gastric bypass}} leads
+to the most complications and \textbf{\und{gastric banding}} to the least complications
+with \textbf{\und{sleeve gastrectomy}} being somewhere in-between in terms of complications.
+\end{itemize}
+
+\end{document}
