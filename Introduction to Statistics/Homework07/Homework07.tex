@@ -1,0 +1,258 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+
+
+\usepackage{adjustbox}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage{multirow}
+
+\usepackage{textcomp}
+\usepackage{soul}
+
+\usepackage[hidelinks]{hyperref}
+\pgfplotsset{width=7.5cm,compat=1.12}
+\usepgfplotslibrary{fillbetween}
+\usepackage[makeroom]{cancel}
+\title{\bf{Homework \textnumero 7}}
+\author{Author: David Oniani
+\\
+\ \ \ Instructor: Dr. Eric Westlund}
+\date{March 3, 2019}
+
+\usepackage{listings}
+\usepackage{color}
+
+%%%%%%%%%%%%%%% S E T S %%%%%%%%%%%%%%%
+\newcommand{\nats}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\irrats}{\mathbb{I}}
+
+\newcommand{\pnats}{\mathbb{N}^+}
+\newcommand{\pints}{\mathbb{Z}^+}
+\newcommand{\prats}{\mathbb{Q}^+}
+\newcommand{\preals}{\mathbb{R}^+}
+\newcommand{\nreals}{\mathbb{R}^-}
+
+\newcommand{\nints}{\mathbb{Z}^-}
+\newcommand{\nrats}{\mathbb{Q}^-}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Calligraphy
+\newcommand\und[1]{\underline{\smash{#1}}}
+
+% Operators
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% Other
+\newcommand{\rarr}{\rightarrow}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+backgroundcolor=\color{backcolour},
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=left,
+numberstyle=\normalsize\color{gray},
+keywordstyle=\color{blue},
+commentstyle=\color{dkgreen},
+stringstyle=\color{mauve},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=4
+}
+
+
+\begin{document}
+\maketitle
+
+\begin{itemize}
+\item[8.13]
+\begin{itemize}
+\item[(a)]
+The sample size would be the number of people
+who took the survey and therefore is $2379$.
+Technically, we could draw the conclusion \und{but the conclusion would be inaccurate}
+\und{there were a number of people that did not responsd meaning that there was the}\\
+\und{nonresponse bias}.
+
+\item[]
+
+\item[(b)]
+$\text{Rate of nonresponse} = \dfrac{100000 - 2379}{100000} \times 100\% \approx 97.62\%$.\\
+\vspace{0.015cm}\\
+Survey results would not be too credible as what usually happens is that people
+with the strongest opinion respond.
+
+\item[]
+
+\item[(c)]
+The survey has only 2379 participants in lieu of 100000.
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[8.14]
+Question A is slanted toward more negative response on gays in the military
+since the question mentions that ``\textit{Federal law currently \und{prohibits} openly gay men and women from serving in the military.}''
+Prohibition means NO CHOICE which makes the question more ``negative.''\\\\
+Question B, on the other hand, has no negative introductions and asks the question
+right away resulting in less negative responses (on average).
+
+\item[]
+\item[]
+
+\item[8.16]
+\begin{itemize}
+\item[(a)]
+Example question $\to$ ``How often do you play mobile games?.''\\\\
+People who have a cell phone would, on average, respond with a number greater than 0
+while those who have landline phone only would respond, on average, with a number 0.
+In other words, people who have a cell phone only are a lot more likely to play
+games that are available on cell phone only than those who have landline phones only.
+
+\item[]
+
+\item[(b)]
+It would be biased as the question itself is constructed in a way
+that people with cell phones would show higher results as opposed to
+those with landline phones.
+
+\item[]
+
+\item[(c)]
+It is of the utmost importance to include both a landline sample and
+a cell phone sample since otherwise, we would lose a big part of population
+from the sample.\\\\
+The more telephone lines there are, the greater the probability that someone picks
+up the phone and therefore, greater the probability that the household is included in the sample.
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[8.37]
+\begin{itemize}
+\item[(a)]
+$P(\text{Man}) = \dfrac{4}{40} = 0.1$.\\
+$P(\text{Woman}) = \dfrac{3}{30} = 0.1$.\\
+
+\item[]
+
+\item[(b)]
+Result in the part (a) of the exercise is a strong evidence that the probability
+of any person in the party being interviewed is the same. Seven men and one woman
+is almost having 100\% men sample which is certainly against the results we obtained
+in part (a) of the exercise (it is virtually impossible to get a sample with only men
+since everyone has an equal chance to be interviewed). Therefore, this is not an SRS
+of people from the party.
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[8.43]
+\begin{itemize}
+\item[(a)]
+Since $\dfrac{200}{5} = 40$, we first choose the number randomly from first 40 names.
+\vspace{0.02cm}\\
+Let this number be 23. Then we proceed by adding
+40 to the number until we reach 200. Finally, we get the systematic
+random sample 23, 63, 103, 143, 183.
+
+\item[]
+
+\item[(b)]
+Systematic random sampling ensures that each individual has $\dfrac{1}{40} = 0.025$
+probability of being selected and is similar to SRS in this way. On the other hand,
+This is not exactly SRS since it contains only 1 out of first 40 names, 1 out of next 40
+names, etc. SRS, on the other hand, could contain all 5 out of the second 40 names or
+3 out of first 40 names and 2 out of the third 40 names, etc. (this is not possible in
+systematic random sampling).
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[8.45]
+\begin{itemize}
+\item[(a)]
+Households that do not have telephones, households whose
+numbers are not listed, and households that only have cell phones
+would be omitted.\\\\
+\textit{Households that do not have telephones} -- there will probably be more poor people in this category.\\\\
+\textit{Households whose telephone numbers are not listed} -- people who do not wish to have their numbers published (be publicly available)\\\\
+\textit{Households that only have cell phones} -- people who do not want to have landline phones
+
+\item[]
+
+\item[(b)]
+The households whose telephone numbers are not listed will be included in the sampling frame.
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[8.47]
+\begin{itemize}
+\item[(a)]
+The wording is clear. The way the question is stated makes it slanted toward the high
+positive response.
+
+\item[]
+
+\item[(b)]
+The wording is clear. The way the question is stated makes it slanted toward the high
+positive response (answering ``yes'').
+
+\item[]
+
+\item[(c)]
+``Externality'' is an economic term. Most people would not be able to understand the question.
+Therefore, the wording is unclear. Responses will vary yet, responses similar to ``What?'', ``Umm....yes?''
+would be most frequent (as people would be confused).
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[8.48]
+\begin{itemize}
+\item[(a)]
+``Due to the data revolution and widespread adoption of internet technologies,
+it has become extremely easy to get data of any kind. Applied math and data
+science are one of the few jobs that are in-demand right now. Should our university
+approve a proposal for the new ``Data Science'' program?''\\\\
+Most people would answer with ``YES'' since the introduction to this question
+is clearly pro-Data-Science.
+
+\item[]
+
+\item[(b)]
+``Have you ever stolen a fruit from the neighbor's garden?''\\\\
+A lot of people will not be truthful since it would make them
+look bad (in fact, in some countries and regions, it is considered to be a crime).
+\end{itemize}
+
+\end{itemize}
+
+\end{document}
