@@ -1,0 +1,337 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+
+\usepackage{adjustbox}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{tikz}
+
+\usepackage{textcomp}
+\usepackage{soul}
+
+\usepackage[hidelinks]{hyperref}
+\pgfplotsset{width=7.5cm,compat=1.12}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.8}
+\usepgfplotslibrary{statistics}
+\usepackage[makeroom]{cancel}
+\title{\bf{Homework \textnumero 14}}
+\author{Author: David Oniani
+\\
+\ \ \ Instructor: Dr. Eric Westlund}
+\date{April 7, 2019}
+
+\usepackage{listings}
+\usepackage{color}
+
+%%%%%%%%%%%%%%% S E T S %%%%%%%%%%%%%%%
+\newcommand{\nats}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\irrats}{\mathbb{I}}
+
+\newcommand{\pnats}{\mathbb{N}^+}
+\newcommand{\pints}{\mathbb{Z}^+}
+\newcommand{\prats}{\mathbb{Q}^+}
+\newcommand{\preals}{\mathbb{R}^+}
+\newcommand{\nreals}{\mathbb{R}^-}
+
+\newcommand{\nints}{\mathbb{Z}^-}
+\newcommand{\nrats}{\mathbb{Q}^-}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Calligraphy
+\newcommand\und[1]{\underline{\smash{#1}}}
+
+% Operators
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% Other
+\newcommand{\rarr}{\rightarrow}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+backgroundcolor=\color{backcolour},
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=left,
+numberstyle=\normalsize\color{gray},
+keywordstyle=\color{blue},
+commentstyle=\color{dkgreen},
+stringstyle=\color{mauve},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=4
+}
+
+
+\begin{document}
+\maketitle
+\begin{itemize}
+\item[20.1]
+The standard error can be calculated using the formula
+$\text{SE} = \dfrac{s}{\sqrt{n}}$. Therefore, we have
+that the standard error is $\dfrac{56.9}{\sqrt{1000}} \approx 1.7993$.
+
+\item[]
+\item[]
+
+\item[20.2]
+The sample mean is the first value in the type
+of the expression $m \pm n$ (which is $m$).
+The standard error is the second value in the
+expression (which is $n$). Therefore, the sample
+mean is $\overline{x} = 163$ and the standard
+error is $\text{SE} = 15$.
+
+\item[]
+\item[]
+
+\item[20.3]
+\begin{itemize}
+\item[(a)]
+$t^* = 2.353$
+
+\item[]
+
+\item[(b)]
+$t^* = 2.485$
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[20.4]
+\begin{itemize}
+\item[(a)]
+$t^* = 2.042$
+
+\item[]
+
+\item[(b)]
+$t^* = 0.683$
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[20.5]
+\begin{itemize}
+\item[(a)]
+Since $n = 12$, $\text{df} = n - 1 = 12 - 1 = 11$.
+Therefore, from Table C, we get that $t^*$ value for
+a the 95\% confidence interval based on $n = 12$ observations
+is $t^* = 2.201$.
+    
+\item[]
+    
+\item[(b)]
+Since $n = 2$, $\text{df} = n - 1 = 2 - 1 = 1$.
+Therefore, from Table C, we get that $t^*$ value for
+a the 99\% confidence interval based on $n = 2$ observations
+is $t^* = 63.66$.
+    
+\item[]
+    
+\item[(c)]
+Since $n = 1001$, $\text{df} = n - 1 = 1001 - 1 = 1000$.
+Therefore, from Table C, we get that $t^*$ value for
+a the 90\% confidence interval based on $n = 1001$ observations
+is $t^* = 1.646$.
+\end{itemize}
+
+\newpage
+
+\item[20.7]
+We start with the \und{\textbf{PLAN}} part as the \und{\textbf{STATE}}
+part is the description of the problem itself.\\\\
+\und{\textbf{PLAN}}\\
+We must approximate $\mu$ using a 99\% confidence interval.
+\\\\\\
+\und{\textbf{SOLVE}}\\
+Below is the stemplot for the data.
+\item[]
+\begin{tabular}{r | *{120}{c}}
+    4 & 9\\
+    5 & 3 & 6 & 6 & 6 & 8 & 8 & 8 & 9\\
+    6 & 1 & 1 & 2 & 3 & 5 & 5 & 6 & 7 & 7 & 7 & 8 & 8 & 9\\
+    7 & 0 & 0
+\end{tabular}
+\item[]
+\item[]
+The stemplot looks to be bimodal yet, there seems to be no
+outliers. $\overline{x} \approx 62.1667$ and $s \approx 5.8060$.
+Since $n = 24, \text{df} = n - 1 = 24 - 1 = 23$ and $t^* = 2.807$.
+Therefore, the confidence interval is from $62.1667 - 2.807 \times \dfrac{5.8060}{\sqrt{24}}$
+to $62.1667 + 2.807 \times \dfrac{5.8060}{\sqrt{24}}$ which is approximately the same as
+from $58.84$ to $65.49$.
+\\\\\\
+\und{\textbf{Conclude}}\\
+We can be 99\% certain that the mean percent of correct answers to indetifying the taller
+of two people by voice is from $58.84$ to $65.49$.
+
+\item[]
+\item[]
+
+\item[20.8]
+\begin{itemize}
+\item[(a)]
+$\text{df} = n - 1 = 25 - 1 = 24$.
+
+\item[]
+
+\item[(b)]
+From Table C, we get:
+$1.711 < t^* < 2.064$\\
+$0.025 < P < 0.05$
+\item[]
+
+\item[(c)]
+If $P < 0.10 = 10\%$, then the $t$-value is significant.\\
+If $P > 0.05 = 5\%$, then the $t$-value is not significant.\\
+If $P > 0.01 = 1\%$, then the $t$-value is not significant.
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[20.10]
+We know that $\overline{x} = 62.1667$ and $s = 5.8060$.
+The value of the test statistic is
+\vspace{0.35cm}\\
+$t = \dfrac{\overline{x} - \mu_0}{\dfrac{s}{\sqrt{n}}} = \dfrac{\overline{62.1667} - 50}{\dfrac{5.8060}{\sqrt{24}}} = 10.266$.
+\vspace{0.35cm}\\
+$\text{df} = n - 1 = 24 - 1 = 23$. The corresponding one-sided $P$-value from Table C (for 99\%)
+is $P = 0.0005$. Then we know that if the $P$-value is smaller than the significance level, the null
+hypothesis is rejected. In this case, $P = 0.0005 < 0.05$ and we reject the null hypothesis or $H_0$.
+Finally, we can say that there is a sufficient evidence to support the claim that implies that the
+mean number of correct identifications is more than 50.
+
+\newpage
+
+\item[20.11]
+We start with the \und{\textbf{PLAN}} part as the \und{\textbf{STATE}}
+part is the description of the problem itself.\\\\
+\und{\textbf{PLAN}}\\
+We must compare $\text{H}_0: \mu = 0$ with $\text{H}_{\text{a}} = \mu > 0$.
+\\\\\\
+\und{\textbf{SOLVE}}\\
+Below is the stemplot for the data.
+\item[]
+\begin{tabular}{r | *{120}{c}}
+    -1 & 8 & 6 & 2 & 1\\
+    -0 & 5\\
+    0 & 2 & 3 & 5 & 5 & 7\\
+    1 & 4\\
+    2 & 4 & 8 & 9\\
+    3 & \\
+    4 & 3\\
+    5 & \\
+    6 & 4
+\end{tabular}
+\item[]
+\item[]
+The stemplot shows the outliers and is skewed to the right. Using $t$-procedures
+here would not gives us exact results since $P$-values will just be the approximations (again, because of the skeweness of the stemplot).
+From the data, we get that $\overline{x} = 0.1012$ and $s = 0.2263$.
+Therefore, $t = \dfrac{\overline{x} - \mu_0}{\dfrac{s}{\sqrt{n}}} = \dfrac{0.1012 - 0}{\dfrac{0.2263}{\sqrt{16}}} \approx 1.79$.
+$\text{df} = n - 1 = 16 - 1 = 15$. We can now look up the values in Table C and get that
+$P < 0.05$.\\\\\\
+\und{\textbf{Conclude}}\\
+We can conclude that eye grease increases sensitivity to contrast.
+However, since the stemplot shows the skewness, it would not be wise to
+place a lot of emphasis on this result.
+
+\item[]
+\item[]
+
+\item[20.12]
+From the previous exercise we know that $\overline{x} = 0.1012$ and $s = 0.2263$.
+We also know that $\overline{x} = 0.1012$ and $s = 0.2263$. Now, using Table C, we
+get that $t^* = 2.947$. Therefore, the
+\vspace{0.2cm}\\
+confidence interval is from
+$0.1013 - 2.947 \times \dfrac{0.2263}{\sqrt{16}}$ to $0.1013 + 2.947 \times \dfrac{0.2263}{\sqrt{16}}$
+which is
+\vspace{0.2cm}\\
+approximately the same as from -0.0654 to 0.2680. Hence, the confidence interval is from -0.0654 to 0.2680.
+
+\item[]
+\item[]
+
+\item[20.38]
+\begin{itemize}
+\item[(a)]
+Let's construct the stemplot first. Below is the stemplot for the data.
+\item[]
+\begin{tabular}{r | *{120}{c}}
+    0 & 6 & 7 & 8 & 9\\
+    1 & 0 & 0 & 3 & 3 & 4 & 9\\
+    2 & 0
+\end{tabular}
+\item[]
+\item[]
+There are is not any significant deviations from the normality. Thereforem,
+we can use the $t$-procedures.
+
+\item[]
+
+\item[(b)]
+We get that $\overline{x} \approx 1.1727$ and $s \approx 0.4606$.
+$\text{df} = n - 1 = 11 - 1 = 10$. From Table C, we get that $t^* = 1.812$.
+Therefore, we get that \vspace{0.2cm}\\
+confidence interval is from
+$1.1727 - 1.812 \times \dfrac{0.4606}{\sqrt{11}}$ to $1.1727 + 1.812 \times \dfrac{0.4606}{\sqrt{11}}$
+which
+\vspace{0.2cm}\\
+is approximately the same as from 0.9211 to 1.4243. Hence, the confidence interval is from 0.9211 to 1.4243.
+Yes, I am willing to use this interval tom make an inference about the mean doubling time in a population
+of similar patients. If one can use 90\% confidence interval, one can always use the inference.
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[20.41]
+\begin{itemize}
+\item[(a)]
+We are testing $\text{H}_0: \mu = 0$ against $\text{H}_{\text{a}}: \mu = 0$
+where $\mu$ is the mean difference. The researchers used a one-sided alternative
+since they had the reason to believe that $\text{CO}_2$ would increase the growth rate.
+In other words, they wanted a test to show the increase in the growth rate and that is
+a one-sided alternative.
+
+\item[]
+
+\item[(b)]
+We have $\overline{x} \approx 1.916$ and $s \approx 1.050$.
+Then we have $t = \dfrac{\overline{x} - \mu_0}{\dfrac{s}{\sqrt{n}}} = \dfrac{1.916 - 0}{\dfrac{1.050}{\sqrt{3}}} \approx 3.16$.
+\vspace{0.2cm}\\
+Now, $\text{df} = n - 1 = 3 - 1 = 2$ and from Table C, we get that $0.025 < P = 0.05$.
+Now, since $P < 0.05 = 5\%$, this is significant at the 5\% significance level.
+
+\item[]
+
+\item[(c)]
+For small samples, $t$-procedures can be used only of the population distribution is normal.
+Based on the observations we have, it is not possible to asses the normality of the population.
+\end{itemize}
+
+\end{itemize}
+\end{document}
