@@ -1,0 +1,237 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+
+\usepackage{adjustbox}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{tikz}
+
+\usepackage{textcomp}
+\usepackage{soul}
+
+\usepackage[hidelinks]{hyperref}
+\pgfplotsset{width=7.5cm,compat=1.12}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.8}
+\usepgfplotslibrary{statistics}
+\usepackage[makeroom]{cancel}
+\title{\bf{Homework \textnumero 16}}
+\author{Author: David Oniani
+\\
+\ \ \ Instructor: Dr. Eric Westlund}
+\date{April 13, 2019}
+
+\usepackage{listings}
+\usepackage{color}
+
+%%%%%%%%%%%%%%% S E T S %%%%%%%%%%%%%%%
+\newcommand{\nats}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\irrats}{\mathbb{I}}
+
+\newcommand{\pnats}{\mathbb{N}^+}
+\newcommand{\pints}{\mathbb{Z}^+}
+\newcommand{\prats}{\mathbb{Q}^+}
+\newcommand{\preals}{\mathbb{R}^+}
+\newcommand{\nreals}{\mathbb{R}^-}
+
+\newcommand{\nints}{\mathbb{Z}^-}
+\newcommand{\nrats}{\mathbb{Q}^-}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Calligraphy
+\newcommand\und[1]{\underline{\smash{#1}}}
+
+% Operators
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% Other
+\newcommand{\rarr}{\rightarrow}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+backgroundcolor=\color{backcolour},
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=left,
+numberstyle=\normalsize\color{gray},
+keywordstyle=\color{blue},
+commentstyle=\color{dkgreen},
+stringstyle=\color{mauve},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=4
+}
+
+
+\begin{document}
+\maketitle
+\begin{itemize}
+\item[22.4]
+There are two reasons why we can't use the large-sample
+confidence interval to estimate the proportion $p$ in the
+population who share these two risk factors. At first,
+$\hat{p}$ is too close to 0. Secondly, people reached
+might have provided wrong data.
+
+\item[]
+\item[]
+
+\item[22.6]
+We start with the \und{\textbf{PLAN}} part as the \und{\textbf{STATE}}
+part is the description of the problem itself.\\\\
+\und{\textbf{PLAN}}\\
+We must find the $\hat{p}$ value and the $z^*$ value for the 90\% confidence
+interval to find the confidence interval.
+\\\\\\
+\und{\textbf{SOLVE}}\\\\
+$\hat{p} = \dfrac{1552}{4111} \approx 0.378$.
+From Table C, we get that $z^* = 1.645$. Therefore, the confidence\\
+interval is $0.378 \pm 1.64 \times \sqrt{\dfrac{0.378 * (1 - 0.378)}{4111}}$
+which is  $0.378 \pm 0.012$. In other words, the confidence interval is between 0.366 and 0.39
+\\\\\\
+\und{\textbf{CONCLUDE}}\\
+We are 90\% confident that the proportion of the weightlifting injuries
+in this age group that were accidental is between 0.366 and 0.39.
+
+\item[]
+\item[]
+
+\item[22.7]
+\begin{itemize}
+\item[(a)]
+$\hat{p}= \dfrac{42}{165} \approx 0.255$.
+Therefore, $\text{ME} = 1.96 \times \sqrt{\dfrac{0.255 (1 - 0.255)}{165}} \approx 0.0665$.
+
+\item[]
+
+\item[(b)]
+To get a $\pm 3$ margin of error, we need $n$ to be at least $\bigg(\dfrac{1.96}{0.03}\bigg)^2 \times 0.255 \times (1 - 0.255) \approx 810.898$.
+Therefore, $n = 810.898$ is the answer.
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[22.9]
+We start with the \und{\textbf{PLAN}} part as the \und{\textbf{STATE}}
+part is the description of the problem itself.\\\\
+\und{\textbf{PLAN}}\\
+We test the null hypothesis $\text{H}_0$.
+Our null hypothesis is is $\text{H}_0: p = 0.5$ and the
+alternative hypothesis is $\text{H}_a: p \neq 0.5$.
+\\\\\\
+\und{\textbf{SOLVE}}\\\\
+$\hat{p} = \dfrac{140}{250} = 0.56$.
+$z = \dfrac{0.56 - 0.5}{\sqrt{\frac{0.5 \times (1 - 0.5)}{250}}} \approx 1.90$.
+We then get that the corresponding $P$-value is $P = 0.0574$.
+\\\\\\
+\und{\textbf{CONCLUDE}}\\
+Since $P = 0.0574 \approx 0.05$, we can say that there is some evidence, yet not strong,
+that the proportion of times a Belgian euro coin spins heads is not 0.50.
+However, since P > 0.05, we accept the null hypothesis $\text{H}_0$.
+
+\item[]
+\item[]
+
+\item[22.10]
+We start with the \und{\textbf{PLAN}} part as the \und{\textbf{STATE}}
+part is the description of the problem itself.\\\\
+\und{\textbf{PLAN}}\\
+We test the null hypothesis $\text{H}_0$.
+Our null hypothesis is is $\text{H}_0: p = 0.5$ and the
+alternative hypothesis is $\text{H}_a: p > 0.5$.
+\\\\\\
+\und{\textbf{SOLVE}}\\\\
+$\hat{p} = \dfrac{22}{32} = 0.6875$.
+$z = \dfrac{0.6875 - 0.5}{\sqrt{\frac{0.5 \times (1 - 0.5)}{32}}} \approx 1.90 \approx 2.121$.
+We then get that the corresponding $P$-value is $P = 0.017$.
+\\\\\\
+\und{\textbf{CONCLUDE}}\\
+Since $P = 0.017 < 0.05$, we reject the null hypothesis $\text{H}_0$
+and conclude that there is a strong evidence that the candidate
+with the better face wins more than half the time.
+
+\item[]
+\item[]
+
+\item[22.11]
+\begin{itemize}
+\item[(a)]
+We cannot use the $z$ test for the proportion since
+$10 \times 0.5 = 5 < 10$ and the number of trials is not
+sufficiently large.
+
+\item[]
+
+\item[(b)]
+We can use the $z$ test for the proportion if the sample
+is derived using SRS.
+
+\item[]
+
+\item[(c)]
+We cannot use the $z$ test for the proportion since
+$200 \times (1 - 0.99) = 2 < 10$ and the number of trials is not
+sufficiently large.
+\end{itemize}
+
+\newpage
+
+\item[22.39]
+\begin{itemize}
+\item[(a)]
+We start with the \und{\textbf{PLAN}} part as the \und{\textbf{STATE}}
+part is the description of the problem itself.\\\\
+\und{\textbf{PLAN}}\\
+We test the null hypothesis $\text{H}_0$.
+Our null hypothesis is is $\text{H}_0: p = 0.5$ and the
+alternative hypothesis is $\text{H}_a: p \neq 0.5$.
+\\\\\\
+\und{\textbf{SOLVE}}\\\\
+$\hat{p} = \dfrac{22}{32} = 0.6875$.
+$z = \dfrac{0.6875 - 0.5}{\sqrt{\frac{0.5 \times (1 - 0.5)}{32}}} \approx 1.90 \approx 2.121$.
+We then get that the corresponding $P$-value is $P = 2 \times 0.017 = 0.034$.
+\\\\\\
+\und{\textbf{CONCLUDE}}\\
+Since $P = 0.034 < 0.05$, we reject the null hypothesis $\text{H}_0$
+and conclude that there is a strong evidence that people are not equally
+likely to choose either of the two positions when presented with two identical
+wine samples in sequence.
+
+\item[]
+
+\item[(b)]
+We do not know whether we indeed have the SRS (Simple Random Sample) of the people.
+People who partook in the experiments might have a bias (response bias). Due to this
+reason, generalization of our conclusions to all wine tasters will, most likely, not
+yield accurate results.
+\end{itemize}
+
+\item[]
+\item[]
+
+
+\item[22.41]
+$n = \bigg(\dfrac{z^*}{m}\bigg)^2 \times p^* \times (1 - p^*) = \bigg(\dfrac{1.96}{0.05}\bigg)^2 \times 0.6875 \times (1 - 0.6875) \approx 330.14$.\\\\
+Hence, we would need at least 331 (we round \und{up}) wine tasters to estimate the proportion that would choose the first option to within 0.05
+with 95\% confidence.
+\end{itemize}
+\end{document}
