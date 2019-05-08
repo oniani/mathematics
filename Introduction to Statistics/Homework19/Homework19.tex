@@ -1,0 +1,256 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+
+\usepackage{adjustbox}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{tikz}
+
+\usepackage{textcomp}
+\usepackage{soul}
+
+\usepackage[hidelinks]{hyperref}
+\pgfplotsset{width=7.5cm,compat=1.12}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.8}
+\usepgfplotslibrary{statistics}
+\usepackage[makeroom]{cancel}
+\title{\bf{Homework \textnumero 19}}
+\author{Author: David Oniani
+\\
+\ \ \ Instructor: Dr. Eric Westlund}
+\date{May 06, 2019}
+
+\usepackage{listings}
+\usepackage{color}
+
+%%%%%%%%%%%%%%% S E T S %%%%%%%%%%%%%%%
+\newcommand{\nats}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\irrats}{\mathbb{I}}
+
+\newcommand{\pnats}{\mathbb{N}^+}
+\newcommand{\pints}{\mathbb{Z}^+}
+\newcommand{\prats}{\mathbb{Q}^+}
+\newcommand{\preals}{\mathbb{R}^+}
+\newcommand{\nreals}{\mathbb{R}^-}
+
+\newcommand{\nints}{\mathbb{Z}^-}
+\newcommand{\nrats}{\mathbb{Q}^-}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Calligraphy
+\newcommand\und[1]{\underline{\smash{#1}}}
+
+% Operators
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% Other
+\newcommand{\rarr}{\rightarrow}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+backgroundcolor=\color{backcolour},
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=left,
+numberstyle=\normalsize\color{gray},
+keywordstyle=\color{blue},
+commentstyle=\color{dkgreen},
+stringstyle=\color{mauve},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=4
+}
+
+
+\begin{document}
+\maketitle
+\begin{itemize}
+\item[27.3]
+\begin{itemize}
+\item[(a)]
+Below is the stemplot for the Group 1 (Never looged).
+\item[]
+\begin{tabular}{r | *{120}{c}}
+    1 & 6 & 9 & 9\\
+    2 & 0 & 1 & 2 & 4 & 7 & 7 & 8 & 9\\
+    3 & 3
+\end{tabular}
+\item[]
+\item[]
+
+Below is the stemplot for the Group 2 (1 year ago).
+\item[]
+\begin{tabular}{r | *{120}{c}}
+    0 & 2 & 9\\
+    1 & 2 & 2 & 4 & 4 & 5 & 7 & 7 & 8 & 9\\
+    2 & 0
+\end{tabular}
+\item[]
+\item[]
+
+Below is the stemplot for the Group 3 (8 years ago).
+\item[]
+\begin{tabular}{r | *{120}{c}}
+    0 & 4\\
+    1 & 2 & 2 & 5 & 8 & 8 & 9\\
+    2 & 2 & 2
+\end{tabular}
+\item[]
+\item[]
+For all stemplots, the key is $X \mid Y = XY$. For instance,
+$2 \mid 0 = 20$.
+
+\item[]
+
+\item[(b)]
+It appears that there are more trees in Group 1 (never logged)
+than in other groups. We have, $\overline{x}_1 = 23.75$,
+$\overline{x}_2 = 14.0833$, and $\overline{x}_3 = 15.7778$.
+Then, it is easy to see that $\overline{x}_1 > \overline{x}_2 > \overline{x}_3$.
+
+\item[]
+
+\item[(c)]
+$H_0 = \mu_1 = \mu_2 = \mu_3$, in other words, null hypothesis
+is that all means are the same. We test the null against $H_a: \text{not
+all means are the same (or at least one mean is different)}$.
+Our $F$-statistic is $F = 11.43$ with $\text{df (between groups)} = 2$ and $\text{df (within groups)} = 30$
+with $P = 0.0002$ and therefore, we conclude that the differences are
+statistically significant. In other words, the mean number of trees per plot
+is significantly lower in logged areas (not that Group 1 is the area that
+is never logged, and it has the highest mean).
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[27.4]
+\begin{itemize}
+\item[(a)]
+We have, $\overline{x}_1 \text{ (Conservative)} = 51.09$,
+$\overline{x}_2 \text{ (Moderate)} = 46.98$, and $\overline{x}_3 \text{ (Liberal)} = 46.80$.
+From the statistics above, we can see that the mean is
+the highest in the first group (Conservative) and that the mean is lowest
+in the third group (Liberal).
+
+\newpage
+
+\item[(b)]
+$H_0 = \mu_1 = \mu_2 = \mu_3$, in other words, null hypothesis
+is that all means are the same. We test the null against $H_a: \text{not
+all means are the same (or at least one mean is different)}$.
+Our $F$-statistic is $F = 11.69$ with $\text{df (between groups)} = 2$ and $\text{df (within groups)} = 1871$
+with $P < 0.0001$ and therefore, we conclude that the differences are
+statistically significant. In other words, the mean number of people who are Conservatives
+is significantly higher than the mean number of people in either of the other two groups (Moderates and Liberals).
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[27.7]
+\begin{itemize}
+\item[(a)]
+The distributions are approximately normal with each being independent SRS.
+Notice that $s_1^2 = 25.6591$, $s_2^2 = 24.8106$, and $s_3^2 = 33.1944$.
+Therefore, we get $s_1 = 5.065$, $s_2 = 4.981$, and $s_3 = 5.761$.
+Now, the ratio of the largest standard\\\\
+deviation over the lowest standard deviation is $\dfrac{s_3}{s_2} = \dfrac{5.761}{4.981} \approx 1.16 < 2$
+and therefore, the conditions are satisfied.
+
+\item[]
+
+\item[(b)]
+The distributions are approximately normal with each being independent SRS.
+Notice that $s_\text{C} = 17.42$, $s_\text{M} = 18.13$, and $s_\text{L} = 17.41$.
+Now, the ratio of the largest standard\\\\
+deviation over the lowest standard deviation is $\dfrac{s_\text{M}}{s_\text{L}} = \dfrac{18.13}{17.41} \approx 1.04 < 2$
+and therefore, the conditions are satisfied.
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[27.8]
+After calculating the standard deviations, I got that
+$s_1 = 4.372$, $s_2 = 4.5$, and $s_3 = 3.529$.
+The ratio of the largest standard deviation over the lowest
+standard deviation is $\dfrac{s_1}{s_3} = \dfrac{4.5}{3.529} \approx 1.28 < 2$.
+In this case, however, the normality condition is not satisfied
+as the\\\\
+datasets seem to be skewed and there are not enough datapoints for CLT to make
+the distributions approximately normal. Therefore, all the conditions are not satisfied.
+
+\newpage
+
+\item[27.10]
+\begin{itemize}
+\item[(a)]
+$I$ is the number of groups in the data. In this case, $I = 3$.\\
+$n_i$ is the sample size of the group $i$. In this case, $n_1 = 12$, $n_2 = 9$, and $n_3 = 12$.\\
+$N$ is the total sample size. In this case, $N = n_1 + n_2 + n_3 = 12 + 9 + 12 = 33$.
+\item[]
+
+\item[(b)]
+$\text{df (between groups)} = I - 1 = 3 - 1 = 2$.\\
+$\text{df (within groups)} = N - I = 33 - 3 = 30$.\\
+These values indeed match those in Figure 27.5.
+\end{itemize}
+
+\item[]
+\item[]
+
+\item[27.12]
+\begin{itemize}
+\item[(a)]
+The sample size is large enough for the CLT (Central Limit Theorem)
+to make the distributions approximately normal.
+
+\item[]
+
+\item[(b)]
+The ratio of the largest standard deviation over the lowest
+standard deviation is $\dfrac{s_1}{s_3} = \dfrac{3.11}{1.60} \approx 1.94 < 2$.
+Therefore, the standard deviations indeed satisfy the guidelines for ANOVA inference.
+
+\item[]
+
+\item[(c)]
+The $\overline{x}$ is $\overline{x} = 1.31$.\\
+$\text{MSG} = 178.07$.\\
+$\text{MSE} = 5.123$.\\
+$F = \dfrac{\text{MSG}}{\text{MSE}} = \dfrac{178.07}{5.123} = 34.759$.\\
+
+\item[]
+
+\item[(d)]
+$\text{df (numerator)} = I - 1 = 3 - 1 = 2$.\\
+$\text{df (denominator)} = N - I = (244 + 734 + 364) - 3 = 1342 - 3 = 1339$.\\\\
+Therefore, I would use the $F$-distribution with 2 degrees of freedom in the
+numerator and 1339 degrees of freedom in the denominator. Since, $P < 0.001$,
+and the commonly used significance level $\alpha$ is $0.05$, we reject the null
+and accept the alternative as $P < 0.05 \ (0.001 < 0.05)$.
+\end{itemize}
+
+\end{itemize}
+
+\end{document}
