@@ -95,17 +95,15 @@
 \theoremstyle{definition}
 \newtheorem*{definition}{Definition}
 
-
 % Title
 \title{\textbf{The Topology of Robotic Configuration and Motion Planning}\\
-{\small \textsuperscript{*}The paper is written in the scope of the independent study course with professor Eric R. Westlund.}}
+{\small \textsuperscript{*}The paper is written in the scope of the independent study course with Dr. Eric R. Westlund.}}
 
 % Author
 \author{David Oniani\\Luther College\\\href{mailto:oniada01@luther.edu}{oniada01@luther.edu}}
 
 % Date
 \date{January 30, 2019}
-
 
 \begin{document}
 \maketitle
@@ -224,8 +222,8 @@ of states and therefore, create a configuration space which geometrically repres
                y domain=0:2*pi,
                z buffer=sort
              ]
-             ( {(2 + cos(deg(x))) * cos(deg(y + pi/2))}, 
-               {(2 + cos(deg(x))) * sin(deg(y + pi/2))}, 
+             ( {(2 + cos(deg(x))) * cos(deg(y + pi/2))},
+               {(2 + cos(deg(x))) * sin(deg(y + pi/2))},
                {sin(deg(x))}
              );
         \end{axis}
@@ -405,7 +403,7 @@ Knowing what it means for a topological space to be connected, we can now introd
 of path connectedness.
 
 \begin{definition}
-\cite{9} Given points $x$ and $y$ of the space $X$, a \textbf{path} in $X$ from $x$ to $y$ is a 
+\cite{9} Given points $x$ and $y$ of the space $X$, a \textbf{path} in $X$ from $x$ to $y$ is a
 continuous map $f : [a, b] \to X$ of some closed interval in the real line into $X$, such
 that $f(a) = x$ and $f(b) = y$. A space $X$ is said to be \textit{\textbf{path connected}} if every pair of
 points of $X$ can be joined by a path in $X$.
@@ -433,7 +431,7 @@ function $g$ such that $g : [0, 1] \to x_2 \times Y$
 with $g(0) = x_2 \times y_1$ and $g(1) = x_2 \times y_2$.
 Let's now define a function $h$ in the following way:
 $$
-h(x) = 
+h(x) =
 \begin{cases}
 f(\frac{x}{2}) \mbox{ if } 0 \leq x \leq \frac{1}{2}\\
 f(\frac{x}{2} + \frac{1}{2}) \mbox{ if } \frac{1}{2} < x \leq 1.
