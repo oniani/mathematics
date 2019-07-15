@@ -7,5 +7,5 @@ def main():
     print(data[:4])  # prints out [59, 75, 66, 81] on the first try
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

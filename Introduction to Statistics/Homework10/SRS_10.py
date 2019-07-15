@@ -9,9 +9,9 @@ def main():
     for i in range(10):
         shuffle(data)
         avgs.append(mean(data[:4]))
-    
+
     print(avgs)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
