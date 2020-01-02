@@ -1,0 +1,21 @@
+# Residual Plots
+
+William S. Gosset invented a t-test but his pseudonim was student as he could not put
+his real name on the paper (due to patent issues).
+
+$d_i = \dfrac{e_i}{\hat\sigma}$
+
+## Studentized Residuals
+
+Review these pages:
+  * Page 130 (the normal probability plot)
+  * Page 132 (figure 4.3 ~ different stylezed residual plots with common issues, violations of assumptions)
+
+## Some code
+
+load (file.choose())
+lm1 = lm (y ~ x1, data=dataB.5)
+plot (lm1)
+
+If outlier is not obvious, then it is not an outlier (this is a recommendation
+from an applied statistician ~ Dr. Phil).

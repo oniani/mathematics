@@ -1,0 +1,32 @@
+Leverage and Influence and similar BUT DIFFERENT concept (page 189).
+
+Levarage refers to outliers in the X space (this ignores the response data).
+For multiple regression, it is difficult to find these spaces and points.
+Distance should be big for it to be a leverage.
+
+Influence refers to outliers in the X space. BUT IN THIS CASE IF WE REMOVED
+THE POINT, IT WOULD SUBSTANTIALLY CHANGE SOMETHING ABOUT THE FITTED LINE.
+
+Cooks Distance (influence measure)
+1. It measures a distance between 2 sets of parameter estimates
+2. Namely, full dataset VS 1 point removed (this is done iteratively for every point)
+3. CD = sqrt((b_0 - b_1)^2 + ....))
+4. If the cooks distance is greater than 1, that is bad
+
+DFFITS
+
+1. Leave 1 observation out at a time
+2. Look the change in the predicted value for that observation
+3. Get 1 value per observation
+4. Concern if the value is greater than 2 * \sqrt{p/n} where p is the number of
+   parameters including the intercept and n is the sample size.
+
+DFBETAS
+
+1. Leave 1 observation at a time
+2. Look at changes to the beta hat values (all of them)
+3. Get p values per observation which in facts gives you a < n x p > matrix
+4. There is a concern if any value per row is greater than 2/\sqrt{n}
+
+``Concer'' means to investigate these points using say a scatterplot matrix
+and color those points.

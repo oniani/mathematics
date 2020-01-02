@@ -1,0 +1,2 @@
+# This gives us an 80% confidence interval
+predict (fit1, list (x1=275), interval='confidence', level=0.80)

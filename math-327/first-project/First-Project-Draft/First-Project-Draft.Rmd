@@ -1,0 +1,434 @@
+---
+title: "Project Final Draft"
+author: "Madeline Pope, Zachary Sturgeon, David Oniani"
+date: \today
+output: pdf_document
+---
+
+\begin{abstract}
+We analyze the dataset describing personal medical costs for 1,339 individuals (posted on Kaggle by Miri Choi). It consists of 6 predictor variables and one response variable. The dataset is diverse featuring both numerical and categorical variables. We will conduct a general analysis of the dataset utilizing a number of statistical approaches. That said, we are particularly interested in exploring the relationships between medical costs and the rest of the numerical variables. Throughout the report, we use a number of statistical methods including linear regression, stepwise regression, and cross validation.
+\end{abstract}
+
+\newpage
+\tableofcontents
+\newpage
+
+# Data and Preparation
+
+The dataset was obtained from \url{https://www.kaggle.com} and features 7 predictor variables. The description of the variables is provided below.
+
+* **age**: age of primary beneficiary.
+
+* **sex**: insurance contractor gender, female, male.
+
+* **bmi**: body mass index, providing an understanding of body weights that are relatively high or low relative to height, objective index of body weight (kg / $m ^ 2$) using the ratio of height to weight, ideally 18.5 to 24.9.
+
+* **children**: number of children covered by health insurance / Number of dependents.
+
+* **smoker**: whether person smokes or not.
+
+* **region**: the beneficiary's residential area in the US, northeast, southeast, southwest, northwest.
+
+* **charges**: individual medical costs billed by health insurance.
+
+```{r}
+# Read the CSV data
+dataset <- read.csv("./insurance.csv", header=TRUE, sep=",")
+```
+
+# Analyzing Distributions
+
+## Analyzing Numerical Variables
+
+```{r}
+# Four plots side-by-side
+par(mfrow=c(1,3))
+
+# Histograms of all numerical variables
+hist(dataset$age, xlab="Age")
+hist(dataset$bmi, xlab="BMI")
+hist(dataset$children, xlab="Children")
+hist(dataset$charges, xlab="Charges")
+```
+
+For numerical variables (age, bmi, children, and charges), we used a traditional histogram to look at the distributions.
+
+The distribution for age shows a right-skewed trend which is reasonable as, on average, young people are more likely to partake in the survey. However, it would not be unreasonably to try a log or a square transformation on this column.
+
+BMI (body-mass-index) shows a normal distribution which is expected as the sample size is over 1000 and, historically, BMI tends to follow a bell curve.
+
+The distribution for children is noticeably right-skewed which is to be expected. Log or square root transformation may be applied.
+
+The distribution for medical charges is also right-skewed. This can be linked with the fact that most people, on average, do not spend a lot of money for the medical purposes (especially if billed by insurance). Just like in the first case, attempting both logarithmic and square root transformations might lead to better results.
+
+### Log transformations
+
+```{r}
+# Four plots side-by-side
+par(mfrow=c(1,3))
+
+# Histograms of all numerical variables
+hist(log(dataset$age), xlab="Log(Age)")
+hist(log(dataset$children), xlab="Log(Children)")
+hist(log(dataset$charges), xlab="Log(Charges)")
+```
+
+Applying a log-transformation on the numerical variables with a right-skewed distribution yields better results. The distribution for charges was normalized; the distribution for age now became left-skewed but the overall shape is promising; distribution for the number of children is still right-skewed.
+
+### Square-root transformations
+
+```{r}
+# Four plots side-by-side
+par(mfrow=c(1,3))
+
+# Histograms of all numerical variables
+hist(sqrt(dataset$age), xlab="Sqrt(Age)")
+hist(sqrt(dataset$children), xlab="Sqrt(Children)")
+hist(sqrt(dataset$charges), xlab="Sqrt(Charges)")
+```
+
+The square-root transformation shows the similar results for the distribution of number of children. The distribution for charges got a bit worse, but the age distribution is better.
+Therefore, moving forward, we will use a log transform on charges and a square root transform on the age. The distribution for the number of children did not get any significant improvements post-transformations.
+
+## Analyzing Categorical Variables
+
+```{r}
+# Four plots side-by-side
+par(mfrow=c(1,4))
+
+# Tables of all categorical variables
+tableSex = table(dataset$sex)
+tableSmoker = table(dataset$smoker)
+tableRegion = table(dataset$region)
+
+# Histograms of all categorical variables
+barplot(tableSex)
+barplot(tableSmoker)
+barplot(tableRegion)
+
+# Percentages
+tableSex["female"] / sum(tableSex) * 100
+tableSex["male"] / sum(tableSex) * 100
+
+tableSmoker["yes"] / sum(tableSex) * 100
+tableSmoker["no"] / sum(tableSex) * 100
+
+tableRegion["northeast"] / sum(tableSex) * 100
+tableRegion["northwest"] / sum(tableSex) * 100
+tableRegion["southeast"] / sum(tableSex) * 100
+tableRegion["southwest"] / sum(tableSex) * 100
+```
+
+Barplot was used for the categorical variables. We used `barplot` and `table` functions from the standard library.
+
+It seems like there were slightly more males than females (49.47% females and 50.523% males).
+
+Only 20.478% of people who took the survey were smokers with overwhelming 79.52% being non-smokers.
+
+24.21% of the participants were from the northeast region, 24.29% from the northwest region, 27.20% from the southeast region, and 24.29% from the southwest region.
+
+Being categorical variables, we did not perform any transformations.
+
+# Linear Models
+
+## Simple Linear Relationships
+
+```{r}
+plot(dataset)
+```
+
+We would like to check if there is any strongly correlated variables. For this purpose, we used the `plot` function and analyzed the generated scatterplot matrix.
+
+Since the dataset includes 3 categorical variables, a vast majority of scatterplots are ``bar-clustered'' (vertically or horizontally).
+
+Albeit we have considered the number of children to be a numerical variable, the scatterplot shows that it is of a categorical nature. This is an important conclusion performing linear regression analysis using this variable would be error-prone. In fact, plotting charges VS children would further reinforce our observation.
+
+Variables charges and age are likely to be strongly correlated. At the first glance, there seems to be no correlation between age and bmi. The relationship between charges and bmi is rather unclear and requires more investigation.
+
+At this point, our categorical variables are sex, smoker, region, \textbf{and children}.
+
+```{r}
+with (dataset, plot(dataset, col=as.factor(smoker)))
+```
+
+After exploring relationships, we decided to color the plots by the smoker status. The coloring made it clear that of the categorical variable (smoker) is significant.
+
+From the scatterplot matrix, it is clear that smokers, on average, spend a lot more on medical expenses that non-smokers.
+
+## Fitting the Full Linear Model
+
+```{r}
+allFit0 <- lm(charges ~ sqrt(age) + sex + bmi + children + smoker + region, data=dataset)
+summary(allFit0)
+```
+
+For fitting the full linear model, we use the previous observations. Note that the age is square-root transformed (the decision is justified by the histogram).
+
+The adjusted R-squared value is 0.7465 which tells us that 74.65% of the variation in charges is explained by the model.
+
+Residual standard error is 6098 meaning that, on average, predictions of the model are 6098 dollars away from the real value.
+
+```{r fig.height=3.5}
+par(mfrow=c(1,2))
+plot(allFit0)
+MASS::boxcox(charges ~ sqrt(age) + sex + bmi + children + smoker + region, data=dataset)
+```
+
+The first plot (Residuals VS Fitted Values) shows evidence of curvature. There is a strong evidence of heteroscedasticity.
+
+The second plot (Standardized Residuals VS Theoretical Quantiles) shows weak evidence that both sets of residuals are coming from normal distributions. This is the case since the points are, to some degree, aligned across line, but again, this visual check is not a strong evidence. Besides, most points are not aligned
+across the desired (dotted) line.
+
+The third plot ($\sqrt{\text{Standardized Residuals}}$ VS Fitted values) shows a set of lines which look like a curved line. This suggests that the residuals are not spread equally along the ranges of predictors and that the variance is not constant.
+
+Residuals VS Leverage plot shows no significant outliers.
+
+Before fully interpreting the model, we performed the Box-Cox analysis which further reinforced our previous observation (from a histogram) that log-transforming charges is suitable for this case. This is due to the fact that the optimal value for $\lambda$ (lambda) is far from 1.
+
+## Manual Backward Elimination
+
+```{r}
+allFit1 <- lm(log(charges) ~ sqrt(age) + sex + bmi + children + smoker + region, data=dataset)
+summary(allFit1)
+```
+
+The adjusted R-squared value is 0.7685 which tells us that 76.85% of the variation in charges is explained by the model. This is an improved over the previous model (\texttt{allFit0}) with the adjusted R-squared value of 0.7465 (0.22 or 2.2% improvement).
+
+Residual standard error is 0.4425 meaning that, on average, predictions of the model are 0.4425 log(dollars) away from the real value. We cannot compare this result with that of the previous model (\texttt{allFit0}) as the units do not match.
+
+Once again, before doing a full interpretation of the model, we proceed by first backward eliminating the least significant estimates.
+
+Both sex or region can be considered as the least significant estimates. Due to this reason, we will attempt to remove both individually and compare the results.
+
+```{r}
+allFit2 <- lm(log(charges) ~ sqrt(age) + bmi + children + smoker + region, data=dataset)
+summary(allFit2)
+```
+
+\texttt{allFit2} is a model with sex regressor variable removed.
+
+Adjusted R-squared value decreased to 0.7670 (from 0.7685 in the previous model that included sex).
+
+Residual standard error value is 0.4439 log(dollars) which is a slight increase comparing to the previous model with sex inclusive (0.4439 log(dollars) VS 0.4425 log(dollars)).
+
+Overall, the new model, excluding sex variable, is similar to the previous model, yet performs slightly worse. Therefore, we proceed by leaving sex and removing region regressor variable.
+
+```{r}
+allFit3 <- lm(log(charges) ~ sqrt(age) + sex + bmi + children + smoker, data=dataset)
+summary(allFit3)
+```
+
+\texttt{allFit3} is a model without region predictor variable.
+
+Adjusted R squared value is smaller than in \texttt{allFit1} (0.7657 VS 0.7685).
+
+Residual standard error is slightly bigger than in \texttt{allFit1} (0.446 log(dollars) VS 0.4425 log(dollars)).
+
+These observations suggest not removing the region predictor variable. In fact, we have tried removing all predictor variables individually and the most optimal choice is leaving the initial model without any alterations.
+
+We will now interpret the full model.
+
+## Interpretation
+
+```{r}
+summary(allFit1)
+confint(allFit1)
+```
+
+The summary section shows that all estimates are significant and therefore, we proceed by interpreting them all.
+
+The mean response changes between 0.402 and 0.443 log(dollars) per sqrt(years) (\texttt{sqrt(age)}), for any 1-unit increase in the predictor with 95% confidence, holding all other predictors fixed.
+
+The mean response changes between -0.123 and -0.027 log(dollars) per as to whether sex is equal to male (\texttt{sexmale}), for any change in the category, holding all other predictors fixed.
+
+The mean response changes between 0.010 and 0.018 log(dollars) per bmi unit (\texttt{bmi}), for any 1-unit increase in the predictor with 95% confidence, holding all other predictors fixed.
+
+The mean response changes between 0.072 and 0.112 log(dollars) per child (\texttt{children}), for any 1-unit increase in the predictor with 95% confidence, holding all other predictors fixed.
+
+The mean response changes between 1.494 and 1.613 log(dollars) as to whether smoker is equal to yes (\texttt{smokeryes}), for any 1-unit increase in the predictor with 95% confidence, holding all other predictors fixed.
+
+The mean response changes between -0.132 and 0.005 log(dollars) per as to whether region is equal to regionnorthwest (\texttt{regionnorthwest}), for any change in the regionnortheast category, holding all other predictors fixed.
+
+The mean response changes between -0.226 and -0.089 log(dollars) per as to whether region is equal to regionsoutheast (\texttt{regionsoutheast}), for any change in the regionnortheast category, holding all other predictors fixed.
+
+The mean response changes between -0.198 and -0.061 log(dollars) per as to whether region is equal to regionsouthwest (\texttt{regionsouthwest}), for any change in the regionnortheast category, holding all other predictors fixed.
+
+The Adjusted R-squared value is 0.7685 which tells us that 76.85% of the variation in charges is explained by this model.
+
+Residual standard error is 0.4425 meaning that on average, predictions of the model are 0.4425 \texttt{log}(dollars) away from the real value.
+
+```{r fig.height=3.5}
+par(mfrow=c(1,2))
+plot(allFit1)
+```
+
+The first plot (Residuals VS Fitted Values) shows a curvature and that the spread is not constant (that said, this is an improvement over the initial model \texttt{allFit0}). There is evidence of heteroscedasticity.
+
+The second plot (Standardized Residuals VS Theoretical Quantiles) gives a strong evidence against a claim that both sets of residuals are coming from normal distributions. Besides, points are not aligned across the desired (dotted) line.
+
+The third plot ($\sqrt{\text{Standardized Residuals}}$ VS Fitted values) shows almost a curved line. This suggests that the residuals are not spread equally along the ranges of predictors and that the variance is not constant. That said, this is an improvement over the initial model \texttt{allFit0}.
+
+Residuals VS Leverage plot shows no significant outliers.
+
+# Model Improvements
+
+## Step-wise Regression
+
+```{r}
+allFitAll <- lm(log(charges) ~ sqrt(age) +
+                               as.factor(sex) +
+                               bmi +
+                               as.factor(children) +
+                               as.factor(smoker) +
+                               as.factor(region),
+                               data=dataset)
+
+allFitAllAIC = step(allFitAll, direction = "both")
+```
+
+In order to verify our observations and the final model, we have also performed step-wise regression analysis which yielded similar results and the same final linear regression model.
+
+## Interaction Effects
+
+It seems like interaction effects may benefit our model.
+
+```{r}
+# Let's throw in some intercation effects and do step wise regression
+# For these purposes, we first need to center the continuous variables
+
+centeredSqrtAge = sqrt(dataset$age) - mean(sqrt(dataset$age))
+centeredBMI = dataset$bmi - mean(dataset$bmi)
+
+allFitAll <- lm(log(charges) ~ (centeredSqrtAge +
+                                as.factor(sex) +
+                                centeredBMI +
+                                as.factor(children) +
+                                as.factor(smoker) +
+                                as.factor(region))^2,
+                                data=dataset)
+
+allFitAllAIC = step(allFitAll, direction = "both")
+allFitAllSBC = step(allFitAll, direction = "both", k=log(dim(dataset)[1]))
+```
+
+Out first stepwise regression model had 14 predictors which was a lot more than desired maximum of 7 predictors (Dr. Iversen, Olin 113, 2019). For this reason, we performed the step wise regression with SBC criterion. The SBC model yielded a model with 10 predictor variables which is easier to handle than that with 14 predictors so we decided to move forward with this model.
+
+# Final model
+
+## Numerical Summary
+
+```{r fig.height=3.5}
+summary(allFitAllSBC)
+```
+
+The Adjusted R-squared value is 0.8341 which tells us that 83.41% of the variation in charges is explained by this model. The result is a significant improvement over the previous model which had the Adjusted R-squared value of 0.7685 (76.85% of the variation in charges is explained by the model).
+
+Residual standard error is 0.3745 meaning that on average, predictions of the model are 0.3745 \texttt{log}(dollars) away from the real value. The residual standard error went down as compared to the previous model with the value of 0.4425 \texttt{log}(dollars).
+
+## Residual Plots
+
+```{r fig.height=3.5}
+par(mfrow=c(1,2))
+plot(allFitAllSBC)
+```
+
+The first plot (Residuals VS Fitted Values) shows virtually no signs of curvature and that the spread is constant. This is a big improvement over the previous model. There is no evidence of heteroscedasticity \texttt{allFit1}.
+
+The second plot (Standardized Residuals VS Theoretical Quantiles) does give an evidence that against the claim that both sets of residuals are coming from normal distributions. That said, the shape of the plot looks a lot better than that of the previous model \texttt{allFit1}.
+
+The third plot ($\sqrt{\text{Standardized Residuals}}$ VS Fitted values) shows rather straight line with a slight curvature. This suggests that the residuals are, on average, spread equally along the ranges of predictors and that the variance is, on average, constant. This is an improvement over the initial model \texttt{allFit1}.
+
+Residuals VS Leverage plot shows no significant outliers.
+
+```{r fig.height=3.5}
+plot(log(dataset$charges) ~ allFitAllSBC$fitted.values, ylab="log(Charges)", xlab="Predicted Charges")
+abline(0,1)
+```
+
+Let's now plot response variables VS fitted values and add the line with intercept 0 and slope 1 to visually evaluate the model.
+
+## Additional Diagnostics
+
+### Hat Matrix Diagonals
+
+```{r fig.height=3.5}
+plot(hatvalues(allFitAllSBC))
+threshold2 = 2 * length(allFitAllSBC$coefficients)/length(dataset$age)
+plot(dataset, col=ifelse(hatvalues(allFitAllSBC) > threshold2,2,1))
+```
+
+The threshold is $\dfrac{2p}{n}$. There will almost always be values over the threshold as they're only general outlines. vertical interpretation but not horizontal. The hat matrix diagonals show us that the points with the highest leverage are the individuals with more children. These are explained through the scatterplot matrix(Line 341), in the graph of children vs age.
+
+### DFFITS
+
+```{r fig.height=3.5}
+threshold <- 2 * sqrt(length(allFitAllSBC$coefficients)/length(dataset$age))
+DFFITS <- dffits(allFitAllSBC)
+
+# Model with colors
+plot(DFFITS, col=(DFFITS > threshold) + 1)
+plot(dataset, col=ifelse(dffits(allFitAllSBC) > threshold,2,1))
+```
+
+We have a number of outliers as the threshold value calculated by the formula
+$2\sqrt{\dfrac{p}{n}}$ and has a value of 0.251.
+*We have colored the possible outliers red.
+The scatterplot matrix (line 354) indicates an odd clustering formed between age and charges. The values over the threshold seem to cluster around the middle values.
+
+
+### VIF (Variance Inflation Factor)
+
+```{r fig.height=3.5}
+library(car)
+vif(allFitAllSBC)
+```
+
+VIF (the second column in the output) values are all less than 5 meaning that there is no indication of a problematic amount of collinearity.
+
+### 10-Fold Cross Validation (using `caret` package)
+
+Cross-validation is a set of methods that splits the data into a "training" set, on which to fit and select a model, and a "test" set used to evaluate the model fitted values. Here we illustrate 10-fold cross validation. For this purpose, we used package `caret`.
+
+```{r}
+# Use libraries
+library(caret)
+
+# Random seed
+set.seed(42069)
+
+# Define training control (Leave-One-Out Cross-Validation)
+# `number=10` specifies the number of "folds" - 10 in this case hence, 10-fold
+# cross-validation
+trainContr <- trainControl(method="LOOCV", number=10)
+
+# `caret` complains about columns not being in the actual dataset so we added them
+dataset$centeredSqrtAge <- centeredSqrtAge
+dataset$centeredBMI <- centeredBMI
+
+# Fits a linear model and does the 10-fold cross-validation
+model <- train(log(charges) ~ centeredSqrtAge +
+                              as.factor(sex) +
+                              centeredBMI +
+                              as.factor(children) +
+                              as.factor(smoker) +
+                              as.factor(region) +
+                              centeredSqrtAge:as.factor(sex) +
+                              centeredSqrtAge:as.factor(children) +
+                              centeredSqrtAge:as.factor(smoker) +
+                              centeredBMI:as.factor(smoker),
+               trControl=trainContr,
+               method="lm",
+               data=dataset)
+
+# Summarize results (numerical)
+print(model)
+
+# Get the predicted values and
+# plot actual VS predicted values
+predicted <- predict(model, dataset)
+plot(log(charges) ~ predicted, data=dataset)
+```
+
+Our 10-fold-cross-validated model gave us the R squared value of 0.8311 which is a bit below 0.8341 (to be expected). This verified that our model is indeed performing well and, on average, has the R squared value of 0.8311 (83.11% of the variation in \texttt{log}(charges) is explained by the model).
+
+The plot shows a nice correlation between \texttt{log}(charges) and predicted values. Recall that we would like the fitted line to be approximately the same as $y = x$ line, which seems to be the case here. Some points do not seem to follow the fitted line, but the number of these points is negligible relative to the ones that are aligned. Overall, the plot further reinforces our numerical observations and, once again, tells us that our model is ready to go!

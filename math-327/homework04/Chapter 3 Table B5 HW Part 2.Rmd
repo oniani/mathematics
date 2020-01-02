@@ -1,0 +1,160 @@
+---
+title: "Math 327, Chapter 3 Homework Part 2 - Coal liquifaction data"
+author: "David Oniani"
+date: "September 23, 2019"
+output: pdf_document
+---
+  
+```{r}
+# Edit the next line or otherwise ensure that the Appendix B data sets are loaded.
+load ("./Appendix_B_data.Rdata")
+```
+
+Appendix B, Table B.5, contains data on the Belle Ayr Liquifaction Runs.   
+Results of a kinetic study of thermal liquefaction of Belle Ayr coal are analyzed using a linear regression
+model (data from "(1978) Belle Ayr Liquefaction Runs with Solvent. Industrial Chemical
+Process Design Development, 17, 3"). One of the important performance measures is the
+production of CO2 during the process. 
+The process can be regulated with the help of several variables like total solvent(%), 
+temperature (400, 425 or 450 centigrade) and hydrogen
+consumption(%). The variables are:
+
+y = CO2 (ppm)
+
+x1 = Space time, min.
+
+x2 = Temperaure, deg.C
+
+x3 = Percent solvent (%)
+
+x4 = Oil yield (g/100g MAF)
+
+x5 = Coal total (%)
+
+x6 = Solvent total (%)
+
+x7 = Hydrogen consumption (%)
+
+Produce a scatterplot matrix of all the data and fit the full first-order regression model.
+
+```{r fig.height=7.5, fig.width=7.5}
+plot (dataB.5)
+fit1 = lm (y ~ x1 + x2 + x3 + x4 + x5 + x6 + x7, data=dataB.5)
+summary (fit1)
+```
+
+# Remove the least significant variable and refit
+
+```{r}
+# Add R code here to refit the model
+# We removed x5 as it was the least significant variable
+fit2 = lm (y ~ x1 + x2 + x3 + x4 + x6 + x7, data=dataB.5)
+summary (fit2)
+```
+
+# Remove the next least significant variable and refit
+
+```{r}
+# Add R code here to refit the model
+# We removed x1 as it was the least significant variable
+fit3 = lm (y ~ x2 + x3 + x4 + x6 + x7, data=dataB.5)
+summary (fit3)
+```
+
+# Continue until Adjusted R^2 is maximized
+
+```{r}
+# Add R code here
+# We removed x2 as it was the least significant variable
+fit4 = lm (y ~ x3 + x4 + x6 + x7, data=dataB.5)
+summary (fit4)
+
+# We removed x3 as it was the least significant variable
+fit5 = lm (y ~ x4 + x6 + x7, data=dataB.5)
+summary (fit5)
+
+# We removed x4 as it was the least significant variable
+# Continuing this process will result in a significant decrease of R^2, thus we stop here
+fit6 = lm (y ~ x6 + x7, data=dataB.5)
+summary (fit6)
+
+# Some additional statistics in the form of confidence intervals
+confint (fit6)
+```
+
+# Interpret the the final model (parameter estimates, adjusted R^2, residual standard error)
+
+The mean response changes between 0.013 and 0.024 C02 (ppm) per Solvent total ($x_6$), for any 1-unit increase in the predictor with 95% confidence, holding all other predictors fixed.
+
+The mean response changes between 0.178 and 4.193 C02 (ppm) per Hydrogen consumption (%) ($x_7$), for any 1-unit increase in the predictor with 95% confidence, holding all other predictors fixed.
+
+It should be noted that both estimates Solvent total ($x_6$) and Hydrogen consumption (%) ($x_7$)
+are statistically significant and have the p-values of $5.66 * 10^{-7}$ and $0.0341$ respectively.
+
+The coefficient of determination (Adjusted $R^2$) is 0.6746 which means that 67.46\% of variation in CO2 (ppm) is explained by the regression model (in this case, two regressor variables $x_6$ and $x_7$).
+
+The residual standard error is 9.924 which tells us that, on average, our predictions are 9.924 CO2 (ppm) off from the real value.
+
+# Second model-building exercise
+
+Since the scatterplot of Y vs X1 is curved, an X1 quadratic predictor is added to the model.  Using
+that model, repeat the model-building procudure as above.
+
+```{r}
+# Add x1 squared predictor to the data frame
+dataB.5$x1sq = (dataB.5$x1 - mean (dataB.5$x1))^2
+fit1A = lm (y ~ x1 + x1sq + x2 + x3 + x4 + x5 + x6 + x7, data=dataB.5)
+summary (fit1A)
+```
+
+Repeat the predictor removal process as used above. Interpret the final model you obtain and compare that model to the final model you obtained above.
+
+```{r}
+# We removed x5 as it was the least significant variable
+fit2A = lm (y ~ x1 + x1sq + x2 + x3 + x4 + x6 + x7, data=dataB.5)
+summary (fit2A)
+
+# We removed x6 as it was the least significant variable
+fit3A = lm (y ~ x1 + x1sq + x2 + x3 + x4 + x7, data=dataB.5)
+summary (fit3A)
+
+# We removed x2 as it was the least significant variable
+fit4A = lm (y ~ x1 + x1sq + x3 + x4 + x7, data=dataB.5)
+summary (fit4A)
+
+# We removed x3 as it was the least significant variable
+# Continuing this process will result in a significant decrease of R^2, thus we stop here
+fit5A = lm (y ~ x1 + x1sq + x4 + x7, data=dataB.5)
+summary (fit5A)
+
+# Some additional statistics in the form of confidence intervals
+confint (fit5A)
+```
+
+The mean response changes between -1.561 and -0.655 C02 (ppm) per Space time (min) ($x_1$), for any 1-unit increase in the predictor with 95% confidence, holding all other predictors fixed.
+
+The mean response changes between -0.504 and 0.152 C02 (ppm) per Oil yield (g/100g MAF) ($x_4$), for any 1-unit increase in the predictor with 95% confidence, holding all other predictors fixed.
+
+The mean response changes between 0.194 and 4.019 C02 (ppm) per Hydrogen consumption (%) ($x_7$), for any 1-unit increase in the predictor with 95% confidence, holding all other predictors fixed.
+
+The mean response changes between 0.016 and 0.054 C02 (ppm) per Space time (min) ($x_1^2$), for any 1-unit increase in the predictor with 95% confidence, holding all other predictors fixed.
+
+It should be noted that out of all estimates, only Oil yield (g/100g MAF) ($x_4$) is not statistically
+significant with the p-value of 0.279. Estimates $x1$, $x1sq$, and $x7$ are all statistically significant with the p-values equal to $4.43 * 10^{-5}$, $0.000795$, and $0.0324$ respectively.
+
+The coefficient of determination (Adjusted $R^2$) is 0.7554 which means that 75.54\% of variation in CO2 (ppm) is explained by the regression model (in this case, three regressor variables $x_1$, $x_4$,
+$x_7$, and the quadratic term $x_{1sq}$).
+
+The residual standard error is 9.354 which tells us that, on average, our predictions are 9.354 CO2 (ppm) off from the real value.
+
+
+first model
+
+The coefficient of determination (Adjusted $R^2$) is 0.6746 which means that 67.46\% of variation in CO2 (ppm) is explained by the regression model (in this case, two regressor variables $x_6$ and $x_7$).
+
+The residual standard error is 9.924 which tells us that, on average, our predictions are 9.924 CO2 (ppm) off from the real value.
+
+When compared wit the first model, the second model seems to be better. Introducing quadratic term
+both increased Adjusted $R^2$ and decreased residual standard error. Adjusted $R^2$ value went up
+from 0.6746 to 0.7554 (which means being, on average, roughly 8\% improvement). Residual standard error went down from 9.924 to 9.354 which tells us that, on average, we are 0.57 CO2 (ppm) more accurate in our predictions. Hence, the second model with the quadratic term is overall a better
+model with higher Adjusted $R^2$ value and lower residual standard error.

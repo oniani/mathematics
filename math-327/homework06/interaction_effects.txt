@@ -1,0 +1,5 @@
+Interaction Effects
+-------------------
+Read 64-65 and 245-247 of the book.
+
+Y ~ x1 * x2 => x1 + x2 + x1:x2 (both are valid)

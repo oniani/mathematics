@@ -1,0 +1,140 @@
+---
+title: "Math 327, Chapter 3 Homework on Property Values"
+author: "David Oniani"
+date: "September 18, 2019"
+output: pdf_document
+---
+  
+```{r}
+load ("./Appendix_B_data.Rdata")
+```
+
+The table in Appendix B.4 has data on property values, as measured by sale price, as well as nine predictor variables as listed here:
+
+y = Sale price ($1000)
+
+x1 = taxes: local, school, county ($1000)
+
+x2 = number of baths (#)
+
+x3 = Lot Size (1000 sq ft)
+
+x4 = Living Space (1000 sq ft)
+
+x5 = Number of garage stalls
+
+x6 = Number of rooms
+
+x7 = Number of bedrooms
+
+x8 = Age of the home (years)
+
+x9 = # fireplaces
+
+First, produce the scatter plot matrix of all variables
+
+```{r fig.height=7, fig.width=7}
+plot (dataB.4)
+```
+
+# Fit Sale Price vs. Taxes
+
+```{r}
+plot (y ~ x1, data=dataB.4, ylab="Sale Price, $1000", xlab="Taxes ($1000)")
+
+# Fit sale price vs taxes
+
+fitB4.1 = lm (y ~ x1, data=dataB.4)
+abline (fitB4.1)
+summary (fitB4.1)
+confint (fitB4.1)
+```
+
+Q1: Summarize the fit of sale price vs taxes.  At a minimum, include interpretation of the slope, the coefficient of determination, and the residual standard error.
+
+The mean response changes between 2.515 and 4.134 Sale Price per Taxes with 95% confidence.
+The coefficient of determination ($R^2$) is 0.7673 which means that 76.73\% of variation in Sales Price is explained by Taxes. The residual standard error is 2.961 which tells us that, on average, our predictions are 2.961 (thousand) dollars off from the real value.
+
+# Fit Sale Price vs # of bathrooms
+
+```{r}
+plot (y ~ x2, data=dataB.4, ylab="Sale Price, $1000", xlab="# of Bathrooms")
+
+fitB4.2 = lm (y ~ x2, data=dataB.4)
+abline (fitB4.2)
+summary (fitB4.2)
+confint (fitB4.2)
+```
+
+Q2: Summarize the fit of sale price vs. number of bathrooms.  At a minimum, include interpretation of the slope, the coefficient of determination, and the residual standard error.
+
+The mean response changes between 10.043 and 25.507 Sale Price per # of Bathrooms with 95% confidence. The coefficient of determination ($R^2$) is 0.5081 which means that 50.81\% of variation in Sales Price is explained by the number of Bathrooms. The residual standard error is 4.305 which tells us that, on average, our predictions are 4.305 (thousand) dollars off from the real value.
+
+# Fit Sale Price vs. Living Space
+
+```{r}
+plot (y ~ x4, data=dataB.4, ylab="Sale Price, $1000", xlab="Living Space (sq.ft.)")
+
+fitB4.3 = lm (y ~ x4, data=dataB.4)
+abline (fitB4.3)
+summary (fitB4.3)
+confint (fitB4.3)
+```
+
+Q3: Summarize the fit of sale price vs. living space.  At a minimum, include interpretation of the slope, the coefficient of determination, and the residual standard error.
+
+The mean response changes between 8.668 and 22.198 Sale Price per Living Space (in sq.ft.) with 95% confidence. The coefficient of determination ($R^2$) is 0.5043 which means that 50.43\% of variation in Sales Price is explained by the Living Space (in sq.ft.). The residual standard error is 4.322 which tells us that, on average, our predictions are 4.322 (thousand) dollars off from the real value.
+
+# Fit Sale Price vs Taxes, number of bathrooms and living space
+
+```{r}
+# Scatterplot matrix of Y, X1, X2, and X4, which are in columns 
+# 1, 2, 3, and 5 of the data frame.
+plot (dataB.4[,c(1,2,3,5)], col=-0.5+2*dataB.4$x2)
+
+fitB4.4 = lm (y ~ x1 + x2 + x4, data=dataB.4)
+# A useful plot for any regression model is y vs y_hat
+plot (dataB.4$y ~ fitB4.4$fitted.values, 
+      ylab="Sale Price ($1000)", xlab="Predicted Sale Price ($1000)")
+abline (0,1)
+summary (fitB4.4)
+confint (fitB4.4)
+```
+
+Q4: Summarize the multiple regression model above.  At a minimum, include interpretation of each predictor's parameter estimate, the adjusted coefficient of determination, and the residual standard error.
+
+The mean response changes between 1.492 and 3.885 Sales Prices per taxes (local, school, county in $1000) (x1), for any 1-unit increase in the predictor with 95% confidence, holding all other predictors fixed.
+
+The mean response changes between -1.783 and 13.800 Sales Prices per number of baths (#) (x2), for any 1-unit increase in the predictor with 95% confidence, holding all other predictors fixed.
+
+The mean response changes between -7.279 and 7.903 Sales Prices per Living Space (1000 sq ft) (x4), for any 1-unit increase in the predictor with 95% confidence, holding all other predictors fixed.
+
+The coefficient of determination ($R^2$) is 0.8026 which means that 80.26\% of variation in Sales Price is explained by the Predicted Sale Price (in $1000). In this case, however, since we have multiple predictor variables, we prefer using Adjusted R-squared value, which tells us that 77.3\% of a variation in Sale Price is explained by Predicted Sale Price (in $1000). The residual standard error is 2.861 which tells us that, on average, our predictions are 2.861 (in thousands) dollars off from the real value.
+
+```{r}
+# Fit x1, x2, x5, and x7
+
+fitB4.5 = lm (y ~ x1 + x2 + x5 + x7, data=dataB.4)
+plot (dataB.4$y ~ fitB4.5$fitted.values, 
+      ylab="Sale Price ($1000)", xlab="Predicted Sale Price ($1000)")
+abline (0,1)
+summary (fitB4.5)
+confint (fitB4.5)
+```
+
+Q5: Summarize the multiple regression model above.  At a minimum, include interpretation of each predictor's parameter estimate, the adjusted coefficient of determination, and the residual standard error.
+
+The mean response changes between 1.337 and 3.501 Sales Prices per taxes (local, school, county in $1000) (x1), for any 1-unit increase in the predictor with 95% confidence, holding all other predictors fixed.
+
+The mean response changes between 1.585 and 15.375 Sales Prices per number of baths (#) (x2), for any 1-unit increase in the predictor with 95% confidence, holding all other predictors fixed.
+
+The mean response changes between -0.533 and 4.534 Sales Prices per Number of garage stalls (x5), for any 1-unit increase in the predictor with 95% confidence, holding all other predictors fixed.
+
+The mean response changes between -4.853 and 0.489 Sales Prices per Number of bedrooms (x7), for any 1-unit increase in the predictor with 95% confidence, holding all other predictors fixed.
+
+The coefficient of determination ($R^2$) is 0.8352 which means that 83.52\% of variation in Sales Price is explained by the Predicted Sale Price (in $1000). In this case, however, since we have multiple predictor variables, we prefer using Adjusted R-squared value, which tells us that 80.05\% of a variation in Sale Price is explained by Predicted Sale Price (in $1000). The residual standard error is 2.681 which tells us that, on average, our predictions are 2.681 (in thousands) dollars off from the real value.
+
+
+Q6: Compare models fitB4.4 and fitB4.5.  Based on the information provided in these analyses, which one would be better for predicting sale price of properties?
+
+It seems like fitB4.5 would be a better model for predicting sale price of properties. The reason is that the coefficient of determination has a higher value of $R^2 = 0.8352$ as opposed to $R^2 = 0.8026$ in fitB4.4. More importantly, for Adjusted R-squared values, we have 0.8005 for fitB4.5 and 77.3\% for fitB4.4 which, once again, bolsters the argument that fitB4.5 is a better model. Besides, the residual standard error is smaller in fitB4.5 which has a value of 2.681 as opposed to 2.861 in fitB4.4. This means that, on average, fitB4.5 will be $2.861 - 2.681 = 0.18$ thousands of dollars better at predicting the sale price.

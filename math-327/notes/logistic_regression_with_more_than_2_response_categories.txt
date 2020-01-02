@@ -1,0 +1,10 @@
+Logistic regression with > 2 response categories.
+
+m + 1 response categories (m = 2,3..)
+
+
+2 scenarious
+
+* nominal - fit m simultaneous binary logistic regressions
+
+* ordered - fit proportional odds model using culmulative probabilities

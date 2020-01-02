@@ -1,0 +1,32 @@
+We do interaction effects if we think that there are relationships between
+regressor variables.
+
+ONE DOES NOT NEED TO CENTER CATEGORICAL VARIABLES.
+ONLY CENTER CONTINUOUS VARIABLES!!
+CENTERING AROUND THE MEAN REMOVES THE COLLINEARITY.
+
+CENTERING A VARIABLE IS ONLY GOOD WHEN YOU EITHER DO INTERACTION EFFECTS
+OR SQUARE A VARIABLE.
+
+df$x1.c = df$x1 - mean(df$x1)
+df$x2.c = df$x2 - mean(df$x2)
+
+df$x1.v.x2 = df$x1.c * df$x2.c
+
+lm (y ~ x1.c + x2.c + x1.v.x2
+lm (y ~ x1.c * x2.c)
+lm (y ~ x1.c + x2.c + x1.c : x2.c)
+
+All these three are equivalent for centering around the mean and doing
+interaction effects. BUT, IN THE FIRST EXAMPLE, WE ARE NOT USING THE CREATED
+COLUMN x1.v.x2.
+
+When one has a lot of variables, a good approach is
+
+Y ~ (x1.c + x2.c + ... + xk.c)^2
+
+This syntax DOES NOT center the variables.
+So, one will first have to center them like shown below.
+
+df$x1.c = df$x1 - mean(df$x1)
+df$x2.c = df$x2 - mean(df$x2)

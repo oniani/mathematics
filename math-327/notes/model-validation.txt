@@ -1,0 +1,33 @@
+MODEL VALIDATION
+
+1. REASONABLENESS OF THE COEFFICIENTS
+
+-------------------------------------------------------------------------------
+
+2. COLLECTION OF NEW DATA (FRESH) IN THE SIMILAR PREDICTOR
+   SPACE AS THE ORIGINAL DATA (CAREFUL ABOUT EXTRAPOLATION)
+-------------------------------------------------------------------------------
+
+3. DATA SPLITTING
+
+ESTIMATION DATA 80%
+PREDICTION DATA 20% (10%[TEST] AND 10%[FINAL VALIDATION])
+
+-------------------------------------------------------------------------------
+
+K-FOLD CROSS-VALIDATION
+
+1. SPLIT THE DATA AT RANDOM INTO K EQUAL SIZED GROUPS (IF K = 2, 50% and 50%)
+2. FOR EACH i=1 to K,
+     - FIT A MODEL OR FIND A MODEL TO ALL BUT GROUP
+     - PREDICT ON GROUP j
+     - COMPARE OBSERVATION y VS HELD OUT \hat{y}
+
+For each unique group:
+  - Take the group as a hold out or test data set
+  - Take the remaining groups as a training data set
+  - Fit a model on the training set and evaluate it on the test set
+  - Retain the evaluation score and discard the model
+
+3. IN THE END, YOU CAN CALCULATE THE R^2 VALUE FOR CROSS-VALIDATION.
+   ONE CAN ALSO LOOK AT PLOTS FOR ACTUAL VS PREDICTED.

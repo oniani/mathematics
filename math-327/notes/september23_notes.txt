@@ -1,0 +1,11 @@
+Use UNITS with residual standard error.
+
+Our goal is not to have any correlation among predictor variables.
+Centering around the mean trick is aimed at fixing this issue.
+
+R^2 always goes up when adding more predictors.
+Adjusted R^2 "adjusts" for the number of predictors - adds a penalty.
+
+Generally speaking, high p-values mean correlation between predictor variables.
+
+Multicoliniarity is a fancy word for correlation among predictor variables.

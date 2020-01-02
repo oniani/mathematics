@@ -1,0 +1,10 @@
+You take 25% of the data and 75% of the data and make the line go through it.
+
+Why square root of the absolute residuals?
+
+hist (rnorm (1000)) gets a normal histogram.
+What if we take absolute values of normal variables.
+What happens is that the bell curve is folded to the left resulting in a
+right-skewed distribution.
+
+hist(sqrt(abs(rnorm(1000))))

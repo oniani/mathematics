@@ -1,0 +1,77 @@
+---
+title: "Math 327 - Review of t-tests"
+author: "Dr. Phil"
+date: "September 2, 2019"
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## One-sample t-test
+
+Source: Moore and McCabe, Introduction to the Practice of Statistics, p. 464 (1999).
+
+A laboratory analyzes samples of a pharmaceutical product to determine the concentration of the active ingredient.  Such chemical analyses are not perfectly precise.  Three samples were measured to determine if the mean concentration was close enough to the desired value, 0.86%.  The data are: 0.8403, 0.8363, and 0.8447.
+
+```{r fig.height=3.5, fig.width=5}
+# Define a variable to contain the list of cheese block weights
+percents = c(0.8403, 0.8363, 0.8447)
+# calculate the t-test results. The t.test function also produces a confidence interval
+t.test (percents, mu=0.86)
+```
+
+The mean drug concentration in the 3 samples was 0.84%, which is statistically significantly below the target value of 0.86%, p=0.015.  The mean drug concentration is between 0.83 and 0.85% with 95% confidence.
+
+## Two-sample t-test
+
+Source: Moore and McCabe, Introduction to the Practice of Statistics, p. 551 (1999).
+
+Does increasing the amount of calcium in our diet reduce blood pressure?  A randomized comparative experiment gave one group of 10 people a calcim suplement for 12 weeks.  A control group of 11 people received a placebo that appeared identical.  The data and analysis are below.
+
+```{r fig.height=3.5, fig.width=5}
+# Define a variable for each group
+sysbp.trt = c(100, 114, 105, 112, 115, 116, 106, 102, 125, 104)
+sysbp.ctl = c(124, 97, 113, 105, 95, 119, 114, 114, 121, 118, 133)
+# visualize the data
+boxplot (sysbp.trt, sysbp.ctl)
+# calculate the t-test and confidence interval
+t.test (sysbp.trt, sysbp.ctl, var.equal=T)
+```
+
+The mean systolic blood pressure in the calcium treated group was 4.0 mmHg lower than the control group, which was not significantly different compared to the control group (109.9 mmHG vs 113.9 mmHG), p=0.36.  The difference in mean systolic blood pressure between the treatment and control groups was between -12.98 and 4.97 mmHg with 95% confidence.
+
+# Paired t-test
+
+The blood pressure experiment actually had before-treatment and after-treatment measurements.  In particular, the calcium treated data are below
+
+```{r echo=FALSE}
+df = data.frame (subject= 1:10, 
+                 post.trt= c(100, 114, 105, 112, 115, 116, 106, 102, 125, 104),
+                 pre.trt= c(107, 110, 123, 129, 112, 111, 107, 112, 136, 102))
+df
+```
+
+Was there a significant improvement in blood pressure between the pre-treatment and the post-treatment measurements?
+
+```{r}
+attach (df)
+diffs = post.trt - pre.trt
+# Histogram of differences
+hist (diffs)
+# The paired t-test can be calculated two different ways
+t.test (diffs)
+t.test (post.trt, pre.trt, paired = T)
+# Scatterplot of post- vs pre-treatment
+plot (pre.trt, post.trt)
+# Put a "Y=X" line on the plot - this is the line of "no difference" between pre and post
+abline (0, 1,col='red')
+```
+
+The mean per-subject decrease of 5 mmHg in systolic blood pressure from pre-treatment to post-treatment with calcium was not statistically significant, p=0.104.  The mean per-subject change in systolic blood pressure was between -11.3 and 1.3 mmHG with 95% confidence.
+

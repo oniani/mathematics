@@ -1,0 +1,35 @@
+# Chapter 3 Ex 1.R
+
+# Assume that data frame data3.E1 has been loaded.
+
+plot (data3.E1)
+
+fit3a = lm (Deliv.Time ~ Num.Cases, data=data3.E1)
+summary (fit3a)
+confint (fit3a)
+
+fit3b = lm (Deliv.Time ~ Num.Cases + Distance.ft, data=data3.E1)
+summary (fit3b)
+
+# R^2 = 0.96
+# Sigma^2 = 3.3
+# x = 1.6 min/case, 0.014 min/ft
+# y_hat = 2.3min + 1.6 min/case X, cases
+
+confint (fit3b)
+
+# Multiple regression interpretations
+# The mean response changes betweeen LCL and UCL y-units, for any 1-unit increase in the
+# precitor with 95% confidence, holding all other predictors fixed.
+#
+#
+#
+#
+#
+#
+#
+#
+
+
+
+

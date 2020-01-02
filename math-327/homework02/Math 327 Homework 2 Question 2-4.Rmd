@@ -1,0 +1,139 @@
+---
+title: "Math 327, Chapter 2 HW Problem 2.4"
+author: "David Oniani"
+date: "September 11, 2019"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Table B.3 contains data on the gasoline mileage performance of 32 automobiles.
+
+```{r}
+library(readxl)
+mydata = read_excel ("./data-table-B3.XLS")
+```
+
+Fit a simple linear regression of gasoline mileage (y, miles per gallon or mpg) and engine displacement (x1, cubic inches).
+
+```{r}
+fit1 = lm (y ~ x1, data=mydata)
+plot (y ~ x1, data=mydata, ylab="Miles per Gallon", xlab="Engine Displacement, in^3")
+abline (fit1)
+summary (fit1)
+confint (fit1)
+```
+
+Q1: Interpret the Y-intercept and its confidence interval.
+
+The mean Miles per Gallon value (response) when Engine Displacement is zero is between 30.774 and 36.672 Miles per Gallon with 95% confidence. Y-intercept is not meaningful in this case.
+In order to understand why, one needs to know what type of measure Engine Displacement is.
+In broad terms, Engine Displacement is a determining factor in the horsepower and torque that an engine produces, as well as how much fuel that engine consumes. Y-intercept is the value (in Miles per Gallon) when the Engine Displacement is zero. This basically means that almost no impact was made on fuel which by itself means that no impact was made on Miles per Gallon
+value. Therefore, there is no direct relationship between Engine Displacement (X) and Miles per Gallon value (Y).
+
+
+Q2: Interpret the slope and its confidence interval.
+
+The mean Miles per Gallon value (response) decreases 0.047 Miles per Gallon per in^3 (Engine Displacement).
+
+The mean slope changes between -0.057 and -0.038 Miles per Gallon per in^3 (Engine Displacement) with 95% confidence.
+
+
+Q3: Interpret $R^2$ and the scatter plot.
+
+$R^2 = 0.7723$ which means that approximately 77.23% of the variation in Miles per Gallon
+is explained by Engine Displacement/the linear model.
+
+Scatter plot has a shape of a flat football demonstrating a fairly strong negative correlation between the dependent and independent variables. There are a few notable outliers.
+
+```{r}
+anova (fit1)
+```
+
+Q4: Explain how $\hat\sigma=\sqrt{MS_{res}}$ can be obtained from the ANOVA above and state its value along with its units.
+
+Recall that $\hat\sigma = \sqrt{MS_{res}} = \dfrac{SS_{res}}{n - 2}$. From ANOVA table, we can see that $\dfrac{SS_{res}}{n - 2} = 9.39$ which means that $\hat\sigma = MS_{res} = 9.39$ Miles per Gallon.
+
+```{r}
+predict (fit1, list (x1=275), interval = 'confidence')
+```
+
+Q5: Interpret the confidence interval above: 
+
+The estimated mean response when Engine Displacement is 275 in^3 is between 19.588 and 21.810 Miles per Gallon with 95% confidence.
+
+```{r}
+predict (fit1, list (x1=275), interval = 'prediction')
+```
+
+Q6: Interpret the prediction interval above:
+
+The predicted response for an individual when Engine Displacement is 275 in^3 is between
+14.341 and 27.056 Miles per Gallon with 95% confidence.
+
+
+The next model fits mileage vs. vehicle weight (x10) in pounds (lbs).
+
+```{r}
+fit2 = lm (y ~ x10, data=mydata)
+plot (y ~ x10, data=mydata, ylab="Miles per Gallon", xlab="Weight, lbs")
+abline (fit2)
+summary (fit2)
+confint (fit2)
+```
+
+Q7: Interpret the Y-intercept and its confidence interval.
+
+The mean Miles per Gallon value (response) when Weight is zero is between 36.198 and 45.507 Miles per Gallon with 95% confidence. Y-intercept is not meaningful in this case as when the Weight is zero, there is no relationship between Weight and Miles per Gallon. This is the case as Weight being zero means having no vehicle at all.
+
+
+Q8: Interpret the slope and its confidence interval.
+
+The mean Miles per Gallon value (response) decreases 0.006 Miles per Gallon per lb (Weight).
+
+The mean slope changes between -0.007 and -0.004 Miles per Gallon per lb (Weight) with 95% confidence.
+
+
+Q9: Interpret $R^2$ and the scatter plot.
+
+$R^2 = 0.7446$ which means that approximately 74.46% of the variation in Miles per Gallon
+is explained by Weight/the linear model.
+
+Scatter plot has a shape of a flat football demonstrating a fairly strong negative correlation between the dependent and independent variables. There are a few notable outliers.
+
+```{r}
+anova (fit2)
+```
+
+Q10: Explain how $\hat\sigma=\sqrt{MS_{res}}$ can be obtained from the ANOVA above and state its value along with its units.
+
+Recall that $\hat\sigma = \sqrt{MS_{res}} = \dfrac{SS_{res}}{n - 2}$. From ANOVA table, we can see that $\dfrac{SS_{res}}{n - 2} = 10.53$ which means that $\hat\sigma = MS_{res} = 10.53$ Miles per Gallon.
+
+```{r}
+predict (fit2, list (x10=2750), interval = 'confidence')
+```
+
+Q11: Interpret the confidence interval above: 
+
+The estimated mean response when Weight is 2750 lbs is between 23.462 and 21.609 Miles per Gallon with 95% confidence.
+
+```{r}
+predict (fit2, list (x10=2750), interval = 'prediction')
+```
+
+Q12: Interpret the prediction interval above:
+
+The predicted response for an individual when Weight is 2750 lbs is between 18.223 and 31.848 Miles per Gallon with 95% confidence.
+
+
+Q13: Overall, which model would you prefer and why?
+
+Miles per Gallon VS Engine Displacement is a better model than Miles per Gallon VS Weight.
+This is simply because Engine Displacement is a better measure and indicator for a change 
+in Miles per Gallon. Simply put, Engine Displacement is a better Explanatory Variable than
+the Weight of a vehicle.

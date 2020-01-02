@@ -1,0 +1,2 @@
+if the condition is true, go to the left
+if the condition is false, go to the right

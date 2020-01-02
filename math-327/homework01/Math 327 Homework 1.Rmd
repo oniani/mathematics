@@ -1,0 +1,94 @@
+---
+title: 'Math 327 - Homework #1'
+author: "David Oniani"
+date: "September 2, 2019"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## One-sample t-test
+
+Adapted from: Wm. Bolstad, p. 230 (2012).
+
+You are the statistician responsible for quality standards at a cheese factory.  You want to determine whether the mean weight of 20 randomly chosen blocks of cheese labelled "1 kg" is close to 1 kg.  The weights (in grams) of the 20 blocks of cheese are:
+
+994, 997, 999, 1003, 994, 998, 1001, 998, 996, 1002,
+
+1004, 995, 994, 995, 998, 1001, 995, 1006, 997, 998
+
+Test whether the mean weight is equal to 1000 grams or not and estimate the mean weight with a 95% confidence interval.  Provide interpretations of the results.
+
+```{r fig.height=3.5, fig.width=5}
+# Define a variable to contain the list of cheese block weights
+cheese.wgts = c(994, 997, 999, 1003, 994, 998, 1001, 998, 996, 1002, 1004, 995, 994, 995, 998, 1001, 995, 1006, 997, 998)
+# Visualate the weights (always plot your data!)
+hist (cheese.wgts)
+# calculate the t-test results. The t.test function also produces a confidence interval
+t.test (cheese.wgts, mu=1000)
+# plot the confidence interval on the histogram
+ch.mean = mean (cheese.wgts)
+ttest1 = t.test (cheese.wgts, mu=1000)
+lines (ttest1$conf.int[1:2], c(0.5, 0.5), col='red', lwd=3)
+lines (c(ch.mean, ch.mean), c(0.25, 0.75), col='red', lwd=3)
+```
+
+The mean weight in the 20 samples was 998.25 grams, which is statistically significantly below the target value of 1000 grams, p=0.04.  The mean weight is between 996.59 grams and 999.91 grams with 95% confidence.
+
+## Two-sample t-test
+
+Adapted from: Wm. Bolstad, p. 273 (2012).
+
+A consumer testing organization obtained samples of size 12 from two brands of emergency flares and measured the burning times in minutes:
+
+Brand A: 17.5, 21.2, 20.3, 14.4, 15.2, 19.3, 21.2, 19.1, 18.1 14.6, 17.2, 18.8
+
+Brand B:
+
+Is there a significant difference in mean burning time between the two brands?
+
+```{r fig.height=3.5, fig.width=5}
+# Define a variable for each group
+times.A = c(17.5, 21.2, 20.3, 14.4, 15.2, 19.3, 21.2, 19.1, 18.1, 14.6, 17.2, 18.8)
+times.B = c(13.4, 9.9, 13.5, 11.3, 22.5, 14.3, 13.6, 15.2, 13.7, 8, 13.6, 11.8)
+# visualize the data
+boxplot (times.A, times.B)
+# calculate the t-test and confidence interval
+t.test (times.A, times.B, var.equal=T)
+```
+
+The mean burning time in the Group A was 4.675 minutes higher than that in Group B, which was significantly different compared to Group B (18.075 mins vs 13.400 mins), p=0.0009.  The difference in mean burning times between the groups was between 2.136 minutes and 7.214 minutes with 95% confidence.
+
+# Paired t-test
+
+A group of 10 students took a pre-test at the beginning of their statistics class and a post-test at the end.  The data are in percent (%) units:
+
+```{r echo=FALSE}
+data.frame (student= 1:10,
+            pre.test= c(50, 53, 55, 60, 62, 65, 66, 70, 75, 80),
+            post.test= c(70, 71, 65, 75, 80, 81, 86, 90, 89, 95))
+```
+
+Was there a significant improvement in scores between the pre-test and the post-test?
+
+```{r}
+pre.test = c(60, 63, 55, 70, 62, 65, 66, 70, 75, 80)
+post.test = c(70, 71, 65, 75, 76, 80, 86, 90, 89, 95)
+diffs = post.test - pre.test
+hist (diffs)
+# The paired t-test can be calculated two different ways
+t.test (diffs)
+t.test (post.test, pre.test, paired = T)
+# Scatterplot of post- vs pre-treatment
+plot (pre.test, post.test)
+# Put a "Y=X" line on the plot - this is the line of "no difference" between pre and post
+abline (0, 1,col='red')
+```
+
+The mean per-subject increase of 13.100 in scores from pre-test to post-test was statistically significant, p=0.00001.  The mean per-subject change in the score was between 9.604 and 16.596 with 95% confidence.
