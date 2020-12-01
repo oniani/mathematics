@@ -1,0 +1,259 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Filename: template.tex
+% Author:   David Oniani
+% Modified: November 30, 2020
+%  _         _____   __  __
+% | |    __ |_   _|__\ \/ /
+% | |   / _` || |/ _ \\  /
+% | |__| (_| || |  __//  \
+% |_____\__,_||_|\___/_/\_\
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document Definition
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Packages and Related Settings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Global, document-wide settings
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+% Other packages
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage[cache=false]{minted}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Command Definitions and Redefinitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Nice-looking underline
+\newcommand\und[1]{\underline{\smash{#1}}}
+
+% Line spacing is 1.5
+\renewcommand{\baselinestretch}{1.5}
+
+% Absolute value
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+
+% Floor
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Miscellaneous
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Setting stuff
+\setlength{\parindent}{0pt}  % Remove indentations from paragraphs
+
+% PDF information and nice-looking urls
+\hypersetup{%
+  pdfauthor={David Oniani},
+  pdftitle={Real Analysis},
+  pdfsubject={Mathematics, Real Analysis, Real Numbers},
+  pdfkeywords={Mathematics, Real Analysis, Real Numbers},
+  pdflang={English},
+  colorlinks=true,
+  linkcolor={black!50!blue},
+  citecolor={black!50!blue},
+  urlcolor={black!50!blue}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Author(s), Title, and Date
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Author(s)
+\author{David Oniani\\
+        Luther College\\
+        \href{mailto:oniada01@luther.edu}{oniada01@luther.edu}}
+
+% Title
+\title{\rule{\paperwidth - 150pt}{1pt}\textbf{\\\textit{Real Analysis}\\}\rule
+{\paperwidth - 150pt}{1pt}\\\textbf{Assignment \textnumero1}\\{\normalsize
+Instructor: Dr. Eric Westlund.}}
+
+% Date
+\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beginning of the Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Homework
+%
+% 1.2 # 5, 8, 9
+% 1.3 # 3, 8
+% 1.4 # 1, 3
+% 1.5 # 9
+% 1.6 # 4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+    \item[5.]
+    \begin{itemize}
+        \item[(a)]
+        Suppose $A, B \subseteq \mathbb{R}$ and $x \in (A \cap B)^c$. Then $x
+        \notin A \cap B$. Hence, $x \in A^c$ or $x \in B^c$. Therefore, $x \in
+        A^c \cup B^c$. Finally, we get that $(A \cap B)^c \subseteq A^c \cup
+        B^c$.\\
+        $\qed$
+
+        \item[(b)]
+        Suppose $A, B \subseteq \mathbb{R}$ and $x \in A^c \cup B^c$. Then $x
+        \in A^c$ or $x \in B^c$, which is equivalent to $x \notin A$ or $x
+        \notin B$. Hence, $x \notin A \cap B$. Therefore, $x \in (A \cap B)^c$
+        and it follows that $(A \cap B)^c \supseteq A^c \cup B^c$. Finally,
+        since we have already proven that $(A \cap B)^c \subseteq A^c \cup
+        B^c$, we get that $(A \cap B)^c = A^c \cup B^c$.\\
+        $\qed$
+
+        \item[(c)]
+        Let us first prove that $A^c \cap B^c \subseteq (A \cup B)^c$.
+
+        Suppose $A, B \subseteq \mathbb{R}$ and $x \in A^c \cap B^c$. Then $x
+        \in A^c$ and $x \in B^c$. Thus, $x \notin A$ and $x \notin B$. It
+        follows that $x \notin (A \cup B)$. Hence, $x \in (A \cup B)^c$ and
+        $A^c \cap B^c \subseteq (A \cup B)^c$.\\
+        $\qed$
+
+        Let us now prove that $(A \cup B)^c \subseteq A^c \cap B^c$.
+
+        Suppose $A, B \subseteq \mathbb{R}$ and $x \in (A \cup B)^c$. Then $x
+        \notin A \cup B$. Therefore, $x \notin A$ and $x \notin B$. It follows
+        that $x \in A^c$ and $x \in B^c$. Thus, $x \in A^c \cap B^c$ and $(A
+        \cup B)^c \subseteq A^c \cap B^c$.\\
+        $\qed$
+
+        Finally, since $A^c \cap B^c \subseteq (A \cup B)^c$ and $(A \cup B)^c
+        \subseteq A^c \cap B^c$, we get that $(A \cup B)^c = A^c \cap B^c$.\\
+        $\qed$
+    \end{itemize}
+
+    \item[8.]
+        \begin{itemize}
+            \item[(a)]
+            Let us define $f : \mathbb{N} \to \mathbb{N} : x \mapsto 2x + 1$.
+            We can now prove that $f$ is $1 - 1$. Suppose, for the sake of
+            contradiction, that $x_1, x_2 \in \mathbb{N}$ with $x_1 \neq x_2$
+            and $f(x_1) = f(x_2)$. Then $f(x_1) = f(x_2) \implies 2x_1 + 1 =
+            2x_2 + 1 \implies x_1 = x_2$. Hence, we face the contradiction and
+            $f$ is $1 - 1$. However, $f$ is not onto since for $f(x) = 2$, the
+            solution is $0.5$ which is not in $\mathbb{N}$. Thus, $f$ is a
+            function that is $1 - 1$, but not onto.\\
+            $\qed$
+
+            \item[(b)]
+            Let us define $f : \mathbb{N} \rightarrow \mathbb{N} : x \mapsto
+            \floor{\dfrac{x}{4}}$. Then $f$ is onto since since $\forall x \in
+            \mathbb{N}$, $\exists k = 4x$ with $f(k) = x$. However, $f$ is not
+            $1 - 1$ since $f(2) = f(3)$. Thus, $f$ if a function that is onto,
+            but not $1 - 1$.\\
+            $\qed$
+
+            \item[(c)]
+            Let us define
+
+            \begin{equation}
+                f : \mathbb{N} \rightarrow \mathbb{Z} : x \mapsto
+                \begin{cases}
+                    \dfrac{x - 1}{2}, & \text{if } n \text{ is odd}\\
+                    -\dfrac{x}{2},    & \text{if } n \text{ is even}
+                \end{cases}
+            \end{equation}
+
+            Then $f$ is both $1 - 1$ and onto.
+            Let us first prove that $f$ is $1 - 1$.
+
+            Suppose, for the sake of contradiction, that $x_1, x_2 \in
+            \mathbb{N}$ with $x_1 \neq x_2$ and $f(x_1) = f(x_2)$. Then
+            $f(x_1)$ and $f(x_2)$ must be of the same sign or both be zero.
+            Thus, we have three cases:
+
+            \begin{itemize}
+                \item[1.]
+                    $f(x_1) = \dfrac{x_1 - 1}{2}$ and $f(x_2) =
+                    \dfrac{x_2 - 1}{2}$
+
+                    $f(x_1) = f(x_2) \implies \dfrac{x_1 - 1}{2} =
+                    \dfrac{x_2 - 1}{2} \implies x_1 = x_2$.\\
+                    $\qed$
+
+                \item[2.]
+                    $f(x_1) = -\dfrac{x_1}{2}$ and $f(x_2) = -\dfrac{x_2}{2}$
+
+                    $f(x_1) = f(x_2) \implies -\dfrac{x_1}{2} = -\dfrac{x_2}{2}
+                    \implies x_1 = x_2$\\
+                    $\qed$
+
+                \item[3.]
+                    $f(x_1) = 0$ and $f(x_2) = 0$
+
+                    The only way for this to happen is if $f(x_1) =
+                    -\dfrac{x_1}{2}$ and $f(x_2) = -\dfrac{x_2}{2}$ and we get
+                    $f(x_1) = f(x_2) \implies -\dfrac{x_1}{2} = -\dfrac{x_2}{2}
+                    \implies x_1 = x_2$\\
+                    $\qed$
+            \end{itemize}
+            $\qed$
+
+            Now let us prove that $f$ is onto. For $y \in \mathbb{Z}$, we have
+            three cases:
+
+            \begin{itemize}
+                \item[1.]
+                    $y$ is positive.
+
+                    If $y > 0$, we can find $k = 2y + 1$ with $f(k) = y$.\\
+                    $\qed$
+
+                \item[2.]
+                    $y$ is negative.
+
+                    If $y < 0$, we can find $k = -2y$ with $f(k) = y$.\\
+                    $\qed$
+
+                \item[3.]
+                    $y$ is zero.
+
+                    If $y = 0$, we can find $k = 1$ with $f(k) = y = 0$.\\
+                    $\qed$
+            \end{itemize}
+            $\qed$
+
+            Finally, we have proven that $f$ is both $1 - 1$ and onto.\\
+            $\qed$
+        \end{itemize}
+
+    \item[9.]
+        \begin{itemize}
+            \item[(a)]
+
+
+            \item[(b)]
+        \end{itemize}
+
+    \item
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The End of the Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
