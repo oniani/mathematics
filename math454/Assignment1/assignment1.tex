@@ -2,7 +2,7 @@
 %
 % Filename: template.tex
 % Author:   David Oniani
-% Modified: November 30, 2020
+% Modified: December 01, 2020
 %  _         _____   __  __
 % | |    __ |_   _|__\ \/ /
 % | |   / _` || |/ _ \\  /
@@ -50,6 +50,21 @@
 % Floor
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
+% % Naturals, Reals, Integers, and Rationals, 
+\newcommand{\nats}{\mathbb{N}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\preals}{\mathbb{R^+}}
+\newcommand{\nreals}{\mathbb{R^-}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\pints}{\mathbb{Z^+}}
+\newcommand{\nints}{\mathbb{Z^-}}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\prats}{\mathbb{Q^+}}
+\newcommand{\nrats}{\mathbb{Q^-}}
+\newcommand{\irrats}{\mathbb{I}}
+\newcommand{\pirrats}{\mathbb{I^+}}
+\newcommand{\nirrats}{\mathbb{I^-}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Miscellaneous
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -95,6 +110,7 @@ Instructor: Dr. Eric Westlund.}}
 \maketitle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 % Homework
 %
 % 1.2 # 5, 8, 9
@@ -102,20 +118,21 @@ Instructor: Dr. Eric Westlund.}}
 % 1.4 # 1, 3
 % 1.5 # 9
 % 1.6 # 4
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{itemize}
-    \item[5.]
+    \item[1.2.5]
     \begin{itemize}
         \item[(a)]
-        Suppose $A, B \subseteq \mathbb{R}$ and $x \in (A \cap B)^c$. Then $x
+        Suppose $A, B \subseteq \reals$ and $x \in (A \cap B)^c$. Then $x
         \notin A \cap B$. Hence, $x \in A^c$ or $x \in B^c$. Therefore, $x \in
         A^c \cup B^c$. Finally, we get that $(A \cap B)^c \subseteq A^c \cup
         B^c$.\\
         $\qed$
 
         \item[(b)]
-        Suppose $A, B \subseteq \mathbb{R}$ and $x \in A^c \cup B^c$. Then $x
+        Suppose $A, B \subseteq \reals$ and $x \in A^c \cup B^c$. Then $x
         \in A^c$ or $x \in B^c$, which is equivalent to $x \notin A$ or $x
         \notin B$. Hence, $x \notin A \cap B$. Therefore, $x \in (A \cap B)^c$
         and it follows that $(A \cap B)^c \supseteq A^c \cup B^c$. Finally,
@@ -126,15 +143,16 @@ Instructor: Dr. Eric Westlund.}}
         \item[(c)]
         Let us first prove that $A^c \cap B^c \subseteq (A \cup B)^c$.
 
-        Suppose $A, B \subseteq \mathbb{R}$ and $x \in A^c \cap B^c$. Then $x
+        Suppose $A, B \subseteq \reals$ and $x \in A^c \cap B^c$. Then $x
         \in A^c$ and $x \in B^c$. Thus, $x \notin A$ and $x \notin B$. It
         follows that $x \notin (A \cup B)$. Hence, $x \in (A \cup B)^c$ and
         $A^c \cap B^c \subseteq (A \cup B)^c$.\\
         $\qed$
 
-        Let us now prove that $(A \cup B)^c \subseteq A^c \cap B^c$.
+        We have to now prove the converse. Let us now prove that $(A \cup B)^c
+        \subseteq A^c \cap B^c$.
 
-        Suppose $A, B \subseteq \mathbb{R}$ and $x \in (A \cup B)^c$. Then $x
+        Suppose $A, B \subseteq \reals$ and $x \in (A \cup B)^c$. Then $x
         \notin A \cup B$. Therefore, $x \notin A$ and $x \notin B$. It follows
         that $x \in A^c$ and $x \in B^c$. Thus, $x \in A^c \cap B^c$ and $(A
         \cup B)^c \subseteq A^c \cap B^c$.\\
@@ -145,7 +163,7 @@ Instructor: Dr. Eric Westlund.}}
         $\qed$
     \end{itemize}
 
-    \item[8.]
+    \item[1.2.8]
         \begin{itemize}
             \item[(a)]
             Let us define $f : \mathbb{N} \to \mathbb{N} : x \mapsto 2x + 1$.
@@ -159,7 +177,7 @@ Instructor: Dr. Eric Westlund.}}
             $\qed$
 
             \item[(b)]
-            Let us define $f : \mathbb{N} \rightarrow \mathbb{N} : x \mapsto
+            Let us define $f : \mathbb{N} \to \mathbb{N} : x \mapsto
             \floor{\dfrac{x}{4}}$. Then $f$ is onto since since $\forall x \in
             \mathbb{N}$, $\exists k = 4x$ with $f(k) = x$. However, $f$ is not
             $1 - 1$ since $f(2) = f(3)$. Thus, $f$ if a function that is onto,
@@ -169,13 +187,13 @@ Instructor: Dr. Eric Westlund.}}
             \item[(c)]
             Let us define
 
-            \begin{equation}
-                f : \mathbb{N} \rightarrow \mathbb{Z} : x \mapsto
+            \begin{equation*}
+                f : \mathbb{N} \to \ints : x \mapsto
                 \begin{cases}
                     \dfrac{x - 1}{2}, & \text{if } n \text{ is odd}\\
                     -\dfrac{x}{2},    & \text{if } n \text{ is even}
                 \end{cases}
-            \end{equation}
+            \end{equation*}
 
             Then $f$ is both $1 - 1$ and onto.
             Let us first prove that $f$ is $1 - 1$.
@@ -212,7 +230,7 @@ Instructor: Dr. Eric Westlund.}}
             \end{itemize}
             $\qed$
 
-            Now let us prove that $f$ is onto. For $y \in \mathbb{Z}$, we have
+            Now let us prove that $f$ is onto. For $y \in \ints$, we have
             three cases:
 
             \begin{itemize}
@@ -240,16 +258,326 @@ Instructor: Dr. Eric Westlund.}}
             $\qed$
         \end{itemize}
 
-    \item[9.]
+    \item[1.2.9]
         \begin{itemize}
             \item[(a)]
+                Given, $f(x) = x^2$, $A = [0, 4]$, and $B = [-1, 1]$, we get:
+                \begin{align*}
+                    f^{-1}(A) &= \{x \mid f(x) \in A\} = [-2, 2]\\
+                    f^{-1}(B) &= \{x \mid f(x) \in B\} = [-1, 1]
+                \end{align*}
 
+                We get $f^{-1}(A) = [-2, 2]$ as the negative values plugged
+                into $x^2$ get positive, with 0 mapping to 0. Since the biggest
+                value of $A$ is 4, $x$ cannot exceed 2, so we have an interval
+                $[0, 2]$. And now, due to properties of $f(x) = x^2$, we add
+                the negative part $[-2, 0)$. Finally, $[0, 2] \cup
+                [-2, 0) = [-2, 2]$
+
+                Similarly, $f^{-1}(B) = [-1, 1]$ as $[0, 1] \cup [-1, 0) =
+                [-1, 1]$.
+                
+                $A \cap B = [0, 4] \cap [-1, 1] = [0, 1]$.
+                \begin{align*}
+                    f^{-1}(A \cap B)        &= \{x \mid f(x) \in A \cap B\} = [-1, 1]\\
+                    f^{-1}(A) \cap f{-1}(B) &= [-2, 2] \cap [-1, 1] = [-1, 1]
+                \end{align*}
+                
+                Hence, $f^{-1}(A \cap B) = f^{-1}(A) \cap f^{-1}(B)$.
+                
+                Additionally, we have:
+                \begin{align*}
+                    f^{-1}(A \cup B)        &= \{x \mid f(x) \in A \cup B\} = [-2, 2]\\
+                    f^{-1}(A) \cup f{-1}(B) &= [-2, 2] \cup [-1, 1] = [-2, 2]
+                \end{align*}
+                
+                Hence, $f^{-1}(A \cup B) = f^{-1}(A) \cup f^{-1}(B)$.
 
             \item[(b)]
+                Let us now prove that the properties shown in $(a)$ are
+                completely general.
+
+                \begin{itemize}
+                    \item[1.]
+                    Suppose $g : \reals \to \reals$ is a function from
+                    reals to reals and $A, B \subseteq \reals$. Prove that
+                    $g^{-1}(A \cap B) = g^{-1}(A) \cap g^{-1}(B)$.\\
+
+                    We have to show both $g^{-1}(A \cap B) \subseteq g^{-1}(A)
+                    \cap g^{-1}(B)$ and $g^{-1}(A) \cap g^{-1}(B) \subseteq
+                    g^{-1}(A \cap B)$.\\
+
+                    Suppose $x \in g^{-1}(A \cap B)$. Then $g(x) \in A \cap B$.
+                    It follows that $g(x) \in A$ and $g(x) \in B$. As a result,
+                    $x \in g^{-1}(A)$ and $x \in g^{-1}(B)$. Hence, $x \in
+                    g^{-1}(A) \cap g^{-1}(B)$ and $g^{-1}(A \cap B) \subseteq
+                    g^{-1}(A) \cap g^{-1}(B)$.\\
+                    $\qed$
+
+                    We now have to prove the converse. Suppose $x \in g^{-1}(A)
+                    \cap g^{-1}(B)$. Then $g(x) \in A$ and $g(x) \in B$. Hence,
+                    $g(x) \in A \cap B$. Therefore, $x \in g^{-1}(A \cap B)$
+                    and $g^{-1}(A) \cap g^{-1}(B) \subseteq g^{-1}(A \cap B)$.
+                    \\
+                    $\qed$\\
+
+                    We have now shown that $g^{-1}(A \cap B) = g^{-1}(A) \cap
+                    g^{-1}(B)$\\
+                    $\qed$
+
+                    \item[2.]
+                    Suppose $g : \reals \to \reals$ is a function from
+                    reals to reals and $A, B \subseteq \reals$. Prove that
+                    $g^{-1}(A \cup B) = g^{-1}(A) \cup g^{-1}(B)$.\\
+
+                    We have to show both $g^{-1}(A \cup B) \subseteq g^{-1}(A)
+                    \cup g^{-1}(B)$ and $ g^{-1}(A) \cup g^{-1}(B) \subseteq
+                    g^{-1}(A \cup B)$.\\
+
+                    Suppose $x \in g^{-1}(A \cup B)$. Then $g(x) \in A \cup B$.
+                    It follows that $g(x) \in A$ or $g(x) \in B$. As a result,
+                    $x \in g^{-1}(A)$ or $x \in g^{-1}(B)$. Hence, $x \in
+                    g^{-1}(A) \cup g^{-1}(B)$ and $g^{-1}(A \cup B) \subseteq
+                    g^{-1}(A) \cup g^{-1}(B)$.\\
+                    $\qed$
+
+                    \newpage
+
+                    We now have to prove the converse. Suppose $x \in g^{-1}(A)
+                    \cup g^{-1}(B)$. Then $g(x) \in A$ or $g(x) \in B$. Hence,
+                    $g(x) \in A \cup B$. Therefore, $x \in g^{-1}(A \cup B)$
+                    and $g^{-1}(A) \cup g^{-1}(B) \subseteq g^{-1}(A \cup B)$.
+                    \\
+                    $\qed$\\
+
+                    We have now shown that $g^{-1}(A \cup B) = g^{-1}(A) \cup
+                    g^{-1}(B)$\\
+                    $\qed$
+
+                \end{itemize}
+
         \end{itemize}
 
-    \item
+    \item[1.3.3]
+        \begin{itemize}
+            \item[(a)]
+                Because $B = \{b \in \reals \mid b \text{ is a lower bound for
+                } A\}$, we have that $\inf{A} \in B$ as $\inf{A}$ is also a
+                lower bound for $A$. Thus, $B$ cannot be empty. Furthermore,
+                $\forall a \in A$ and $\forall b \in B$, $b \leq a$. Hence, per
+                the Axiom of Completeness, $\sup(B)$ must exist. Now, since
+                $\inf{A}$ is the greatest lowest bound for $A$, it follows that
+                $\forall b \in B, b \leq \inf{A}$. Therefore, $\inf{A}$ is the
+                maximum of $B$ and $\inf{A} = \max{B}$. Finally, according to
+                the book, \textit{when a maximum exists, then it is also the
+                supremum} and thus $\inf{A} = \sup{B}$.\\
+                $\qed$
 
+            \item[(b)]
+                We have already shown in $(a)$ that if $A$ is bounded below,
+                then there exists a greatest lower bound. Hence, the existence
+                of the least upper bound implies the existence of the greatest
+                lower bound and there is no need for the axiom to state it
+                explicitly. Sometimes, implicit is better than explicit. The
+                axiom is very minimalistic in design, I like it.
+        \end{itemize}
+
+    \item[1.3.8]
+        \begin{itemize}
+            \item[(a)]
+                \begin{align*}
+                    \inf{A} &= \inf{\{\dfrac{1}{n}     \mid n \in \nats\}} = 0\\
+                    \sup{A} &= \sup{\{\dfrac{n}{n + 1} \mid n \in \nats\}} = 1
+                \end{align*}
+
+            \item[(b)]
+                \begin{align*}
+                    \inf{A} &= \inf{\{\dfrac{-1}{n} \mid n \in \nats\}} = -1\\
+                    \sup{A} &= \sup{\{\dfrac{1}{n}  \mid n \in \nats\}} = 1
+                \end{align*}
+
+            \newpage
+
+            \item[(c)]
+                Notice that $\dfrac{n}{3n + 1} = \dfrac{1}{3 + \dfrac{1}{n}}$.
+                We can divide by $n$ since, by convention, $\nats$ does not
+                include $0$ (in pure math that is). Then we have:
+
+                \begin{align*}
+                    \inf{A} &= \dfrac{1}{4}\\
+                    \sup{A} &= \dfrac{1}{3}
+                \end{align*}
+
+            \item[(d)]
+                Just like in $(c)$, we, once again, divide both the numerator
+                and the denominator by $m$ and get $\dfrac{1}{1 +
+                \dfrac{n}{m}}$. We have:
+
+                \begin{align*}
+                    \inf{A} &= 0\\
+                    \sup{A} &= 1
+                \end{align*}
+        \end{itemize}
+
+    \item[1.4.1]
+        \begin{itemize}
+            \item[(a)]
+                Let us first show that $ab \in \rats$.
+                Suppose $a = \dfrac{m}{n}, b = \dfrac{p}{q} \in \rats$ s.t.
+                $n, q \neq 0$ and $m, n, p, q \in \ints$. Then $ab =
+                \dfrac{mp}{nq}$ and since $\ints$ is closed under
+                multiplication (with $nq \neq 0$), we get that $ab \in \rats$.
+                \\
+                $\qed$
+
+                Let us now show that $a + b \in \rats$.
+                Suppose $a = \dfrac{m}{n}, b = \dfrac{p}{q} \in \rats$ s.t.
+                $n, q \neq 0$ and $m, n, p, q \in \ints$. Then $a + b =
+                \dfrac{mq + pn}{nq}$ and since $\ints$ is closed under addition
+                (with $nq \neq 0$), we get that $a + b \in \rats$.
+                \\
+                $\qed$
+
+            \item[(b)]
+                Let us first show that $a + t \in \irrats$.
+                Suppose, for the sake of contradiction, that $a = \dfrac{m}{n}
+                \in \rats$ s.t. $m, n \neq 0$, $m, n \in \ints$, and $a + t =
+                \dfrac{j}{k}$ with $k \neq 0$. Then $t = \dfrac{j}{k} -
+                \dfrac{m}{n}$ and thus, $t \in \rats$. Hence, we face a
+                contradiction and $a + t$ is indeed irrational, $a + t \in
+                \irrats$.
+                \\
+                $\qed$
+
+                Let us now show that $at \in \irrats$.
+                Suppose, for the sake of contradiction, that $a = \dfrac{m}{n}
+                \in \rats$ s.t. $m, n \neq 0$, $m, n \in \ints$, and $at =
+                \dfrac{j}{k}$ with $k \neq 0$. Then $t = \dfrac{jn}{km}$
+                and thus, $t \in \rats$. Hence, we face a contradiction and
+                $at$ is indeed irrational, $at \in \irrats$.
+                \\
+                $\qed$
+
+            \item[(c)]
+                The set of irrational numbers is not closed under addition.
+                For example, take $s = \sqrt{3}$ and $t = -\sqrt{3}$, then $s +
+                t = 0$ is not irrational. However, in some cases, it is closed
+                under addition. If $s = \sqrt{2}$ and $t = \sqrt{3}$, then
+                $s + t$ is irrational ($\sqrt{2} + \sqrt{3}$ is irrational).
+
+                The set of irrational numbers is not closed under
+                multiplication either. For instance, take $s = \sqrt{3}$ and
+                $t = -\sqrt{3}$ again. Then $st = -3$ which is not irrational.
+                In some cases, much alike addition, it is also closed under
+                multiplication. If $s = \sqrt{2}$ and $t = \sqrt{3}$, then $st$
+                is irrational ($\sqrt{6}$ is irrational).
+        \end{itemize}
+
+    \item[1.4.3]
+        Let us denote $\bigcap_{n = 1}^{\infty} (0, 1/n)$ as $S$. Suppose, for
+        the sake of contradiction, that $x \neq \emptyset \in S$. Then, by the
+        definition of $S, x \neq 0$. Hence, $x > 0$. Then, per the
+        \textbf{Archimedean Property}, $\exists y \in \nats$ s.t.
+        $\dfrac{1}{y} < x$. It follows that $\forall n \geq y, x \notin
+        (0, 1/n)$. Thus, we face a contradiction and $S = \emptyset$.\\
+        $\qed$
+        
+    \item[1.5.9]
+        \begin{itemize}
+            \item[(a)]
+                Let us first show that $\sqrt{2}$ is algebraic.\\
+                Notice that $\sqrt{2}$ is one of the roots of the equation $x^2
+                - 2 = 0$. Hence, $\sqrt{2}$ is algebraic.\\
+                $\qed$
+                \\
+                Let us now show that $\sqrt[3]{2}$ is algebraic.\\
+                Notice that $\sqrt[3]{2}$ is the root of the equation $x^3 - 2
+                = 0$. Hence, $\sqrt[3]{2}$ is algebraic.\\
+                $\qed$
+                \\
+                Finally, let us prove that $\sqrt{3} + \sqrt{2}$ is algebraic
+                \\
+                Using \textbf{Vieta's formulas}, it is easy to see that
+                $\sqrt{3} + \sqrt{2}$ is one of the roots to the equation $x^2
+                -2\sqrt{3}x + 1 = 0$. Hence, $\sqrt{3} + \sqrt{2}$ is
+                algebraic.\\
+                $\qed$
+
+            \item[(b)]
+                Suppose $A_n$ with $n \in \nats$ is the set of algebraic
+                numbers obtained as roots of polynomials with integer
+                coefficients that have degree $n$. Then let us denote $A_{ny}$
+                as the set of algebraic numbers s.t. $\forall x \in A_{ny},
+                x \leq y$ with $y \in \nats$. It follows that $\forall y \in
+                \nats, A_{ny}$ is countable. Furthermore, $\forall y \in \nats,
+                A_{ny}$ is finite. $A_n$ can then be represented as union of
+                many $A_{ny}$ sets:
+
+                \begin{equation*}
+                    A_n = \bigcup_{y = 1}^{\infty} A_{ny}
+                \end{equation*}
+
+                Now, notice that every set in the union must be countable.
+                Additionally, $A_n$ is countable as well. Finally, since the
+                countable union of countable sets is also countable, we
+                conclude that $A_n$ is countable.\\
+                $\qed$
+
+                \textit{NOTE: The fact that the coountable union of countable
+                sets is countable can be proven visually. One will need to
+                arrange the sets in the form of the 2D matrix and perform
+                enumeration diagonal-by-diagonal (of the small squares).}
+
+            \item[(c)]
+                Suppose $S$ is the set of all algebraic numbers. In $(b)$,
+                we showed that $\forall n \in \nats, A_n$ is countable. Now,
+                recall that the countable union of countable sets is countable.
+                Then, since $S = \bigcap_{n = 1}^{\infty} A_n$, $S$ is
+                countable too. Therefore, the set of all algebraic numbers is
+                also countable.\\
+                $\qed$
+                \\
+                The set of transcendental numbers, on the other hand, cannot be
+                countable. The set of real numbers $\reals$ is a union of
+                algebraic and transcendental numbers. We already know that the
+                set of algebraic numbers is countable and the set of real
+                numbers $\reals$ is uncountable. Since $\reals$ is uncountable
+                and the set of algebraic numbers is countable, it must be
+                transcendental numbers that contribute to its uncountability.
+                Thus, the set of transcendental numbers is uncountable.
+        \end{itemize}
+
+    \item[1.6.4]
+        Suppose, for the sake of contradiction, that $S = \{(a_1, a_2, a_3
+        \dots \mid a_n = 0 \text{ or } 1\}$ is countable. Then there must
+        exist an enumeration of these numbers:
+        \begin{align*}
+            s_1 &= (a_{11}, a_{12}, a_{13}, a_{14}, \dots)\\
+            s_2 &= (a_{21}, a_{22}, a_{23}, a_{24}, \dots)\\
+            s_3 &= (a_{31}, a_{32}, a_{33}, a_{34}, \dots)\\
+            s_4 &= (a_{41}, a_{42}, a_{43}, a_{44}, \dots)\\
+            &.....................................
+        \end{align*}
+
+        Now, let us define a sequence of 0s and 1s $t$ s.t. $\forall n \in t$,
+        the following holds:
+        \begin{equation*}
+            t_n =
+            \begin{cases}
+                0 & \text{if } s_{nn} \text{ is } 1\\
+                1 & \text{if } s_{nn} \text{ is } 0\\
+            \end{cases}
+        \end{equation*}
+
+        with $s_{ni}$ denoting the $i^{th}$ element of $S$.
+
+        Then, since $t$ is a sequence of 0s and 1s, it must be in $S$. Thus, $t
+        \in S$. However, we have effectively constructed a sequence of numbers
+        that cannot be in $S$ as $\forall s \in S, s \neq t$ (first item in $t$
+        is different from $s_1$, the second one is different from $s_2$, and so
+        on). Thus, we face a contradiction and $S$ cannot be enumerated. Hence,
+        $S$ is uncountable.\\
+        $\qed$
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
