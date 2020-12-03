@@ -1,0 +1,301 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Filename: template.tex
+% Author:   David Oniani
+% Modified: December 03, 2020
+%  _         _____   __  __
+% | |    __ |_   _|__\ \/ /
+% | |   / _` || |/ _ \\  /
+% | |__| (_| || |  __//  \
+% |_____\__,_||_|\___/_/\_\
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document Definition
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Packages and Related Settings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Global, document-wide settings
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+% Other packages
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage[cache=false]{minted}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Command Definitions and Redefinitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Nice-looking underline
+\newcommand\und[1]{\underline{\smash{#1}}}
+
+% Line spacing is 1.5
+\renewcommand{\baselinestretch}{1.5}
+
+% Absolute value
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+
+% Ceiling
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+% Floor
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% % Naturals, Reals, Integers, and Rationals, 
+\newcommand{\nats}{\mathbb{N}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\preals}{\mathbb{R^+}}
+\newcommand{\nreals}{\mathbb{R^-}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\pints}{\mathbb{Z^+}}
+\newcommand{\nints}{\mathbb{Z^-}}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\prats}{\mathbb{Q^+}}
+\newcommand{\nrats}{\mathbb{Q^-}}
+\newcommand{\irrats}{\mathbb{I}}
+\newcommand{\pirrats}{\mathbb{I^+}}
+\newcommand{\nirrats}{\mathbb{I^-}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Miscellaneous
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Setting stuff
+\setlength{\parindent}{0pt}  % Remove indentations from paragraphs
+
+% PDF information and nice-looking urls
+\hypersetup{%
+  pdfauthor={David Oniani},
+  pdftitle={Real Analysis},
+  pdfsubject={Mathematics, Real Analysis, Real Numbers},
+  pdfkeywords={Mathematics, Real Analysis, Real Numbers},
+  pdflang={English},
+  colorlinks=true,
+  linkcolor={black!50!blue},
+  citecolor={black!50!blue},
+  urlcolor={black!50!blue}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Author(s), Title, and Date
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Author(s)
+\author{David Oniani\\
+        Luther College\\
+        \href{mailto:oniada01@luther.edu}{oniada01@luther.edu}}
+
+% Title
+\title{\rule{\paperwidth - 150pt}{1pt}\textbf{\\\textit{Real Analysis}\\}\rule
+{\paperwidth - 150pt}{1pt}\\\textbf{Assignment \textnumero2}\\{\normalsize
+Instructor: Dr. Eric Westlund}}
+
+% Date
+\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beginning of the Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Homework
+%
+% 2.2 # 1, 2, 7
+% 2.3 # 3, 7, 13a
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+    \item[2.2.1]
+        For instance, the sequence $(1, 0, 1, 0, 1, 0, \dots)$ is vercongent.
+        The sequence verconges at $2$ since for $\epsilon = 4, \forall N \in
+        \nats, n \geq N$ implies $\abs{x_n - 2} \leq 1 < \epsilon$. This
+        vercongent sequence is also a divergent sequence. Thus, divergent
+        vercongent sequences exist. Notice that the sequence verconges at $3$
+        as well since $\forall x \in (1, 0, 1, 0, 1, 0, \dots), \abs{x_n - 3}
+        \leq 1 < \epsilon (\epsilon = 4)$. Therefore, the sequence also
+        verconges to two different values. This definition describes
+        \textbf{bounded sequences.}
+
+    \item[2.2.2]
+        \begin{itemize}
+            \item[(a)]
+                Let $N = \ceil{\dfrac{1}{4\epsilon}}$. Then, $\forall n \geq N$
+                and $\forall \epsilon > 0$, $\abs{\dfrac{2n + 1}{5n + 4} -
+                \dfrac{2}{5}} < \dfrac{1}{5n} < \dfrac{1}{5N} < \epsilon$.\\
+                \textit{NOTE: $\dfrac{1}{5N} \leq \dfrac{4\epsilon}{5} < 
+                \epsilon$}.\\\\
+                Hence, $\lim\dfrac{2n + 1}{5n + 4} = \dfrac{2}{5}$.\\
+                $\qed$
+
+
+            \item[(b)]
+                Let $N = \ceil{\dfrac{3}{\epsilon}}$. Then, $\forall n \geq N$
+                and $\forall \epsilon > 0$, $\abs{\dfrac{2n^2}{n^3 + 3} -
+                0} = \dfrac{2n^2}{n^3 + 3} < \dfrac{2}{n} < \dfrac{2}{N} <
+                \epsilon$.\\
+                \textit{NOTE: $\dfrac{2}{N} \leq \dfrac{2\epsilon}{3} <
+                \epsilon$}.\\\\
+                Hence, $\lim\dfrac{2n^2}{n^3 + 3} = 0$.\\
+                $\qed$
+
+            \item[(c)]
+                Let $N = \ceil{\dfrac{2}{\epsilon^3}}$. Then, $\forall n \geq N$
+                and $\forall \epsilon > 0$, $\abs{\dfrac{\sin{n^2}}{\sqrt[3]{n}}
+                - 0} = \dfrac{\sin{n^2}}{\sqrt[3]{n}} \leq \dfrac{1}{\sqrt[3]{n}}
+                < \dfrac{1}{\sqrt[3]{N}} < \epsilon$.\\
+                \textit{NOTE: $\dfrac{1}{\sqrt[3]{N}} \leq
+                \dfrac{\epsilon}{\sqrt[3]{2}} < \epsilon$}.\\\\
+                Hence, $\lim\dfrac{\sin{n^2}}{\sqrt[3]{n}} = 0$.\\
+                $\qed$
+        \end{itemize}
+
+    \item[2.2.7]
+        \begin{itemize}
+            \item[(a)]
+                It is frequently in $\{1\}$ since it alternates, but it is not
+                eventually in $\{1\}$. Let us now prove this statement. We
+                first prove that it is \textit{frequently} in $\{1\}$ and then
+                prove that it cannot be \textit{eventually} in $\{1\}$.
+                \\\\
+                $\forall N \in \nats, \exists n = 2N$ with $(-1)^{2N} = 1 \in
+                \{1\}$. Hence, the sequence is frequently in $\{1\}$\\
+                $\qed$
+                \\
+                On the other hand, $\forall N \in \nats, \exists n = 2N + 1$
+                with $(-1)^{2N + 1} = -1 \notin \{1\}$. Hence, the sequence is
+                not eventually in $\{1\}$\\
+                $\qed$
+                \\
+                Therefore, the sequence $(-1)^n$ is frequently, but not
+                eventually in $\{1\}$.
+
+            \item[(b)]
+                Eventually is certainly stronger. Eventually imples frequently.
+                This is true since if $\exists N \in \nats$ s.t $\forall n \geq
+                N, a_n \in A$ also implies that $\forall N \in \nats, \exists n
+                \geq N$ s.t. $a_n \in A$. Put it simply, $\forall$ statement is
+                stronger than $\exists$ statement since it generalizes and
+                applies to all numbers from a certain point while satisfying
+                exists condition only requires finding a single case.
+
+            \item[(c)]
+                We need to use \textit{eventually}. Here is an alternate
+                rephrasing of Definition 2.2.3B:
+
+                ``A sequence $(a_n)$ converges to a real number a if $\forall
+                \epsilon > 0$, the sequence is eventually in the
+                $\epsilon$-neighborhood of $a$.''
+
+            \item[(d)]
+                It is frequently in $(1.9, 2.1)$. This is the case since
+                $\forall N \in \nats, \exists n \geq N$ s.t. $a_n \in (1.9,
+                2.1)$ (as the number of $2$s is infinite).\\
+                On the other hand, it is not necessarily eventually in $(1.9,
+                2.1)$. A counterexample would be a sequence $(2, 0, 2, 0,
+                \dots)$. The sequence is frequently in $(1.9, 2.1)$ (as will be
+                all sequences with infinite number of $2$s, but is not
+                eventually in $(1.9, 2.1)$ as $2s$ and $0s$ alternate and
+                $\forall N \in \nats, \exists n = 2N$ with $0
+                \neq 2$.
+        \end{itemize}
+
+    \item[2.3.3]
+        $\forall \epsilon > 0, \exists N_1, N_2 \in \nats$ s.t. $\forall n_1
+        \geq N_1$ and $\forall n_2 \geq N_2, \abs{x_{n_1} - l} < \epsilon$ and
+        $\abs{z_{n_2} - l} < \epsilon$. Then, let us define $N = \max{(N_1,
+        N_2)}$. It follows that $\forall n \geq N, \abs{x_{n} - l} < \epsilon$
+        and $\abs{z_{n} - l} < \epsilon$. We get $-\epsilon < x_n - l <
+        \epsilon$ and $-\epsilon < z_n - l < \epsilon$. After adding $l$ to
+        all three sides of the inequalities, we then get $l -\epsilon < x_n <
+        l + \epsilon$ and $l -\epsilon < z_n  < l + \epsilon$. Now, since we
+        know that $x_n \leq y_n \leq z_n$, we have $l - \epsilon < x_n \leq
+        y_n$ and $y_n \leq z_n < l + \epsilon$. Therefore, $l - \epsilon < y_n
+        < l + \epsilon$ and it follows that $\abs{y_n - l} < \epsilon$. Hence,
+        $\lim y_n = l$.\\
+        $\qed$
+
+    \item[2.3.7]
+        \begin{itemize}
+            \item[(a)]
+                Let $(x_n) = (-1, -1, -1 \dots)$ and $(y_n) = (1, 1, 1,
+                \dots)$. Then both $x_n$ and $y_n$ diverge, but their sum
+                $(x_n + y_n) = (0, 0, 0, \dots)$ converges to $0$. Hence,
+                such sequences do exist.
+
+            \item[(b)]
+                Such sequences cannot exist. Suppose, for the sake of
+                contradiction, that $(x_n), (x_n + y_n)$ are convergent and
+                $(y_n)$ is divergent. Then, since $y_n = (x_n + y_n) - (x_n)$,
+                it follows by \textbf{Algebraic Limit Theorem} that $y_n$ is
+                also convergent and we face a contradiction. Hence, such
+                sequences do not exist.
+
+            \item[(c)]
+                Let $b_n = \dfrac{1}{n}$. Then $b_n$ converges to $0$ with $b_n
+                \neq 0 \forall n \in \nats$. However, $1 / b_n = 1 / (1 / n)
+                = n$ which is a divergent sequence (sequence $(n)$ diverges).
+                In other words, since $(n)$ is not bounded, it is divergent by
+                \textbf{Theorem 2.3.2}. Hence, such sequence does exist.
+
+            \item[(d)]
+                Such sequences cannot exist. Suppose, for the sake of
+                contradiction, that $(a_n)$ and $(b_n)$ are unbounded and
+                convergent sequences respectively with $(a_n - b_n)$ being a
+                bounded sequence. Since $b_n$ is convergent (by \textbf{Theorem
+                2.3.2, it is also has to be bounded}), let its bound be $B$ and
+                let $(a_n - b_n)$ be bounded by $D$. Then it follows that
+                $\forall n \in \nats, \abs{a_n} \leq \abs{a_n - b_n} \leq
+                \abs{a_n - b_n} + \abs{b_n} \leq D + B$. Thus, we got that
+                $(a_n)$ is bounded too and we face the contradiction. Hence,
+                such sequences do not exist.
+
+            \item[(e)]
+                Let $(a_n) = (0, 0, 0, \dots)$ and let $(b_n) = (1, -1, 1,
+                \dots)$. Then $(a_n)$ and $(a_nb_n)$ both converge to $0$, but
+                $(b_n)$ is divergent. Hence, such sequences do exist.
+        \end{itemize}
+
+    \item[2.3.13]
+        \begin{itemize}
+            \item[(a)]
+                Notice that $a_{mn} = \dfrac{m}{m + n} =
+                \dfrac{\frac{m}{m}}{\frac{m}{m} + \frac{n}{m}} =
+                \dfrac{1}{1 + \frac{n}{m}}$.\\
+
+                Then we have $\lim_{m \to \infty}a_{mn} = 1$ and
+                $\lim_{n \to \infty}\Big(\lim_{m \to \infty}a_{mn}\Big) =
+                \lim_{n \to \infty}1 = 1$.
+
+                Similarly, $\lim_{n \to \infty}a_{mn} = 0$ and
+                $\lim_{m \to \infty}\Big(\lim_{n \to \infty}a_{mn}\Big) =
+                \lim_{m \to \infty}0 = 0$.
+
+                Finally, we got that
+                $\lim_{n \to \infty}\Big(\lim_{m \to \infty}a_{mn}\Big) = 1$
+                and
+                $\lim_{m \to \infty}\Big(\lim_{n \to \infty}a_{mn}\Big) = 0$
+        \end{itemize}
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The End of the Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
