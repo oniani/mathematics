@@ -1,0 +1,282 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Filename: template.tex
+% Author:   David Oniani
+% Modified: December 05, 2020
+%  _         _____   __  __
+% | |    __ |_   _|__\ \/ /
+% | |   / _` || |/ _ \\  /
+% | |__| (_| || |  __//  \
+% |_____\__,_||_|\___/_/\_\
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document Definition
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Packages and Related Settings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Global, document-wide settings
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+% Other packages
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage[cache=false]{minted}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Command Definitions and Redefinitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Nice-looking underline
+\newcommand\und[1]{\underline{\smash{#1}}}
+
+% Line spacing is 1.5
+\renewcommand{\baselinestretch}{1.5}
+
+% Absolute value
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+
+% Ceiling
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+% Floor
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% % Naturals, Reals, Integers, and Rationals, 
+\newcommand{\nats}{\mathbb{N}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\preals}{\mathbb{R^+}}
+\newcommand{\nreals}{\mathbb{R^-}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\pints}{\mathbb{Z^+}}
+\newcommand{\nints}{\mathbb{Z^-}}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\prats}{\mathbb{Q^+}}
+\newcommand{\nrats}{\mathbb{Q^-}}
+\newcommand{\irrats}{\mathbb{I}}
+\newcommand{\pirrats}{\mathbb{I^+}}
+\newcommand{\nirrats}{\mathbb{I^-}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Miscellaneous
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Setting stuff
+\setlength{\parindent}{0pt}  % Remove indentations from paragraphs
+
+% PDF information and nice-looking urls
+\hypersetup{%
+  pdfauthor={David Oniani},
+  pdftitle={Real Analysis},
+  pdfsubject={Mathematics, Real Analysis, Real Numbers},
+  pdfkeywords={Mathematics, Real Analysis, Real Numbers},
+  pdflang={English},
+  colorlinks=true,
+  linkcolor={black!50!blue},
+  citecolor={black!50!blue},
+  urlcolor={black!50!blue}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Author(s), Title, and Date
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Author(s)
+\author{David Oniani\\
+        Luther College\\
+        \href{mailto:oniada01@luther.edu}{oniada01@luther.edu}}
+
+% Title
+\title{\rule{\paperwidth - 150pt}{1pt}\textbf{\\\textit{Real Analysis}\\}\rule
+{\paperwidth - 150pt}{1pt}\\\textbf{Assignment \textnumero3}\\{\normalsize
+Instructor: Dr. Eric Westlund}}
+
+% Date
+\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beginning of the Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Homework
+%
+% 2.6 # 2, 3
+% 2.7 # 5, 8, 9
+% 2.8 # 1
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+    \item[2.6.2]
+        \begin{itemize}
+            \item[(a)]
+                Such sequence exists. $a_n = \dfrac{(-1)^n}{n}$ is a Cauchy
+                sequence that is not monotone since it alternates, but
+                converges to $0$.
+
+            \item[(b)]
+                Per \textbf{Lemma 2.6.3}, such sequence cannot exist.
+
+            \item[(c)]
+                Such sequences cannot exist. A divergent monotone sequence
+                implies that the sequence is unbounded. Unbounded and monotone
+                sequence, on the other hand, cannot contain a convergent
+                subsequence. Hence, by \textbf{Theorem 2.6.4}, it cannot
+                contain a Cauchy subsequence.
+
+            \item[(d)]
+                Such sequence exists. Let us define
+                \begin{equation*}
+                    a_n =
+                    \begin{cases}
+                        n \text{ if } n \in \nats \text{ is odd}\\
+                        0 \text{ if } n \in \nats \text{ is even}
+                    \end{cases}
+                \end{equation*}
+                Then it is easy to see that sequence is unbounded since
+                $\forall k \in \nats, a_{2k + 1} = 2k + 1 > k$. On the other
+                hand the subsequence formed by the even-termed elements is
+                comprised of only zeros and hence, converges to $0$. Therefore,
+                the subsequence is Cauchy. Hence, we found an unbounded
+                sequence containing a subsequence that is Cauchy.
+        \end{itemize}
+
+    \item[2.6.3]
+        \begin{enumerate}
+            \item[(a)]
+                Since $x_n$ and $y_n$ are both Cauchy sequences, $\forall
+                \epsilon > 0, \exists N_1, N_2 \in \nats$ s.t. $\abs{x_{m_1} -
+                x_{n_1}} < \dfrac{\epsilon}{2}$ and $\abs{y_{m_2} - y_{n_2}} <
+                \dfrac{\epsilon}{2}$ with $m_1, n_1 \geq N_1$ and $m_2, n_2
+                \geq N_2$. Then let $N = \max{\{N_1, N_2\}}$. It follows that
+                $\forall m, n \geq N, \abs{x_m - x_n} < \dfrac{\epsilon}{2}$
+                and $\abs{y_m - y_n} < \dfrac{\epsilon}{2}$. Finally, using the
+                triangle inequality, we get:
+                \begin{align*}
+                    \abs{(x_m + y_m) - (x_n + y_n)} &=
+                    \abs{(x_m - x_n) - (y_m - y_n)}\\
+                    &\leq \abs{x_m - x_n} + \abs{y_m - y_n}\\
+                    &< \dfrac{\epsilon}{2} + \dfrac{\epsilon}{2} = \epsilon
+                \end{align*}
+                Thus, we conclude that $(x_n + y_n)$ is a Cauchy sequence.\\
+                $\qed$
+
+            \item[(b)]
+                Since $x_n$ and $y_n$ are both Cauchy sequence, they are also
+                bounded and hence, $\exists X, Y$ s.t  $\forall n \in \nats,
+                \abs{x_n} < X$ and $\abs{y_n} < Y$. Additionally, $\forall
+                \epsilon > 0, \exists N_1, N_2 \in \nats$ s.t. $\abs{x_{m_1} -
+                x_{n_1}} < \dfrac{\epsilon}{2}$ and $\abs{y_{m_2} - y_{n_2}} <
+                \dfrac{\epsilon}{2}$ with $m_1, n_1 \geq N_1$ and $m_2, n_2
+                \geq N_2$. Then let $N = \max{\{N_1, N_2\}}$. We get:
+                \begin{align*}
+                    \abs{x_my_m - x_ny_n} &=
+                    \abs{x_m(y_m - y_n) + y_n(x_m - x_n)}\\
+                    &\leq \abs{x_m}\abs{y_m - y_n} +
+                    \abs{y_n}\abs{x_m - x_n}\\
+                    &< \dfrac{A\epsilon}{2} + \dfrac{A\epsilon}{2} =
+                    \dfrac{\epsilon}{2}AB.
+                \end{align*}
+                Thus, we found $\epsilon^{\prime} = \dfrac{\epsilon}{2}AB > 0$
+                with $N$ s.t. $m, n \geq N$ and $\abs{x_m, y_m - x_ny_n} <
+                \epsilon^\prime$.  Hence, we conclude that $(x_ny_n)$ is a
+                Cauchy sequence.\\
+                $\qed$
+        \end{enumerate}
+
+    \item[2.7.5]
+        We have to prove that the series $\sum_{n = 1}^\infty 1/n^p$ converges
+        if and only if $p > 1$. By \textbf{Cauchy Condensation Test}, the
+        series converges if and only if $\sum_{n = 1}^\infty
+        \dfrac{2^n}{2^{np}} = \sum_{n = 1}^\infty 2^{n(1 - p)}$ converges. Now,
+        we need to get $2^{n(1 - p)}$ less than $1$ as otherwise, the sequence
+        will diverge (all terms will be defferent and $\geq 1$). $2^{n(1 - p)}
+        < 1$ if and only if $n(1 - p) < 0$. Since $n \in \nats$, we can safely
+        divide both sides of the inequality by $n$. We get $1 - p < 0$ and
+        thus, $p > 1$.  Hence, we have proven that the series $\sum_{n =
+        1}^\infty 1/n^p$ converges if and only if $p > 1$.
+        \\\\
+        \textit{NOTE: We did not take the classic ``prove it directly and prove
+        its converse'' approach since every statement used in the proof was if
+        and only if statement. \textbf{Cauchy Condensation Test} is if and only
+        if and $2^{n(1 - p)} < 1$ when $n(1 - p) < 0$ is if and only if}.
+
+    \item[2.7.8]
+        \begin{itemize}
+            \item[(a)]
+                True. By \textbf{Theorem 2.7.3}, $\sum{a_n}$ converges
+                absolutely. It follows that $\lim{a_n} = 0$. Thus, $\abs{a_n}$
+                is bounded and $\exists B > 0$ s.t. $\forall n \in \nats,
+                \abs{a_n} \leq B$. Now, by \textbf{Theorem 2.7.1},
+                $\sum{B\abs{a_n}}$ and $B\abs{a_n} \geq a^2_n$. Finally, per
+                \textbf{Theorem 2.7.4}, $\sum{a^2_n}$ converges.\\
+                $\qed$
+
+            \item[(b)]
+                False. Let $a_n = b_n = \dfrac{(-1)^n}{\sqrt{n}}$. Now,
+                $\lim{b_n} = 0$ and thus, $(b_n)$ converges. Additionally,
+                $\lim{\dfrac{1}{\sqrt{n}}} = 0$ and $\dfrac{1}{\sqrt{n}}$ is
+                decreasing. Hence, by \textbf{Theorem 2.7.7}, we get that
+                $\sum{a_n}$ converges. Thus, both $\sum{a_n}$ and $\lim{(b_n)}$
+                converge. However, $a_nb_n = \dfrac{1}{n}$ which is harmonic
+                series and it does not converge.
+
+            \item[(c)]
+                True. Suppose, for the sake of contradiction, that $\sum{a_n}$
+                converges conditionally and $\sum{n^2a_n}$ converges. Then,
+                $\lim{n^2a_n} = 0$ and $\exists N$ s.t. $\forall n \geq N,
+                \abs{n^2a_n} < 1$. We then get $\abs{a_n} < \dfrac{1}{n^2}$.
+                Now, per \textbf{Theorem 2.7.4}, $\sum{a_n}$ converges
+                absolutely and we face the contradiction since $\sum{a_n}$
+                converges conditionally. Thus, $\sum{a_n}$ converges
+                conditionally, then $\sum{n^2a_n}$ diverges.\\
+                $\qed$
+        \end{itemize}
+
+    \item[2.7.9]
+        \begin{itemize}
+            \item[(a)]
+                Suppose $r < r^\prime < 1$. Since $\lim_{n \to
+                \infty}\abs{\dfrac{a_{n + 1}}{a_n}} = r < 1$, let $\epsilon =
+                r^\prime - r > 0$. Then $\exists N \in \nats$ s.t. $\forall n
+                \geq \nats$, the following is true:
+                \begin{align*}
+                    &\abs{\abs{\dfrac{a_{n + 1}}{a_n}} - r} < \epsilon\\
+                    &\abs{\dfrac{a_{n + 1}}{a_n}} < r + \epsilon\\
+                    &\abs{\dfrac{a_{n + 1}}{a_n}} < r + r^\prime - r\\
+                    &\abs{\dfrac{a_{n + 1}}{a_n}} < r^\prime\\
+                    &\abs{a_{n + 1}} < \abs{{a_n}}r^\prime
+                \end{align*}
+
+            \item[(b)]
+                asdkljasdlk
+
+            \item[(c)]
+                asdkljasdkl
+        \end{itemize}
+
+    \item[2.8.1]
+        asjdlkasjd
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The End of the Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
