@@ -2,7 +2,7 @@
 %
 % Filename: template.tex
 % Author:   David Oniani
-% Modified: December 05, 2020
+% Modified: December 09, 2020
 %  _         _____   __  __
 % | |    __ |_   _|__\ \/ /
 % | |   / _` || |/ _ \\  /
@@ -288,7 +288,51 @@ Instructor: Dr. Eric Westlund}}
         \end{itemize}
 
     \item[2.8.1]
-        Not in the book.
+        From \textbf{Section 2.1}, we know
+
+        \begin{equation*}
+            (a_{ij}) =
+            \begin{cases}
+                \dfrac{1}{2^{j - i}} \text{ if } j > i\\
+                -1 \text{ if } j = i\\
+                0 \text{ if } j < i
+            \end{cases}
+        \end{equation*}
+
+        Now, if we set $j = 1$, it is easy to see that $a_{i1} = (-1,
+        \dfrac{1}{2}, \dfrac{1}{4}, \dots)$ and excluding the first term
+        ($-1$), $a_{i1}$ is a geometric series whose sum converges. Recall that
+        the sum formula for the geometric series is $\dfrac{b_nq - b_1}{q - 1}$
+        where $b_1$ is the first term, $b_n$ is the last term, and $q$ is the
+        quotient/ratio (current element over previous element). Thus, we get:
+        $$\sum_{i = 1}^k a_{i1} =  -1 + \dfrac{1}{2} + \dfrac{1}{4} + \dots +
+        \dfrac{1}{2^{n - 1}} = -1 + \dfrac{\frac{1}{2^{n - 1}} \times
+        \frac{1}{2} - \frac{1}{2}}{\frac{1}{2} - 1} = -1 + \dfrac{\frac{1}{2^{n
+        - 1}} \times \frac{1}{2} - \frac{1}{2}}{-\frac{1}{2}} = -1 + 1 -
+        \dfrac{1}{2^{n - 1}} = -\dfrac{1}{2^{n - 1}}$$
+        In general, $\forall j < k$, we have:
+        $$\sum_{i = 1}^k a_{ij} =  -1 + \dfrac{1}{2} + \dfrac{1}{4} + \dots +
+        \dfrac{1}{2^{n - j}} = -1 + \dfrac{\frac{1}{2^{n - j}} \times
+        \frac{1}{2} - \frac{1}{2}}{\frac{1}{2} - 1} = -1 + \dfrac{\frac{1}{2^{n
+        - j}} \times \frac{1}{2} - \frac{1}{2}}{-\frac{1}{2}} = -1 + 1 -
+        \dfrac{1}{2^{n - j}} = -\dfrac{1}{2^{n - j}}$$
+        Finally, we get:
+        $$s_{nn} = \sum_{j = 1}^{n}\sum_{i = 1}^{n} a_{ij} = -1 + \sum_{j =
+        1}^{n - 1} -\dfrac{1}{2^{n - j}} = -1 - (1 - \dfrac{1}{2^{n - 1}}) = -2
+        + \dfrac{1}{2^{n - 1}}$$
+        Now, since $\lim_{n \to \infty} \dfrac{1}{2^{n - 1}} = 0$, we get that
+        $\sum_{i, j}^\infty a_{ij} = \lim_{n \to \infty} s_{nn} = \lim{n \to
+        \infty} -2 + \dfrac{1}{2^{n - 1}} = -2 + \lim_{n \to \infty}
+        \dfrac{1}{2^{n - 1}} = -2 + 0 = -2$. Hence, we get $s_{nn} = -2$.
+
+        The iterated sums would give us $\sum_{i = 1}^\infty\sum_{j = 1}^\infty
+        a_{ij} = -1 + \sum_{i = 2}^\infty -\dfrac{1}{2^{i - 1}}$.  Now, recall
+        that the sum can be computed by the infinite geometric series formula
+        $\dfrac{b_1}{q - 1}$. Finally, we get $\sum_{i = 1}^\infty\sum_{j =
+        1}^\infty a_{ij} = -1 + \dfrac{-\frac{1}{2}}{-\frac{1}{2}} = -1 + 1 =
+        0$. Similarly, $\sum_{j = 1}^\infty\sum_{i = 1}^\infty a_{ij} = \sum_{j
+        = 1}^\infty ( -1 + \sum_{i = 1}^\infty\dfrac{1}{2^i} = \sum_{j =
+        1}^\infty 0 = 0)$.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
