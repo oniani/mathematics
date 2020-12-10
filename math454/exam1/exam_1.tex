@@ -242,10 +242,10 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
         \item[3.]
             Suppose $\sum_{a_n}$ converges conditionally. Then notice that the
             following stands (thanks for the hint!):
-            \begin{align}
+            \begin{align*}
                 p_n &= \dfrac{a_n + \abs{a_n}}{2}\\
                 q_n &= \dfrac{a_n - \abs{a_n}}{2}
-            \end{align}
+            \end{align*}
 
             Now, let us split our proof in two parts: first prove that $p_n$
             diverges and then show that $q_n$ diverges as well.
@@ -264,8 +264,8 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
             contradiction since it converges conditionally.\\
             $\qed$
 
-            We can now prove that $q_n$ diverges as well. Similarly, suppose
-            for the sake of contradiction, that $q_n$ converges. Then $q_n =
+            Similarly, we can prove that $q_n$ diverges as well. Suppose for
+            the sake of contradiction, that $q_n$ converges. Then $q_n =
             \dfrac{a_n - \abs{a_n}}{2}$ and it follows that $\abs{a_n} = a_n -
             2q_n$. We get:
             \begin{align*}
@@ -314,13 +314,14 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
             \begin{align*}
                 \abs{a_n - 5} &= \absb{5^{1 - \frac{1}{2^{n}}} - 5}\\
                               &\leq \absb{5^{1 - \frac{1}{2^{N}}} - 5}
-                                   = \absb{5^{1 - \frac{1}{k}} - 5}
-                                   = \absb{5^{1 - (1 - \log_5^l)} - 5}
+                                   = \absb{5^{1 - \frac{1}{k}} - 5}\\
+                              &= \absb{5^{1 - (1 - \log_5^l)} - 5}
+                                   = \absb{5^{\log_5^l} - 5}
                                    = \absb{5^{\log_5^l} - 5}\\
-                              &\leq 5^{\log_5^l} - 5
-                                   = l - 5
-                                   = \frac{\epsilon}{2} + 5 - 5
-                                   = \frac{\epsilon}{2}\\
+                              &= \absb{l - 5}
+                                   = \absb{\frac{\epsilon}{2} + 5 - 5}
+                                   = \absb{\frac{\epsilon}{2}}\\
+                              &\leq \frac{\epsilon}{2}\\
                               &< \epsilon
             \end{align*}
 
@@ -338,10 +339,10 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
             subsequence of the sequence $(x_n)$ converges to the same value
             $L$, but the sequence does not converge to $L$. Since $x(n)$ does
             not converge to $L$, it follows that $\exists n \geq N$ s.t.
-            $\abs{x_n - L} \geq \epsilon \forall \epsilon > 0$. Thus, we have
-            found a subsequence $x_{n_t}$ s.t. $\forall n \geq N, \abs{x_{nt} -
-            L} \geq \epsilon$. Let us now find a subsequence that is not in
-            the $\epsilon$-neighborhood of $L$. We proceed by constructing a
+            $\forall \epsilon > 0, \abs{x_n - L} \geq 0$. Thus, we have found a
+            subsequence $x_{n_t}$ s.t. $\forall n \geq N, \abs{x_{nt} - L} \geq
+            \epsilon$. Let us now find a subsequence that is not in the
+            $\epsilon$-neighborhood of $L$. We proceed by constructing a
             subsequence in the following manner:
             \begin{equation*}
                 \begin{cases}
@@ -405,13 +406,14 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
                     : (0.a_1a_2a_3\dots, b_1b_2b_3\dots) \mapsto
                     0.a_1b_1a_2b_2a_3b_3\dots$ is one-to-one.
                     \\
+                    \\
                     However, this function is not onto. Suppose, for the sake
                     of contradiction that $g$ is onto. Consider the following
                     output in the codomain $A$: $g(x) = 0.9b_19b_29b_3\dots$.
                     The only way for this to happen is if the function has the
                     following form: $g(0.999\dots, 0.b_1b_2b_3\dots)$. Now,
                     recall that $0.999\dots = \dfrac{9}{9} = 1$, but $1 \notin
-                    B$ and hence, we face a contradiction. Thus, $g$ is not
+                    A$ and hence, we face a contradiction. Thus, $g$ is not
                     onto.\\
                     $\qed$
 
@@ -471,7 +473,6 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
                     \sim \reals^2$. Hence, $\reals \sim \reals^2$.\\
                     $\qed$
             \end{itemize}
-
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
