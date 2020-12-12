@@ -179,22 +179,23 @@ Instructor: Dr. Eric Westlund}}
 
             \item[(b)]
                 Since $x_n$ and $y_n$ are both Cauchy sequence, they are also
-                bounded and hence, $\exists X, Y$ s.t  $\forall n \in \nats,
-                \abs{x_n} < X$ and $\abs{y_n} < Y$. Additionally, $\forall
-                \epsilon > 0, \exists N_1, N_2 \in \nats$ s.t. $\abs{x_{m_1} -
-                x_{n_1}} < \dfrac{\epsilon}{2}$ and $\abs{y_{m_2} - y_{n_2}} <
-                \dfrac{\epsilon}{2}$ with $m_1, n_1 \geq N_1$ and $m_2, n_2
-                \geq N_2$. Then let $N = \max{\{N_1, N_2\}}$. We get:
+                bounded and hence, $\exists X, Y  >0$ s.t. $\forall n \in
+                \nats, \abs{x_n} < X$ and $\abs{y_n} < Y$. Additionally,
+                $\forall \epsilon > 0, \exists N_1, N_2 \in \nats$ s.t.
+                $\abs{x_{m_1} - x_{n_1}} < \dfrac{\epsilon}{2}$ and
+                $\abs{y_{m_2} - y_{n_2}} < \dfrac{\epsilon}{2}$ with $m_1, n_1
+                \geq N_1$ and $m_2, n_2 \geq N_2$. Then let $N = \max{\{N_1,
+                N_2\}}$. We get:
                 \begin{align*}
                     \abs{x_my_m - x_ny_n} &=
                     \abs{x_m(y_m - y_n) + y_n(x_m - x_n)}\\
                     &\leq \abs{x_m}\abs{y_m - y_n} +
                     \abs{y_n}\abs{x_m - x_n}\\
-                    &< \dfrac{A\epsilon}{2} + \dfrac{A\epsilon}{2} =
-                    \dfrac{\epsilon}{2}AB.
+                    &< \dfrac{X\epsilon}{2} + \dfrac{Y\epsilon}{2} =
+                    \dfrac{\epsilon}{2}(X + Y).
                 \end{align*}
-                Thus, we found $\epsilon^{\prime} = \dfrac{\epsilon}{2}AB > 0$
-                with $N$ s.t. $m, n \geq N$ and $\abs{x_m, y_m - x_ny_n} <
+                Thus, we found $\epsilon^{\prime} = \dfrac{\epsilon}{2}(X + Y)
+                > 0$ with $N$ s.t. $m, n \geq N$ and $\abs{x_my_m - x_ny_n} <
                 \epsilon^\prime$.  Hence, we conclude that $(x_ny_n)$ is a
                 Cauchy sequence.\\
                 $\qed$
@@ -301,9 +302,9 @@ Instructor: Dr. Eric Westlund}}
 
         Now, if we set $j = 1$, it is easy to see that $a_{i1} = (-1,
         \dfrac{1}{2}, \dfrac{1}{4}, \dots)$ and excluding the first term
-        ($-1$), $a_{i1}$ is a geometric series whose sum converges. Recall that
-        the sum formula for the geometric series is $\dfrac{b_nq - b_1}{q - 1}$
-        where $b_1$ is the first term, $b_n$ is the last term, and $q$ is the
+        ($-1$), $a_{i1}$ is a sequence whose sum converges. Recall that
+        the formula for the sum is $\dfrac{b_nq - b_1}{q - 1}$ where $b_1$ is
+        the first term, $b_n$ is the last term, and $q$ is the
         quotient/ratio (current element over previous element). Thus, we get:
         $$\sum_{i = 1}^k a_{i1} =  -1 + \dfrac{1}{2} + \dfrac{1}{4} + \dots +
         \dfrac{1}{2^{n - 1}} = -1 + \dfrac{\frac{1}{2^{n - 1}} \times
@@ -331,8 +332,8 @@ Instructor: Dr. Eric Westlund}}
         $\dfrac{b_1}{q - 1}$. Finally, we get $\sum_{i = 1}^\infty\sum_{j =
         1}^\infty a_{ij} = -1 + \dfrac{-\frac{1}{2}}{-\frac{1}{2}} = -1 + 1 =
         0$. Similarly, $\sum_{j = 1}^\infty\sum_{i = 1}^\infty a_{ij} = \sum_{j
-        = 1}^\infty ( -1 + \sum_{i = 1}^\infty\dfrac{1}{2^i} = \sum_{j =
-        1}^\infty 0 = 0)$.
+        = 1}^\infty (-1 + \sum_{i = 1}^\infty\dfrac{1}{2^i}) = \sum_{j =
+        1}^\infty 0 = 0$.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
