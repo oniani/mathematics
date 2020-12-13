@@ -2,7 +2,7 @@
 %
 % Filename: template.tex
 % Author:   David Oniani
-% Modified: December 10, 2020
+% Modified: December 12, 2020
 %  _         _____   __  __
 % | |    __ |_   _|__\ \/ /
 % | |   / _` || |/ _ \\  /
@@ -338,11 +338,11 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
         \item[5.]
             Suppose, for the sake of contradiction, that every convergent
             subsequence of the sequence $(x_n)$ converges to the same value
-            $L$, but the sequence does not converge to $L$. Since $x(n)$ does
+            $L$, but the sequence does not converge to $L$. Since $(x_n)$ does
             not converge to $L$, it follows that $\exists n \geq N$ s.t.
             $\forall \epsilon > 0, \abs{x_n - L} \geq 0$. Thus, we have found a
-            subsequence $x_{n_t}$ s.t. $\forall n \geq N, \abs{x_{nt} - L} \geq
-            \epsilon$. Let us now find a subsequence that is not in the
+            subsequence $(x_{n_t}$) s.t. $\forall n \geq N, \abs{x_{n_t} - L}
+            \geq \epsilon$. Let us now find a subsequence that is not in the
             $\epsilon$-neighborhood of $L$. We proceed by constructing a
             subsequence in the following manner:
             \begin{equation*}
@@ -354,18 +354,18 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
                     ..........................................
                 \end{cases}
             \end{equation*}
-            This way, we end up with a subsequence $x_{nk}$ s.t. $\forall k \in
-            \nats, x_{n_k}$ is not in the $\epsilon$-neighborhood of $L$.
-            Furthermore, since $(x_n)$ is bounded, it follows that $(x_{nk})$
+            This way, we end up with a subsequence $x_{n_k}$ s.t. $\forall k
+            \in \nats, x_{n_k}$ is not in the $\epsilon$-neighborhood of $L$.
+            Furthermore, since $(x_n)$ is bounded, it follows that $(x_{n_k})$
             is also bounded. Now, per \textbf{Bolzano-Weierstrass Theorem}, we
-            get that $(x_{nk})$ must contain some convergent subsequence. Thus,
-            we have found a convergent subsequence $(x_{nkj})$ that converges
-            to $L$ (by definition) and we face a contradiction since the
-            subsequence was constructed in a way that none of its terms are in
-            the $\epsilon$-neighborhood of $L$. Hence, if $(x_n)$ is a bounded
-            sequence of real numbers such that every convergent subsequence of
-            $(x_n)$ converges to the same value $L$, $(x_n)$ also converges to
-            $L$.\\
+            get that $(x_{n_k})$ must contain some convergent subsequence.
+            Thus, we have found a convergent subsequence $(x_{n_{k_j}})$ that
+            converges to $L$ (by definition) and we face a contradiction since
+            the subsequence was constructed in a way that none of its terms are
+            in the $\epsilon$-neighborhood of $L$. Hence, if $(x_n)$ is a
+            bounded sequence of real numbers such that every convergent
+            subsequence of $(x_n)$ converges to the same value $L$, $(x_n)$
+            also converges to $L$.\\
             $\qed$
 
         \newpage
