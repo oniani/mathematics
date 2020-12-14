@@ -47,6 +47,9 @@
 % Absolute value
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
 
+% Absolute value big
+\DeclarePairedDelimiter\absb{\Big\lvert}{\Big\rvert}%
+
 % Ceiling
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 
@@ -122,32 +125,265 @@ Instructor: Dr. Eric Westlund}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{itemize}
+    \item[]
+
+    \item[]
+
     \item[4.2.5]
-        lkajsdlkasd
+        \begin{itemize}
+            \item[(a)]
+                Prove that $\lim_{x \to 2} (3x + 4) = 10$.
+                \\
+                Let $\epsilon > 0$ be given and let $\delta =
+                \dfrac{\epsilon}{3}$. Then $0 < \abs{x - 2} < \delta$ and we
+                have that $\abs{x - 2} < \dfrac{\epsilon}{3}$ and it follows
+                that $\abs{3x - 6} < \epsilon$. Now, notice that $3x - 6 = 3x +
+                4 - 10$ and thus, $\abs{(3x + 4) - 10} < \epsilon$. Hence,
+                $\lim_{x \to 2} (3x + 4) = 10$.\\
+                $\qed$
+
+            \item[(b)]
+                Prove that $\lim_{x \to 0} x^3 = 0$.
+                \\
+                Let $\epsilon > 0$ be given and let $\delta =
+                \sqrt[3]{\epsilon}$. Then $0 < \abs{x - 0} < \delta$ and we
+                have that $\abs{x} < \sqrt[3]{\epsilon}$. Now, notice that
+                $\abs{x}^3 = \abs{x^3}$.  and thus, $\abs{x^3 - 0} < \epsilon$.
+                Hence, $\lim_{x \to 0} x^3 = 0$.\\
+                $\qed$
+
+            \item[(c)]
+                Prove that $\lim_{x \to 2} (x^2 + x - 1) = 5$.
+                \\
+                Let $\epsilon > 0$ be given and let $\delta < \abs{x - 2}$.
+                Then $\abs{x - 2} < \delta$, $\abs{x + 3} < 5 + \delta$. We get
+                $0 < \abs{x^2 + x - 6} < \delta$. Notice that $x^2 + x - 6 = (x
+                - 2)(x + 3)$. Then $\abs{(x - 2)(x + 3)} < \delta(\delta + 5)$.
+                Notice that the equation $\delta(\delta + 5) = \epsilon$ has a
+                discriminant $\mathbb{D} = 25 + 4\epsilon > 0$ and the equation
+                always has at least one solution since $\epsilon > 0$.  Thus,
+                $\exists \delta$ s.t. $\delta(\delta + 5) < \epsilon$ and it
+                follows that $\abs{(x - 2)(x + 3)} < \epsilon$. Then we have
+                $\abs{(x - 2)(x + 3)} = \abs{(x^2 + x - 1) - 5} < \epsilon$.
+                Hence, $\lim_{x \to 2} (x^2 + x - 1) = 5$.\\
+                $\qed$
+
+            \item[(d)]
+                Let $\epsilon > 0$ be given and let $\abs{x - 3} < \delta$.
+                Then notice that $\absb{\dfrac{1}{x} - \dfrac{1}{3} = \dfrac{x
+                - 3}{3x}} = \dfrac{\delta}{3(\delta + 3)}$. Now, the equation
+                $\dfrac{\delta}{3(\delta + 3)} = \epsilon$ always has at least
+                one solution and thus, $\forall \epsilon > 0, \exists \delta$
+                s.t. $\dfrac{\delta}{3(\delta + 3)} < \epsilon$. Finally, we
+                get that $\absb{\dfrac{1}{x} - \dfrac{1}{3}} < \epsilon$.
+                Hence, $\lim_{x \to 3} \dfrac{1}{x} = \dfrac{1}{3}$.\\
+                $\qed$
+                
+        \end{itemize}
 
     \item[4.2.8]
         \begin{itemize}
             \item[(a)]
-                lkasdjaslkdj
+                $\lim_{x \to 2} \dfrac{\abs{x - 2}}{x - 2}$ does not exist.
+                \\
+                To show this, let $x_n = \dfrac{1}{n} + n$ and let $y_n =
+                -\dfrac{1}{n} + 2$ with $n \in \nats$..
+
+                Then we have $\dfrac{\abs{x_n - 2}}{x_n - 2} =
+                \dfrac{\frac{1}{n}}{\frac{1}{n}} = 1$ and $\dfrac{\abs{y_n -
+                2}}{y_n - 2} = \dfrac{\frac{1}{n}}{-\frac{1}{n}} = -1$.
+                Now, \textbf{by Corollary 4.2.5}, the limit does not exist.\\
+                $\qed$
 
             \item[(b)]
-                jasdlkjasdlk
+                $\lim_{x \to \frac{7}{4}} \dfrac{\abs{x - 2}}{x - 2} = -1$.
+                \\
+                Notice that $\lim_{x \to \frac{7}{4}} \abs{x - 2} = 0.25$
+                $\lim_{x \to \frac{7}{4}} x - 2 = -0.25$. Then, \textbf{per
+                Algebraic Limit Theorem}, we get that $\lim_{x \to \frac{7}{4}}
+                \dfrac{\abs{x - 2}}{x - 2} = -1$.\\
+                $\qed$
+
+            \item[(c)]
+                $\lim{x \to 0} (-1)^{[[\frac{1}{x}]]}$ does not exist.
+                \\
+                To show this, let $x_n = \dfrac{1}{2n}$ and let $y_n =
+                \dfrac{1}{2n + 1}$ with $n \in \nats$.
+
+                Then we have $(-1)^{[[\frac{1}{x}]]} = (-1)^{[[2n]]} =
+                (-1)^{2n} = 1$ and $(-1)^{[[\frac{1}{y}]]} = (-1)^{[[2n + 1]]}
+                = (-1)^{2n + 1} = -1$. Now, \textbf{by Corollary 4.2.5}, the
+                limit does not exist.\\
+                $\qed$
+
+            \item[(d)]
+                $\lim_{x \to 0} \sqrt[3]{x}(-1)^{[[\frac{1}{x}]]} = 0$.
+                \\
+                Let $\epsilon > 0$ be given. Then let $\delta = \epsilon^3$.
+                We have $\abs{x - 0} < \delta$ and it follows that
+                $\abs{\sqrt[3]{x}} < \epsilon$. We get
+                $\abs{\sqrt[3]{x}(-1)^{[[\frac{1}{x}]]}} - 0 =
+                \abs{\sqrt[3]{x}(-1)^{[[\frac{1}{x}]]}} = \abs{\sqrt[3]{x}} <
+                \epsilon$. Hence, $\lim_{x \to 0}
+                \sqrt[3]{x}(-1)^{[[\frac{1}{x}]]} = 0$.\\
+                $\qed$
         \end{itemize}
 
     \item[4.2.9]
-        lkajsdlkasd
+        \begin{itemize}
+            \item[(a)]
+                Let $M > 0$ be given. Then let $\delta = \dfrac{1}{\sqrt{M}}$.
+                Then, if $\abs{x} < \delta$, we have $\dfrac{1}{x^2} >
+                \dfrac{1}{\delta^2}$ and it follows that $\dfrac{1}{x^2} > M$.
+                Hence, we showed that $\lim_{x \to 0} \dfrac{1}{x^2} =
+                \infty$.\\
+                $\qed$
+
+            \item[(b)]
+                The definition would read as follows:
+
+                ``We say $\lim_{x \to \infty} f(x) = L$ if $\forall \epsilon >
+                0, \exists M > 0$ s.t. if $x > M$ we have $\abs{f(x) - L} <
+                \epsilon$.''
+
+                Let us now prove that $\lim_{x \to \infty} \dfrac{1}{x} = 0$.
+                Let $\epsilon > 0$ be given and let $M = \dfrac{1}{\epsilon}$.
+                Then if $x > M$, we have $x > \dfrac{1}{\epsilon}$. We have
+                $\dfrac{1}{x} = \abs{\dfrac{1}{x} - 0} < \epsilon$. Hence,
+                $\lim_{x \to \infty} \dfrac{1}{x} = 0$.\\
+                $\qed$
+
+            \item[(c)]
+                The definition would read as follows:
+
+                ``$\lim_{x \to \infty} f(x) = \infty$ if $\forall M > 0,
+                \exists N > 0$ s.t. $\forall x > N, f(x) > M$.''
+
+                For instance, $\lim_{x \to \infty} x = \infty$ is one example.
+                In this case, given $M > 0$, we can pick $N = M$.
+        \end{itemize}
 
     \item[4.2.11]
-        lkajsdlkasd
+        Let us first $\forall c \in \reals$ define $S_\delta(c) = \{x \in
+        \reals \mid 0 < \abs{x - c} < \delta\}$
+        \\
+        Let $\epsilon > 0$ be given. Then, since $\lim_{x \to c} f(x) = L$, by
+        definition, $\exists \delta_1 > 0$ s.t. $\forall x \in S_{\delta_1}(c),
+        \abs{f(x) - L} < \epsilon$. Similarly, we can also find $\delta_2$ s.t.
+        $\forall x \in S_{\delta_2}(c), \abs{h(x) - L} < \epsilon$. Then let
+        $\delta = \min{(\delta_1, \delta_2)}$. We get that $\forall x \in
+        S_{\delta}(c)$, we have $L - \epsilon < f(x) \leq g(x) \leq h(x) < L +
+        \epsilon$. And finally, it follows that $\abs{g(x) - L} < \epsilon$.
+        Hence, $\lim_{x \to c}g(x) = L$.\\
+        $\qed$
 
     \item[4.3.3]
-        lkajsdlkasd
+        \begin{itemize} 
+            \item[(a)]
+                As $g$ is continuous at $f(c)$, it follows that $\forall
+                \epsilon > 0, \exists \delta^\prime > 0$ s.t. if $\abs{f(x) -
+                f(c)}$, we have $\abs{g(f(c)) - g(f(x))} < \epsilon$. Now, as
+                $f$ is continuous at $c$, $\forall \delta^\prime > 0$, we get
+                $\exists \delta > 0$ s.t. if $\abs{x - c} < \delta$, we get
+                $\abs{f(x) - f(c)} < \delta^\prime$. Hence, $g \circ f$ is
+                continuous at $c$.\\
+                $\qed$
+
+            \item[(b)]
+                Let $(x_n) \to c$. Then, as $f$ is continuous at $c$, we have
+                that $(f(x_n)) \to f(c)$. We get that $(f(x_n))$ is a
+                convergent sequence with $(f(x_n)) \to f(c)$. Since $g$ is
+                continuous at $f(c)$, we get $(g(f(x_n))) \to g(f(c))$ and
+                thus, $\lim_{x \to c} g(f(x)) = g(f(c))$.\\
+                $\qed$
+        \end{itemize} 
 
     \item[4.3.7]
-        lkajsdlkasd
+        \begin{itemize}
+            \item[(a)]
+                First consider an arbitrary $r \in \rats$. Now, recall that
+                $\irrats$ is dense in $\reals$. Then, due to the density
+                property, there exists a sequence $(x_n) \subseteq \irrats$
+                s.t. $(x_n) \to r$. Then it follows that $g(x_n) = 0$ for all
+                $n \in N$ with $g(r) = 1$. Since $\lim g(x_n) = 0 \neq g(r)$,
+                \textbf{by Corollary 4.3.3 (Criterion for Discontinuity)}, we
+                conclude that $g(x)$ is not continuous at $r \in \rats$.
+
+                Let us now consider an arbitrary $i \in \irrats$. Recall that
+                $\rats$ is dense in $\reals$. Then, due to the density
+                property, we can find a sequence $(y_n) \subseteq \rats$ s.t.
+                $(y_n) \to i$. This time $g(y_n) = 1$ for all $n \in N$
+                with $g(i) = 0$. Now, since $\lim g(y_n) = 1 \neq g(i)$, we can
+                conclude that $g$ is not continuous at $i$.
+
+                Now, since $g(x)$ is not continuous at any $r \in \rats$ as
+                well as at any $i \in \irrats$, we conclude that Dirichlet's
+                function is nowhere continuous on $\reals$.\\
+                $\qed$
+
+            \item[(b)]
+                Consider an arbitrary rational number $r \in \rats$. Then,
+                notice that $t(r) \neq 0$. Now, since $\irrats$ is dense in
+                $\rats$, there exists a sequence $(x_n) \subseteq I$ s.t.
+                $(x_n) \to r$.  It follows that $n \in N, t(x_n) = 0$ with
+                $t(r) \neq 0$.  Thus $\lim t(x_n) \neq t(r)$ and $t(x)$ is not
+                continuous at $r$.  Hence, Thomae's function fails to be
+                continuous at every rational point.\\
+                $\qed$
+
+            \item[(c)]
+                Let $c \in \irrats$ be an arbitrary irrational number.  Given
+                $\epsilon > 0$, set $T = \{x \in \reals \mid t(x) \geq
+                \epsilon\}$. If $x \in T$, then $x$ is a rational number of the
+                form $x = \dfrac{m}{n}$ with $m \in \ints$ and $n \in \nats$
+                where $n \leq \dfrac{1}{\epsilon}$. The restriction on the size
+                of $n$ implies that the intersection of $T$ with the interval
+                $[c – 1, c + 1]$ is finite. In a finite set, all points are
+                isolated, so we can pick a neighborhood $V_\delta(c)$ around
+                $c$ such that $x \in V_\delta(c)$ implies $x \notin T$. But if
+                $x \notin T$, then $t(x) < \epsilon$, i.e., $t(x) \in
+                V_\delta(0)$ = $V_\delta(t(c))$. Finally, \textbf{by Theorem
+                4.3.2 (iii)}, we conclude that $t(x)$ is continuous at $c$.\\
+                $\qed$
+        \end{itemize}
 
     \item[4.3.8]
-        lkajsdlkasd
+        \begin{itemize}
+            \item[(a)]
+                It is true that $g(1) \geq 0$.
+
+                Suppose, for the sake of contradiction, that $g$ is continuous
+                on $\reals$ and $g(1) < 0$. Then $\exists \epsilon =
+                \abs{g(1)}$ s.t. $\abs{g(x) - g(1) \geq \epsilon}$ for every
+                choice $\delta = \abs{x - c}$. And we face a contradiction
+                since we assumed that $g$ is continuous at $x = 1 \in \reals$.
+                Hence, $g(1) \geq 0$ as well.\\
+                $\qed$
+
+            \item[(b)]
+                It is true that $g(x) = 0$ for all $x \in \reals$.
+
+                Let $x \in \reals$ be given. Recall that $\rats$ is dense in
+                $\reals$. Then, there exists a sequence of rational numbers
+                $(s_n)$ s.t. $(s_n) \to x$. Now, as $g(x)$ is continuous at
+                $x$, \textbf{per Theorem 4.3.2}, if follows that $g(x) =
+                \lim_{n \to \infty} g(s_n) = 0$ and thus $g(x) = 0$ for all $x
+                \in \reals$.\\
+                $\qed$
+
+            \item[(c)]
+                It is true that $g(x)$ is strictly positive for uncountably
+                many points.
+
+                Let $c = g(x_0) > 0$. Now, since $g(x)$ continuous at $x_0$,
+                $\exists \delta > 0$ s.t. $\abs{f(x) - f(x_0)} < \dfrac{c}{2}$
+                for all $\abs{x - x_0} < \delta$. Hence, $\forall \abs{x -
+                x_0}$ we get $-\dfrac{c}{2} < f(x) - c < \dfrac{c}{2}$ and
+                thus, $\dfrac{c}{2} < f(x) < \dfrac{3c}{2}$. Hence, we get
+                $\forall \abs{x - x_0} < \delta, f(x) > 0$ and it follows that
+                $g(x)$ is strictly positive for uncountably many points.\\
+                $\qed$
+        \end{itemize}
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
