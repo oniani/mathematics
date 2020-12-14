@@ -102,7 +102,7 @@
 
 % Title
 \title{\rule{\paperwidth - 150pt}{1pt}\textbf{\\\textit{Real Analysis}\\}\rule
-{\paperwidth - 150pt}{1pt}\\\textbf{Assignment \textnumero7}\\{\normalsize
+{\paperwidth - 150pt}{1pt}\\\textbf{Assignment \textnumero8}\\{\normalsize
 Instructor: Dr. Eric Westlund}}
 
 % Date
@@ -126,16 +126,99 @@ Instructor: Dr. Eric Westlund}}
 
 \begin{itemize}
     \item[4.4.1]
-        jklasdjalskd
+        \begin{itemize}
+            \item[(a)]
+                \textbf{Per Theorem 4.3.4}, we know that products of continuous
+                functions are continuous. Hence, it suffices to show that the
+                function $g(x) = x$ is continuous on all of $\reals$. Now, let
+                $\epsilon < 0$ be given and choose $\delta = \epsilon$.  Then,
+                we have that $\forall x, y \in \reals, \abs{x - y} < \delta$.
+                It follows that $\abs{g(x) - g(y)} = \abs{x - y} < \epsilon$.\\
+                $\qed$
+
+            \item[(b)]
+                Let $x_n = n$ and $y_n = n - \dfrac{1}{n}$. Then $\abs{x_n -
+                y_n} \to 0$, but $\abs{f(x_n) - f(y_n)} = 3n - \dfrac{1}{n(3 -
+                \frac{1}{n^2})} \to \infty$. Hence, \textbf{by Theorem 4.4.5},
+                the function $f$ is not uniformly continuous on $\reals$.\\
+                $\qed$
+
+            \item[(c)]
+                Let $A \subset \reals$ be any bounded subset. Then
+                $\overline{A}$, the closure of $A$ in $\reals$, is compact.
+                \textbf{By Theorem 4.4.8}, $f$ is uniformly continuous on
+                $\overline{A}$, and hence on any subset of $\overline{A}$. In
+                particular, $f$ is uniformly continuous on $A$.\\
+                $\qed$
+        \end{itemize}
+
+    \newpage
 
     \item[4.4.6]
-        asljdkjasdlkj
+        \begin{itemize}
+            \item[(a)]
+                Such request is possible.\\
+                Let $f(x) = \dfrac{1}{x}$ for $x \in (0, 1)$. Then it follows
+                that $f$ is continuous on $(0, 1)$. Now, let $x_n =
+                \dfrac{1}{n}$.  Then $x_n$ is Cauchy. However, $f(x_n) = n$ and
+                thus, $(f(x_n))$ is not Cauchy.
+
+            \item[(b)]
+                Such request is impossible.\\
+                Suppose, for the sake of contradiction, that $f$ is a uniformly
+                continuous function on $(0, 1)$ and $x_n$ is the Cauchy sequence.
+                Now, if $f(x_n)$ is not Cauchy, then $\exists \epsilon_0$ s.t.
+                $\forall N \in \nats, f\abs{(x_n) - f(y_n)} \geq \epsilon_0$
+                for all $m, n \geq N$. Finally, since $\abs{x_n - y_n} \to 0$
+                we face a contradiction as we assumed that $f$ is uniformly
+                continuous. Thus, such request is impossible.\\
+                $\qed$
+
+            \item[(c)]
+                Such request is impossible.\\
+                If $(x_n) \to x$, then $[0, \infty)$ is closed and containts
+                $x$. Finally, since $f$ is continuous on $x$, by the definition
+                of continuity, we get $(x_n) \to x$ and it follows that
+                $f(x_n) \to f(x)$. Thus, such request is impossible.\\
+                $\qed$
+        \end{itemize}
 
     \item[4.4.11]
-        jasdlkjasldkja
+        We will first prove the statement directly and then prove its converse.
+        \\
+        \\
+        Let us suppose that $g$ is continuous on $O$. Let $c \in g^{-1}(O)$.
+        Then $\forall \epsilon > 0, \exists \delta > 0$ s.t. if $x \in V_\delta(c)$,
+        it follows that $g(x) \in V_\delta(g(c))$. Choose $\epsilon$ s.t.
+        $V_\epsilon(g(c)) \subseteq O$. Then $x \in V_\delta(c)$ implies that
+        $g(x) \in V_\epsilon(g(c)) \subseteq O$ and thus, $x \in g^{-1}(O)$.
+        Finally, we get $V_\delta(c) \subseteq g^{-1}(O)$ and $g^{-1}(O)$ is
+        open.\\
+        $\qed$
+        \\
+        \\
+        Conversely, suppose that for every open $O \subseteq \reals$,
+        $g^{-1}(O)$ is an open set. Let $O = V_\epsilon(g(c))$. Then
+        $g^{-1}(O)$ is open. Now, since $c \in g^{-1}(O)$ and $c$ is an
+        interior point, $\exists \delta > 0$ s.t $V_\delta(c) \subseteq
+        g^{-1}(O)$. Then, by definition, if $x \in V_\delta(c)$, it follows
+        that $g(x) \in O = V_\epsilon(g(c))$ which shows that $g$ is a
+        continuous function.\\
+        $\qed$
+        \\
+        Finally, we have proven both the direct statement and its converse and
+        hence, $g$ is continuous if and only if $g^{-1}(O)$ is open whenever $O
+        \subseteq \reals$ is an open set.\\
+        $\qed$
 
     \item[4.5.7]
-        jasdlkasjldkj
+        We have $\forall 0 \leq x \leq 1$, we have $0 \leq f(x) \leq 1$.
+        Consider a function $g : [0, 1] \to \reals$, given by $g(x) = f(x) -
+        x$.  Then $g$ is continuous on $[0, 1]$. Now $g(0) = f(0) \geq 0$, but
+        $g(1) = f(1) - 1 \leq 0$. Hence, \textbf{by the Intermediate Value
+        Theorem (Theorem 4.5.1)}, $\exists x_0 \in [0, 1]$ s.t.  $g(x_0) = 0$.
+        Hence, we have that $f(x_0) = x_0$.\\
+        $\qed$
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
