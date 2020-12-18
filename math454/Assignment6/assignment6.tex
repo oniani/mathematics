@@ -2,7 +2,7 @@
 %
 % Filename: assignment6.tex
 % Author:   David Oniani
-% Modified: December 14, 2020
+% Modified: December 18, 2020
 %  _         _____   __  __
 % | |    __ |_   _|__\ \/ /
 % | |   / _` || |/ _ \\  /
@@ -125,8 +125,7 @@ Instructor: Dr. Eric Westlund}}
 \begin{itemize}
     \item[3.3.1]
         Per \textbf{Heine-Borel Theorem}, $K$ is closed and bounded. Then since
-        $K$ is bounded, the least upper bound and greatest lower bound
-        properties of $\reals$ imply that $\sup{K}$ and $\inf{K}$ both exist.
+        $K$ is bounded, $\sup{K}$ and $\inf{K}$ must both exist.
         \\
         \\
         Let us first prove that $\sup{K} \in K$. Suppose, for the sake of
@@ -161,7 +160,7 @@ Instructor: Dr. Eric Westlund}}
                 \\
                 Recall that $\rats$ is dense in $\reals$. Then there must exist
                 a sequence $(a_n) \subseteq \rats$ s.t. $(a_n) \to
-                \dfrac{1}{\sqrt{3}}$. Now, since every $\epsilon$-neighborhood
+                \dfrac{1}{\sqrt{3}}$. Now, as every $\epsilon$-neighborhood
                 contains rational numbers, it is a limit point. However,
                 $\dfrac{1}{\sqrt{3}} \notin \rats$ as $\dfrac{1}{\sqrt{3}}$ is
                 irrational. Thus, \textbf{by Theorem 3.3.1} $\rats \cap [0, 1]$
@@ -183,10 +182,11 @@ Instructor: Dr. Eric Westlund}}
                 Notice that $\lim_{n \to \infty} \{1 + \dfrac{1}{2^2} +
                 \dfrac{1}{3^2} + \dots + \dfrac{1}{n^2} \mid n \in \nats\} =
                 \lim_{n \to \infty} \sum_{n = 1}^{\infty} \dfrac{1}{n^2}$
-                converges. Hence, the sum is a limit point of the set. However,
-                the sum is not in the set and thus, \textbf{by Theorem 3.3.1},
-                it follows that the set $\{1 + \dfrac{1}{2^2} + \dfrac{1}{3^2}
-                + \dots + \dfrac{1}{n^2} \mid n \in \nats\}$ is not compact.
+                converges to $2$. Hence, the sum is a limit point of the set.
+                However, the sum is not in the set and thus, \textbf{by Theorem
+                3.3.1}, it follows that the set $\{1 + \dfrac{1}{2^2} +
+                \dfrac{1}{3^2} + \dots + \dfrac{1}{n^2} \mid n \in \nats\}$ is
+                not compact.
 
             \item[(e)]
                 \textbf{The set $\{1, \dfrac{1}{2}, \dfrac{2}{3}, \dfrac{3}{4},
@@ -217,20 +217,20 @@ Instructor: Dr. Eric Westlund}}
                 \mid n \in \nats\}$
         \end{itemize}
 
-        For $\nats$, we can take an open cover $C_1 = \{(n - 0.5, n + 0.5) \mid
-        n \in \nats\}$. Then $C_1$ has no finite subcover.
+        For $(1)\ \nats$, consider an open cover $C_1 = \{(n - 0.5, n + 0.5)
+        \mid n \in \nats\}$. Then $C_1$ has no finite subcover.
         \\
         \\
-        For $\rats \cap [0, 1]$, we can take an open cover $C_2 = \{(-3,
+        For $(2)\ \rats \cap [0, 1]$, consider an open cover $C_2 = \{(-3,
         \dfrac{1}{\sqrt{3}} - \dfrac{1}{n}), (\dfrac{1}{\sqrt{3}} +
         \dfrac{1}{n}, 3) \mid n \in \nats\}$. Then $C_2$ has no finite
         subcover.
         \\
         \\
-        For $\{1 + \dfrac{1}{2^2} + \dfrac{1}{3^2} + \dots + \dfrac{1}{n^2}
-        \mid n \in \nats\}$, we can take an open cover $C_3 = \{ (0, \sum_{m =
-        1}^n \dfrac{1}{m^2}) \mid n \in \nats\}$. Then $C_3$ has no finite
-        subcover.
+        For $(3)\ \{1 + \dfrac{1}{2^2} + \dfrac{1}{3^2} + \dots +
+        \dfrac{1}{n^2} \mid n \in \nats\}$, consider an open cover $C_3 = \{
+        (0, \sum_{m = 1}^n \dfrac{1}{m^2}) \mid n \in \nats\}$. Then $C_3$ has
+        no finite subcover.
 
     \item[3.4.5]
         Suppose, for the sake of contradiction and without a loss of
@@ -286,7 +286,7 @@ Instructor: Dr. Eric Westlund}}
     \item[3.4.9]
         \begin{itemize}
             \item[(a)]
-                Notice that the length of $O$, the following stands:
+                Notice that for the length of $O$, the following stands:
                 \begin{equation*}
                     \abs{O} \leq \sum_{n = 1}^\infty 2(\dfrac{1}{2^n})
                 \end{equation*}
