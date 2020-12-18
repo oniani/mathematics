@@ -2,7 +2,7 @@
 %
 % Filename: assignment8.tex
 % Author:   David Oniani
-% Modified: December 14, 2020
+% Modified: December 18, 2020
 %  _         _____   __  __
 % | |    __ |_   _|__\ \/ /
 % | |   / _` || |/ _ \\  /
@@ -138,71 +138,83 @@ Instructor: Dr. Eric Westlund}}
 
             \item[(b)]
                 Let $x_n = n$ and $y_n = n - \dfrac{1}{n}$. Then $\abs{x_n -
-                y_n} \to 0$, but $\abs{f(x_n) - f(y_n)} = 3n - \dfrac{1}{n(3 -
-                \frac{1}{n^2})} \to \infty$. Hence, \textbf{by Theorem 4.4.5},
-                the function $f$ is not uniformly continuous on $\reals$.\\
+                y_n} \to 0$. However, we have:
+                \begin{equation*}
+                    \abs{f(x_n) - f(y_n)} = \absb{n^3 - \Big(n - \dfrac{1}{n}
+                    \Big)^3} = \absb{3n + \dfrac{1}{n^3} - \dfrac{3}{n}} \geq n
+                    \to \infty
+                \end{equation*}
+                Hence, \textbf{by Theorem 4.4.5}, the function $f$ is not
+                uniformly continuous on $\reals$.\\
                 $\qed$
 
             \item[(c)]
-                Let $A \subset \reals$ be any bounded subset. Then
+                Let $A \subseteq \reals$ be any bounded subset. Then
                 $\overline{A}$, the closure of $A$ in $\reals$, is compact.
-                \textbf{By Theorem 4.4.8}, $f$ is uniformly continuous on
-                $\overline{A}$, and hence on any subset of $\overline{A}$. In
-                particular, $f$ is uniformly continuous on $A$.\\
+                \textbf{By Theorem 4.4.7 (Uniform Continuity on Compact Sets)},
+                $f$ is uniformly continuous on $\overline{A}$, and hence on any
+                subset of $\overline{A}$. Thus, $f$ is uniformly continuous on
+                $A$. Finally, since $A$ was chosen arbitrarily, we get that $f$
+                is uniformly continuous on any bounded subset of $\reals$.\\
                 $\qed$
         \end{itemize}
-
-    \newpage
 
     \item[4.4.6]
         \begin{itemize}
             \item[(a)]
                 Such request is possible.\\
-                Let $f(x) = \dfrac{1}{x}$ for $x \in (0, 1)$. Then it follows
-                that $f$ is continuous on $(0, 1)$. Now, let $x_n =
-                \dfrac{1}{n}$.  Then $x_n$ is Cauchy. However, $f(x_n) = n$ and
-                thus, $(f(x_n))$ is not Cauchy.
+                Let $f(x) = \dfrac{1}{x}$ for $x \in (0, 1)$. Then $f$ is
+                continuous on $(0, 1)$. Now, let $x_n = \dfrac{1}{n}$.  Then
+                $x_n$ is Cauchy. However, $f(x_n) = n$ and thus, $(f(x_n))$ is
+                not Cauchy.
 
             \item[(b)]
-                Such request is impossible.\\
-                Suppose, for the sake of contradiction, that $f$ is a uniformly
-                continuous function on $(0, 1)$ and $x_n$ is the Cauchy sequence.
-                Now, if $f(x_n)$ is not Cauchy, then $\exists \epsilon_0$ s.t.
-                $\forall N \in \nats, f\abs{(x_n) - f(y_n)} \geq \epsilon_0$
-                for all $m, n \geq N$. Finally, since $\abs{x_n - y_n} \to 0$
-                we face a contradiction as we assumed that $f$ is uniformly
-                continuous. Thus, such request is impossible.\\
+                Such request is impossible.\\ Suppose, for the sake of
+                contradiction, that $f$ is a uniformly continuous function on
+                $(0, 1)$, $x_n$ is the Cauchy sequence, and $f(x_n)$ is not a
+                Cauchy sequence. Then $\forall \epsilon > 0, \exists \delta >
+                0$ s.t.  given $\abs{x - y} < \delta$, $\abs{f(x) - f(y)} <
+                \epsilon$.  Now, since $(x_n)$ is Cauchy, $\exists N > 0$ s.t.
+                $\abs{x_n - x_m} < \delta$ with $n, m > N$. Then, it follows
+                that $\abs{f(x_n) - f(x_m)} < \epsilon$ which implies that
+                $f(x_n)$ is a Cauchy sequence and we face a contradiction as we
+                have assumed that $f(x)$ is not a Cauchy sequence.\\
                 $\qed$
 
             \item[(c)]
                 Such request is impossible.\\
-                If $(x_n) \to x$, then $[0, \infty)$ is closed and containts
-                $x$. Finally, since $f$ is continuous on $x$, by the definition
-                of continuity, we get $(x_n) \to x$ and it follows that
-                $f(x_n) \to f(x)$. Thus, such request is impossible.\\
+                Suppose, for the sake of contradiction, that $f : [0, \infty)
+                \to \reals$ is a continuous function, $(x_n)$ is a Cauchy
+                sequence, and $f(x_n)$ is not a Cauchy sequence. If $(x_n) \to
+                x$, then $[0, \infty)$ is closed and containts $x$. Finally,
+                since $f$ is continuous on $x$, by definition, we get $(x_n)
+                \to x$ and it follows that $f(x_n) \to f(x)$. Thus, such
+                request is impossible.\\
                 $\qed$
         \end{itemize}
 
     \item[4.4.11]
         We will first prove the statement directly and then prove its converse.
         \\
-        \\
-        Let us suppose that $g$ is continuous on $O$. Let $c \in g^{-1}(O)$.
-        Then $\forall \epsilon > 0, \exists \delta > 0$ s.t. if $x \in V_\delta(c)$,
-        it follows that $g(x) \in V_\delta(g(c))$. Choose $\epsilon$ s.t.
-        $V_\epsilon(g(c)) \subseteq O$. Then $x \in V_\delta(c)$ implies that
-        $g(x) \in V_\epsilon(g(c)) \subseteq O$ and thus, $x \in g^{-1}(O)$.
-        Finally, we get $V_\delta(c) \subseteq g^{-1}(O)$ and $g^{-1}(O)$ is
+        Suppose that $g$ is continuous function on $O \subseteq \reals$. Let $x
+        \in g^{-1}(O)$ which implies that $g(x) \in O$. Since $O$ is open,
+        $\exists \epsilon > 0$ s.t. $V_\epsilon(g(x)) \subseteq O$.
+        Furthermore, as $g$ is continuous, it follows that $\exists \delta > 0$
+        s.t. if $y \in V_\delta(\epsilon)$, we have $g(y) \in V_\epsilon(g(x))
+        \subseteq O$. We get that $\forall y \in V_\delta(x), g(y) \in O$ and
+        thus, $y \in g^{-1}(O)$. Now, since $y$ is chosen arbitrarily,
+        $V_\delta(x) \subseteq g^{-1}(O)$. Furthermore, since the choice of $x$
+        is also arbitrary, every element of $g^{-1}(O)$ has some
+        $\delta$-neighborhood contained in $g^{-1}(O)$. Hence, $g^{-1}(O)$ is
         open.\\
         $\qed$
         \\
-        \\
-        Conversely, suppose that for every open $O \subseteq \reals$,
-        $g^{-1}(O)$ is an open set. Let $O = V_\epsilon(g(c))$. Then
+        Conversely, suppose, $g^{-1}(O)$ is open whenever $O \subseteq \reals$
+        with $O$ being open. Let $O = V_\epsilon(g(c))$. Then it follows that
         $g^{-1}(O)$ is open. Now, since $c \in g^{-1}(O)$ and $c$ is an
         interior point, $\exists \delta > 0$ s.t $V_\delta(c) \subseteq
         g^{-1}(O)$. Then, by definition, if $x \in V_\delta(c)$, it follows
-        that $g(x) \in O = V_\epsilon(g(c))$ which shows that $g$ is a
+        that $g(x) \in O = V_\epsilon(g(c))$ and we finally got that $g$ is a
         continuous function.\\
         $\qed$
         \\
@@ -212,12 +224,15 @@ Instructor: Dr. Eric Westlund}}
         $\qed$
 
     \item[4.5.7]
-        We have $\forall 0 \leq x \leq 1$, we have $0 \leq f(x) \leq 1$.
-        Consider a function $g : [0, 1] \to \reals$, given by $g(x) = f(x) -
-        x$.  Then $g$ is continuous on $[0, 1]$. Now $g(0) = f(0) \geq 0$, but
-        $g(1) = f(1) - 1 \leq 0$. Hence, \textbf{by the Intermediate Value
-        Theorem (Theorem 4.5.1)}, $\exists x_0 \in [0, 1]$ s.t.  $g(x_0) = 0$.
-        Hence, we have that $f(x_0) = x_0$.\\
+        Notice that $\forall 0 \leq x \leq 1$, we have $0 \leq f(x) \leq 1$.
+        Now, consider the following function:
+        \begin{equation*}
+            g(x) : [0, 1] \to \reals : x \mapsto f(x) - x
+        \end{equation*}
+        Then $g$ is continuous on $[0, 1]$. Furthermore, we have $g(0) = f(0)
+        \geq 0$. However, $g(1) = f(1) - 1 \leq 0$. Hence, \textbf{by the
+        Intermediate Value Theorem (Theorem 4.5.1)}, $\exists x_0 \in [0, 1]$
+        s.t.  $g(x_0) = 0$.  Hence, we have that $f(x_0) = x_0$.\\
         $\qed$
 \end{itemize}
 
