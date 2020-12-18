@@ -2,7 +2,7 @@
 %
 % Filename: assignment7.tex
 % Author:   David Oniani
-% Modified: December 14, 2020
+% Modified: December 18, 2020
 %  _         _____   __  __
 % | |    __ |_   _|__\ \/ /
 % | |   / _` || |/ _ \\  /
@@ -155,28 +155,30 @@ Instructor: Dr. Eric Westlund}}
             \item[(c)]
                 Prove that $\lim_{x \to 2} (x^2 + x - 1) = 5$.
                 \\
-                Let $\epsilon > 0$ be given and let $\delta < \abs{x - 2}$.
-                Then $\abs{x - 2} < \delta$, $\abs{x + 3} < 5 + \delta$. We get
-                $0 < \abs{x^2 + x - 6} < \delta$. Notice that $x^2 + x - 6 = (x
-                - 2)(x + 3)$. Then $\abs{(x - 2)(x + 3)} < \delta(\delta + 5)$.
-                Notice that the equation $\delta(\delta + 5) = \epsilon$ has a
-                discriminant $\mathbb{D} = 25 + 4\epsilon > 0$ and the equation
-                always has at least one solution since $\epsilon > 0$.  Thus,
-                $\exists \delta$ s.t. $\delta(\delta + 5) < \epsilon$ and it
-                follows that $\abs{(x - 2)(x + 3)} < \epsilon$. Then we have
-                $\abs{(x - 2)(x + 3)} = \abs{(x^2 + x - 1) - 5} < \epsilon$.
-                Hence, $\lim_{x \to 2} (x^2 + x - 1) = 5$.\\
+                Let $\epsilon > 0$ be given and let $\abs{x - 2} < \delta$.
+                Then $\abs{x - 2} < \delta$, $\abs{x + 3} < 5 + \delta$. We
+                have $0 < \abs{x^2 + x - 6} < \delta$. Notice that $x^2 + x - 6
+                = (x - 2)(x + 3)$. Then $\abs{(x - 2)(x + 3)} < \delta(\delta +
+                5)$.  Notice that the equation $\delta(\delta + 5) = \epsilon$
+                has a discriminant $\mathbb{D} = 25 + 4\epsilon > 0$ and the
+                equation always has at least one solution since $\epsilon > 0$.
+                Thus, $\exists \delta$ s.t. $\delta(\delta + 5) < \epsilon$ and
+                it follows that $\abs{(x - 2)(x + 3)} < \epsilon$. Finally, we
+                have that $\abs{(x - 2)(x + 3)} = \abs{(x^2 + x - 1) - 5} <
+                \epsilon$.  Hence, $\lim_{x \to 2} (x^2 + x - 1) = 5$.\\
                 $\qed$
 
             \item[(d)]
                 Let $\epsilon > 0$ be given and let $\abs{x - 3} < \delta$.
-                Then notice that $\absb{\dfrac{1}{x} - \dfrac{1}{3} = \dfrac{x
-                - 3}{3x}} = \dfrac{\delta}{3(\delta + 3)}$. Now, the equation
-                $\dfrac{\delta}{3(\delta + 3)} = \epsilon$ always has at least
-                one solution and thus, $\forall \epsilon > 0, \exists \delta$
-                s.t. $\dfrac{\delta}{3(\delta + 3)} < \epsilon$. Finally, we
-                get that $\absb{\dfrac{1}{x} - \dfrac{1}{3}} < \epsilon$.
-                Hence, $\lim_{x \to 3} \dfrac{1}{x} = \dfrac{1}{3}$.\\
+                Then notice that $\absb{\dfrac{1}{x} - \dfrac{1}{3}} =
+                \absb{\dfrac{x - 3}{3x}} < \dfrac{\delta}{3(\delta + 3)}$. Now,
+                the equation $\dfrac{\delta}{3(\delta + 3)} = \epsilon$ always
+                has at least one solution as the discriminant $\mathbb{D} =
+                9\epsilon^2 + 36 \epsilon > 0$ and thus, $\forall \epsilon > 0,
+                \exists \delta$ s.t. $\dfrac{\delta}{3(\delta + 3)} <
+                \epsilon$. Finally, we get that $\absb{\dfrac{1}{x} -
+                \dfrac{1}{3}} < \epsilon$.  Hence, $\lim_{x \to 3} \dfrac{1}{x}
+                = \dfrac{1}{3}$.\\
                 $\qed$
                 
         \end{itemize}
@@ -198,8 +200,8 @@ Instructor: Dr. Eric Westlund}}
             \item[(b)]
                 $\lim_{x \to \frac{7}{4}} \dfrac{\abs{x - 2}}{x - 2} = -1$.
                 \\
-                Notice that $\lim_{x \to \frac{7}{4}} \abs{x - 2} = 0.25$
-                $\lim_{x \to \frac{7}{4}} x - 2 = -0.25$. Then, \textbf{per
+                Notice that $\lim_{x \to \frac{7}{4}} \abs{x - 2} = 0.25$ and
+                $\lim_{x \to \frac{7}{4}} (x - 2) = -0.25$. Then, \textbf{per
                 Algebraic Limit Theorem}, we get that $\lim_{x \to \frac{7}{4}}
                 \dfrac{\abs{x - 2}}{x - 2} = -1$.\\
                 $\qed$
@@ -229,10 +231,12 @@ Instructor: Dr. Eric Westlund}}
                 $\qed$
         \end{itemize}
 
+    \newpage
+
     \item[4.2.9]
         \begin{itemize}
             \item[(a)]
-                Let $M > 0$ be given. Then let $\delta = \dfrac{1}{\sqrt{M}}$.
+                Let $M > 0$ be given and let $\delta = \dfrac{1}{\sqrt{M}}$.
                 Then, if $\abs{x} < \delta$, we have $\dfrac{1}{x^2} >
                 \dfrac{1}{\delta^2}$ and it follows that $\dfrac{1}{x^2} > M$.
                 Hence, we showed that $\lim_{x \to 0} \dfrac{1}{x^2} =
