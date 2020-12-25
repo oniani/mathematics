@@ -1,3 +1,7 @@
-# undergrad-math
+# Undegraduate Mathematics Courses
 
-Usage of this material is prohibited if one is currently enrolled in either of the mathematics courses at any university.
+Assignments and notes from the Undegraduate Mathematics Courses
+
+## License
+
+[MIT License](LICENSE)
