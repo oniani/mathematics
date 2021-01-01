@@ -193,10 +193,44 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
     \item[4.]
         \begin{itemize}
             \item[(a)]
-                Placeholder
+                According to \textbf{Definition 4.2.1 (Functional Limit)},
+                we have to show that $\forall \epsilon > 0, \exists \delta > 0$
+                s.t. $0 < \abs{x - 3} < \delta \implies \abs{x^2 - 5x + 4 -
+                (-2)} < \epsilon$. Let $\epsilon > 0$ be given. Let
+                $\delta = -0.5 + \sqrt{0.25 + \frac{\epsilon}{2}}$
+                ($\delta > 0$ since $\sqrt{0.25 + \frac{\epsilon}{2}} > 0.5$).
+                Then suppose that $\abs{x - 3} = \abs{x - 3} < -0.5 +
+                \sqrt{0.25 + \frac{\epsilon}{2}}$
+                Notice that:
+                \begin{align*}
+                    \abs{x^2 - 5x + 4 - (-2)} &= \absb{x^2 - 5x + 6}\\
+                                              &= \absb{(x - 2)(x - 3)}\\
+                                              &= \absb{-0.5 + \sqrt{0.25 + \frac{\epsilon}{2}} + 1} \times \absb{-0.5 + \sqrt{0.25 + \frac{\epsilon}{2}}}\\
+                                              &< \absb{\sqrt{0.25 + \frac{\epsilon}{2}} + 0.5} \times \absb{\sqrt{0.25 + \frac{\epsilon}{2}} - 0.5}\\
+                                              &= \absb{0.25 + \frac{\epsilon}{2} - 0.25}\\
+                                              &= \absb{\frac{\epsilon}{2}} = \frac{\epsilon}{2} < \epsilon
+                \end{align*}
+                Hence, we showed that $\forall \epsilon > 0, \exists \delta =
+                -0.5 + \sqrt{0.25 + \frac{\epsilon}{2}}$ s.t.
+                $0 < \abs{x - 3} < \delta \implies \abs{x^2 - 5x + 4 - (-2)} <
+                \epsilon$.\\
+                $\qed$
 
             \item[(b)]
-                Placeholder
+                Per \textbf{Exercise 4.2.9 (b)} that I have completed as a part
+                of the assignment, we can say $\lim_{x \to \infty} f(x) = L$ if
+                $\forall \epsilon > 0, \exists M > 0$ s.t. if $x > M$ we have
+                $\abs{f(x) - L} < \epsilon$. Let us now show that $\lim_{x \to
+                \infty} \dfrac{2x}{x + 4} = 2$. Let $\epsilon > 0$ be given and
+                let $M = \dfrac{8}{\epsilon}$. Then if $x > M$, we have
+                $x > \dfrac{8}{\epsilon}$. We have
+                $\dfrac{2x}{x + 4} =
+                \abs{\dfrac{2 \frac{8}{\epsilon}}{\frac{8}{\epsilon} + 4}  - 2}
+                = \dfrac{8}{\frac{8}{\epsilon} + 4} =
+                \dfrac{2\epsilon}{\epsilon + 2} =
+                \epsilon - \dfrac{4}{\epsilon + 2} < \epsilon$.\\
+                Hence, $\lim_{x \to \infty} \dfrac{2x}{x + 4} = 2$.\\
+                $\qed$
         \end{itemize}
 
     \newpage
