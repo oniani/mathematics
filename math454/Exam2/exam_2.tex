@@ -2,7 +2,7 @@
 %
 % Filename: template.tex
 % Author:   David Oniani
-% Modified: December 21, 2020
+% Modified: January 01, 2020
 %  _         _____   __  __
 % | |    __ |_   _|__\ \/ /
 % | |   / _` || |/ _ \\  /
@@ -121,7 +121,7 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{itemize}
-    \item[7.]
+    \item[1.]
         \begin{itemize}
             \item[(a)]
                 Placeholder
@@ -139,8 +139,38 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
                 Placeholder
         \end{itemize}
 
+    % https://math.stackexchange.com/questions/309080/cantor-set-cantor-set-0-2
     \item[2.]
-        Placeholder
+        Let us first prove that
+        $\dfrac{1}{2}\mathbb{C} + \dfrac{1}{2}\mathbb{C} = [0, 1]$.
+        Recall that the Cantor set $\mathbb{C}$ is the set of all numbers in
+        $[0, 1]$ that in the \textbf{ternary system} can be represented as the
+        sequence of $0$s and $2$s only. Then $\dfrac{1}{2}\mathbb{C}$ must only
+        contain $0$s and $1$s. Now, let $r \in [0, 1]$. If we show that $\exists
+        x, y \in \dfrac{1}{2}\mathbb{C}$ s.t $x + y \in [0, 1]$, then we have
+        effectively shown that
+        $\dfrac{1}{2}\mathbb{C} + \dfrac{1}{2}\mathbb{C} = [0, 1]$. Let us
+        construct $x$ and $y$ in the following manner:
+        \begin{itemize}
+            \item[*]
+                Let $x$ have $0$s in the same places where it is in $r$ and let
+                $x$ have $1$s when the corresponding digit in $r$ is either $1$
+                or $2$.
+
+            \item[*]
+                Let $y$ have $0$s in the same places where $r$ has $0s$ or
+                $1$s. Let $y$ have $1$s when the corresponding digit in $r$ is
+                $2$.
+        \end{itemize}
+        Hence, we split all $2$s in $r$ in a way that half goes to $x$ and half
+        goes to $y$, and all $1$s of $r$ were given to $x$. Thus, $x + y = r$.
+        For instance, if $r = 0.120120\dots$, then $x = 0.110110\dots$ and $y =
+        0.010010\dots$. It follows that $x + y = 0.120120\dots = r$. Now, since
+        we have already shown that
+        $\dfrac{1}{2}\mathbb{C} + \dfrac{1}{2}\mathbb{C} = [0, 1]$, we can just
+        multiply both sides of the equation by $2$ and we get
+        $\mathbb{C} + \mathbb{C} = [0, 2]$.\\
+        $\qed$
 
     \item[3.]
         \begin{itemize}
@@ -169,14 +199,98 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
                 Placeholder
         \end{itemize}
 
+    \newpage
+
     \item[5.]
-        Placeholder
+        We need to prove that $\forall c \in [0, \infty)$ and
+        $\forall \epsilon > 0, \exists \delta > 0$ s.t. whenever
+        $\abs{x - c} < \delta$ (with $x \in [0, \infty)$), it follows that
+        $\abs{\sqrt[4]{x} - \sqrt[4]{c}} < \epsilon$.
+        Let $\epsilon > 0$ be given. Now, let us consider the following two
+        cases:
+        \begin{itemize}
+            \item[(1)]
+                $c = 0$\\
+                If $c = 0$, let $\delta = \epsilon^4$. Then
+                $\abs{x - c} = \abs{x - 0} = \abs{x} < \epsilon^4$.
+                Now,
+                $\abs{\sqrt[4]{x} - \sqrt[4]{0}} = \abs{\sqrt[4]{x}} < \epsilon$
+                is true as if we raise both sides of the inequality to the
+                power of four, we get $\abs{x} < \epsilon^4$ which is true.
+                Hence, we have that $\abs{x - c} < \delta$ implies
+                $\abs{\sqrt[4]{x} - \sqrt[4]{c}} < \epsilon$.\\
+                $\qed$
+
+            \item[(2)]
+                $c > 0$\\
+                If $c > 0$, let $\delta = \epsilon\sqrt[4]{c}$. Then
+                $\abs{x - c} < \epsilon\sqrt[4]{c}$.
+                Consider $\abs{\sqrt[4]{x} - \sqrt[4]{c}}$. Now, notice that:
+                \begin{align*}
+                    \abs{\sqrt[4]{x} - \sqrt[4]{c}} &= \abs{\sqrt{x} - \sqrt{c} \times \dfrac{1}{\sqrt[4]{x} + \sqrt[4]{c}}}\\
+                                                    &= \abs{\sqrt{x} - \sqrt{c}} \times \dfrac{1}{\sqrt[4]{x} + \sqrt[4]{c}}\\
+                                                    &= \abs{x - c} \times \dfrac{1}{(\sqrt[4]{x} + \sqrt[4]{c})(\sqrt{x} + \sqrt{c})}\\
+                                                    &< \dfrac{\abs{x - c}}{\sqrt[4]{c^3}}\\
+                                                    &\leq \dfrac{\abs{x - c}}{\sqrt[4]{c}}\\
+                                                    &< \dfrac{\epsilon\sqrt[4]{c}}{\sqrt[4]{c}} = \epsilon
+                \end{align*}
+                Hence, we have that $\abs{x - c} < \delta$ implies
+                $\abs{\sqrt[4]{x} - \sqrt[4]{c}} < \epsilon$.\\
+                $\qed$
+        \end{itemize}
+
+        Thus, we have now shown that $\forall c \in [0, \infty)$ and
+        $\forall \epsilon > 0, \exists \delta > 0$ s.t. whenever
+        $\abs{x - c} < \delta$ (with $x \in [0, \infty)$), it follows that
+        $\abs{\sqrt[4]{x} - \sqrt[4]{c}} < \epsilon$.\\
+        $\qed$
+
+    \newpage
 
     \item[6.]
         Placeholder
 
     \item[7.]
-        Placeholder
+        Let us first prove that $f(x) = 1/x^2$ is uniformly continuous on
+        $[0, \infty)$. Let $x, y \in [1, \infty)$ and let $\epsilon > 0$ be
+        set. Then we have:
+        \begin{align*}
+            \absb{\dfrac{1}{x^2} - \dfrac{1}{y^2}} &= \absb{\dfrac{y^2 - x^2}{x^2y^2}}\\
+                                                   &= \absb{\dfrac{(x + y)(x - y)}{x^2y^2}}\\
+                                                   &= \dfrac{x + y}{x^2y^2}\abs{x - y}
+        \end{align*}
+        Since $x, y \in [1, \infty)$, it follows that
+        $\dfrac{x + y}{x^2y^2} \leq 2$ and for $x, y \in [1, \infty)$, we have:
+        \begin{equation*}
+            \absb{\dfrac{1}{x^2} - \dfrac{1}{y^2}} \leq 2\abs{x - y}
+        \end{equation*}
+        Now, let $\delta = \dfrac{\epsilon}{2}$. Then we have
+        $\abs{x - y} < \delta$ and it follows that
+        $\absb{\dfrac{1}{x^2} - \dfrac{1}{y^2}} < \epsilon$. Hence, by
+        \textbf{Definition 4.4.4 (Uniform Continuity)}, $f(x) = 1/x^2$ is
+        uniformly continuous on $[0, \infty)$.\\
+        $\qed$
+        \\
+        \\
+        Let us now prove that $f(x) = 1/x^2$ is not uniformly continuous on the
+        interval $(0, 1]$. Suppose, for the sake of contradiction, that $f(x)$
+        is uniformly continuous on $(0, 1]$. Then for $\epsilon > 0$ there must
+        exist $\delta  > 0$ s.t. $\forall x, y \in (0, 1]$ with
+        $\abs{x - y} < \delta$, it follows that $\abs{f(x) - f(y)} < \epsilon$.
+        Now, let $x = \dfrac{2}{n}$ and $y = \dfrac{1}{n}$ with $n \geq 2$. We
+        have that $\abs{x - y}$ implies
+        \begin{equation*}
+            \absb{\dfrac{1}{x^2} - \dfrac{1}{y^2}} = \absb{\dfrac{\frac{3}{n^2}}{\frac{4}{n^2}}} = \dfrac{3}{4} < \epsilon
+        \end{equation*}
+        Now, we got that $\epsilon > \dfrac{3}{4}$, however, $\abs{f(x) - f(y)}
+        < \epsilon$ must be true $\forall \epsilon > 0$. Hence, we face a contradiction
+        and $f(x) = 1/x^2$ is not uniformly continuous on $(0, 1]$.\\
+        $\qed$
+        \\
+        \\
+        Finally, we have shown that $f(x) = 1/x^2$ is uniformly continuous on
+        $[0, \infty)$, but not on $(0, 1]$.\\
+        $\qed$
 
     \item[8.]
         \begin{itemize}
