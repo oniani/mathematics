@@ -124,22 +124,111 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
     \item[1.]
         \begin{itemize}
             \item[(a)]
-                Placeholder
+                Let $S_n = (a - \frac{1}{n}, b + \frac{1}{n})$. Then $S_n$ is
+                open. Now, it is easy to see that $S = \cap_{n = 1}^{\infty}
+                S_n$ is $G_\delta$ set. Furthermore, $[a, b] \subseteq S$ as
+                $\forall n, [a, b] \subseteq S_n$. Now, suppose, for the sake
+                of contradiction, that $x \in S$ and $x \notin [a, b]$. We have
+                two cases:
+                \begin{itemize}
+                    \item[(i)]
+                        $x < a \implies \exists n$ s.t. $a - x > \frac{1}{n}$
+                        and thus, $x < a - \frac{1}{n}$. It follows that $x
+                        \notin S_n$ and $x \notin S$. Hence, we face a
+                        contradiction and $x \geq a$.
+
+                    \item[(ii)]
+                        $x > b \implies \exists n$ s.t. $x - b > \frac{1}{n}$
+                        and thus, $x > b + \frac{1}{n}$. It follows that $x
+                        \notin S_n$ and $x \notin S$. Hence, we face a
+                        contradiction and $x \leq b$.
+                \end{itemize}
+                Finally, from these two cases, we got that $x \geq a$ and $x
+                \leq b$ and thus $x \in [a, b]$. Therefore, $[a, b]$ is
+                $G_\delta$ set.
 
             \item[(b)]
-                Placeholder
+                Let $S_n = (a, b + \frac{1}{n})$. Then, by the argument
+                presented in $(a)$ part of the exercise, $S = \cap_{n =
+                1}^{\infty} S_n = (a, b]$ and thus $(a, b]$ is $G_\delta$.
+                \\
+                \\
+                Now, suppose, for the sake of contradiction, that $U_n = [a +
+                \frac{1}{n}, b], x \in U_n$, and $ x \notin (a, b]$. Let us now
+                consider these two cases:
+                \begin{itemize}
+                    \item[(i)]
+                        $x \leq a \implies x < a + \frac{1}{n} \implies x
+                        \notin U_n$ and we face a contradiction.
+
+                    \item[(ii)]
+                        $x > b \implies x \notin U_n$ and we face a
+                        contradiction.
+                \end{itemize}
+                Thus $x > a$ and $x \leq b$ which implies that $x \in (a, b]$
+                and therefore, $(a, b]$ is $F_\sigma$. Hence, we have shown
+                that any arbitrary half-open interval $(a, b]$ is both
+                $G_\delta$ and $F_\sigma$.
 
             \item[(c)]
-                Placeholder
+                To prove that $\rats$ is $F_\sigma$, we need to find a
+                countable collection of closed subsets of $\rats$ whose union
+                is $\rats$. Now, since $\rats$, there exists a bijective
+                function $f : \nats \to \rats$. Then, $\forall n \in \nats$,
+                set $S_n = \{f(n)\}$ is closed. We have $\rats =
+                \displaystyle\bigcup_{n = 1}^{\infty} \{S_n\}$ is a union of
+                closed sets. Thus, by definition, $\rats$ is $F_\sigma$ set.
 
             \item[(d)]
-                Placeholder
+                Notice that $\reals - \rats$ is the set of irrational numbers
+                which is the complement of the rational numbers in $\reals$.
+                Hence, $\irrats = \reals - \rats = \rats^c$. From $(c)$ we know
+                that $\rats$ can be represented as a countable union of closed
+                sets. Then, per \textbf{De Morgan's Law}, we get that $\irrats$
+                is the countable intersection of open sets (complement of a
+                closed set is an open set). Hence, by definition, we get that
+                $\reals - \rats$ is $G_\delta$.
 
             \item[(e)]
-                Placeholder
+                Since this is a if and only if question, let us first prove
+                the statement directly and then prove its converse.
+                \begin{itemize}
+                    \item[(i)]
+                        Let us first show that a set is a $G_\delta$ set if
+                        its complement is an $F_\sigma$ set.
+                        \\
+                        \\
+                        Suppose that we have a set $S$ which is a $G_\delta$
+                        set. Then, by definition, $S = \displaystyle\bigcap_{n
+                        = 1}^{\infty}S_n$ where every $S_n$ is an open set.
+                        Then, by \textbf{De Morgan's Law}, it follows that $S^c
+                        = \displaystyle\bigcup_{n = 1}^{\infty}S_n^c$ (with
+                        $S_n^c$ being closed as the complement of an open set
+                        is a closed set) and by definition, $S^c$ is a
+                        $F_\sigma$ set.\\
+                        $\qed$
+
+                    \item[(ii)]
+                        Let us now prove the converse, that if a set is a
+                        complement of a $F_\sigma$ set, then it is a $G_\delta$
+                        set.
+                        \\
+                        \\
+                        Suppose that we have a set $S$ which is a $F_\sigma$
+                        set. Then, by definition, $S = \displaystyle\bigcup_{n
+                        = 1}^{\infty}S_n$ where every $S_n$ is a closed set.
+                        Then, by \textbf{De Morgan's Law}, it follows that $S^c
+                        = \displaystyle\bigcap_{n = 1}^{\infty}S_n^c$ (with
+                        $S_n^c$ being open as the complement of a closed set is
+                        an open set) and by definition, $S^c$ is a $F_\sigma$
+                        set.\\
+                        $\qed$
+                \end{itemize}
+                Finally, we have proven that a set is a $G_\delta$ set if and
+                only if its complement is an $F_\sigma$ set.\\
+                $\qed$
         \end{itemize}
 
-    % https://math.stackexchange.com/questions/309080/cantor-set-cantor-set-0-2
     \item[2.]
         Let us first prove that
         $\dfrac{1}{2}\mathbb{C} + \dfrac{1}{2}\mathbb{C} = [0, 1]$.
