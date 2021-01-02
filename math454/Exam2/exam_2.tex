@@ -32,6 +32,7 @@
 \usepackage{mathtools}
 \usepackage{amsthm}
 \usepackage{amssymb}
+\usepackage{tikz}
 \usepackage[cache=false]{minted}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -264,19 +265,128 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
     \item[3.]
         \begin{itemize}
             \item[(a)]
-                Placeholder
+                $F_2 = \Big[0, \dfrac{4}{25}\Big] \cup \Big[\dfrac{6}{25},
+                \dfrac{2}{5}\Big] \cup \Big[\dfrac{3}{5}, \dfrac{19}{25}\Big]
+                \cup \Big[\dfrac{21}{25}, 1\Big]$.
+                \\
+                \\
+                Below find the sketch (blue segments are included and red
+                segments are not included).
+                \begin{figure}[h]
+                    \centering
+                    \begin{tikzpicture}[scale=0.8]
+                        % X-axis
+                        \draw[red] (0,0) -- (10,0);
+                        \draw[red] (0,0) -- (10,0);
+
+                        % [0, 4/25]
+                        \draw[black] (0, 0) node[below] {0};
+                        \fill[blue] (0, 0) circle (0.1);
+
+                        \draw[black] (1.6, 0) node[below] {$\dfrac{4}{25}$};
+                        \fill[blue] (1.6, 0) circle (0.1);
+
+                        \draw[blue] (0, 0) -- (1.6, 0);
+                        \draw[blue] (0, 0) -- (1.6, 0);
+
+                        % [6/25, 2/5]
+                        \draw[black] (2.4, 0) node[below] {$\dfrac{6}{25}$};
+                        \fill[blue] (2.4, 0) circle (0.1);
+
+                        \draw[black] (4, 0) node[below] {$\dfrac{2}{5}$};
+                        \fill[blue] (4, 0) circle (0.1);
+
+                        \draw[blue] (2.4, 0) -- (4, 0);
+                        \draw[blue] (2.4, 0) -- (4, 0);
+
+                        % [3/5, 19/25]
+                        \draw[black] (6, 0) node[below] {$\dfrac{3}{5}$};
+                        \fill[blue] (6, 0) circle (0.1);
+
+                        \draw[black] (7.6, 0) node[below] {$\dfrac{19}{25}$};
+                        \fill[blue] (7.6, 0) circle (0.1);
+
+                        \draw[blue] (6, 0) -- (7.6, 0);
+                        \draw[blue] (6, 0) -- (7.6, 0);
+
+                        % [21/5, 1]
+                        \draw[black] (8.4, 0) node[below] {$\dfrac{21}{25}$};
+                        \fill[blue] (8.4, 0) circle (0.1);
+
+                        \draw[black] (10, 0) node[below] {$1$};
+                        \fill[blue] (10, 0) circle (0.1);
+
+                        \draw[blue] (8.4, 0) -- (10, 0);
+                        \draw[blue] (8.4, 0) -- (10, 0);
+                    \end{tikzpicture}
+                    \caption{Sketch of $F_2$}
+                \end{figure}
 
             \item[(b)]
-                Placeholder
-
+                Notice that by definition, $F$ is bounded by $[0, 1]$. Recall
+                that arbitrary intersection of closed sets is closed (we have
+                proved this in the past as a part of an exercise). Now, every
+                $F_n$ is closed and since $F$ is an intersection of such sets,
+                it follows that $F$ closed. Finally, $F$ is both closed and
+                bounded and by \textbf{Theorem 3.3.8 (Heine–Borel Theorem)},
+                $F$ is compact.\\
+                $\qed$
+                
             \item[(c)]
-                Placeholder
+                Notice that in order to construct $F$, we first remove 1
+                interval of length $\dfrac{1}{5}$. Then we remove 4
+                intervals of length $\dfrac{1}{25}$, then 16 intervals of
+                the length $\dfrac{1}{125}$, etc. Thus, the removed intervals
+                form the infinite geometric series of the following form:
+                \begin{equation*}
+                    \dfrac{1}{5} \times \Big(\dfrac{4}{5}\Big)^0, \dfrac{4}{5}
+                    \times \Big(\dfrac{4}{5}\Big)^1, \dfrac{1}{5} \times
+                    \Big(\dfrac{4}{5}\Big)^2 \dots
+                \end{equation*}
+                Recall that the sum of such series is calculated by the formula
+                $S = \dfrac{s_1}{1 - r}$ where $s_1$ is the first element of
+                the sequence and $r$ is the ratio/quotient (next element over
+                the previous one). Then, we have $S = \dfrac{\frac{1}{5}}{1 -
+                \frac{4}{5}} = \dfrac{\frac{1}{5}}{\frac{1}{5}} = 1$. Now,
+                notice that we had the length of $1$ initially as the length of
+                $[0, 1]$ is 1. We subtracted $S = 1$ from 1 and get $1 - 1 =
+                0$. Thus, the length of $F$ is $0$.
 
             \item[(d)]
-                Placeholder
+                Suppose, for the sake of contradiction, that $S = \{s_1, s_2,
+                \dots\}$ is countable. We now need to find some point $x \in F$
+                s.t. $x \notin S$. Notice that $F \subseteq [0, \frac{2}{5}],
+                [\frac{3}{5}, 1]$ with $s_1 \notin [0, \frac{2}{5}] \cup [0,
+                \frac{2}{5}]$ (i.e., $s_1$ is not in either of the two
+                intervals). Let us denote $[0, \frac{2}{5}]$ as $I_1$. Then
+                $s_1 \notin I_1$. Similarly, after removing the middle fifth of
+                $I_1$, $s_1$ will not be in neither of the resulting two
+                intervals and $s_2 \notin I_2$ (where $I_2$ is one of the
+                intervals [does not matter which one] obtained after removing
+                the middle half of $I_1$, so $I_2 \subset I_1$). If we continue
+                in this fashion, after $m$ steps, we get $I_m \subset I_{m - 1}
+                \dots \subset I_2 \subset I_1$ with $s_m \notin I_m$. Finally,
+                we have found a point $x \in \displaystyle\bigcap_{n =
+                1}^{\infty}I_n$ s.t. $x \in F$ but $\forall n, x \neq s_n$.
+                Hence, we face a contradiction and $F$ is uncountable.\\
+                $\qed$
 
             \item[(e)]
-                Placeholder
+                Notice that $F_1$ has $2$ intervals of the length
+                $\frac{2}{5}$. $F_2$, on the other hand, has $2^2$ intervals of
+                the size $\frac{2^2}{5^2}$. $F_3$ consists of $2^3$ intervals
+                of the size $\frac{2^3}{5^3}$ and so forth. Hence, in general,
+                $F_n$ consists of $2^n$ intervals of the size $\frac{2^n}{5^n}
+                = \Big(\frac{2}{5}\Big)^n$. Hence, magnifying $F$ by the factor
+                of $\frac{5}{2}$ will give us $2$ additional copies of $F$.
+                The equation will be $2 = \Big(\frac{5}{2}\Big)^n$ (for
+                instance, $[0 ,1] \times 2.5 = [0, 2.5]$ and after taking the
+                middle-fifth, we get two copies $[0, 1]$ and $[1.5, 2.5]$) and
+                thus, the dimension of $F$ is
+                \begin{equation*}
+                    \boxed{\dim{F} = \dfrac{\log{2}}{\log{\frac{5}{2}}} =
+                    \dfrac{\log{2}}{\log{5} - \log{2}}}
+                \end{equation*}
         \end{itemize}
 
     \item[4.]
@@ -365,8 +475,6 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
         $\abs{x - c} < \delta$ (with $x \in [0, \infty)$), it follows that
         $\abs{\sqrt[4]{x} - \sqrt[4]{c}} < \epsilon$.\\
         $\qed$
-
-    \newpage
 
     \item[6.]
         Note that function $f : \reals \to \reals$ would not be well-defined if
