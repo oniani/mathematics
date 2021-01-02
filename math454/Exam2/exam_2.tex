@@ -2,7 +2,7 @@
 %
 % Filename: template.tex
 % Author:   David Oniani
-% Modified: January 01, 2020
+% Modified: January 02, 2020
 %  _         _____   __  __
 % | |    __ |_   _|__\ \/ /
 % | |   / _` || |/ _ \\  /
@@ -287,10 +287,73 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
         not allow for repeating $9$s.
         \\
         \\
-        $f : \reals \to \reals$ is continuous PLACEHOLDER
+        \textbf{$f : \reals \to \reals$ is not continuous at points in
+        $\Big\{\dfrac{n}{10} \ \big| \ n \in \ints, n \neq 0 \Big\}$. Hence, $f
+        : \reals \to \reals$ is not continuous at points $\dots -0.9, -0.8,
+        \dots, -0.1, 0.1, 0.2, \dots 0.8, 0.9 \dots$.}
         \\
         \\
-        $f : \reals \to \reals$ is not continuous PLACEHOLDER
+        Consider an real number $\Big\{\dfrac{n}{10} \ \big| \ n \in \ints, n
+        \neq 0 \Big\}$. Notice that $r = a.b$ s.t. $a \in \ints$ and $b \in
+        \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$. Then, due to the density property,
+        $\exists (x_n) \subseteq \reals$ s.t. $(x_n) \to r$. In fact, we can
+        build $(x_n)$ ourselves. For $r = a.b$ (with $a \in \ints$ and $b \in
+        \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$, by considering the following two
+        cases:
+        \begin{itemize}
+            \item[(i)]
+                $b = 0$
+                \\
+                If $b = 0$, $r = a.0$.
+                \\
+                \\
+                Now, if $a > 0$, pick $x_n = (a - 1).9999\dots \to r$. Then
+                $f(r) = a.1$ and $f(x_n) = (a - 1).1999\dots = (a - 1).12$.
+                Thus, we have $\lim{f(x_n)} \neq f(r)$ and the function is not
+                continuous at $r$.
+                \\
+                \\
+                If $a < 0$, pick $x_n = (a + 1).9999\dots \to r$. Then $f(r) =
+                a.1$ and $f(x_n) = (a + 1).1999\dots = (a - 1).12$. Thus, we
+                have $\lim{f(x_n)} \neq f(r)$ and the function is not
+                continuous at $r$.
+
+            \item[(ii)]
+                $b \in \{1, 2, 3, 4, 5, 6, 7, 8, 9\}$
+                \\
+                If $b \in \{1, 2, 3, 4, 5, 6, 7, 8, 9\}$, $r = a.b$ with $b
+                \neq 0$.
+                \\
+                \\
+                Now, pick $x_n = a.(b - 1)9999\dots \to r$. Then $f(r) = a.1$
+                and $f(x_n) = a.1999\dots = a.12$. Thus, we have $\lim{f(x_n)}
+                \neq f(r)$ and the function is not continuous at $r$.
+        \end{itemize}
+
+        Finally, we have shown that $f : \reals \to \reals$ is not continuous
+        at points in $\Big\{\dfrac{n}{10} \ \big| \ n \in \ints, n \neq 0
+        \Big\}$.\\
+        $\qed$
+
+        \textbf{It is easy to see that $f : \reals \to \reals$ is continuous at
+        all points that are not in $\Big\{\dfrac{n}{10} \ \big| \ n \in \ints,
+        n \neq 0 \Big\}$}.
+        \\
+        \\
+        Recall that for a function $f : \reals \to \reals$ to be continuous, it
+        must be the case that $\forall (x_n) \to c$, (with $x_n \in \reals$),
+        it follows that $f(x_n) \to f(c)$ (\textbf{Theorem 4.3.2
+        (Characterizations of Continuity) (iii)}. Consider an arbitrary real
+        number $r = a.b_1b_2b_3b_4\dots \in \reals$. Then, due to the density
+        property, $\exists (x_n) \subseteq \reals$ s.t. $(x_n) \to r$. Notice
+        that $f(r) = a.1b_2b_3b_4\dots$ and $f(x_n) = a.1b_2b_3b_4\dots$ (This
+        is due to $r \notin \Big\{\dfrac{n}{10} \ \big| \ n \in \ints, n \neq 0
+        \Big\}$. In other words, there is no way to change anything in the
+        first position that will affect the rest of the expansion and thus,
+        $\lim{f(x_n)} = f(r)$). Hence, we got that $f(x_n) \to f(r)$ and $f :
+        \reals \to \reals$ is continuous at all points not in
+        $\Big\{\dfrac{n}{10} \ \big| \ n \in \ints, n \neq 0 \Big\}$.\\
+        $\qed$
 
     \item[7.]
         Let us first prove that $f(x) = 1/x^2$ is uniformly continuous on
