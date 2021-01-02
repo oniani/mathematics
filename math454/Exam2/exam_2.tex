@@ -272,7 +272,8 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
                 \\
                 Below find the sketch (blue segments are included and red
                 segments are not included).
-                \begin{figure}[h]
+                \\
+                \begin{figure}[H]
                     \centering
                     \begin{tikzpicture}[scale=0.8]
                         % X-axis
@@ -319,7 +320,7 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
                         \draw[blue] (8.4, 0) -- (10, 0);
                         \draw[blue] (8.4, 0) -- (10, 0);
                     \end{tikzpicture}
-                    \caption{Sketch of $F_2$}
+                    \caption{Sketch of $F_2$.}
                 \end{figure}
 
             \item[(b)]
@@ -388,6 +389,8 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
                     \dfrac{\log{2}}{\log{5} - \log{2}}}
                 \end{equation*}
         \end{itemize}
+    
+    \newpage
 
     \item[4.]
         \begin{itemize}
@@ -431,6 +434,8 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
                 Hence, $\lim_{x \to \infty} \dfrac{2x}{x + 4} = 2$.\\
                 $\qed$
         \end{itemize}
+    
+    \newpage
 
     \item[5.]
         We need to prove that $\forall c \in [0, \infty)$ and
@@ -475,6 +480,8 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
         $\abs{x - c} < \delta$ (with $x \in [0, \infty)$), it follows that
         $\abs{\sqrt[4]{x} - \sqrt[4]{c}} < \epsilon$.\\
         $\qed$
+
+    \newpage
 
     \item[6.]
         Note that function $f : \reals \to \reals$ would not be well-defined if
@@ -597,13 +604,76 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
     \item[8.]
         \begin{itemize}
             \item[(a)]
-                Placeholder
+                $g = \sin{x}$ is Lipschitz on $[0, 10]$. Below find the sketch:
+
+                \begin{figure}[H]
+                    \centering
+                    \begin{tikzpicture}
+                        \draw[blue] (-0.5,0) -- (11,0) (0,-1.5) -- (0,1.5);
+                        \draw[red] plot[samples=120,domain=0:12,smooth] (\x, {sin(\x r)});
+
+                        \draw[blue] (0, 0) node[below left] {0};
+                        \fill[blue] (0, 0) circle (0.1);
+
+                        \draw[blue] (10, 0) node[below left] {10};
+                        \fill[blue] (10, 0) circle (0.1);
+                    \end{tikzpicture}
+                    \caption{Plot of $g = \sin{x}$ which is Lipschitz on $[0, 10]$.}
+                \end{figure}
+
+                $h = \sqrt{x}$, on the other hand, is continuous, but not
+                Lipschitz on $[0, 10]$. Below find the sketch:
+
+                \begin{figure}[H]
+                    \centering
+                    \begin{tikzpicture}
+                        \draw[blue] (-0.5,0) -- (11,0) (0,-1.5) -- (0,1.5);
+                        \draw[red] plot[samples=120,domain=0:12,smooth] (\x, {sqrt(\x)});
+
+                        \draw[blue] (0, 0) node[below left] {0};
+                        \fill[blue] (0, 0) circle (0.1);
+
+                        \draw[blue] (10, 0) node[below left] {10};
+                        \fill[blue] (10, 0) circle (0.1);
+                    \end{tikzpicture}
+                    \caption{Plot of $h = \sqrt{x}$ which is continuous, but
+                    not Lipschitz on $[0, 10]$.}
+                \end{figure}
+
+                In a more general sense, a function being Lipschitz means that
+                it does not become infinitely steep at some point. In other
+                words, the slope of the secant line joining $(x, f(x))$ and
+                $(y, f(y))$ is always bounded above by some $M$. Therefore, the
+                graph will be more or less uniform in terms of the slope (as
+                was the case with $\sin{x}$).
 
             \item[(b)]
-                Placeholder
+                Let $\epsilon > 0$ be given and let $\delta =
+                \frac{\epsilon}{M}$. Now, if $\abs{x - y} < \delta$ with $x, y
+                \in A$. Thus, we have:
+                \begin{equation*}
+                    \absb{\frac{f(x) - f(y)}{x - y}} \leq M \implies f(x) -
+                    f(y) \leq M\abs{x - y} < M\delta = \epsilon
+                \end{equation*}
+                Hence, $f : A \to \reals$ is uniformly continuous on $A$.\\
+                $\qed$
 
             \item[(c)]
-                Placeholder
+                No, if $f$ is uniformly continuous on $A$, $f$ is not
+                necessarily Lipschitz on $A$.
+                \\
+                \\
+                Counterexample:
+                Consider $f : [0, 1] \to \reals : x \mapsto \sqrt{x}$. Then it
+                is easy to see that $f$ is uniformly continuous on $[0, 1]$.
+                However, $f$ is not Lipschitz as $\forall M > 0$ if we take
+                $x \in (0, \frac{1}{M^2})$ and set $y = 0$, we get:
+                \begin{equation*}
+                    \absb{\frac{f(x) - f(y)}{x - y}} = \frac{1}{\sqrt{x}} > M
+                \end{equation*}
+                Hence, uniform continuoity $A$ does not imply the Lipschitz
+                property on $A$.\\
+                $\qed$
         \end{itemize}
 \end{itemize}
 
