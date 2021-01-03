@@ -229,142 +229,27 @@ Instructor: Dr. Eric Westlund}}
                 \\
                 Finally, we got that $g_{\frac{5}{2}}$ is an example of a
                 function that is differentiable on $\reals$ with
-                $g_{\frac{5}{2}}^\prime$ being continuous but not
-                differentiable at $0$.
+                $g_{\frac{5}{2}}^\prime$ being continuous but not differentiable
+                at $0$.
 
             \item[(c)]
-                Let $a = 4$. For $x = 0$ we have:
-                \begin{align*}
-                    g_4^\prime(x)         &= 4x^3\sin{\frac{1}{x}} - x^2\cos{\frac{1}{x}}\\
-                    g_4^{\prime\prime}(x) &= 12x^2\sin{\frac{1}{x}} - 6x\cos{\frac{1}{x}} + \sin{\frac{1}{x}}
-                \end{align*}
-                Then, notice that
-                \begin{equation*}
-                    g_4^{\prime\prime} = \lim_{x \to 0}{\frac{4x^3\sin{\frac{1}{x}} - x^2\cos{\frac{1}{x}} - 0}{x - 0}}
-                                       = \lim_{x \to 0}{4x^2\sin{\frac{1}{x}} - x\cos{\frac{1}{x}}}
-                                       = 0
-                \end{equation*}
-                On the other hand, $\lim_{x \to 0}{12x^2\sin{\frac{1}{x}}} -
-                6x\cos{\frac{1}{x}} + \sin{\frac{1}{x}}$ does not exist, as the
-                the third term fluctuates between $1$ and $-1$ (the first two
-                do go to $0$, but the third one does not).
-                \\
-                \\
-                Finally, we got that $g_4$ is an example of a function that is
-                differentiable on $\reals$ with $g_4^\prime$ being
-                differentiable on $\reals$, but $g_4^{\prime\prime}$ not
-                continuous at $0$.
+                Placeholder
         \end{itemize}
-
-    \newpage
 
     \item[5.3.1]
         \begin{itemize}
             \item[(a)]
-                Suppose that $f$ is differentiable on a closed interval $[a,
-                b]$ and that $f^\prime$ is continuous on a closed interval $[a,
-                b]$. It follows that $\abs{f^\prime}$ is also continuous on
-                $[a, b]$. Now, per \textbf{Theorem 4.4.2 (Extreme Value
-                Theorem)}, $\exists x_0 \in [a, b]$ s.t. $\forall x \in [a, b],
-                \abs{f^\prime(x)} \leq f^\prime(x_0)$. Then, if some $m, n \in
-                [a, b]$ with $m \neq n$, by the \textbf{Mean Value Theorem},
-                $\exists x \in [a, b]$ s.t. $\absb{\dfrac{f(m) - f(n)}{m - n}}
-                = \abs{f^\prime(x)} \leq f^\prime(x_0)$. Hence, we got that $f$
-                is Lipschitz on $[a, b]$ with $M = \abs{f^\prime(x_0)}$.\\
-                $\qed$
-
+                Placeholder
         \end{itemize}
 
     \item[5.3.3]
-        \begin{itemize}
-            \item[(a)]
-                As $h$ is differentiable on $[0, 3]$, it follows that $h$ is
-                also continuous on $[0, 3]$. Hence, the function $g(x) = h(x) -
-                x$ is also continuous on $[0, 3]$. Now, notice that $g(0) =
-                h(0) = 1$ and $g(3) = h(3) - 3 = -1$. Then, per \textbf{Theorem
-                4.5.1 (Intermediate Value Theorem)}, there exists $d \in [0,
-                3]$ s.t. $g(d) = 0$ which means that $h(d) = d$.\\
-                $\qed$
-
-            \item[(b)]
-                Once again, since $h$ is differentiable on $[0, 3]$, it follows
-                that $h$ is also continuous on $[0, 3]$. Now, by the
-                \textbf{Mean Value Theorem}, $\exists c \in (0, 3)$ s.t.
-                $h^\prime(c) = \dfrac{h(3) - h(0)}{3 - 0} = \frac{1}{3}$.\\
-                $\qed$
-
-            \item[(c)]
-                As $h(1) = h(3)$, per \textbf{Theorem 5.3.1 (Rolle’s Theorem)},
-                $\exists b \in (1, 3)$ s.t. $h^\prime(b) = 0$. Now, since $0 <
-                \frac{1}{4} < \frac{1}{3}$, by \textbf{Theorem 5.2.7 (Darboux’s
-                Theorem)}, $\exists x \in A = [b, c]$ (could be $[c, b]$ if $b
-                > c$, but this does not change the logic) s.t. $h^\prime(x) =
-                \frac{1}{4}$ and since $A \subset [0, 3]$, we get $x \in [0,
-                3]$.\\
-                $\qed$
-        \end{itemize}
 
     \item[5.3.7]
-        Suppose, for the sake of contradiction, that $f$ is differentiable on
-        an interval with $f^\prime(x) \neq 1$ and has two fixed points $x$ and
-        $y$. Then, we have $f(x) = x$ and $f(y) = y$. Now, by the \textbf{Mean
-        Value Theorem}, $\exists c \in (x, y)$ s.t. $\dfrac{f(y) - f(x)}{y - x}
-        = f^\prime(c)$. Substituting $f(x)$ with $x$ and $f(y)$ with $y$ gives
-        us $f^\prime(c) = \dfrac{y - x}{y - x} = 1$. Now, by assumption, we
-        know that $\forall x, f^\prime(x) \neq 1$, however, if we set $x = c$,
-        we get $f^\prime(c) = 1$ and we face a contradiction. Finally, we got
-        that if $f$ is differentiable on an interval with $f^\prime(x) \neq 1$,
-        $f$ can only have at most one fixed point.\\
-        $\qed$
-
-    \newpage
 
     \item[5.3.11]
         \begin{itemize}
             \item[(a)]
-                Let $f$ and $g$ be continuous on an interval containing $a$,
-                and assume $f$ and $g$ are differentiable on this interval with
-                the possible exception of the point $a$. Let us consider the
-                following two cases:
-                \begin{itemize}
-                    \item[(i)]
-                        $x < 0$
-                        \\
-                        \\
-                        If $x < 0$, for $c \in (x, 0)$, it follows by the
-                        \textbf{Theorem 5.3.5 (Generalized Mean Value Theorem)}
-                        that
-                        \begin{equation*}
-                            \frac{f^\prime(c)}{g^\prime(c)} = \frac{f(x) - f(0)}{g(x) - g(0)}
-                                                            = \frac{f(x)}{g(x)}
-                        \end{equation*}
-                        Now, since $x \to 0^-$, it follows that $c \to 0^-$ and
-                        thus, we have
-                        \begin{equation*}
-                            \lim_{c \to 0^-}{\frac{f^\prime(c)}{g^\prime(c)}} = \lim_{x \to 0^-}{\frac{f(x)}{g(x)}}
-                        \end{equation*}
-
-                    \item[(ii)]
-                        $x > 0$
-                        \\
-                        \\
-                        Similarly, if $x > 0$, for $c \in (0, x)$, it follows
-                        by the \textbf{Theorem 5.3.5 (Generalized Mean Value
-                        Theorem)} that
-                        \begin{equation*}
-                            \frac{f^\prime(c)}{g^\prime(c)} = \frac{f(x) - f(0)}{g(x) - g(0)}
-                                                            = \frac{f(x)}{g(x)}
-                        \end{equation*}
-                        Now, since $x \to 0^+$, it follows that $c \to 0^+$ and
-                        thus, we have
-                        \begin{equation*}
-                            \lim_{c \to 0^+}{\frac{f^\prime(c)}{g^\prime(c)}} = \lim_{x \to 0^+}{\frac{f(x)}{g(x)}}
-                        \end{equation*}
-                \end{itemize}
-                Finally, we got that $\lim_{x \to
-                0}{\frac{f^\prime(x)}{g^\prime(x)}} = \lim_{x \to
-                0}\frac{f(x)}{g(x)}$.\\
-                $\qed$
+                Placeholder
         \end{itemize}
 \end{itemize}
 
