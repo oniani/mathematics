@@ -119,14 +119,186 @@ Instructor: Dr. Eric Westlund}}
 %
 % Homework
 %
-% a.b # i, ii
-% c.d # i, ii, iii
+% 6.2 # 1, 3, 5
+% 6.3 # 1, 3
+% 6.4 # 3a, 5a
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{itemize}
-    \item[a.b.i]
-        Placeholder
+    \item[6.2.1]
+        \begin{itemize}
+            \item[(a)]
+                \begin{equation*}
+                    \boxed{f(x) = \lim_{n \to \infty}{f_n(x)}
+                                = \lim_{n \to \infty}{\frac{nx}{1 + nx^2}}
+                                = \frac{1}{x}}
+                \end{equation*}
+
+            \item[(b)]
+                Notice that
+                \begin{equation*}
+                    f(x) = \frac{1}{x} - \frac{1}{\frac{1}{nx} + x}
+                         = \frac{1}{nx^3 + x}
+                \end{equation*}
+                Then it is easy to see that the convergence is \textbf{not
+                uniform} since $\forall \epsilon > 0$ and $\forall n \in
+                \nats$, we can always have $x = \frac{1}{2n}$ s.t.
+                $\frac{1}{nx^3 + x} = \frac{8n^2}{4n + 1} > \epsilon$ which
+                shows that $\abs{f(x) - f_n(x)} > \epsilon$.
+
+            \item[(c)]
+                Similar to $(b)$, it is \textbf{not uniform} on $(0, 1)$ since
+                $\forall \epsilon > 0$ and $\forall n \in \nats$, we can always
+                have $x = \frac{1}{2n}$ s.t.  $\frac{1}{nx^3 + x} =
+                \frac{8n^2}{4n + 1} > \epsilon$ which shows that $\abs{f(x) -
+                f_n(x)} > \epsilon$.
+
+            \item[(d)]
+                We have:
+                \begin{equation*}
+                    \absb{\frac{x}{nx^2 + x} - \frac{1}{x}}
+                        = \absb{\frac{1}{nx^3 + x}}
+                        < \frac{1}{n}
+                \end{equation*}
+                Hence, $\forall \epsilon > 0$ and $\exists N$ s.t. $\forall n
+                \geq N, \frac{1}{n} < \epsilon$ and $\abs{f(x) - f_n(x) <
+                \epsilon}$. Finally, we got that the convergence \textbf{is
+                uniform} on $(1, \infty)$.
+        \end{itemize}
+
+    \newpage
+
+    \item[6.2.3]
+        \begin{itemize}
+            \item[(a)]
+                We have:
+                \begin{align*}
+                    \lim_{n \to \infty}{g_n(x)}
+                        &= \lim_{n \to \infty}{\frac{x}{1 + x^n}}
+                        = x \text{ if $x < 1$}\\
+                    \lim_{n \to \infty}{g_n(x)}
+                        &= \lim_{n \to \infty}{\frac{x}{1 + x^n}}
+                        = \frac{1}{2} \text{ if $x = 1$}\\
+                    \lim_{n \to \infty}{g_n(x)}
+                        &= \lim_{n \to \infty}{\frac{x}{1 + x^n}}
+                        = 0 \text{ if $x > 1$}\\
+                    &and\\
+                    \lim_{n \to \infty}{h_n(x)}
+                        &= 0 \text{ if $x = 0$}\\
+                    \lim_{n \to \infty}{h_n(x)}
+                        &= 1 \text{ if $x > 0$}
+                \end{align*}
+                Hence, $(g_n)$ converges pointwise to
+                \begin{equation*}
+                    g(x) = 
+                    \begin{cases}
+                        x \text{ if $x < 1$}\\
+                        \frac{1}{2} \text{ if $x = 1$}\\
+                        0 \text{ if $x > 1$}\\
+                    \end{cases}
+                \end{equation*}
+                And $(h_n)$ converges pointwise to
+                \begin{equation*}
+                    g(x) = 
+                    \begin{cases}
+                        0 \text{ if $x - 1$}\\
+                        1 \text{ if $x > 1$}
+                    \end{cases}
+                \end{equation*}
+
+            \item[(b)]
+                It follows by \textbf{Theorem 6.2.6 (Continuous Limit
+                Theorem)}, that both $(g_n)$ (pick $x = 1$) and $(h_n)$ (pick
+                $x = 0$) do not converge uniformly on $[0, \infty)$.
+
+            \item[(c)]
+                For $(g_n)$ consider a half-open interval $[0, 1)$. Then we
+                have:
+                \begin{equation*}
+                    \abs{g_n(x) - g(x)} = \frac{x^n}{1 + x^n} < x^n
+                \end{equation*}
+                Now, as $x < 1$, it follows that $\forall \epsilon > 0, \exists
+                N$ s.t. $\forall n \geq N, x^n < \epsilon$ and therefore the
+                convergence is uniform on $[0, 1)$.
+                \\
+                \\
+                For $(h_n)$ consider a half-open interval $[1, \infty)$. Pick
+                $N = 2$, then $\forall \epsilon > 0$ and $\forall n \geq N$ we
+                have:
+                \begin{equation*}
+                    \abs{h_n(x) - h(x)} = 1 - 1 = 0 < \epsilon
+                \end{equation*}
+                Hence, the convergence is uniform on $[1, \infty)$.
+        \end{itemize}
+    
+    \newpage
+
+    \item[6.2.5]
+        We first prove the the theorem directly and then its converse. Suppose
+        $(f_n)$ converges uniformly on $A$ to some function $f$. Let $\epsilon
+        > 0$. Then, by definition, $\exists N \in \nats$ s.t. $\forall x \in A,
+        n \geq N$ implies $\abs{f_n(x) - f(x)} < \frac{\epsilon}{2}$. Now, if
+        $m, n \geq N$, then, by the triangle inequality, we have:
+        \begin{align*}
+            \abs{f_n(x) - f_m(x)}
+                &= \abs{f_n(x) - f(x) + f(x) - f_m(x)}\\
+                &\leq \abs{f_n(x) - f(x)} + \abs{f(x) - f_m(x)}\\
+                &< \frac{\epsilon}{2} + \frac{\epsilon}{2}\\
+                &< \epsilon
+        \end{align*}
+        Hence, $\abs{f_n(x) - f_m(x) < \epsilon}$.\\
+        $\qed$
+        \\
+        \\
+        Conversely, suppose that $\forall \epsilon > 0, \exists N \in \nats$
+        s.t. $\forall x \in A$ and $\forall m, n \geq N, \abs{f_n(x) - f_m(x)}
+        < \epsilon$. Now, notice that $(f_n(x))$ is a Cauchy sequence and per
+        \textbf{Theorem 2.6.4 (Cauchy Criterion)}, it converges. Now, since
+        this is true $\forall x \in A$, we can define $f(x) = \lim_{n \to
+        \infty}(f_n(x))$ and we now have to show that $f_n$ converges to $f$
+        uniformly. Let $\epsilon > 0$ be given. Then we know that $\exists N
+        \in \nats$ s.t. $x \in A$ and $\forall m, n \geq N, \abs{ f_n(x) -
+        f_m(x)} < \epsilon$. Then it follows by the \textbf{Algebraic Limit
+        Theorem} that $\lim_{m \to \infty}{f_n(x) - f_m(x)} = f_n(x) - f_m(x)$.
+        Finally, per the \textbf{Order Limit Theorem}, we get that for $x \in
+        A$ and $\forall n \geq N, \abs{f_n(x) - f(x)} < \epsilon$. Hence, we
+        got that $f_n$ uniformly converges to $f$.\\
+        $\qed$
+        \\
+        \\
+        Finally, we have shown that a sequence of functions $(f_n)$ defined on
+        a set $A \subseteq \reals$ converges uniformly on $A$ if and only if
+        for every $\epsilon > 0$ there exists an $N \in \nats$ such that
+        $\abs{f_n(x) - f_m(x)} < \epsilon$ whenever $m, n \geq N$ and $x \in
+        A$.\\
+        $\qed$
+
+    \item[6.3.1]
+        \begin{itemize}
+            \item[(a)]
+
+            \item[(b)]
+        \end{itemize}
+
+    \item[6.3.3]
+        \begin{itemize}
+            \item[(a)]
+
+            \item[(b)]
+        \end{itemize}
+
+    \item[6.4.3]
+        \begin{itemize}
+            \item[(a)]
+                Placeholder
+        \end{itemize}
+
+    \item[6.4.5]
+        \begin{itemize}
+            \item[(a)]
+                Placeholder
+        \end{itemize}
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
