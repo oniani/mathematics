@@ -1,0 +1,205 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Filename: template.tex
+% Author:   David Oniani
+% Modified: January 13, 2020
+%  _         _____   __  __
+% | |    __ |_   _|__\ \/ /
+% | |   / _` || |/ _ \\  /
+% | |__| (_| || |  __//  \
+% |_____\__,_||_|\___/_/\_\
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document Definition
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Packages and Related Settings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Global, document-wide settings
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+% Other packages
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[cache=false]{minted}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Command Definitions and Redefinitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Nice-looking underline
+\newcommand\und[1]{\underline{\smash{#1}}}
+
+% Line spacing is 1.5
+\renewcommand{\baselinestretch}{1.5}
+
+% Absolute value
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+
+% Absolute value big
+\DeclarePairedDelimiter\absb{\Big\lvert}{\Big\rvert}%
+
+% Ceiling
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+% Ceiling big
+\DeclarePairedDelimiter{\ceilb}{\Big\lceil}{\Big\rceil}
+
+% Floor
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% % Naturals, Reals, Integers, and Rationals, 
+\newcommand{\nats}{\mathbb{N}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\preals}{\mathbb{R^+}}
+\newcommand{\nreals}{\mathbb{R^-}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\pints}{\mathbb{Z^+}}
+\newcommand{\nints}{\mathbb{Z^-}}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\prats}{\mathbb{Q^+}}
+\newcommand{\nrats}{\mathbb{Q^-}}
+\newcommand{\irrats}{\mathbb{I}}
+\newcommand{\pirrats}{\mathbb{I^+}}
+\newcommand{\nirrats}{\mathbb{I^-}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Miscellaneous
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Setting stuff
+\setlength{\parindent}{0pt}  % Remove indentations from paragraphs
+
+% PDF information and nice-looking urls
+\hypersetup{%
+  pdfauthor={David Oniani},
+  pdftitle={Real Analysis},
+  pdfsubject={Mathematics, Real Analysis, Real Numbers},
+  pdfkeywords={Mathematics, Real Analysis, Real Numbers},
+  pdflang={English},
+  colorlinks=true,
+  linkcolor={black!50!blue},
+  citecolor={black!50!blue},
+  urlcolor={black!50!blue}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Author(s), Title, and Date
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Author(s)
+\author{David Oniani\\
+        Luther College\\
+        \href{mailto:oniada01@luther.edu}{oniada01@luther.edu}}
+
+% Title
+\title{\rule{\paperwidth - 150pt}{1pt}\textbf{\\\textit{Real Analysis
+Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
+\textnumero3}\\{\normalsize Instructor: Dr. Eric Westlund}}
+
+% Date
+\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beginning of the Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+    \item[1.]
+        \begin{itemize}
+            \item[(a)]
+                Placeholder.
+
+            \item[(b)]
+                Placeholder.
+
+            \item[(c)]
+                Placeholder.
+
+            \item[(d)]
+                Placeholder.
+        \end{itemize}
+
+    \item[2.]
+        \begin{itemize}
+            \item[(a)]
+                Placeholder.
+
+            \item[(b)]
+                Placeholder.
+        \end{itemize}
+
+    \item[3.]
+        \begin{itemize}
+            \item[(a)]
+                Placeholder.
+
+            \item[(b)]
+                Placeholder.
+        \end{itemize}
+
+    \item[4.]
+        \begin{itemize}
+            \item[(a)]
+                Placeholder.
+
+            \item[(b)]
+                Placeholder.
+
+            \item[(c)]
+                Placeholder.
+
+            \item[(d)]
+                Placeholder.
+
+            \item[(e)]
+                Placeholder.
+        \end{itemize}
+
+    \item[5.]
+        \begin{itemize}
+            \item[(a)]
+                Placeholder.
+
+            \item[(b)]
+                Placeholder.
+        \end{itemize}
+
+    \item[6.]
+        Placeholder.
+
+    \item[7.]
+        \begin{itemize}
+            \item[(a)]
+                Placeholder.
+
+            \item[(b)]
+                Placeholder.
+
+            \item[(c)]
+                Placeholder.
+        \end{itemize}
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The End of the Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
