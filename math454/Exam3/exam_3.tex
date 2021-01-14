@@ -176,14 +176,60 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
     \item[5.]
         \begin{itemize}
             \item[(a)]
-                Placeholder.
+                Notice that the following holds:
+                \begin{equation*}
+                    \absb{\frac{\cos{(3^nx)}}{2^n}} \leq \frac{1}{2^n}
+                \end{equation*}
+                Now, recall that $\frac{1}{2^n}$ converges (showed many times
+                over the course of the class). Then, it follows by
+                \textbf{Corollary 6.4.5 (Weierstrass M-Test)} that $g(x) =
+                \sum_{n = 1}^\infty \frac{\cos{(3^nx)}}{2^n}$ converges
+                uniformly on $\reals$. And since the uniform convergence
+                implies continuity, it follows that $g(x) = \sum_{n = 1}^\infty
+                \frac{\cos{(3^nx)}}{2^n}$ is continuous on $\reals$.
 
             \item[(b)]
-                Placeholder.
+                Notice that we have:
+                \begin{equation*}
+                    g^\prime(x) =
+                        \sum_{n = 1}^\infty
+                            -\Big(\frac{3}{2}\Big)^n\sin{(3^nx)}
+                \end{equation*}
+                Unfortunately, in this case we cannot apply \textbf{Corollary
+                6.4.5 (Weierstrass M-Test)} as $\Big(\frac{3}{2}\Big)^n$ is not
+                bounded. However, recall that this is the Weierstrass function
+                of the form $\sum_{n = 0}^\infty a^n\cos{(b^nx)}$ which is a
+                nowhere-differentiable function. Hence, $g^\prime(x)$ is not
+                differentiable on $\reals$.
         \end{itemize}
 
+    % Abott: Exercise 6.4.8 (first edition)
+    % http://cms.dm.uba.ar/academico/materias/verano2012/taller_de_calculo_avanzado/Libros/Abbott%20-%20Understanding%20Analysis.pdf
     \item[6.]
-        Placeholder.
+        For $x \not\in \mathbb{Q}$, we can show $f_n(x)$ is continuous, since
+        for $x < r_n$, we can choose a small enough $\delta$ such that $f_n(y)
+        = 0$ for $y \in V_\delta(x)$. Similar logic can be applied for when $x
+        > r_n$.
+        Now, notice that
+        \begin{equation*}
+            f_n(x) \leq \frac{1}{2^n}
+        \end{equation*}
+        Then it follows by \textbf{Corollary 6.4.5 (Weierstrass M-Test)} that
+        $f(x)$ converges uniformly.
+
+        Now, since $f_n$ are all continuous, and $f$ converges uniformly, we
+        have that $f$ is continuous.
+
+        Furthermore, since every $f_n(x)$ is increasing, $f$ is monotonely
+        increasing. Thus, for $x < y$, we get:
+        \begin{align*}
+          \forall n\ f_n(x) &\leq f_n(y)\\
+          \sum_{n = 1}^k f_n(x) &\leq \sum_{n = 1}^k f_n(y)\\
+          \lim_k \sum_{n = 1}^k f_n(x) &\leq \lim_k \sum_{n = 1}^k f_n(y)\\
+          f(x) &\leq f(y)
+        \end{align*}
+        Hence, we got that $f$ is increasing on $\reals$.\\
+        $\qed$
 
     \item[7.]
         \begin{itemize}
