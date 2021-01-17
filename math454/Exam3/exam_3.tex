@@ -2,7 +2,7 @@
 %
 % Filename: template.tex
 % Author:   David Oniani
-% Modified: January 14, 2020
+% Modified: January 17, 2020
 %  _         _____   __  __
 % | |    __ |_   _|__\ \/ /
 % | |   / _` || |/ _ \\  /
@@ -332,9 +332,8 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
     \item[6.]
         For $x \not\in \mathbb{Q}$, we can show $f_n(x)$ is continuous, since
         for $x < r_n$, we can choose a small enough $\delta$ such that $f_n(y)
-        = 0$ for $y \in V_\delta(x)$. Similar logic can be applied for when $x
-        > r_n$.
-        Now, notice that
+        = 0$ for $y \in V_\delta(x)$. Similar logic can be applied when $x >
+        r_n$. Now, notice that
         \begin{equation*}
             f_n(x) \leq \frac{1}{2^n}
         \end{equation*}
@@ -357,14 +356,48 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
 
     \item[7.]
         \begin{itemize}
+            % akdjalsk
             \item[(a)]
-                Placeholder.
+                We have:
+                \begin{align*}
+                    \ln (1 + x) &= \sum_{n \geq 1} \frac{f^{(n)} (0)}{n!} x^n\\
+                                &= \sum_{n \geq 1}
+                                    \frac{(-1)^{n - 1}(n - 1)!}{n!} x^n\\
+                                &= \sum_{n \geq 1} \frac{(-1)^{n - 1}}{n} x^n\\
+                                &= \sum_{n \geq 1} \frac{(-1)^{n}}{n + 1}
+                                   x^{n + 1}\\
+                                &= x - \frac{x^2}{3} + \frac{x^3}{3} -
+                                       \frac{x^4}{4} + \dots
+                \end{align*}
+                Hence the taylor series representation is $x - \frac{x^2}{3} +
+                \frac{x^3}{3} - \frac{x^4}{4} + \dots$.
 
             \item[(b)]
-                Placeholder.
+                When $x = 1$, we get alternating harmonic series that we know
+                converges [shown many times over the course of the class]. It
+                diverges when $x = -1$ as we get the $-\frac{1}{n}$ which is
+                the negative harmonic series that we know diverges [shown many
+                times over the course of the class]). Then it follows that the
+                series converges when $-1 < x \leq 1$. Hence, the interval of
+                convergence of the series is $(-1, 1]$ (the radius of
+                convergence is $1$).
 
             \item[(c)]
-                Placeholder.
+                Yes, it does. Let us apply the ratio test. We get:
+                \begin{equation*}
+                    \lim_{n \to \infty} \frac{\frac{(-1)^{n + 1}}{n + 2} x^{n +
+                    2}}{\frac{(-1)^{n}}{n + 1} x^{n + 1}} = -\frac{n + 1}{n +
+                    2} x = -x
+                \end{equation*}
+                Note that the series converges uniformly if $\abs{-x} = \abs{x}
+                < 1$. Hence, it converges on $(-1, 1)$. We now need to check
+                the endpoints $x = -1$ and $x = 1$. Notice that if $x = -1$,
+                the series does not converge uniformly as $\ln (1 + -1) = \ln
+                (0)$ which is undefined (negative infinity). For $x = 1$, it
+                follows by \textbf{Leibnitz’ test for alternating series}, that
+                the series converges. Hence, the Taylor series converges
+                uniformly to $f$ on $(-1, 1]$ which is its interval of
+                convergence.
         \end{itemize}
 \end{itemize}
 
