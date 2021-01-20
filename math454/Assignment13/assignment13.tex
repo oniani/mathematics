@@ -1,0 +1,224 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Filename: assignment13.tex
+% Author:   David Oniani
+% Modified: January 19, 2020
+%  _         _____   __  __
+% | |    __ |_   _|__\ \/ /
+% | |   / _` || |/ _ \\  /
+% | |__| (_| || |  __//  \
+% |_____\__,_||_|\___/_/\_\
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document Definition
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Packages and Related Settings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Global, document-wide settings
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+% Other packages
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage[cache=false]{minted}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Command Definitions and Redefinitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Nice-looking underline
+\newcommand\und[1]{\underline{\smash{#1}}}
+
+% Line spacing is 1.5
+\renewcommand{\baselinestretch}{1.5}
+
+% Absolute value
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+
+% Absolute value big
+\DeclarePairedDelimiter\absb{\Big\lvert}{\Big\rvert}%
+
+% Ceiling
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+% Floor
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% % Naturals, Reals, Integers, and Rationals, 
+\newcommand{\nats}{\mathbb{N}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\preals}{\mathbb{R^+}}
+\newcommand{\nreals}{\mathbb{R^-}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\pints}{\mathbb{Z^+}}
+\newcommand{\nints}{\mathbb{Z^-}}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\prats}{\mathbb{Q^+}}
+\newcommand{\nrats}{\mathbb{Q^-}}
+\newcommand{\irrats}{\mathbb{I}}
+\newcommand{\pirrats}{\mathbb{I^+}}
+\newcommand{\nirrats}{\mathbb{I^-}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Miscellaneous
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Setting stuff
+\setlength{\parindent}{0pt}  % Remove indentations from paragraphs
+
+% PDF information and nice-looking urls
+\hypersetup{%
+  pdfauthor={David Oniani},
+  pdftitle={Real Analysis},
+  pdfsubject={Mathematics, Real Analysis, Real Numbers},
+  pdfkeywords={Mathematics, Real Analysis, Real Numbers},
+  pdflang={English},
+  colorlinks=true,
+  linkcolor={black!50!blue},
+  citecolor={black!50!blue},
+  urlcolor={black!50!blue}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Author(s), Title, and Date
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Author(s)
+\author{David Oniani\\
+        Luther College\\
+        \href{mailto:oniada01@luther.edu}{oniada01@luther.edu}}
+
+% Title
+\title{\rule{\paperwidth - 150pt}{1pt}\textbf{\\\textit{Real Analysis}\\}\rule
+{\paperwidth - 150pt}{1pt}\\\textbf{Assignment \textnumero13}\\{\normalsize
+Instructor: Dr. Eric Westlund}}
+
+% Date
+\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beginning of the Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Homework
+%
+% 7.5 # 8ab
+% 7.6 # 1, 3
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+    \item[7.5.8]
+        \begin{itemize}
+            \item[(a)]
+                $L_1 = \int_1^1 \frac{1}{x} = 0$. $L(x)$ is differentiable
+                since $\frac{1}{t}$ is continuous and it follows by
+                \textbf{Theorem 7.5.1 (Fundamental Theorem of Calculus) (part
+                (ii))} that $L(x)$ is differentiable with $L(x)^\prime =
+                \frac{1}{x}$.
+
+            \item[(b)]
+                Keeping $y$ constant, we have:
+                \begin{equation*}
+                    \frac{d}{dx} L(xy) = yL^\prime(xy)
+                                       = y \times \frac{1}{xy}
+                                       = \frac{1}{x}
+                \end{equation*}
+                Now, integrating with respect to $x$ get us the following:
+                \begin{equation*}
+                    L(xy) = \int_1^{x} \frac{1}{t} dt + c(y)
+                    \tag{$c(y)$ is a function of only $y$}
+                \end{equation*}
+                If we now differentiate with respect to $y$, we get:
+                \begin{align}
+                    \frac{1}{y} &= c^\prime(y)\\
+                    c(y)        &= \int_1^y \frac{1}{t} dt
+                \end{align}
+                Finally, we have:
+                \begin{equation*}
+                    L(xy) = \int_0^x \frac{1}{t} dt + \int_0^y \frac{1}{t} dt
+                          = L(x) + L(y)
+                \end{equation*}
+        \end{itemize}
+
+    \item[7.6.1]
+        \begin{itemize}
+            \item[(a)]
+                It follows by the \textbf{density property} that every
+                subinterval of any partition has an irrational number in it.
+                Hence, the infinum on this interval is $0$. Thus, for any
+                partition $P$, we have $L(t, P) = 0$.\\
+                $\qed$
+
+            \item[(b)]
+                The set of points $\geq \epsilon/2$ are:
+                \begin{align*}
+                    x &= 0\\
+                    x &= \frac{1}{1}\\
+                    x &= \frac{1}{2}\\
+                    x &= \frac{1}{3}\\
+                    &\cdots\\
+                    x &= \frac{1}{\floor{\frac{2}{\epsilon}}}
+                \end{align*}
+                Thus, the size of $D_{\frac{\epsilon}{2}}$ is
+                $\floor{\frac{2}{\epsilon} + 1}$.
+
+            \item[(c)]
+                Pick the following partition:
+                \begin{equation*}
+                    \Big\{0, \frac{1}{\floor{2/\epsilon}}\Big\} \cup
+                        \Big\{V_{\frac{\epsilon^2}{9}}(x)\Big\}
+                \end{equation*}
+                Then we have:
+                \begin{align*}
+                  U(t, P_\epsilon) &= \frac{\epsilon}{2} \cdot 1 +
+                        \Big[{\Big({\floor{\frac{2}{\epsilon}} + 1}\Big)
+                        \cdot \frac{\epsilon^2}{9}}\Big]\\
+                    &= \frac{\epsilon}{2} + \frac{\epsilon^2}{3}\\
+                    &\leq \frac{\epsilon}{2} + \frac{\epsilon}{3}
+                        \tag{for $\epsilon < 1$}\\
+                    &< \epsilon
+                \end{align*}
+                Since $\sup U(t, P) = 1$, showing this $\forall \epsilon \geq
+                1$ is trivial. Hence, any partition will work for $\epsilon
+                \geq 1$. Finally, we have constructed a partition $P_\epsilon$
+                of $[0, 1]$ s.t. $U(t, P_\epsilon) < \epsilon$.
+        \end{itemize}
+
+    \item[7.6.3]
+        Let $S = \{s_1, s_2, s_3, \dots\}$ be an arbitary countable set. Then
+        $\forall \epsilon > 0$ pick the sequence of intervals $I_n = \Big[s_n -
+        \frac{\epsilon}{2^{n + 1}}, s_n + \frac{\epsilon}{2^{n + 1}}\Big]$.
+        Notice that $\abs{I_n} = \frac{\epsilon}{2^n}$ and $\{s_1, s_2, s_3,
+        \dots \} \subseteq \bigcup_{n = 1}^\infty I_n$. Now, define $I =
+        \bigcup_{n = 1}^\infty I_n$ and we have $\abs{I} = \frac{\epsilon}{2} +
+        \frac{\epsilon}{2^2} + \frac{\epsilon}{2^3} + \dots =
+        \frac{\frac{\epsilon}{2}}{1 - \frac{1}{2}} =
+        \frac{\frac{\epsilon}{2}}{\frac{1}{2}} = \epsilon$. Hence, we got that
+        $\forall \epsilon > 0, \abs{S} < \epsilon$ and thus, $S$ has the
+        measure of $0$.\\
+        $\qed$
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The End of the Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
