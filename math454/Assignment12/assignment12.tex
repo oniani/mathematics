@@ -1,0 +1,284 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Filename: assignment12.tex
+% Author:   David Oniani
+% Modified: January 19, 2020
+%  _         _____   __  __
+% | |    __ |_   _|__\ \/ /
+% | |   / _` || |/ _ \\  /
+% | |__| (_| || |  __//  \
+% |_____\__,_||_|\___/_/\_\
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document Definition
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Packages and Related Settings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Global, document-wide settings
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+% Other packages
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage[cache=false]{minted}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Command Definitions and Redefinitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Nice-looking underline
+\newcommand\und[1]{\underline{\smash{#1}}}
+
+% Line spacing is 1.5
+\renewcommand{\baselinestretch}{1.5}
+
+% Absolute value
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+
+% Absolute value big
+\DeclarePairedDelimiter\absb{\Big\lvert}{\Big\rvert}%
+
+% Ceiling
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+% Floor
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% % Naturals, Reals, Integers, and Rationals, 
+\newcommand{\nats}{\mathbb{N}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\preals}{\mathbb{R^+}}
+\newcommand{\nreals}{\mathbb{R^-}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\pints}{\mathbb{Z^+}}
+\newcommand{\nints}{\mathbb{Z^-}}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\prats}{\mathbb{Q^+}}
+\newcommand{\nrats}{\mathbb{Q^-}}
+\newcommand{\irrats}{\mathbb{I}}
+\newcommand{\pirrats}{\mathbb{I^+}}
+\newcommand{\nirrats}{\mathbb{I^-}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Miscellaneous
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Setting stuff
+\setlength{\parindent}{0pt}  % Remove indentations from paragraphs
+
+% PDF information and nice-looking urls
+\hypersetup{%
+  pdfauthor={David Oniani},
+  pdftitle={Real Analysis},
+  pdfsubject={Mathematics, Real Analysis, Real Numbers},
+  pdfkeywords={Mathematics, Real Analysis, Real Numbers},
+  pdflang={English},
+  colorlinks=true,
+  linkcolor={black!50!blue},
+  citecolor={black!50!blue},
+  urlcolor={black!50!blue}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Author(s), Title, and Date
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Author(s)
+\author{David Oniani\\
+        Luther College\\
+        \href{mailto:oniada01@luther.edu}{oniada01@luther.edu}}
+
+% Title
+\title{\rule{\paperwidth - 150pt}{1pt}\textbf{\\\textit{Real Analysis}\\}\rule
+{\paperwidth - 150pt}{1pt}\\\textbf{Assignment \textnumero12}\\{\normalsize
+Instructor: Dr. Eric Westlund}}
+
+% Date
+\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beginning of the Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Homework
+%
+% 7.2 # 1, 2
+% 7.3 # 1, 3
+% 7.4 # 3
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+    \item[7.2.1]
+        Let $f$ be a bounded function on $[a, b]$ and let $P$ be an arbitraty
+        partition of $[a, b]$. Now, let $A$ be a collection of all possible
+        partitions of $[a, b]$. Then $U(f) = \inf \{U(f, Q) \mid Q \in A \}$
+        and it follows by \textbf{Lemma 7.2.4} that $L(f, A) \leq \inf \{U(f,
+        Q) \mid Q \in A\} = U(f)$. Thus, $U(f) \geq L(f, P)$. Now, we have
+        $\forall A^\prime \in A, L(f, A^\prime) \leq U(f)$ which means that
+        $U(f)$ is an upper bound for $\{L(f, A^\prime) \mid A^\prime \in A\}$.
+        Finally, we get $L(f) = \{L(f, A^\prime) \mid A^\prime \in A\} \leq
+        U(f)$. Hence, we have proven \textbf{Lemma 7.2.6}.\\
+        $\qed$
+
+    \item[7.2.2]
+        \begin{itemize}
+            \item[(a)]
+                Notice that the function $f$ is decreasing on interval $[1,
+                4]$. Then we have $m_k = \inf \{f(x) \mid x \in [x_{k - 1},
+                x_k]\} = f(x)$ and $M_k = \sup \{f(x) \mid x \ in [x_{k - 1},
+                x_k]\} = f(x_{k - 1})$. We have:
+                \begin{equation*}
+                    L(f, P) = f\Big(\frac{3}{2}\Big) \times
+                                  \Big(\frac{3}{2} - 1\Big) + f(2)
+                                  \times (2 - \frac{3}{2}) + f(4)(4 - 2)
+                            = \frac{13}{12}
+                \end{equation*}
+                With the similar line of reasoning, we get:
+                \begin{equation*}
+                    U(f, P) = f(1) \times (\frac{3}{2} - 1) +
+                                  f\Big(\frac{3}{2}\Big) \times
+                                      (2 - \frac{3}{2}) + f(2)(4 - 2)
+                            = \frac{11}{6}
+                \end{equation*}
+                Finally, we have $L(f, P) = \frac{13}{12}, U(f, P) =
+                \frac{11}{6}$, and $U(f, P) - L(f, P) = \frac{3}{4}$.
+
+            \item[(b)]
+                Notice that interval $[2, 3]$ contributes $f(2)(4 - 2) - f(4)(4
+                - 2) = \frac{1}{2}$ to $U(f, P) - L(f, P)$. If the point $3$ is
+                added to the partition, the subpartition contribution will be
+                $f(2) + f(3) - f(3) - f(4) = f(2) - f(4) = \frac{1}{4}$. Hence,
+                when we add add the point $3$ to the partition, $U(f, P) - L(f,
+                P)$ decreases by $\frac{1}{2} - \frac{1}{4} = \frac{1}{4}$ and
+                we get $U(f, P) - L(f, P) = \frac{3}{4} - \frac{1}{4} =
+                \frac{1}{2}$.
+                
+            \item[(c)]
+                Let $P^\prime = \Big\{1, \frac{5}{4}, \frac{3}{2}, \frac{7}{4},
+                \dots\Big\}$. Then we have $U(f, P^\prime) - L(f, P^\prime) =
+                \frac{3}{8}$ which is less than $\frac{2}{5}$.
+        \end{itemize}
+
+    \item[7.3.1]
+        \begin{itemize}
+            \item[(a)]
+                Let $P$ be a partition of $[0, 1]$ s.t. it is comprised of
+                points $0 = x_0 < x_1 < \dots < x_n = 1$. Then, $\forall [x_{k
+                - 1}, x_{k}], m_k(h) = \inf \{h(t) : t \in [x_{k - 1}, x_k\} =
+                1$. It follows that $L(h, P) = \sum_{k = 1}^n m_k(h)\Delta x_k
+                = \sum_{k = 1}^n 1 \times \Delta x_k = \sum_{k = 1}^n \Delta
+                x_k = 1$.
+
+            \item[(b)]
+                Let $P = \{0, \frac{19}{20}, 1\}$. Then we get:
+                \begin{equation*}
+                    U(h, P) = \sup_{i \in [0, \frac{19}{20}]} h(i) \times
+                    \frac{19}{20} + \sup_{i \in [\frac{19}{20}, 1]} h(i) \times
+                    \frac{1}{20} = \frac{19}{20} + \frac{2}{20} = 1 +
+                    \frac{1}{20} < 1 + \frac{1}{10}
+                \end{equation*}
+
+            \item[(c)]
+                Let $\epsilon > 0$ be given. Choose $k \in \reals$ s.t. $0 < 1
+                - k\epsilon < \epsilon$ and define $P_{\epsilon} = \{0,
+                k\epsilon, 1\}$. We then have:
+                \begin{equation*}
+                    U(h, P_{\epsilon}) = \sup_{i \in [0, k\epsilon]} h(i)
+                    \times k\epsilon + \sup_{i \in [k\epsilon, 1]} h(i) \times
+                    (1 - k\epsilon) = 2 - k\epsilon = 1 + (1 - k\epsilon) < 1 +
+                    \epsilon
+                \end{equation*}
+        \end{itemize}
+
+    \item[7.3.3]
+        Notice that $L(f, P) = 0$ for any partition $P$. Now, take a partition
+        $P_n$ comprised of points of the form $x_i = \frac{i}{n^2}$ (with $x_0
+        = 0$). Then the length of the interval is $\Delta x_i = \frac{1}{n^2}$
+        and we have:
+        \begin{equation*}
+            U(f, P_n) = \frac{1}{n^2} \times (1 + 1 + 1 + \dots + 1) +
+                            \frac{1}{n^2} \times \sup \{f(j) \mid f
+                                \leq \frac{1}{n}\}
+                      = \frac{1}{n} + \frac{1}{n^2}
+        \end{equation*}
+        Now, let $\epsilon > 0$ be given. Then it is easy to see that $\exists
+        N$ s.t. $\frac{1}{N} + \frac{1}{N^2} < \epsilon$. Hence, $\forall n
+        \geq N, U(f, P_n) < \epsilon$ and we have $U(f, P) = 0$. Finally, it
+        follows that $\int_0^1 = L(f, P) = U(f, P) = 0$. Therefore, $f$ is
+        integrable on $[0, 1]$ and $\int_0^1 f = 0$.
+
+    \item[7.4.3]
+        \begin{itemize}
+            \item[(a)]
+                Not true.
+                \\
+                \\
+                Counterxample: Let us define function $f$ as follows:
+                \begin{equation*}
+                    f(x) =
+                    \begin{cases}
+                        1 \text{ if } x \in \rats\\
+                        -1 \text{ if } x \notin \rats
+                    \end{cases}
+                \end{equation*}
+                Then $\abs{f}$ is integrable on $[0, 1]$, but $f$ is not
+                integrable on $[0, 1]$.
+
+            \item[(b)]
+                Not true.
+                \\
+                \\
+                Counterxample: Let us define function $g$ as follows:
+                \begin{equation*}
+                    f(x) =
+                    \begin{cases}
+                        \frac{1}{n} \text{ if } x = \frac{1}{n}, n \in \nats\\
+                        0 \text{ otherwise}
+                    \end{cases}
+                \end{equation*}
+                Then $\forall x_n = \frac{1}{n}, g(x_n) > 0 \ (n \in \nats)$,
+                however, $\int_0^1 = g(x) = 0$.
+
+            \item[(c)]
+                This is true.
+                \\
+                \\
+                Proof:\\
+                If $g$ is continuous on $[a, b]$ and if $g(y_0) > 0$, then
+                $\exists \delta > 0$ s.t. $\forall (y_0 - \delta, y_0 +
+                \delta), g(x) > 0$. Pick $m = \inf \{g(y) \mid y_0 - \delta
+                \leq y \leq y_0 + \delta\}$. Then we have:
+                \begin{equation*}
+                    \int_a^b g \geq \int_{y_0 - \delta}^{y_0 + \delta} g
+                               \geq 2m\delta > 0
+                \end{equation*}
+                Hence, if $g$ is continuous on $[a, b]$ and $g(x) \geq 0$ with
+                $g(y_0) > 0$ for at least one point $y_0 \in [a, b]$, then
+                $\int_a^b g > 0$.\\
+                $\qed$
+        \end{itemize}
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The End of the Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
