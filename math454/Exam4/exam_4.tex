@@ -125,14 +125,27 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
     \item[1.]
         \begin{itemize}
             \item[(a)]
-                Placeholder.
+                Notice that we have:
+                \begin{align*}
+                    \lim \sup a_n &= \lim_{n \to \infty} \Big(4 +
+                                        \frac{1}{n}\Big) \cos
+                                            \Big(\frac{n\pi}{4}\Big)
+                                                = 4 \times 1 = 4
+                \end{align*}
+                Similarly, $\lim \inf a_n = 4 \times (-1) = -4$. Hence, $\lim
+                \sup a_n = 4$ and $\lim \inf a_n = -4$.
 
             \item[(b)]
-                Placeholder.
+                Notice that the subsequence $a_k = \Big(4 +
+                \dfrac{1}{8k}\Big)\cos (2\pi k)$ ($n = 8k$ with $k \in \nats$)
+                converges to $0$ since $\cos (2\pi k) = 0$ and thus, every $a_k
+                = \Big(4 + \dfrac{1}{8k}\Big) \times 0 = 0$.
 
             \item[(c)]
-                Placeholder.
+                This set will be $A = (-4, 4)$.
         \end{itemize}
+
+    \clearpage
 
     \item[2.]
         Let $\epsilon > 0$ be given, $x_0$ be fixed, and let $\delta = \min
@@ -156,13 +169,85 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
     \item[3.]
         \begin{itemize}
             \item[(a)]
-                Placeholder.
+                Counterexample: let us define
+                \begin{equation*}
+                    f_n : [0, 1] \to \reals : x \mapsto
+                    \begin{cases}
+                        n \text{ if } 0 < x < \frac{1}{n}\\
+                        0 \text{ if $x = 0$ or $\frac{1}{n} \leq x \leq 1$}
+                    \end{cases}
+                \end{equation*}
+                Then notice that $\int_0^1 f_n = 1$ and the pointwise limit of
+                $f_n$ is $f(x) = 0$ ($x \in [0, 1]$) for which we have
+                $\int_0^1 f = 0$. Hence, we have $\int_0^1 f_n \to 1 \neq
+                \int_0^1 f = 0$. Finally, we get that every $f_n$ is
+                Riemann-integrable, but $f$ is not.
 
             \item[(b)]
-                Placeholder.
+                As $f_n \to f$ uniformly, pick $n_1$ s.t. the following stands:
+                \begin{equation*}
+                  \abs{f_{n_1}(x) - f(x)} < \frac{\epsilon}{3\cdot(b-a)}
+                \end{equation*}
+                Now, since every $f_n$ is integrable, take $n_2$ such that
+                \begin{equation*}
+                  \abs{U(f_{n_1}, P_{n_2}) - L(f_{n_1}, P_{n_2})} <
+                        \frac{\epsilon}{3}.
+                \end{equation*}
+                Now, choose $n = \max(n_1, n_2)$,
+
+                Notice that 
+                \begin{align*}
+                    \abs{
+                        U(f, P_{n}) - U(f_n, P_{n})
+                    } 
+                    &\leq \sum_{x_k} \abs{f(x_k) - f_n(x_k)} \Delta x_k\\
+                    &< \sum_{x_k} \frac{\epsilon}{3(b-a)} \Delta x_k\\
+                    &= \frac{\epsilon}{3(b-a)} \sum_{x_k} \Delta x_k\\
+                    &= \frac{\epsilon}{3(b-a)} (b-a)\\
+                    &= \frac{\epsilon}{3}
+                \end{align*}
+                Now, notice that over $[x_k, x_{k+1}]$, $\abs{\sup f(x) - \sup
+                f_n(x)} \leq \abs{f_{n}(x) - f(x)}$ (since every point of $f_n$
+                is close to $f$).
+
+                A similar results holds for
+                \begin{equation*}
+                  \abs{L(f, P_{n_2}) - L(f_n, P_{n_2})}  < \frac{\epsilon}{3}
+                \end{equation*}
+
+                Hence, we have:
+                \begin{align*}
+                  \abs{U(f, P_n) - L(f, P_n)} &\leq 
+                  \absb{U(f, P_n) - U(f_n, P_n) + U(f_n, P_n) - L(f_n, P_n) -
+                      \Big(L(f, P_n) - L(f_n, P_n)\Big)}\\
+                  &\leq \abs{ U(f, P_n) - U(f_n, P_n) } + \abs{ U(f_n, P_n) -
+                      L(f_n, P_n) } + \abs{ L(f, P_n) - L(f_n, P_n) }\\
+                  &< \frac{\epsilon}{3} + \frac{\epsilon}{3} +
+                     \frac{\epsilon}{3} = \epsilon
+                \end{align*}
+                Finally, we got that if $f_n \to f$ uniformly on $[a, b]$, then
+                $f$ is integrable on $[a, b]$.\\
+                $\qed$
 
             \item[(c)]
-                Placeholder.
+                We have already shown in $(b)$ part of the exercise that $f$ is
+                integrable on $[a, b]$. We now need to show that the following
+                stands:
+                \begin{equation*}
+                  \lim_{n\to \infty} \int_a^b f_n = \int_a^b f
+                \end{equation*}
+                It follows by the uniform convergence of $f_n$ that
+                \begin{align}
+                    \abs{f_n - f} &< \epsilon &\implies& f - \epsilon < f_n <
+                    f + \epsilon\\
+                    \int_a^b \Big(f - \epsilon\Big) &< \int_a^b f_n < \int_a^b
+                    \Big(f + \epsilon\Big) &\implies& \absb{\int_a^b f_n -
+                    \int_a^b f} < \epsilon(b - a)
+                \end{align}
+                Hence, we can make the difference $\abs{\int_a^b f_n - \int_a^b
+                f}$ arbitrarily small and we get $\lim_{n\to \infty} \int_a^b
+                f_n = \int_a^b f$.\\
+                $\qed$
         \end{itemize}
 
     \item[4.]
