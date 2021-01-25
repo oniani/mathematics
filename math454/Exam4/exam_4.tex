@@ -184,7 +184,7 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
                 Riemann-integrable, but $f$ is not.
 
             \item[(b)]
-                As $f_n \to f$ uniformly, pick $n_1$ s.t. the following stands:
+                As $f_n \to f$ uniformly, pick $n_1$ s.t. the following holds:
                 \begin{equation*}
                   \abs{f_{n_1}(x) - f(x)} < \frac{\epsilon}{3\cdot(b-a)}
                 \end{equation*}
@@ -232,7 +232,7 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
             \item[(c)]
                 We have already shown in $(b)$ part of the exercise that $f$ is
                 integrable on $[a, b]$. We now need to show that the following
-                stands:
+                holds:
                 \begin{equation*}
                   \lim_{n\to \infty} \int_a^b f_n = \int_a^b f
                 \end{equation*}
@@ -251,13 +251,71 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
         \end{itemize}
 
     \item[4.]
-        Placeholder.
+        Yes, $G$ is differentiable at $1$. In order to show this, we must show
+        that the following limit exists:
+        \begin{equation*}
+            \lim_{x \to 1} \frac{G(x) - G(1)}{x - 1}
+        \end{equation*}
+        Notice that the antiderivative $A$ of function $g$ can be calcuated as:
+        \begin{equation*}
+            A =
+            \begin{cases}
+                x \text{ if } x \neq 1\\
+                2x \text{ if } x = 1
+            \end{cases}
+        \end{equation*}
+        We have:
+        \begin{align*}
+            G(1) = \int_0^1 g = A^\prime(1) - A^\prime(0) = 2 - 1 = 1
+        \end{align*}
+        Plugging in the values into the limit formula above, we get:
+        \begin{equation*}
+            \lim_{x \to 1} \frac{\int_0^x g - 1}{x - 1}
+        \end{equation*}
+        Now, clearly $\lim_{x \to 1^-} \frac{1 - 1}{x - 1} = 0$ and $\lim_{x
+        \to 1^+} \frac{1 - 1}{x - 1} = 0$. Hence, $\lim_{x \to 1}
+        \frac{\int_0^x g - 1}{x - 1} = 0$ and always exists. Finally, we got
+        that $G$ is differentiable at $1$.\\
+        $\qed$
 
     \item[5.]
-        Placeholder.
+        No, $H$ is not differentiable at $1$. In order to show this, we must
+        show that the following limit does not exist:
+        \begin{equation*}
+            \lim_{x \to 1} \frac{H(x) - H(1)}{x - 1}
+        \end{equation*}
+        Notice that the antiderivative $A$ of function $h$ can be calcuated as:
+        \begin{equation*}
+            A =
+            \begin{cases}
+                x \text{ if } x < 1\\
+                2x \text{ if } x \geq 1
+            \end{cases}
+        \end{equation*}
+        We have:
+        \begin{align*}
+            G(1) = \int_0^1 g = A^\prime(1) - A^\prime(0) = 2 - 1 = 1
+        \end{align*}
+        Plugging in the values into the limit formula above, we get:
+        \begin{equation*}
+            \lim_{x \to 1} \frac{\int_0^x h - 1}{x - 1}
+        \end{equation*}
+        Now, clearly $\lim_{x \to 1^-} \frac{1 - 1}{x - 1} = 0$ and $\lim_{x
+        \to 1^+} \frac{1 - 2}{x - 1} \neq 0$. Hence, $\lim_{x \to 1^-} \neq
+        \lim_{x \to 1^+}$ and the two-sided limits are not the same which
+        implies that the limit does not exist. Finally, we got that $H$ is not
+        differentiable at $1$.\\
+        $\qed$
 
     \item[6.]
-        Placeholder.
+        Let $A(t)$ be the antiderivative of $t^2\sin (t^2)$. We have:
+        \begin{align*}
+            \frac{d}{dx} \int_0^{x^2} t^2\sin (t^2) dt
+                &= \frac{d}{dx} A(x^2) - A(0)\\
+                &= 2x A^\prime(x^2)\\
+                &= 2x \times (x^2)^2 \sin ((x^2)^2\\
+                &= 2x^5 \sin (x^4)
+        \end{align*}
 
     \item[7.]
         Since $f$ is continuous on $[a, b]$, it follows that $f$ achieves both
