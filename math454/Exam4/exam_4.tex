@@ -135,7 +135,23 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
         \end{itemize}
 
     \item[2.]
-        Placeholder.
+        Let $\epsilon > 0$ be given, $x_0$ be fixed, and let $\delta = \min
+        \Big(1, \dfrac{\epsilon}{5(1 + 2\abs{x_0})}\Big)$. Then for $\abs{x -
+        x_0} < \delta$ we have:
+        \begin{align*}
+            \abs{f(x) - f(x_0)} &= \abs{5x^2 + 3 - 5x_0^2 - 3}\\
+                                &= \abs{5 (x^2 - x_0^2)}\\
+                                &= 5 \abs{x - x_0} \abs{x - x_0 + 2x_0}\\
+                                &< 5 \delta (\abs{x - x_0} + \abs{2x_0})\\
+                                &< 5 \delta (\delta + 2\abs{x_0})\\
+                                &\leq 5 \frac{\epsilon}{5(1 + 2\abs{x_0})} (\delta + 2\abs{x_0})\\
+                                &\leq \frac{\epsilon}{1 + 2\abs{x_0}} (1 + 2\abs{x_0})\\
+                                &= \epsilon
+                                \tag{Thus, $\abs{f(x) - f(x_0)} < \epsilon$}
+        \end{align*}
+        Hence, $f(x) = 5x^2 + 3$ is continuous at each point $x_0 \in
+        \reals$.\\
+        $\qed$
 
     \item[3.]
         \begin{itemize}
@@ -159,10 +175,40 @@ Exams}\\}\rule {\paperwidth - 150pt}{1pt}\\\textbf{Exam
         Placeholder.
 
     \item[7.]
-        Placeholder.
+        Since $f$ is continuous on $[a, b]$, it follows that $f$ achieves both
+        the absolute maximum $M$ and the absolute minimum $m$ in $[a, b]$.
+        Suppose, without a loss of generality, that these points are $c_1$ and
+        $c_2$ with $c_1 < c_2$. We then have:
+        \begin{align}
+            m (b - a) \leq \int_a^b f \leq M (b - a)\\
+            m \leq \frac{1}{b - a} \int_a^b f \leq M
+        \end{align}
+        Now, it follows by \textbf{Intermediate Value Theorem} that $\exists c
+        \in (c_1, c_2) \subset [a, b]$ s.t. $f(c) = \frac{1}{b - a} \int_a^b
+        f$.\\
+        $\qed$
 
     \item[8.]
-        Placeholder.
+        Suppose, for the sake of contradiction, that $f$ has Generalized
+        Riemann integrals $Q_1$ and $Q_2$ with $Q_1 \neq Q_2$ and let $\epsilon
+        > 0$ be given. Then,.it follows that $\exists \delta_1(x)$ s.t.
+        $\forall \delta_1(x)$-fine tagged partitions, $\abs{R(f, P) - Q_1} <
+        \frac{\epsilon}{2}$. Similarly, $\exists \delta_2(x)$ s.t. $\forall
+        \delta_2(x)$-fine tagged partitions, $\abs{R(f, P) - Q_2} <
+        \frac{\epsilon}{2}$. Now, let $\delta(x) = \min (\delta_1(x),
+        \delta_2(x))$. It follows by \textbf{Theorem 8.1.5} that there exists a
+        tagged partition $(P, \{c_k\})$ s.t. it is both $\delta_1(x)$-fine and
+        $\delta_2(x)$-fine. We have:
+        \begin{equation*}
+            \abs{Q_1 - Q_2} \leq \abs{Q_1 - R(f, P)} + \abs{R(f, P) - Q_2}
+                            < \frac{\epsilon}{2} + \frac{\epsilon}{2}
+                            = \epsilon
+        \end{equation*}
+        Hence, we got that $Q_1 = Q_2$ and we face a contradiction since we
+        have assumed that $Q_1 \neq Q_2$. Finally, we conclude that if $f$ has
+        a generalized Riemann integral on $[a, b]$, then the value of the
+        integral $\int_a^b f$ is unique.\\
+        $\qed$
 
     \item[9.]
         \begin{itemize}
