@@ -1,0 +1,18 @@
+Definitions:
+
+Experimental units are the people, animals, dishes, or other things that you
+assign to groups and record responses for.
+
+The explanatory factor is the set of categories or conditions that determine
+the groups.
+
+The levels are the different groups: each unit is assigned one level of the
+explanatory factor. For a one-way ANOVA, we use the term treatment
+interchangeably with level, although these have different meanings when more
+than one factor is used.
+
+An experimental design is balanced if each level of the explanatory factor is
+assigned to the same number of units.
+
+The response variable is whatever is measured about each unit after the
+treatment has been applied.

@@ -1,0 +1,112 @@
+---
+title: Homework \textnumero 1
+author: David Oniani
+date: \today
+output: pdf_document
+---
+
+<!-- Do Exercises 5.14, 5.16, 5.18, 5.20, and 5.38. -->
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Exercise 5.14
+
+\begin{itemize}
+    \item[(a)] ANOVA is a natural generalization of the two-sample t test and
+        hence, is suitable for comparing groups (their means). Therefore, this
+        is not a reason not to use ANOVA.
+    \item[(b)] Car age can be considered a quantitative variable and hence, it
+        is not a reason not to use ANOVA. However, if we consider car age to be
+        categorical, then using something along the lines of Logistic Regression
+        would be better (but even then, it would not hurt trying ANOVA first).
+        But yes, it can be a valid reason not to use ANOVA if we know for sure
+        that car age is a categorical variable.
+    \item[(c)] There is no equal sample size assumption when using ANOVA.
+        However, equal sample size would be better as it would result in a
+        well-behaved F-score. In conclusion, this is not a valid reason for not
+        using ANOVA.
+    \item[(d)] Since we took a random sample of 200 people, we can generalize.
+        However, it is true that we might have gotten unlucky with these 200
+        people and having a bigger sample would be more helpful. But, as already
+        mentioned, randomization allows for generalization.
+\end{itemize}
+
+## Exercise 5.16
+
+\begin{itemize}
+    \item[(a)] Explanatory - diet (salmon, chicken, or beef). Response - average
+        amount of time each dog sleeps per 24 hours for the next week.
+    \item[(b)] This is a randomized experiment. The reason is that experimenter
+        randomly assigned diets to 45 Border Collies and thus, has interfered
+        with a way data is collected (in addition, randomized). This is
+        different from an observational study where in lieu of random assignment
+        or interference in data collection, experimenters merely observe the
+        results of behaviors/events/etc.
+    \item[(c)] If we assume that 45 Border Collies IS the population, then we
+        have just taken 100\% sample from the population. The rest of the
+        assumptions for ANOVA are met (including random sampling).
+\end{itemize}
+
+## Exercise 5.18
+
+\begin{itemize}
+    \item[(a)] Experimental units are 45 Border Collies.
+    \item[(b)] Treatments are 3 types of diets (salmon, chicken, and beef).
+    \item[(c)] The experiment would be balanced if each type of diet (3 in
+        total) would be assigned to the same number of Border Collies.
+\end{itemize}
+
+## Exercise 5.20
+
+\begin{itemize}
+    \item Diets - 2 degrees of freedom (because there are 3 diets in total and
+        as soon as we know any 2, the third one is not free to vary).
+    \item Residual - 42 degrees of freedom (because the residual degrees of
+        freedom is n - p where n is the sample size and p is the number of
+        predictors - we have 45 - 3 = 42).
+    \item Total - 44 (since Diets + Residual is 2 + 42 = 44).
+\end{itemize}
+
+## Exercise 5.38
+
+```{r}
+library (Stat2Data)
+library (emmeans)
+
+data ("Meniscus")
+head (Meniscus)
+
+# Boxplots
+boxplot (Stiffness ~ Method, data=Meniscus)
+boxplot (Stiffness ~ Method, data=Meniscus)
+
+# ANOVA
+men1 = lm (Stiffness ~ as.factor (Method), data=Meniscus)
+summary (men1)
+anova (men1)
+summary (emmeans (men1, pairwise ~ Method, adjust="none"), infer=c(T,T))
+
+# Residuals vs Fitted and Normal QQ
+plot(men1, which=1)
+plot(men1, which=2)
+```
+
+\begin{itemize}
+    \item[(a)] \(H_0 : \mu_1 = \mu_2 = \mu_3\) and \(H_A :\) at least one
+        \(\mu_i\) is different (where \(i \in \{1, 2, 3\}\)).
+    \item[(b)] Notice that the methods are independent from each other and thus,
+        the independence condition is met. The Residuals vs Fitted plot shows
+        that the equality of variance condition is met (the red line
+        approximately follows the dotted line) The QQ plot shows that the
+        condition of normality is also met (dots approximately follow the line).
+        Therefore, conditions for ANOVA are met for this data.
+    \item[(c)] Notice that F value is 4.98. Hence, the average variance between
+        groups is approximately 5 times larger than the average variance within
+        groups. Now, given that the p-value is approximately 0.022 smaller than
+        \(\alpha\) = 0.5 cutoff, we have enough evidence to reject the null
+        hypothesis and accept the alternative which states that mean values of
+        stiffness are different, and varies depending on the type of meniscus
+        repair.
+\end{itemize}
