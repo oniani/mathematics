@@ -1,14 +1,11 @@
 ---
-title: Homework \textnumero 3
-author: David Oniani
-date: \today
-output: pdf_document
+title: "Math 328 Chapter 6 HW Part A"
+author: "David Oniani"
+date: "March 02, 2021"
+output: word_document
 ---
 
 <!-- Do Exercises 6.10, 6.26, 6.34 -->
-
-\tableofcontents
-\clearpage
 
 ## Setup
 
@@ -17,9 +14,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-library(MASS)
 library(Stat2Data)
 library(dplyr)
+library (tidyr)
 library(emmeans)
 library(ggplot2)
 
@@ -30,42 +27,31 @@ theme_set(theme_minimal())
 options(warn = -1)
 ```
 
-\clearpage
 
 ## Exercise 6.10
 
-\begin{itemize}
-    \item[(a)]
-        \(3 - 1 = 2\). Hence, we have 2 degrees of freedom for factor \(A\).
-    \item[(b)]
-        \(3 - 1 = 2\). Hence, we have 2 degrees of freedom for factor \(B\).
-    \item[(c)]
-        \((3 - 1) \times (3 - 1) = 2 \times 2 = 4\). Hence, we have 4 degrees of
-        freedom for Error.
-\end{itemize}
+(a) 3 - 1 = 2. Hence, we have 2 degrees of freedom for factor A.
+(b) 3 - 1 = 2. Hence, we have 2 degrees of freedom for factor B.
+(c) (3 - 1) * (3 - 1) = 2 * 2 = 4. Hence, we have 4 degrees of freedom for Error.
+
 
 ## Exercise 6.26
 
-\begin{itemize}
-    \item[(a)]
-        This is an observational study as the study did not affect or control
-        the subjects in any way.
-    \item[(b)]
-        \begin{itemize}
-            \item Factors of interest: word lists (note that the study suggested
-                that within each word list, words are of equal hearing
-                difficulty, but we do not know if this is the case across the
-                word lists/groups).
-            \item Nuisance factors: volume and background noise
-        \end{itemize}
-    \item[(c)]
-        Subjects with normal hearing.
-    \item[(d)]
-        We know that the variability within blocks is less than the variability
-        between blocks (since within blocks/word lists, words are of equal
-        hearing difficulty). Hence, this is a randomized block design with 4
-        levels. Since there are 24 subjects in the study, the block size is 24.
-\end{itemize}
+(a) This is an observational study as the study did not affect or control the
+    subjects in any way.
+(b) 1. Factors of interest: word lists (note that the study suggested
+       that within each word list, words are of equal hearing
+       difficulty, but we do not know if this is the case across the
+       word lists/groups).
+    2. Nuisance factors: volume and background noise
+(c) Subjects with normal hearing.
+(d) We know that the variability within blocks is less than the variability
+    between blocks (since within blocks/word lists, words are of equal
+    hearing difficulty). Hence, this is a randomized block design with 4
+    levels. Since there are 24 subjects in the study, the block size is 24.
+
+NOTE: I just recreated the dataset presented in the book (the problem did not
+state to use it however).
 
 ```{r}
 data(HearingTest)
@@ -94,57 +80,38 @@ df3 = rbind(df2, tmp)
 rownames(df3) = c(c(1:24), "Mean")
 ```
 
-\clearpage
-
-## Exercise 6.36
+## Exercise 6.34
 
 ```{r}
-data("Alfalfa")
+data("RiverIron")
 
-# (a)
-df4 = Alfalfa$Ht4
-mean_df4 = mean(df4)
-sd_df4 = sd(df4)
+Iron = pivot_wider (RiverIron,
+                    id_cols = "River",
+                    names_from = "Site",
+                    values_from = "Iron")
 
-print(mean_df4)
-print(sd_df4)
+anscombe.plot = function (yvar, xvar) {
+  yname = deparse (substitute (yvar))
+  xname = deparse (substitute (xvar))
+  plot (yvar ~ xvar, ylab=yname, xlab=xname)
+  apfit = lm (yvar ~ xvar)
+  apfit
+  abline (apfit)
+  abline (0, 1, lty=2)
+  return (apfit)
+}
 
-lr = lm(Ht4 ~ Acid + Row, Alfalfa)
-summary(lr)
-
-# (b)
-# ANOVA
-s = summary(aov(Ht4 ~ Acid + Row, data=Alfalfa))
-print(s)
-
-# (c)
-# Residual analysis
-par(mfrow = c(1,2))
-plot(lr, which = 1:2)
-# Reset
-par(mfrow = c(1,1))
+par (mfrow=c(1,3))
+with (Iron, anscombe.plot (Upstream, MidStream))
+with (Iron, anscombe.plot (Upstream, DownStream))
+with (Iron, anscombe.plot (MidStream, DownStream))
 ```
 
-\begin{itemize}
-    \item[(a)]
-        The average for the growth in all 15 cups is 1.74 and the standard
-        deviation for the growth in all 15 cups is approximately 1.11.
-    \item[(b)]
-        Performed the ANOVA (see the code above).
-    \item[(c)]
-        We can see that the acids are all independent of each other and thus,
-        the condition for independence holds. From Residuals vs Fitted plot, we
-        see that the red line is does not necessarily align with the black
-        dotted line and is not flat. This means that there is some non-linear
-        trend to the residuals. In the Normal QQ plot, we see that there are
-        some data points that deviates form the dotted line. Hence, not all
-        ANOVA conditions are met.
-    \item[(d)]
-        Based on the ANOVA table, we can conclude that there is a significant
-        difference in average growth due to the treatments. This is the case
-        since the p-value is significant.
-    \item[(e)]
-        Based on the ANOVA table, we cannot conclude that there is a significant
-        difference in average growth due to the distance from the window. This
-        is the case since the p-value is not significant.
-\end{itemize}
+(a) Above find the plots.
+(b) The slopes are 1.146 (for UpStream vs MidStream), 1.146 (for UpStream vs
+    DownStream), and 1.6253 (for MidStream vs DownStream). In general, slopes in
+    the Anscombe plot alert to the possibility that a model with additive main
+    effects may offer a bad fit to the data, or at least that one might need to
+    reexpress the response to get a good fit. In this case, we got that all
+    three slopes are "close" to 1 which allows for the application of the
+    randomized complete block additive model (RCB additive model).
