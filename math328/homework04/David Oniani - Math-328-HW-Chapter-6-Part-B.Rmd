@@ -1,0 +1,142 @@
+---
+title: "Math 328 Chapter 6 HW Part B"
+author: "David Oniani"
+date: "March 07, 2021"
+output: word_document
+---
+
+<!-- Exercises 6.30, 6.32, and 6.36. -->
+
+## Setup
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(Stat2Data)
+library(dplyr)
+library (tidyr)
+library(emmeans)
+library(ggplot2)
+
+# I like the minimal theme
+theme_set(theme_minimal())
+
+# Disable warnings (they clutter the document)
+options(warn = -1)
+```
+
+## Exercise 6.30
+
+```{r}
+data("RiverIron")
+
+# (a) Fit the two-way additive model
+RiverIron$grandMean = mean(RiverIron$Iron)
+twoWayIron = aov(Iron ~ grandMean + River + Site, RiverIron)
+summary(twoWayIron)
+
+# (b) Obtain a normal probability plot of residuals
+plot(twoWayIron, which = 2)
+
+# (c) Obtain a plot of residuals versus fitted values
+plot(twoWayIron, which = 1)
+
+# (d) Estimate the fitted value from the graph
+xval = twoWayIron$fitted.values[9]
+yval = twoWayIron$residuals[9]
+print(c(xval, yval))
+```
+
+a. After fitting the two-way additive model, we get that the F-score and p-value
+   for River are 7.041 and 0.0172 respectively. F-score and p-value for Site are
+   8.613 and 0.0172 respectively.
+b. Since the points are, for the most part, aligned with the dotted line, it
+   seems like the normality assumption for ANOVA is not violated. That being
+   said, it is true that some points are visibly outside the dotted line, but
+   this is more of a judgment call and for me, it seems to be approximately
+   normal.
+c. It seems like the variation is not constant. Ideally, the plot should show a
+   random scattering of points above and below the reference line at a
+   horizontal 0. However, in this case, it does seem that there is some pattern
+   in the data. The curvature seems to be unmistakably present.
+d. Eyeballing the leftmost fitted value, I could see the point (-135, 165).
+    After estimating the point using R, we get that the point is
+    (-137.5833, 167.5833). The reason it suggests that this point strongly
+    suggests that the model is inappropriate is that they are both very similar.
+    Their decimal expansions do not seem random as all 4 digits match.
+
+## Exercise 6.32
+
+```{r}
+data("Contraceptives")
+
+# (a) Create the Anscombe plot for this dataset
+OralContraceptives = pivot_wider (Contraceptives,
+                                  id_cols = "ID",
+                                  names_from = "Treatment",
+                                  values_from = "EE")
+
+anscombe.plot = function (yvar, xvar) {
+  yname = deparse (substitute (yvar))
+  xname = deparse (substitute (xvar))
+  plot (yvar ~ xvar, ylab=yname, xlab=xname)
+  apfit = lm (yvar ~ xvar)
+  apfit
+  abline (apfit)
+  abline (0, 1, lty=2)
+  return (apfit)
+}
+
+with (OralContraceptives, anscombe.plot (Drug, Placebo))
+```
+
+a. You can see the generated plot above in the document. The slope is 0.9243.
+
+b. As we got that the slope is "close" to 1 (with the actual value of 0.9243),
+   we can apply the randomized complete block additive model (RCB additive
+   model) and thus, there is no need for a transformation.
+
+## Exercise 6.36
+
+```{r}
+data("Alfalfa")
+
+# (a)
+df = Alfalfa$Ht4
+mean_df = mean(df)
+sd_df = sd(df)
+
+print(mean_df)
+print(sd_df)
+
+twoWayAlfalfa = aov(Ht4 ~ Acid + Row, Alfalfa)
+
+# (b)
+# ANOVA
+summary(twoWayAlfalfa)
+
+# (c)
+# Residual analysis
+par(mfrow = c(1,2))
+plot(twoWayAlfalfa, which = 1:2)
+par(mfrow = c(1,1))
+```
+
+(a) The average for the growth in all 15 cups is 1.74 and the standard deviation
+    for the growth in all 15 cups is approximately 1.11.
+(b) Performed the ANOVA (see the code above).
+(c) We can see that the acids are all independent of each other and thus,
+    the condition for independence holds. From Residuals vs Fitted plot, we
+    see that the red line is does not necessarily align with the black
+    dotted line and is not flat. This means that there is some non-linear
+    trend to the residuals. In the Normal QQ plot, we see that there are
+    some data points that deviates form the dotted line. Hence, not all
+    ANOVA conditions are met.
+(d) Based on the ANOVA table, we can conclude that there is a significant
+    difference in average growth due to the treatments. This is the case
+    since the p-value is significant (0.0487 < 0.05).
+(e) Based on the ANOVA table, we cannot conclude that there is a significant
+    difference in average growth due to the distance from the window. This
+    is the case since the p-value is not significant (0.3235 > 0.05).
