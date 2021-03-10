@@ -47,6 +47,9 @@ plot(twoWayIron, which = 1)
 xval = twoWayIron$fitted.values[9]
 yval = twoWayIron$residuals[9]
 print(c(xval, yval))
+
+# Sort the values for analyzing differences in fitted values
+print(sort(twoWayIron$fitted.values))
 ```
 
 a. After fitting the two-way additive model, we get that the F-score and p-value
@@ -60,12 +63,18 @@ b. Since the points are, for the most part, aligned with the dotted line, it
 c. It seems like the variation is not constant. Ideally, the plot should show a
    random scattering of points above and below the reference line at a
    horizontal 0. However, in this case, it does seem that there is some pattern
-   in the data. The curvature seems to be unmistakably present.
+   in the data. The curvature is unmistakably to be present. The shape seems
+   to suggest non-linearity (could also be seen as heteroscedastic, but, to me,
+   it seems to be a non-linear trend), potentially quadratic relationship.
 d. Eyeballing the leftmost fitted value, I could see the point (-135, 165).
-    After estimating the point using R, we get that the point is
-    (-137.5833, 167.5833). The reason it suggests that this point strongly
-    suggests that the model is inappropriate is that they are both very similar.
-    Their decimal expansions do not seem random as all 4 digits match.
+   After estimating the point using R, we get that the point is
+   (-137.5833, 167.5833). The reason it suggests that this point strongly
+   suggests that the model is inappropriate is that the fitted value is a
+   negative number with a large absolute value (significantly less than any
+   other value). Also, surprisingly, both of these numbers (x and y coordinate
+   of the leftmost point) are very similar. Their decimal expansions do not seem
+   random as all 4 digits match. Interestingly, the similar trend can be
+   observed win the rest of the points.
 
 ## Exercise 6.32
 
