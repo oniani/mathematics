@@ -1,0 +1,60 @@
+---
+title: "Math 328 Chapter 6 HW Part B"
+author: "David Oniani"
+date: "March 07, 2021"
+output: word_document
+---
+
+<!-- Do Exercises 7.14, 7.16, 7.34, and 7.38, using R Markdown.
+
+For 7.34(c), I suggest plotting the data. Fitting a model using lm and
+examining the parameter estimates could also be informative.
+
+For 7.38, use the Oral exam score as the response variable (not Written or
+Combine).
+-->
+
+## Setup
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(Stat2Data)
+library(dplyr)
+library (tidyr)
+library(emmeans)
+library(ggplot2)
+
+# I like the minimal theme
+theme_set(theme_minimal())
+
+# Disable warnings (they clutter the document)
+options(warn = -1)
+```
+
+## Exercise 7.14
+
+<!--
+
+See:
+1. https://onlinestatbook.com/2/analysis_of_variance/one-way.html
+2. https://statweb.stanford.edu/~owen/courses/305a/multiway.pdf
+
+-->
+
+Based on the formulas of MSA, MSB, MSAB, and MSE, it is clear that MSE is the
+smallest one. 
+
+## Exercise 7.16
+
+This is good
+
+## Exercise 7.34
+
+This is good
+
+## Exercise 7.38
+
+This is good
