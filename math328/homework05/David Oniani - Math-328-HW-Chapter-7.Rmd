@@ -112,10 +112,10 @@ par(mfrow = c(1, 1))
 with(Ricci, interaction.plot(Position, Race, Oral))
 
 # (c)
-anovac = aov(Oral ~ factor(Position) * factor(Race), data = Ricci)
+lrc = lm(Oral ~ factor(Position) * factor(Race), data = Ricci)
 par(mfrow = c(1, 3))
-plot(anovac, which = c(1 : 3))
-summary(anovac)
+plot(lrc, which = c(1 : 3))
+summary(aov(Oral ~ factor(Position) * factor(Race), data = Ricci))
 ```
 
 (a) The difference between the means of Captain and Lieutenant is 6.02 with the
