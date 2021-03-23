@@ -1,18 +1,11 @@
 ---
-title: "Math 328 Chapter 6 HW Part B"
+title: "Math 328 Chapter 7 HW"
 author: "David Oniani"
-date: "March 07, 2021"
+date: "March 23, 2021"
 output: word_document
 ---
 
-<!-- Do Exercises 7.14, 7.16, 7.34, and 7.38, using R Markdown.
-
-For 7.34(c), I suggest plotting the data. Fitting a model using lm and
-examining the parameter estimates could also be informative.
-
-For 7.38, use the Oral exam score as the response variable (not Written or
-Combine).
--->
+<!-- Do Exercises 7.14, 7.16, 7.34, and 7.38, using R Markdown. -->
 
 ## Setup
 
@@ -36,25 +29,116 @@ options(warn = -1)
 
 ## Exercise 7.14
 
-<!--
-
-See:
-1. https://onlinestatbook.com/2/analysis_of_variance/one-way.html
-2. https://statweb.stanford.edu/~owen/courses/305a/multiway.pdf
-
--->
-
-Based on the formulas of MSA, MSB, MSAB, and MSE, it is clear that MSE is the
-smallest one. 
+It is clear that MSAB < MSB < MSA (A has 10s squared, B has 5s squared, and AB
+has 4s squared) and each of the has 1 degree of freedom. Hence, MSAB < MSB < MSA
+and we now need to find where MSE fits. SSE here equals to sum of square
+residuals over the degrees of freedom which is 60 / 4 = 15. Now, since MSAB = 8
+* 4^2 = 128, we have that MSE < MSAB. Finally, we have: MSE < MSAB < MSB < MSA.
 
 ## Exercise 7.16
 
-This is good
+It is clear that MSAB < MSA < MSB (B has 3s squared, A has 2s squared, and AB
+has 1s squared) and each of the has 1 degree of freedom. Hence, MSAB < MSA < MSB
+and we now need to find where MSE fits. MSE here equals to sum of square
+residuals over the degrees of freedom which is 60 / 4 = 15. Now, since MSAB = 8
+* 1^2 = 8 and MSA = 8 * 2^2 = 32, we have that MSAB < MSE < MSA. Finally, we
+have: MSAB < MSE < MSA < MSB.
 
 ## Exercise 7.34
 
-This is good
+```{r}
+
+# Dr. Phil's suggestion:
+#     "For 7.34(c), I suggest plotting the data. Fitting a model using lm and
+#     examining the parameter estimates could also be informative."
+
+# Load the data
+data("Swahili")
+
+# (a)
+modela = aov(Attitude.Score ~ factor(Province) * factor(Sex), data = Swahili)
+summary(modela)
+
+# (b)
+par(mfrow = c(1 : 2))
+plot(modela, which = c(1 : 2))
+
+# (c)
+modelc = lm(Attitude.Score ~ factor(School) * factor(Province), data = Swahili)
+plot(modelc, which = c(1 : 2))
+summary(modelc)
+```
+
+(a) Factors Province and Sex and both significant with the p-value being less
+    than 2e-16. This means that attitudes toward Swahili vary significantly
+    based on Province and Sex. The interaction between Province and Sex is also
+    significant with the p-value of approximately 1.66e-13. This means that
+    attitudes toward Swahili vary based on the interaction/relationship between
+    Province and Sex (e.g., certain provinces have more people of a specific
+    Sex).
+
+(b) The normality condition seems to be met. There are some points at the tail
+    of the plot that deviate from the dotted line, but the Normal QQ does look
+    normal overall. It seems like the variation is not constant. Ideally, the
+    plot should show a random scattering of points above and below the reference
+    line at a horizontal 0. This is not the case in Residuals vs Fitted plot
+    where points are stacked across vertical lines. Hence, we conclude that the
+    normality condition is met, while equal variance condition is not met.
+
+(c) By just looking at Residuals vs Fitted plot, we can see that the equal
+    variance condition is not met. Therefore, applying a two-way ANOVA is not
+    appropriate in the first place. It is not a complete factorial design since
+    equal sample size from each school is not enough. For the study to be a
+    balanced complete factorial design, equal sample sizes must be taken for
+    each of the possible factor combinations.
 
 ## Exercise 7.38
 
-This is good
+```{r}
+# Dr. Phil's Comment:
+#     " For 7.38, use the Oral exam score as the response variable
+#       (not Written or Combine)."
+
+# Load the data
+data(Ricci)
+
+# (a)
+lra = lm(Oral ~ Position, data = Ricci)
+sa = summary(emmeans(lra, pairwise ~ Position), infer = c(T, T))
+sa$contrasts
+
+# (b)
+par(mfrow = c(1, 1))
+with(Ricci, interaction.plot(Position, Race, Oral))
+
+# (c)
+anovac = aov(Oral ~ factor(Position) * factor(Race), data = Ricci)
+par(mfrow = c(1, 3))
+plot(anovac, which = c(1 : 3))
+summary(anovac)
+```
+
+(a) The difference between the means of Captain and Lieutenant is 6.02 with the
+    p-value of approximately 0.012. Hence, the difference is not significant.
+
+(b) Analyzing the interaction plot, the more nonparallel the lines are, the
+    greater the strength of the interaction. In our case, there seems to be some
+    interaction between Position and Race as the lines are not parallel. If we
+    extend these lines in both sides (left and right), every pair of lines will
+    cross each other. Hence, there could be a potential interaction between
+    Position and Race variables.
+
+(c) By just looking Residuals vs Fitted, we can conclude that the equal variance
+    condition is not met. The red line has a noticeable skew in the left tail
+    and deviates from the dotted line. The normality condition also does not
+    seem to be met since the left part of the Normal QQ seems to show a
+    significant deviation from the dotted line. The Scale-Location also seems to
+    show a decreasing trend. Hence, we conclude that fitting a two-way ANOVA
+    model is not appropriate (it might be appropriate after a response
+    transformation however, but the book does not ask for this).
+
+(d) We concluded that the two-way ANOVA model is not appropriate, but we will
+    still comment on the results. Position and Race are both significant with
+    p-values of approximately 0.0071 and 0.0001 respectively. Interaction
+    between Position and Race, however, is not significant with the p-value of
+    approximately 0.5095.
