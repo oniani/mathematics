@@ -2,7 +2,7 @@
 title: "Math 328 Chapter 7 HW"
 author: "David Oniani"
 date: "March 23, 2021"
-output: word_document
+output: pdf_document
 ---
 
 <!-- Do Exercises 7.14, 7.16, 7.34, and 7.38, using R Markdown. -->
@@ -106,8 +106,8 @@ summary(modelc)
 
 ```{r}
 # Dr. Phil's Comment:
-#     " For 7.38, use the Oral exam score as the response variable
-#       (not Written or Combine)."
+#     "For 7.38, use the Oral exam score as the response variable
+#      (not Written or Combine)."
 
 # Load the data
 data(Ricci)
