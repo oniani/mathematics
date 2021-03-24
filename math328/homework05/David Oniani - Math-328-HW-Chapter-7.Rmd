@@ -75,7 +75,9 @@ summary(modelc)
     significant with the p-value of approximately 1.66e-13. This means that
     attitudes toward Swahili vary based on the interaction/relationship between
     Province and Sex (e.g., certain provinces have more people of a specific
-    Sex).
+    Sex). In terms of explaining the main effects, they do not really matter
+    since we have an interaction. We need to first deal with the interaction,
+    but the book does not suggest doing anything.
 
 (b) The normality condition seems to be met. There are some points at the tail
     of the plot that deviate from the dotted line, but the Normal QQ does look
