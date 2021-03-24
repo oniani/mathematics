@@ -56,8 +56,9 @@ have: MSAB < MSE < MSA < MSB.
 data("Swahili")
 
 # (a)
-modela = aov(Attitude.Score ~ factor(Province) * factor(Sex), data = Swahili)
+modela = lm(Attitude.Score ~ factor(Province) * factor(Sex), data = Swahili)
 summary(modela)
+modela$coefficients
 
 # (b)
 par(mfrow = c(1 : 2))
@@ -71,13 +72,20 @@ summary(modelc)
 
 (a) Factors Province and Sex and both significant with the p-value being less
     than 2e-16. This means that attitudes toward Swahili vary significantly
-    based on Province and Sex. The interaction between Province and Sex is also
-    significant with the p-value of approximately 1.66e-13. This means that
-    attitudes toward Swahili vary based on the interaction/relationship between
-    Province and Sex (e.g., certain provinces have more people of a specific
-    Sex). In terms of explaining the main effects, they do not really matter
-    since we have an interaction. We need to first deal with the interaction,
-    but the book does not suggest doing anything.
+    based on Province and Sex. The coefficient for the factor Province is 9.742
+    which is a positive direction and has the standard error of 1.240. The
+    coefficient for the factor Sex is -16.242, which is a negative direction and
+    has the standard error value of 1.240. The interaction between Province and
+    Sex is also significant with the p-value of approximately 1.66e-13. This
+    means that attitudes toward Swahili vary based on the
+    interaction/relationship between Province and Sex (e.g., certain provinces
+    have more people of a specific Sex). The interaction estimate is 13.317 and
+    has a positive direction (Province:Sex). The standard error is 1.754. This
+    means that further analysis is needed for males in PWANI Province in order
+    to understand the interaction effect. In terms of explaining the main
+    effects, they do not have a huge significance since we have an interaction.
+    We need to first deal with the interaction, but the book does not suggest
+    doing anything. But here is some interpretation of the results.
 
 (b) The normality condition seems to be met. There are some points at the tail
     of the plot that deviate from the dotted line, but the Normal QQ does look
