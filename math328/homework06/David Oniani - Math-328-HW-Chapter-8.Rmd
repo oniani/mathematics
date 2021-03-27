@@ -1,0 +1,162 @@
+---
+title: "Math 328 Chapter 8 HW"
+author: "David Oniani"
+date: "March 29, 2021"
+output: word_document
+---
+
+<!-- Do Exercises 7.1, 7.2, 8.6, using R Markdown. -->
+
+## Setup
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(emmeans)
+library(pwr)
+```
+
+## Exercise 7.1
+
+```{r}
+# k = g = 6
+# f = sqrt(zeta/g*n) = sqrt(4*n/g*n) = sqrt(4/g) = sqrt(4/6) = sqrt(2/3)
+# sig.level = 0.05
+# power = 0.7
+res1 <- pwr.anova.test(k = 6, f = sqrt(2/3), sig.level = 0.05, power = 0.7)
+res1$n
+```
+
+Since we got that n = 3.646913, we should round it up (as the sample size cannot
+be a floating point number) and we get n = 4. Hence, the answer is that the
+smallest sample size is 4.
+
+## Exercise 7.2
+
+```{r}
+# k = g = 3
+# f = sqrt(((32/3 - 10)^2 + 2 * (32/3 - 11)^2) / 12) = sqrt(2/3 / 12) = sqrt(1/18)
+# sig.level = 0.05
+# power = 0.9
+res2 <- pwr.anova.test(k = 3, f = sqrt(1/18), sig.level = 0.05, power = 0.9)
+res2$n
+```
+
+Since we got that n = 76.93, we should round it up (as the sample size cannot
+be a floating point number) and we get n = 77. Hence, the answer is that the
+sample size is 77.
+
+## Exercise 8.6
+
+```{r}
+# Load the data
+load("oehlert.rdata")
+
+# Get the right dataset
+data <- pr08.6
+
+# Make height, fert, and interval variables factors
+data[, "height"]   <- factor(data[, "height"],   labels = c("1", "3", "6"))
+data[, "fert"]     <- factor(data[, "fert"],     labels = c("0", "8", "16", "32"))
+data[, "interval"] <- factor(data[, "interval"], labels = c("1", "3", "6", "9"))
+
+# Report the structure
+str(data)
+
+# Fit the initial model
+fit1 <- aov(cwt ~ .^2, data)
+
+# Residual analysis
+par(mfrow = c(1, 2))
+plot(fit1)
+par(mfrow = c(1, 1))
+
+# Interaction plots
+emmip(fit1, fert ~ interval)
+emmip(fit1, height ~ interval)
+emmip(fit1, height ~ fert)
+```
+
+The Residuals vs Fitted plot shows a constant variance. However, the red line
+has some problems toward the right tail - it shifts down and does not follow the
+black dotted line. That being said, overall, the Residual vs Fitted plot looks
+good and the constant variance assumption does not seem to violated.
+
+The Normal Q-Q plot shows that all, except for a few points in both tails,
+follow the dotted line and thus, the normality assumption is not violated. That
+being said, since at left tail, there are some number of points not aligning
+across the dotted line, a response transformation could potentially help.
+
+Scale-Location plot does not show a decreasing trend and shows that the variance
+is constant.
+
+Residuals vs Factor Levels does not show any problems either.
+
+In terms of interactions plots, all three interaction plots show some degree of
+interaction between the variables. The least degree of interaction seems to
+be between variables height and fert. However, further analysis will show the
+relationship between the variables in more detail.
+
+Given our analysis, let us now perform a Box-Cox analysis in order to find an
+appropriate power transformation for the response variable.
+
+```{r}
+# Box-Cox analysis for the power transformation
+MASS::boxcox(fit1, lambda = seq(0, 1, 0.2))
+```
+
+From the plot, we can see that the lambda value is approximately 0.5 meaning
+that the response should be raised to 0.5 power and the model should then be
+refit. This is a square root transformation of the response.
+
+```{r}
+# Refit the model, applying the right power transformation
+fit2 <- aov(sqrt(cwt) ~ .^2, data)
+
+# Residual analysis
+par(mfrow = c(1, 2))
+plot(fit2)
+par(mfrow = c(1, 1))
+```
+
+Even after applying the transformation, the Residuals vs Fitted plot looks
+a bit better and the downward trend at the right tail is not as significant.
+
+The Normal Q-Q plot looks a bit better and the normality assumption is
+satisfied.
+
+Scale-Location plot has a small improvement and still shows constant variance.
+
+Residuals vs Factor Levels plot still looks good.
+
+Even though we have performed a response transformation, it did not improve our
+model significantly as the model itself was fairly good from the very get-go.
+
+Let us see the summary and if any, report significant interactions.
+
+```{r}
+# Report the summary
+summary(fit2)
+
+# Plot ONLY the significant interaction effects
+emmip(fit2, height ~ interval)
+emmip(fit2, fert ~ interval)
+```
+
+It seems like variable fert is significant with the p-value of 3.51e-11.
+
+Variable interval is also significant with the p-value of 5.86e-13.
+
+Two interactions: height:interval and fert:interval are significant with the
+p-values of 0.043 and 0.040 respectively.
+
+The plots of the significant interactions are also shown.
+
+```{r}
+emmeans(fit2, pairwise ~ height | interval)
+emmeans(fit2, pairwise ~ fert   | interval)
+```
+
+Above find the appropriate pairwise comparisons for the significant effects.
