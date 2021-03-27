@@ -15,6 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 library(emmeans)
+library(multcomp)
 library(pwr)
 ```
 
@@ -44,9 +45,9 @@ res2 <- pwr.anova.test(k = 3, f = sqrt(1/18), sig.level = 0.05, power = 0.9)
 res2$n
 ```
 
-Since we got that n = 76.93, we should round it up (as the sample size cannot
-be a floating point number) and we get n = 77. Hence, the answer is that the
-sample size is 77.
+Since we got that n = 76.93, we should round it up (as the sample size cannot be
+a floating point number) and we get n = 77. Hence, the answer is that the sample
+size is 77.
 
 ## Exercise 8.6
 
@@ -95,8 +96,8 @@ is constant.
 Residuals vs Factor Levels does not show any problems either.
 
 In terms of interactions plots, all three interaction plots show some degree of
-interaction between the variables. The least degree of interaction seems to
-be between variables height and fert. However, further analysis will show the
+interaction between the variables. The least degree of interaction seems to be
+between variables height and fert. However, further analysis will show the
 relationship between the variables in more detail.
 
 Given our analysis, let us now perform a Box-Cox analysis in order to find an
@@ -155,8 +156,27 @@ p-values of 0.043 and 0.040 respectively.
 The plots of the significant interactions are also shown.
 
 ```{r}
-emmeans(fit2, pairwise ~ height | interval)
-emmeans(fit2, pairwise ~ fert   | interval)
+cld(emmeans(fit2, ~ height | interval), letters=LETTERS)
+cld(emmeans(fit2, ~ fert   | interval), letters=LETTERS)
 ```
 
 Above find the appropriate pairwise comparisons for the significant effects.
+
+Let us now analyze emmeans with height and interval interaction.
+
+In the first interval, means are approximately equal to each other.
+
+In the third interval, height = 3 and height = 6 have the highest means that are
+also approximately equal to each other. height = 1 has the mean of 10.46, which
+is noticeably smaller than 11.17 or 11.20.
+
+In the sixth interval, height = 1 (13.31) and height = 6 (13.12) have higher
+mean values than height = 3 (12.29).
+
+In the ninth interval, height = 3 has the highest mean value of 14.20. Means at
+height = 1 and height = 6 and close and equal to 13.74 and 13.59 respectively.
+
+Let us now analyze emmeans with fert and interval interaction.
+
+Interestingly, in all intervals, we see clearly that the higher fert values have
+higher corresponding emmean values.
