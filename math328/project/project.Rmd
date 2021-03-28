@@ -1,0 +1,298 @@
+---
+title: "MATH-328 Project"
+author: "David Oniani"
+date: "April 10, 2021"
+output: word_document
+---
+
+\tableofcontents
+
+## Setup
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(emmeans)
+library(ggplot2)
+library(multcomp)
+library(sjmisc)
+```
+
+## Initial Data Exploration and Analysis
+
+```{r}
+# Load the data
+data = read.csv("data.csv")
+
+# Get rid of unwanted columns (will come in handy when designing models)
+data[c("trt_id", "X_hue", "X_bright", "X_price")] = NULL
+
+# Make hue, bright, and price factors
+data$hue    = factor(data$hue)
+data$bright = factor(data$bright)
+data$price  = factor(data$price)
+
+# Show first 6 and last 6 rows
+head(data)
+tail(data)
+
+# Show the structure of the data
+str(data)
+
+# Are factors crossed?
+is_crossed(data$hue, data$bright)
+is_crossed(data$hue, data$price)
+is_crossed(data$bright, data$price)
+
+# Are factors nested?
+is_nested(data$hue, data$bright)
+is_nested(data$bright, data$hue)
+is_nested(data$hue, data$price)
+is_nested(data$price, data$hue)
+is_nested(data$bright, data$price)
+is_nested(data$price, data$bright)
+
+# Scatterplot matrix
+plot(data, pch = 20, cex = 1.5, col = "purple")
+```
+
+The data has three categorical variables: hue, bright, and price and one
+response variable: quality. We will treat hue, bright, and price as factors. The
+dataset is then suitable for a 3-factor experiment of online shopping. It
+contains three categorical factors: web page hue (1 = Blue, 2 = Red), Brightness
+(1 = Dark, 2 = Bright), and Price (1 = Low, 2 = high). Sample sizes are
+unbalanced. We will analyze when and how the response value - perceived quality
+- changes with brightness, hue, and price.
+
+Exploratory analysis above prints first and last 6 rows of the data as well as
+shows the overall structure of the data. We also made hue, bright, and price
+factor variables. This will help using these variables properly, as factors, in
+models that we will develop.
+
+Thus, our response variable is quality, which is a perceived quality of the
+product. Our predictor variables are hue, bright, and price - all of them are
+categorical variables. Since we do not have any quantitative predictors, we do
+not have covariates.
+
+Factors hue and bright are crossed. Factors hue and price are also crossed.
+Factors bright and price are crossed too.
+
+There is no nesting among the factors.
+
+Since the investigators controlled the levels for all factors, all of the
+factors are fixed. Hence, factors hue, bright, and price are fixed (not random).
+
+The scatterplot matrix is also shown. It is difficult to assess the relationship
+between any one of the factors and quality as there are a number of points on
+both ends of quality vs hue, quality vs bright, and quality vs price plots
+(three plots on the first row of the scatterplot matrix). This is indicative of
+some significant interactions between factors/variables (i.e., it is not only
+hue or only brightness that affects the preceived quality). Relationship between
+the factors present with hue vs bright, hue vs price, and bright vs price plots
+(inverse plots bright vs hue, price vs hue, and price vs bright are also
+present, but they show the same graph, only with flipped axes). Every single one
+of these plots show groups of points in each of the four corners. This also
+suggests some interaction.
+
+## Fitting Full Model
+
+```{r fig.height=3.5, fig.width=5}
+# Fit the initial model with three-way
+fit1 = aov(quality ~ .^2, data)
+
+# Report the summary
+summary(fit1)
+
+# Estimates
+fit1$coefficients
+
+# Residual analysis
+par(mfrow = c(1, 2))
+plot(fit1, pch = 20, cex = 1.5, col = "purple")
+par(mfrow = c(1, 1))
+```
+
+We cannot do statistical inference for the full model (including the three-way
+interaction) as we have no replicates. However, we can still fit a model
+including all two-way interactions.
+
+Residuals vs Fitted plot does not show the constant variance. The red line also
+has a curvature in two places toward the right tail. The red line forms a hill
+toward the right tail that is a hint for non-constant variance. Furthermore,
+ideally, the plot should show a random scattering of the points above and below
+the reference line at horizontal 0. However, in this case, it does seem like
+there is a pattern in the data. More specifically, points are aligned across
+approximately vertical lines. Thus, the constant variance assumption of ANOVA is
+not met.
+
+The Normal Q-Q plot shows that most of the points toward both tails of the plot
+do follow the dotted line. However, at both tails, there is some deviation from
+the dotted line which suggests some non-normality. This is more of a judgment
+call, but to me it seems to approximately normal. Hence, the normality
+assumption for ANOVA is met.
+
+Scale-Location plot does have a decreasing trend in the middle of the plot, but
+levels off toward the end. The variance does not seem constant. This conclusion
+matches that of Residuals vs Fitted plot analysis.
+
+Residuals vs Leverage also shows a few outliers, namely points 132, 14, and 28.
+
+Given our analysis, let us now perform a Box-Cox analysis in order to find an
+appropriate power transformation for the response variable.
+
+```{r}
+# Box-Cox analysis for the power transformation
+MASS::boxcox(fit1, lambda = seq(0, 2, 0.7))
+```
+
+From the plot, we can see that the lambda value is approximately 0.9. This means
+that we have two options:
+
+1. Leave the response as is
+2. Raise the response to the 0.9 power
+
+We will try raising the response to 0.9 power and see if it helps. In the end,
+we will pick the better model.
+
+```{r fig.height=3.5, fig.width=5}
+# Refit the model, applying the right power transformation
+fit2 = aov(quality^0.9 ~ .^2, data)
+
+# Summary
+summary(fit2)
+
+# Estimates
+fit2$coefficients
+
+# Residual analysis
+par(mfrow = c(1, 2))
+plot(fit2, pch = 20, cex = 1.5, col = "purple")
+par(mfrow = c(1, 1))
+```
+
+After applying the transformation, all four plots look similar and the summary
+also shows approximately the same p-values and estimates (coefficients). For
+this reason, we will stick with our initial model - fit1.
+
+Since all of our interactions are significant, we do not have any insignificant
+interactions to remove and we do not need to apply a stepwise regression to
+remove non-significant effects.
+
+## Results
+
+We start by analyzing the interaction plots of significant effects. Since all of
+the two-way interactions were significant and we have three factors, we will
+analyze three plots. This would also be the highest order interactions as due to
+the nature of the study that collected the data, including three-way interaction
+would not be appropriate.
+
+```{r fig.height=3.5, fig.width=5}
+# Interaction plots
+emmip(fit1, hue ~ bright)
+emmip(fit1, hue ~ price)
+emmip(fit1, bright ~ price)
+```
+
+In terms of interactions plots, all three interaction plots show some degree of
+interaction between the variables. The lowest degree of interaction seems to be
+between variables hue and price (lines are relatively parallel with respect to
+each other). The highest degree of interaction seems to be between variables
+bright and price (lines are not relatively parallel with respect to each other).
+That being said, in all three plots, two lines would cross each other if
+extended and thus, the interactions are significant. Further analysis will show
+the degree of these interactions in more detail.
+
+```{r}
+# Report the summary
+summary(fit1)
+
+# Estimates
+fit1$coefficients
+```
+
+The summary report confirms our conclusions based on interaction plots. Indeed,
+hue and price interaction seems to be the least significant one (but still
+significant as the p-value is approximately 0.025 < 0.05). The interaction
+between bright and price, as observed, is most significant with the p-value of
+approximately 0.004. The interaction between hue and bright is also significant
+with the p-value of approximately 0.009.
+
+Variables hue, bright, and price are all significant with the p-values of
+2.38e-07, 2.36e-07, and 1.15e-05 respectively.
+
+The estimate of hue is approximately -0.045 which is a negative direction. The
+estimates for bright and price are 0.025 and 1.626 respective, both having a
+positive direction.
+
+The intercept is 3.842, which means that the mean quality when all factors are
+null is 3.842.
+
+```{r}
+cld(emmeans(fit1, ~ hue    | bright), letters=LETTERS)
+cld(emmeans(fit1, ~ hue    | price),  letters=LETTERS)
+cld(emmeans(fit1, ~ bright | price),  letters=LETTERS)
+```
+
+Above find the appropriate pairwise comparisons for the significant effects.
+
+Let us first analyze emmeans with hue and bright interaction. We see that the
+mean response (quality value) is the lowest with high brightness and red hue
+(2.86). The mean response is the highest when brightness is low and hue is blue
+(4.66). When bright = 1 (low brightness) and hue = 2 (red), the emmean is
+4.25 and when bright = 2 (high brightness) and hue = 1 (blue), the emmean is
+4.18.
+
+In hue - price interaction, the highest emmean value is achieved when price is
+high and hue is blue, the value is 4.98. The lowest emmean value is when price =
+1 (low price) and hue = 2 (red), the value is 3.76. When price is low and hue is
+blue, the emmean value is 3.85. When price is high and hue blue, the emmean is
+3.76.
+
+In price - bright interaction, the biggest emmean of 5.08 is when bright = 1 and
+price = 2 (high brightness and low price). The lowest emmean value is when price
+is low and brightness is high (price = 1, bright = 2). When both brightness and
+price are low, the emmean is 3.82 and when both price and brightness are high,
+the emmean is 3.66.
+
+```{r fig.height=3.5, fig.width=5}
+# Hue - Bright
+qplot (hue, quality, data = data, color = bright) + 
+  stat_summary(fun = mean, geom = "line", aes(group = bright))
+
+# Hue - Price
+qplot (hue, quality, data = data, color = price) + 
+  stat_summary(fun = mean, geom = "line", aes(group = price))
+
+# Bright - Price
+qplot (bright, quality, data = data, color = price) + 
+  stat_summary(fun = mean, geom = "line", aes(group = price))
+```
+
+Finally, we state several conclusions. In order for me to explain the
+conclusions, I will use analogies - high brightness (think blinding
+website/packaging/etc), high hue (think same as high brightness, with blue being
+less bright/darker and red being brighter/lighter/blinding in extreme cases),
+high price (think something that might have high quality, but that would depend
+on interaction with hue and brightness).
+
+* Products with high brightness and high hue have the lowest perceived
+  quality - makes sense, blinding brightness and high hue does not leave good
+  impressions
+* Products with low brightness and low hue have the highest perceived
+  quality - makes sense low brightness and low hue probably means more elegant
+  website and is therefore, more attractive in general)
+* Products with high price and low hue have the highest perceived
+  quality - makes sense, low hue would probably mean more elegant website and
+  high price would mean that the product is probably high quality (hence, higher
+  perceived quality)
+* Products with low price and high hue have the lowest perceived
+  quality: makes sense, low price on already not very elegant looking website
+  might be very attractive.
+* Products with high price and low brightness have the highest perceived
+  quality - makes sense, products presented with low brightness and high price
+  will probably look more elegant and attract more users
+* Products with high low and high brightness have the highest perceived
+  quality - makes sense, products presented with blinding colors and low
+  price are not very attractive
