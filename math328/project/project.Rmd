@@ -89,7 +89,7 @@ between any one of the factors and quality as there are a number of points on
 both ends of quality vs hue, quality vs bright, and quality vs price plots
 (three plots on the first row of the scatterplot matrix). This is indicative of
 some significant interactions between factors/variables (i.e., it is not only
-hue or only brightness that affects the preceived quality). Relationship between
+hue or only brightness that affects the perceived quality). Relationship between
 the factors present with hue vs bright, hue vs price, and bright vs price plots
 (inverse plots bright vs hue, price vs hue, and price vs bright are also
 present, but they show the same graph, only with flipped axes). Every single one
@@ -296,3 +296,7 @@ on interaction with hue and brightness).
 * Products with high low and high brightness have the highest perceived
   quality - makes sense, products presented with blinding colors and low
   price are not very attractive
+  
+Furthermore, we conclude that it is enough to just know one of the factors
+(e.g., know brightness or price) in order to predict the perceived quality.
+Every factor - hue, bright, and price - had significant interactions as well.
