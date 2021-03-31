@@ -158,6 +158,9 @@ The plots of the significant interactions are also shown.
 ```{r}
 cld(emmeans(fit2, ~ height | interval), letters=LETTERS)
 cld(emmeans(fit2, ~ fert   | interval), letters=LETTERS)
+
+emmip(fit2, ~ height:interval)
+emmip(fit2, ~ fert:interval)
 ```
 
 Above find the appropriate pairwise comparisons for the significant effects.
@@ -179,4 +182,5 @@ height = 1 and height = 6 and close and equal to 13.74 and 13.59 respectively.
 Let us now analyze emmeans with fert and interval interaction.
 
 Interestingly, in all intervals, we see clearly that the higher fert values have
-higher corresponding emmean values.
+higher corresponding emmean values. Also, the bigger the interval, the bigger
+the average response (emmean). The plots also suggests the same.
