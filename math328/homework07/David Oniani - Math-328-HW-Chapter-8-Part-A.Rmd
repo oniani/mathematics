@@ -1,0 +1,166 @@
+---
+title: "Math 328 Chapter 8 HW - Part A"
+author: "David Oniani"
+date: "April 11, 2021"
+output: word_document
+---
+
+<!-- Do Exercises  8.2, 8.14, 8.18, and 8.26, using R Markdown. -->
+
+## Setup
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(Stat2Data)
+library(agricolae)
+library(emmeans)
+library(mosaic)
+library(multcomp)
+```
+
+## Exercise 8.2
+
+In case of two-way ANOVA, we must apply Levene’s test to groups of data formed
+by the cells (i.e., the combinations of levels of factors), rather than to
+groups formed by levels of a single factor. In this case, Levene's test was
+applied to groups by levels of Factor A (single factor) and Factor B (single
+factor) separately and thus, such application of Levene's test would not be
+appropriate.
+
+## Exercise 8.14
+
+```{r}
+# Load the data
+data("SeaSlugs")
+
+# a) Use Fisher’s LSD intervals to find any differences that exist between the
+#    percent of larvae that metamorphosed in the different water conditions.
+fit1 <- aov(Percent ~ factor(Time), SeaSlugs)
+anova(fit1)
+print(agricolae::LSD.test(fit1, "factor(Time)"))
+
+# b)  Use Tukey’s HSD intervals to find any differences that exist between the
+#     percent of larvae that metamorphosed in the different water conditions.
+fit2 <- aov(Percent ~ factor(Time), SeaSlugs)
+TukeyHSD(fit2)
+
+# c) Were your conclusions to (a) and (b) different? Explain. If so, which
+#    would you prefer to use in this case and why?
+# 
+# No code needed, see the response below
+```
+
+a) Means with the same letter seem to be different at intervals 0, 5, and 25 as
+   compared with those at intervals 20, 15, and 10. Other than this, there does
+   not seem to be any significant differences between the time intervals 20, 15,
+   and 10 and other time intervals.
+
+b) It seems like intervals 0 - 10, 0 - 15, 0 - 20, and 0 - 25 are the most
+   significant. Hence, there are differences between the percent of larvae that
+   metamorphosed in the different water conditions.
+   
+c) Conclusions in (a) and (b) are indeed different. Fisher's LSD seems to be
+   narrower than Tukey's HSD. Since in Fisher's LSD we are likely to have a
+   higher risk of making Type I error, I would prefer Tukey's HSD in this case.
+
+## Exercise 8.18
+
+```{r}
+# Load the data
+data("Blood1")
+
+# a) What are the hypotheses that describe the test we would like to
+#    perform?
+fit1 <- aov(SystolicBP ~ Overwt, Blood1)
+summary(fit1)
+
+# b) Write the contrast of interest in symbols and compute its estimated
+#    value.
+ms = mean(SystolicBP ~ Overwt, data=Blood1)
+cc = c(1, -0.5, -0.5)
+contrast = sum(ms * cc)
+contrast
+
+# c) What is the standard error of the contrast?
+mse = summary(fit1)[[1]]$"Mean Sq"[2]
+ns = tally(~Overwt, data=Blood1)
+se = sqrt(mse * sum(cc^2 / ns))
+se
+
+# d) Perform the hypothesis test to test the alternative hypothesis that the
+#    mean systolic blood pressure is different for people of normal weight, as
+#    compared to people who are overweight or obese. Be sure to give your
+#    conclusions.
+t1 = contrast / se
+errordf = fit1$df.residual
+pvalue1 = 2 * pt(t1, errordf)
+pvalue1
+```
+
+a) Since we want to compare levels of systolic blood pressure based on weight
+   status, one-way ANOVA would be appropriate. Hence, we would perform a one-way
+   ANOVA for systolic blood pressure by weight status. The model and its summary
+   statistics are shown above.
+
+b) Since we are comparing normal to overweight and obese, we can set normal to
+   1 and both overweight and obese to -0.5. Hence, the equation will be
+   1 * y_normal - 0.5 * y_overweight - 0.5 * y_obese with
+   1 + (-0.5) + (-0.5) = 0 which satisfies the condition that all coefficients
+   add up to 0. After calculating the contrast, we got the value of
+   approximately -12.459.
+
+c) After calculating the standard error of the contrast, we got that its value
+   is approximately 2.543.
+
+d) After performing the hypothesis test, we got the p-value of 1.30648e-06
+   which is a lot smaller than the 0.05 cutoff. This means that difference is
+   significant and hence, we reject the null and accept alternative, effectively
+   concluding that there is a significant difference of systolic blood pressure
+   based on weight status (normal vs overweight or obese).
+
+## Exercise 8.26
+
+```{r fig.height=3.5, fig.width=5}
+# Load the data
+data("Pulse")
+
+# a) Create one or more graphs to assess the conditions required by ANOVA.
+#    Comment on why the Kruskal-Wallis test might be more appropriate
+#    than an ANOVA.
+fit1 <- aov(Active ~ ., Pulse)
+plot(fit1)
+
+# b) Run the Kruskal-Wallis test and report the results and conclusions
+kruskal.test(Active ~ Exercise, Pulse)
+```
+
+(a) Residuals vs Fitted shows a constant variance and the red line follows the
+    dotted line closely. Hence, based on Residuals vs Fitted plot, the equal
+    variance condition does not seem to be violated (i.e., the equal variance
+    condition is met). The normality condition does not seem to bet met. While
+    most of the points in the middle of the Normal Q-Q do seem to follow the
+    dotted line, there is a significant deviation at both ends. Thus, based on
+    the Normal Q-Q plot, we can conclude that the normality assumption is not
+    met and therefore, is violated. The Scale-Location plot does not show a
+    decreasing trend. Residuals vs Leverage plot does not show any obvious
+    outliers. Although the variance condition is met, the normality assumption
+    is not. If the normality assumption was not violated, using ANOVA would be
+    appropriate, but since it is, Kruskal-Wallis test is more appropriate.
+    Hence, Kruskal-Wallis test is more appropriate since the normality
+    assumption is not met.
+    
+    NOTE: We fitted the full model response vs all variables. The book was a bit
+          ambiguous about the exact kind of model they wanted us to fit. That
+          being said, I have also rechecked a model
+          `fit1 <- aov(Active ~ Exercise)` and the normality assumption is still
+          being violated (i.e., is not met).
+
+b) After performing the Kruskal-Wallis test, we get that the Kruskal-Wallis
+   chi-squared value is 29.826 with the p-value of 3.337e-07 and 2 degrees of
+   freedom. Now, since the p-value is significantly lower than the 0.05 cutoff,
+   we reject the null hypothesis of no difference in the pulse rates (Activity
+   variable) and conclude that there are different pulse rates, depending on
+   exercise given to students.
