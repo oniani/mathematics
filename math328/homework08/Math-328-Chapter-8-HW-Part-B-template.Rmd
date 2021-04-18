@@ -1,7 +1,7 @@
 ---
 title: "Math 328 Chapter 8 HW Part 2.Rmd"
-author: "Dr. Phil"
-date: "April 17, 2021"
+author: "David Oniani"
+date: "April 19, 2021"
 output: word_document
 ---
 
