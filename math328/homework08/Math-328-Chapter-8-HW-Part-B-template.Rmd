@@ -1,0 +1,224 @@
+---
+title: "Math 328 Chapter 8 HW Part 2.Rmd"
+author: "Dr. Phil"
+date: "April 17, 2021"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Exercise 8.38
+
+Music Time: Descriptive.
+
+Participants were asked to judge when 45 seconds had passed under three
+conditions:
+
+* Silence
+* Listening to an upbeat song
+* Listening to a calm song
+
+The order in which each subject experienced these three conditions was randomized.
+
+The response is Accuracy, which is the absolute difference between the reported
+time and 45 seconds.  Use the square root transformation of Accuracy.
+
+### 8.38 (a) Boxplots
+
+```{r fig.height=3.5, fig.width=4}
+library (Stat2Data)
+data ("MusicTime")
+str (MusicTime)
+boxplot (sqrt(Accuracy) ~ Music, data=MusicTime)
+```
+
+Comments on the plot: It seems like the sqrt(Accuracy) is, on average, higher
+when listening to a calm song. The median value seems to be the biggest in this
+case. sqrt(Accuracy) looks approximately the same when listening in silence
+(control) or upbeat music. That being said, it does seem like listening in
+silence (control) has slightly bigger sqrt(Accuracy) value. The median value of
+listening in silence (control) seems to be bigger than that of listening to
+upbeat as well. Hence, the median values show the following descending order:
+calm, control, upbeat.
+
+
+### 8.38 (b)
+
+The null hypothesis is: 45 seconds passed at the same time with all three types
+of music (i.e., accuracy was the same in all three cases).
+
+In symbols, H_0: acc_1 = acc_2 = acc_3 or H_0: u_1 = u_2 = u_3.
+
+
+
+
+### 8.38 (c)
+
+Answer: The boxplots do provide the visual evidence against the null hypothesis.
+This is the case since, clearly, sqrt(Accuracy) was the largest when listening
+to the calm music. Furthermore, sqrt(Accuracy) was noticeably larger when
+listening to a calm music than listening to any other type of music
+(silence/control or upbeat).
+
+
+
+## Exercise 8.40
+
+Conduct a repeated measures ANOVA.
+
+```{r}
+mt1 = aov (sqrt(Accuracy) ~ Music + Error (Subject), data=MusicTime)
+summary (mt1)
+library (emmeans)
+summary (emmeans (mt1, pairwise ~ Music), infer=c(T,T))
+```
+
+Conclusions: from the very get-go, we can see that the p-value (approximately,
+0.004, which is less than the 0.05 cutoff) from the summary of aov is
+significant meaning that there is a significant evidence against the null
+hypothesis that average accuracy for detecting when 45 seconds have passed was
+the same for all three types of music. Further analysis using emmeans functions
+shows that the difference between calm and upbeat has the smallest p-value of
+approximately 0.007 and therefore, is significant, which was expected based on
+our ordering in exercise 8.38 (decreasing order: calm, control, upbeat). An
+estimated difference calm - upbeat is approximately 1.202. The difference
+between calm and control is also significant with the p-value of 0.01 and an
+estimate of approximately 1.120. Finally, the difference between control and
+upbeat is not significant (an observation that we made in exercise 8.38) with
+the p-value of 0.973 and an estimate of approximately 0.083.
+
+
+
+## Exercise 8.62
+
+These data are from three car manufacturers.  The task is to model Price as a
+function of car type and either age or mileage.
+
+### 8.62 (a)
+
+ANOVA for Price vs car type.
+
+```{r}
+data ("ThreeCars2017")
+str (ThreeCars2017)
+boxplot (sqrt(Price) ~ CarType, data=ThreeCars2017)
+cars1 = lm (sqrt(Price) ~ CarType, data=ThreeCars2017)
+summary (cars1)
+anova (cars1)
+```
+
+Findings: The boxplot shows that there is a difference in mean prices in the
+three models. More specifically, it looks like Mazda6 has the lower price, on
+average, than either Accord or Maxima. The median value of Mazda6 is below those
+of Accord and Maxima. Median price of Accord and Maxima seem to be approximately
+the same, but the mean value should be higher for Maxima as its box and lower
+whisker are clearly above the Accord boxplot. After performing anova on the
+fitted model, we also got a significant p-value of approximately 0.01 (< 0.05)
+for CarType, meaning that there is likely a significant difference between at
+least two car types.
+
+
+```{r}
+summary (emmeans (cars1, pairwise ~ CarType), infer=c(T,T))
+```
+
+Findings: We see that the difference between Maxima and Mazda6 is significant
+with the p-value of approximately 0.010 and an estimate of 0.611. Differences
+Accord - Maxima and Accord - Mazda6 are not statistically significant with the
+p-values of approximately 0.611 and 0.104 respectively.
+
+
+### 8.62 (b)
+
+ANCOVA with car type and age.
+
+```{r}
+cars2 = lm (sqrt(Price) ~ CarType + Age, data=ThreeCars2017)
+summary (cars2)
+anova (cars2)
+```
+
+Results: From the summary, we can see that the intercept is significant with the
+p-value less than 2e-16. Mazda6 car type is also significant with the p-value of
+5.55e-05. Age is significant with the p-value of less than 2e-16. Model Maxima
+is not significant with the p-value of 0.662. The ANCOVA model shows that both
+CarType and Age are statistically significant with the p-values of 8.554e-11 and
+2.2e-16 (in fact, less than 2.2e-16, so Age is very significant) respectively.
+
+
+```{r}
+library (ggplot2)
+qplot (Age, sqrt(Price), data=ThreeCars2017, color=CarType) +
+  geom_line (aes(y=predict (cars2)), lwd=1)
+summary (emmeans (cars2, pairwise ~ CarType), infer=c(T,T))
+```
+
+Conclusions: The qplot shows a reasonable pattern suggesting that the older the
+car, regardless of the car type, the lower the price. That being said, it seems
+like Maxima car type has a lot of younger cars with some of them being fresh and
+thus, the prices are high. The oldest Maxima in the dataset is also 10 years
+old. Car type Accord has some of the oldest cars (> 15). Mazda6 is similar to
+Accord in terms of younger cars, but does not have cars as old as Accord.
+Contrasts do not show any significant differences. emmeans shows that the
+emmeans for Accord, Maxima, and Mazda6 are 3.74, 3.71, and 3.40 respectively
+with the p-value less than 0.0001 in all cases.
+
+
+### 8.62 (c)
+
+ANCOVA with car type and Mileage.
+
+```{r}
+cars3 = lm (sqrt(Price) ~ CarType + Mileage, data=ThreeCars2017)
+summary (cars3)
+anova (cars3)
+```
+
+Results: The summary of the model cars3 shows that the Intercept and Mileage are
+both significant with the p-values less than 2e-16 in both cases. ANOVA models
+shows that both CarType and Mileage are significant with the p-values of
+2.687e-07 and 2.2e-16 (less than 2.2e-16) respectively.
+
+
+
+
+```{r}
+qplot (Mileage, sqrt(Price), data=ThreeCars2017, color=CarType) +
+  geom_line (aes(y=predict (cars3)), lwd=1)
+summary (emmeans (cars3, pairwise ~ CarType), infer=c(T,T))
+```
+
+Conclusions: The qplot shows that Accord has some cars with the mileage that is
+less than that of any car of either Maxima or Mazda6. Accord also has some cars
+with the most mileage. That being said, Accord model contains all mileages from
+both Maxima and Mazda6 and hence, we do not expect very significant differences
+in contrasts. Maxima and Mazda6 look similar in terms of mileage, but Maxima, on
+average, does seem to have cars with smaller mileage than Mazda6 (i.e., Maxima
+line is Mazda6 line moved up across y-axis and then shifted left across x-axis).
+The contrasts show that emmean for Accord, Maxima, and Mazda6 are 3.60, 3.85,
+and 3.41 respectively with all of the p-values less than 0.0001. The contrasts
+show that Accord - Maxima difference is marginally significant with the p-value
+of approximately 0.05 and an estimate of -0.245. Accord - Mazda6 difference is
+not significant as its p-value is approximately 0.16. Maxima - Mazda6 contrast,
+however, is significant (as expected) with the p-value of 0.0002 and an estimate
+of 0.439.
+
+
+
+### 8.62 (d)
+
+Your choice of final model and why?
+
+I would go with cars3 model. This is due to the fact that mileage might be more
+important metric of assessing comparing cars than age. One might have a car
+which is 10 years old but with no mileage as well as a car that is 1 year old
+but with a lot of mileage. Due to the same reason, the car mileage also speaks a
+lot to the condition of the car and from a more practical perspective, tells us
+that some car models are able to withstand more miles (e.g., while Maxima model
+had some of the youngest cars, Accord had some cars whose mileage were clearly
+bigger than any other car in Maxima or Mazda6). Hence, mileage can also help us
+make decisions if purchasing a particular car model (e.g., maybe Accord is
+better as we have some evidence that its cars could drive a lot longer, more
+miles, etc).
