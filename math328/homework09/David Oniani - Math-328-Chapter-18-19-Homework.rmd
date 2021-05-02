@@ -1,0 +1,252 @@
+---
+title: "Chapter 18-19 Homework"
+author: "David Oniani"
+date: "May 1, 2021"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# For testing, put the Oehlert.Rdata file in the folder shown by: getwd()
+# For knitting, put a copy of Oehlert.Rdata in the same folder as this R Markdown file 
+load ("oehlert.rdata")
+library (tidyr)
+library (ggplot2)
+library (rsm)
+```
+
+## Problem 18.6
+
+Silicon wafers for integrated circuits are grown in a device called a susceptor,
+and a response of interest is the thickness of the silicon. Eight factors, each
+at two levels, were believed to contribute: rotation method (A), wafer code (B),
+deposition temperature (C), deposition time (D), arsenic flow rate (E), HCl etch
+temperature (F), HCl flow rate (G), and nozzle position (H). A $2^{8-4}$ design
+was run with generators I = ABCD = BCEF = ACEG = BCEH.
+
+### Main Effect plots
+
+```{r fig.height=5, fig.width=7}
+str (pr18.6)
+ggplot(pivot_longer (pr18.6, cols = 1:8, names_to = "Factor", values_to = "Level"), 
+       aes(x=Level, y=thickness)) + geom_point() +
+  stat_summary (fun=mean, geom="line", aes(group=Factor)) +
+  facet_wrap(~Factor, scales = 'free_x')
+```
+
+What do you notice in these plots?
+
+The plot shows the main effects for each of the eight factors. Bigger slopes
+correspond to bigger main effects. Based on the plot, it appears that factors B
+and E have the smallest main effects (i.e., lines are approximately parallel to
+the x-axis [i.e., line is flat]). Factors A (negative direction) and C (negative
+direction) seem to have main effects bigger than factors B and E as the lines
+are less parallel to the x-axis than for factors B and E (considering absolute
+values/magnitudes of the effects as the direction for some effects is positive
+and for some effects, it is negative). Factors F, G, and H come next with the
+lines that are clearly not parallel to the x-axis. Finally, factor D has the
+biggest slope (i.e., take the absolute value of the slope) and has the largest
+main effect. That being said, the direction of this main effect is negative. As
+for the largest positive main effect, it seems to be factor H. Therefore, we
+have the following tentative main effects ordering (based on absolute
+values/magnitudes of the effects): E, B, C, A, G, F, H, D.
+
+### Fit a model with all main effects and 2-factor interactions:
+
+```{r}
+fit18.6 = lm (thickness ~ (A+B+C+D+E+F+G+H)^2, data=pr18.6)
+summary (fit18.6)
+
+# See if H and F are aliased with the C, D, E, and F interactions.
+alias_check_h = lm(H ~ B * C * E, data=pr18.6)
+summary(alias_check_h)
+
+alias_check_f = lm(F ~ B * C * E, data=pr18.6)
+summary(alias_check_f)
+```
+
+Note that the H main effect is not estimable. Also note that none of the
+interaction effects involving H are estimable.
+
+Use the defining contrast, BCEH = BCEF, and defining contrast algebra to show
+that the main effect for H is confounded (aliased) with the main effect for F.
+
+Given BCEH = BCEF, let us multiply both sides by BCE. We get, BCEBCEH = BCEBCEF.
+Applying the commutative property, we get BBCCEEH = BBCCEEF. Using the fact that
+the same letters cancel each other, we get H = F and we conclude that the main
+effect for H is confounded (aliased) with the main effect for F.
+
+Alternatively, we could do this without using defining contrast algebras. We can
+take a look at summaries for the models H ~ B * C * E and F ~ B * C * E. In both
+cases, only one interaction B:C:E is significant with the Estimate of 1 and a
+very significant p-value of less than 2e-16. In both cases, we also get the
+R-squared value of 1. Therefore, we can conclude that the main effect for H is
+confounded (aliased) with the main effect for F.
+
+### Second model
+
+Remove H and refit. Include the A:B:E interaction, which is estimable.
+
+```{r}
+fit18.6b = lm (thickness ~ (A+B+C+D+E+F+G)^2 + A:B:E, data=pr18.6)
+summary (fit18.6b)
+```
+
+Make a normal Q-Q plot of the effects.
+
+```{r fig.height=3.5, fig.width=4}
+effs18.6b = fit18.6b$effects [2:fit18.6$rank]
+qqnorm (effs18.6b)
+qqline (effs18.6b)
+abline (h=0.5, lty=2)
+effs18.6b [abs (effs18.6b) > 0.5]
+```
+
+Which effects are significant?
+
+There is only one effect that is significant. It is the effect D and its value
+is 1.6125.
+
+### What effects are confounded with factor D?
+
+Use defining contrast algebra for each of these relations to determine the
+effects (main or interaction effects) that are confounded with the main effect
+of D (hint - multiply both sides by ABC in each expression):
+
+* ABCD = BCEF
+* ABCD = ACEG
+* ABCD = BCEH
+
+Given ABCD = BCEF, let us multiply both sides by ABC. After regrouping, we get
+AABBCCD = ABBCCEF which gives us D = AEF. Thus, we got that the three-way
+interaction AEF is confounded with the main effect of D.
+
+Given ABCD = ACEG, let us multiply both sides by ABC. After regrouping, we get
+AABBCCD = AABCCEG which gives us D = BEG. Thus, we got that the three-way
+interaction BEG is confounded with the main effect of D.
+
+Given ABCD = BCEH, let us multiply both sides by ABC. After regrouping, we get
+AABBCCD = ABBCCEH which gives us D = AEH. Thus, we got that the three-way
+interaction AEH is confounded with the main effect of D.
+
+## Problem 19.5
+
+Curing time and temperature affect the shear strength of an adhesive that bonds
+galvanized steel bars. The following experiment was repeated on 2 separate days.
+Twenty-four pieces of steel are obtained by random sampling from warehouse
+stock. These are grouped into twelve pairs; the twelve pairs are glued and then
+cured with one of nine curing treatments assigned at random. The treatments are
+the three by three factorial combinations of temperature (375, 400, and 450
+degrees F, coded -1, 0, 2) and time (30, 35, or 40 seconds, coded -1, 0, 1).
+Four pairs were assigned to the center point, and one pair to all other
+conditions. The response is shear strength (in psi, data from Khuri 1992):
+
+| Temp. | Time | Day 1 | Day 2 |
+|-------|------|-------|-------|
+| -1    | -1   | 1226  | 1213  |
+| 0     | -1   | 1898  | 1961  |
+| 2     | -1   | 2142  | 2184  |
+| -1    | 0    | 1472  | 1606  |
+| 0     | 0    | 2010  | 2450  |
+| 0     | 0    | 1882  | 2355  |
+| 0     | 0    | 1915  | 2420  |
+| 0     | 0    | 2106  | 2240  |
+| 2     | 0    | 2352  | 2298  |
+| -1    | 1    | 1491  | 2298  |
+| 0     | 1    | 2078  | 2531  |
+| 2     | 1    | 2531  | 2609  |
+|       |      |       |       |
+
+```{r}
+str (pr19.5)
+tmp_time = pr19.5$time
+tmp_temp = pr19.5$temp
+pr19.5$temp = tmp_time
+pr19.5$time = tmp_temp
+str(pr19.5)
+plot (pr19.5, col=pr19.5$day)
+```
+
+Plot the data:
+
+```{r fig.height=3.5, fig.width=6}
+ggplot (pr19.5, aes (x=time, y=strength, color=factor(temp))) + geom_point() +
+  facet_wrap (vars(day), labeller="label_both") +
+  stat_summary (fun=mean, geom="line", aes(group=temp))
+```
+
+(Note: No interpretation needed for the plot above.)
+
+### Response surface model:
+
+Fit a second-order response surface model and include day as a block effect.
+
+```{r}
+fit19.5 = rsm (strength ~ day + FO(time, temp) + SO(time, temp), data=pr19.5)
+summary (fit19.5)
+```
+
+Which effects are significant?
+
+The main effects day, time, and temp are significant with the p-values of
+approximately 0.001, 6.535e-05, and 2.514e-07 respectively. The intercept is
+significant as well, with the p-value of approximately 1.409e-11. Finally,
+temp^2 is also significant with the p-value of approximately 0.0003.
+
+### Test for lack of fit
+
+Based on the output above, is there significant lack of fit?  Include the
+p-value for the lack of fit test.
+
+There is not a significant lack of fit since the p-value is approximately 0.730,
+which is way above the 0.05 cutoff.
+
+### Check the residuals:
+
+```{r fig.height=3.4, fig.width=7}
+par (mfrow=c(1,2))
+plot (fit19.5)
+```
+
+Interpret the residual plots:
+
+Residuals vs Fitted plot shows that the variance is equal since the points are
+scattered randomly above and below the reference line at 0. That being said, the
+red line does not follow the dotted line. However, this does not change the fact
+that we have equal variance.
+
+Normal Q-Q plot shows that the distribution is approximately normal since most
+of the points follow the dotted line. There is an evidence of some non-normality
+at both tails of the Normal Q-Q (slightly heavier right tail), but, overall, the
+plot does not show non-normal patterns.
+
+Scale-Location plot shows equal variance and, to some degree, further
+corroborates the hypothesis from Residuals vs Fitted plot.
+
+Residuals vs Leverage does not show any noticeable outliers. While we do see the
+Cook's contours, none of the points are beyond them.
+
+```{r fig.height=3.5, fig.width=4}
+plot (strength ~ fit19.5$fitted.values, data=pr19.5)
+abline (0, 1)
+```
+
+### Analysis conclusion
+
+```{r fig.height=3.5, fig.width=5}
+ggplot (pr19.5, aes (x=time, y=strength, color=factor(temp), shape=factor(day))) + 
+  geom_point() +
+  stat_summary (fun=mean, geom="line", aes(group=temp))
+```
+
+Given these modeling results, and the data plot just above, what values of time
+and temperature would you choose to maximize strength. Stay within the range of
+values tested for those factors.  You may state a specific value for time and
+for temperature or a range of values.  Use the original scales for time and
+temperature, as stated at the beginning of the problem.
+
+The highest value for strength is approximately 2550. This value is obtained
+when time is 1 (coded) and temperature is 2 (coded). Recall, that time time was
+coded -1, 0, 1 for 30, 35, and 40 seconds respectively and the temperature
+was coded -1, 0, and 2 for 375, 400, and 450 degrees F. Hence, in order to
+maximize the strength, we would choose 40 seconds and 450 degrees F.
