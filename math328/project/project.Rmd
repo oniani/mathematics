@@ -1,7 +1,7 @@
 ---
 title: "MATH-328 Project"
 author: "David Oniani"
-date: "April 27, 2021"
+date: "May 02, 2021"
 output: word_document
 ---
 
@@ -105,9 +105,8 @@ plot(fit1, pch = 20, cex = 1.5, col = "purple")
 par(mfrow = c(1, 1))
 ```
 
-We cannot do statistical inference for the full model (including the three-way
-interaction) as we have no replicates. However, we can still fit a model
-including all two-way interactions.
+We start with the full model, including all two-way and one three-way
+interactions.
 
 Residuals vs Fitted plot shows fairly constant variance. The red line follows
 the dotted line closely, further corroborating our hypothesis. Thus, the
@@ -116,7 +115,7 @@ constant variance assumption is not violated.
 The Normal Q-Q plot shows that most of the points, except for at the tails, of
 the plot do follow the dotted line. However, at both tails, there is some
 deviation from the dotted line which suggests some non-normality. This is more
-of a judgment call, but to me it seems to approximately normal. Hence, the
+of a judgment call, but to me it seems to be approximately normal. Hence, the
 normality assumption for ANOVA is met.
 
 Scale-Location plot does have some decreasing trend toward the end of the plot,
@@ -138,8 +137,9 @@ that we have two options:
 1. Leave the response as is
 2. Raise the response to the 0.9 power
 
-We will try raising the response to 0.9 power and see if it helps. In the end,
-we will pick the better model.
+We will first try raising the response to 0.9 power and see if it helps. If the
+results are similar, we will go with the original model (without the power
+transformation).
 
 ```{r fig.height=3.5, fig.width=5}
 # Refit the model, applying the right power transformation
